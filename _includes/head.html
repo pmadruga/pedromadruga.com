@@ -36,12 +36,8 @@
   {% endif %}
 
   {% if site.blog_theme == "light" %}
-    <link rel="icon" type="image/x-icon" href="{% asset favicon-light.ico @path %}">
-    <link rel="apple-touch-icon" href="{% asset apple-touch-icon-light.png @path %}">
     {% asset light.css %}
   {% else %}
-    <link rel="icon" type="image/x-icon" href="{% asset favicon-dark.ico @path %}">
-    <link rel="apple-touch-icon" href="{% asset apple-touch-icon-dark.png @path %}">
     {% asset dark.css %}
   {% endif %}
 </head>
