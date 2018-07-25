@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="https://www.w3.org/2005/Atom" xmlns:dc="https://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Pedro Madruga</title>
+    <description></description>
+    <link>https://pedromadruga.com/</link>
+    <atom:link href="https://pedromadruga.com//feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Introducing chalk</title>
+        <description>Chalk is a high quality, completely customizable, performant and 100% free blog template for Jekyll.</description>
+        <pubDate>Sat, 23 Dec 2017 00:00:00 +0100</pubDate>
+        <link>https://pedromadruga.com//2017/12/23/introducing-chalk.html</link>
+        <guid isPermaLink="true">https://pedromadruga.com//2017/12/23/introducing-chalk.html</guid>
+      </item>
+    
+      <item>
+        <title>How to configure Chalk</title>
+        <description>Learn more about the config file for Chalk and how to set it up properly.</description>
+        <pubDate>Fri, 22 Dec 2017 00:00:00 +0100</pubDate>
+        <link>https://pedromadruga.com//2017/12/22/configuring-chalk.html</link>
+        <guid isPermaLink="true">https://pedromadruga.com//2017/12/22/configuring-chalk.html</guid>
+      </item>
+    
+      <item>
+        <title>Chalk sample post with all elements</title>
+        <description>Have a look at all the predesigned elements you can use in Chalk.</description>
+        <pubDate>Thu, 21 Dec 2017 00:00:00 +0100</pubDate>
+        <link>https://pedromadruga.com//2017/12/21/chalk-sample-post-with-all-elements.html</link>
+        <guid isPermaLink="true">https://pedromadruga.com//2017/12/21/chalk-sample-post-with-all-elements.html</guid>
+      </item>
+    
+  </channel>
+</rss>
