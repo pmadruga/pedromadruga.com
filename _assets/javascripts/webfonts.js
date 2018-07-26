@@ -2,6 +2,6 @@
 
 WebFont.load({
   google: {
-    families: ['Roboto+Mono:300', 'Lato:300,400,700']
+    families: ['Lato:300,400,700', 'Lora: 400']
   }
 });

@@ -6,8 +6,8 @@
 // =============================================================================
 
 $sans-serif: "Lato", Helvetica, Arial, sans-serif;
-$serif: "Cormorant Garamond", Courier, serif;
-$base-font-family: $sans-serif;
+$serif: "Lora", Courier, serif;
+$base-font-family: $serif;
 $base-font-weight: 400;
 $base-font-weight-bold: 700;
 
@@ -34,7 +34,7 @@ $negative-gutter: 0 - $gutter;
 
 // Font sizes
 
-$base-font-size: 16px;
+$base-font-size: 18px;
 $base-line-height: 1.8;
 
 // Box sizes
