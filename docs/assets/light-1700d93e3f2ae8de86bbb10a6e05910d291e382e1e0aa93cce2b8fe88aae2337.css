@@ -423,7 +423,8 @@ body {
 p {
   margin: 0;
   font-weight: 400;
-  font-size: 18px; }
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.84); }
 
 b,
 strong {
@@ -875,6 +876,19 @@ img {
   font-weight: 500;
   color: #000;
   text-decoration: none; }
+
+.header-nav-links {
+  display: flex;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+  width: 100%; }
+  .header-nav-links li a {
+    text-decoration: none; }
+
+.active {
+  font-weight: bold; }
 
 .header-links {
   float: right;

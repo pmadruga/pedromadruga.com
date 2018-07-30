@@ -1,3 +1,4 @@
 node_modules/
 CNAME
 docs/CNAME
+.jekyll-cache/
