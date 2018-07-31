@@ -7,27 +7,11 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Introducing chalk</title>
-        <description>Chalk is a high quality, completely customizable, performant and 100% free blog template for Jekyll.</description>
-        <pubDate>Sat, 23 Dec 2017 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/2017/12/23/introducing-chalk.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/23/introducing-chalk.html</guid>
-      </item>
-    
-      <item>
-        <title>How to configure Chalk</title>
-        <description>Learn more about the config file for Chalk and how to set it up properly.</description>
-        <pubDate>Fri, 22 Dec 2017 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/2017/12/22/configuring-chalk.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/22/configuring-chalk.html</guid>
-      </item>
-    
-      <item>
-        <title>Chalk sample post with all elements</title>
-        <description>Have a look at all the predesigned elements you can use in Chalk.</description>
-        <pubDate>Thu, 21 Dec 2017 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/2017/12/21/chalk-sample-post-with-all-elements.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/21/chalk-sample-post-with-all-elements.html</guid>
+        <title>Create and showcase your own React UI library using Webpack 4</title>
+        <description>When working in a company with multiple projects, you might want to have design guidelines to ensure consistency throughout. What if you could have a showcase for your styled components and still be able to use those components in other projects, with something as easy as a installing a npm package?</description>
+        <pubDate>Fri, 17 Mar 2017 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/2017/03/17/your-own-ui-library.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/03/17/your-own-ui-library.html</guid>
       </item>
     
   </channel>

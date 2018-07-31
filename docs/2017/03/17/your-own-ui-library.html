@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Pedro Madruga | Create and showcase your own React UI library using Webpack 4</title>
+  <meta name="description" content="When working in a company with multiple projects, you might want to have design guidelines to ensure consistency throughout. What if you could have a showcase for your styled components and still be able to use those components in other projects, with something as easy as a installing a npm package?">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Create and showcase your own React UI library using Webpack 4">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:4000/2017/03/17/your-own-ui-library.html">
+  <meta property="og:description" content="When working in a company with multiple projects, you might want to have design guidelines to ensure consistency throughout. What if you could have a showcase for your styled components and still be able to use those components in other projects, with something as easy as a installing a npm package?">
+  <meta property="og:site_name" content="Pedro Madruga">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="http://localhost:4000/2017/03/17/your-own-ui-library.html">
+  <meta name="twitter:title" content="Create and showcase your own React UI library using Webpack 4">
+  <meta name="twitter:description" content="When working in a company with multiple projects, you might want to have design guidelines to ensure consistency throughout. What if you could have a showcase for your styled components and still be able to use those components in other projects, with something as easy as a installing a npm package?">
+
+  
+    
+      <meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/0*SdbWagCZ6YyyY2vJ.">
+      <meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1600/0*SdbWagCZ6YyyY2vJ.">
+    
+  
+
+  <link href="http://localhost:4000/feed.xml" type="application/rss+xml" rel="alternate" title="Pedro Madruga Last 10 blog posts" />
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/assets/light-922bdaac7e3ab10873a531dc53d813e2aae56fac8a8bdf2bc9cb9dc404f09f39.css">
+  
+</head>
+
+<body>
+  <main>
+    <div class="grid grid-centered">
+      <div class="grid-cell">
+        <nav class="header-nav scrollappear">
+  <a href="/" class="header-logo" title="Pedro Madruga">Pedro Madruga</a>
+  <div class="header-nav-links">
+    <ul class="header-links">
+      <li >
+        <a href="/">home</a>
+      </li>
+      <li >
+        <a href="/blog">blog</a>
+      </li>
+      <li >
+        <a href="/timeline">timeline</a>
+      </li>
+      <li >
+        <a href="/photo">photo</a>
+      </li>
+    </ul>
+    <ul class="header-links">
+       
+      <li>
+        <a href="https://twitter.com/pedroforaday" rel="noreferrer noopener" target="_blank" title="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-twitter">
+  <use href="/assets/twitter-8842c33965263ad1b03a978406826677a668f94125d5837e70ab83f24b3213a7.svg#icon-twitter" xlink:href="/assets/twitter-8842c33965263ad1b03a978406826677a668f94125d5837e70ab83f24b3213a7.svg#icon-twitter"></use>
+</svg>
+
+        </a>
+      </li>
+        
+      <li>
+        <a href="https://medium.com/@pedroforaday" rel="noreferrer noopener" target="_blank" title="Medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-medium">
+  <use href="/assets/medium-c490b76e2e7329f77cc2df18acc17452868ea861ed0e1ecf621c9777877068f5.svg#icon-medium" xlink:href="/assets/medium-c490b76e2e7329f77cc2df18acc17452868ea861ed0e1ecf621c9777877068f5.svg#icon-medium"></use>
+</svg>
+
+        </a>
+      </li>
+       
+      <li>
+        <a href="https://github.com/pmadruga" rel="noreferrer noopener" target="_blank" title="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-github">
+  <use href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github" xlink:href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github"></use>
+</svg>
+
+        </a>
+      </li>
+            
+      <li>
+        <a href="https://www.linkedin.com/in/pedromadruga" rel="noreferrer noopener" target="_blank" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-linkedin">
+  <use href="/assets/linkedin-cdc5c107044324a3dfbea2e9ead15873f8dee304c37d73a046988956b706256e.svg#icon-linkedin" xlink:href="/assets/linkedin-cdc5c107044324a3dfbea2e9ead15873f8dee304c37d73a046988956b706256e.svg#icon-linkedin"></use>
+</svg>
+
+        </a>
+      </li>
+         
+      <li>
+        <a href="https://instagram.com/pedroforaday" rel="noreferrer noopener" target="_blank" title="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-instagram">
+  <use href="/assets/instagram-37f85bc75b43ecc4c114d9a46f846327fe13c5893787c6afbcfef9d30d58bd9e.svg#icon-instagram" xlink:href="/assets/instagram-37f85bc75b43ecc4c114d9a46f846327fe13c5893787c6afbcfef9d30d58bd9e.svg#icon-instagram"></use>
+</svg>
+
+        </a>
+      </li>
+               
+      <li>
+        <a href="mailto:hello@pedromadruga.com" title="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-email">
+  <use href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email" xlink:href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email"></use>
+</svg>
+
+        </a>
+      </li>
+       
+      <li>
+        <a href="/feed.xml" rel="noreferrer noopener" target="_blank" title="RSS">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-rss">
+  <use href="/assets/rss-541ec5cea9cefd10d2fcfec01888f3f231a8829940249835fa7b7b3a12ae0d0d.svg#icon-rss" xlink:href="/assets/rss-541ec5cea9cefd10d2fcfec01888f3f231a8829940249835fa7b7b3a12ae0d0d.svg#icon-rss"></use>
+</svg>
+
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+</nav>
+        <article class="article scrollappear">
+          <header class="article-header">
+            <h1>Create and showcase your own React UI library using Webpack 4</h1>
+            <p>When working in a company with multiple projects, you might want to have design guidelines to ensure consistency throughout. What if you could have a showcase for your styled components and still be able to use those components in other projects, with something as easy as a installing a npm package?</p>
+            <div class="article-list-footer">
+              <span class="article-list-date">
+                March 17, 2017
+              </span>
+              <span class="article-list-divider">-</span>
+              <span class="article-list-minutes">
+                
+                
+                  5 minute read
+                
+              </span>
+              <span class="article-list-divider">-</span>
+              <div class="article-list-tags">
+                
+                  <a href="/tag/software_development">software_development</a>
+                
+              </div>
+            </div>
+          </header>
+
+          <div class="article-content">
+            <p><img src="https://cdn-images-1.medium.com/max/1600/0*SdbWagCZ6YyyY2vJ." alt="" /></p>
+
+<p>This tutorial shows how can one build a library of reusable components, showcase
+them and be able to easily import in other projects, using both
+<a href="https://webpack.js.org/">Webpack</a> 4 and <a href="https://github.com/parcel-bundler/parcel">Parcel
+bundler</a>. Webpack will be responsible
+for handling the bundling of the library of components. Parcel bundler will
+handle the bundling of the show case of the components.</p>
+
+<p>For this example, you will build a simple documentation showcase and a button as
+a shared component. All code is on
+<a href="https://github.com/pmadruga/myUI">https://github.com/pmadruga/myUI</a></p>
+
+<h4 id="what-youll-be-building">What you’ll be building</h4>
+
+<ul>
+  <li>A library of UI components that can be used on other projects</li>
+  <li>A showcase for all the components of that library</li>
+</ul>
+
+<p>Let’s get started. 🎉</p>
+
+<h3 id="folder-structure">Folder Structure</h3>
+
+<p>Let’s start by creating a folder structure. Firstly, let’s create a standard
+folder structure. The <code class="highlighter-rouge">lib</code> folder will contain the reusable React components
+and <code class="highlighter-rouge">docs</code> will contain the showcase for those components as well as any other
+documentation needed (such as the API for the components, for example).</p>
+
+<p>At this point, the folder structure looks like this:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">    src/
+    |- docs
+     |-index.html
+     |-index.js
+    |- lib
+     |- index.js
+     |- Button/
+     |- index.js
+    dist/
+    webpack.config.js
+    package.json
+
+  </code></pre></figure>
+
+<h3 id="dependencies">Dependencies</h3>
+
+<p>This is everything you’ll need:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">    // For showcasing our docs
+    yarn add react react-dom
+
+    // For bundling our library and docs
+    yarn add webpack parcel-bundler webpack-cli webpack-node-externals "babel-loader@^8.0.0-beta" @babel/core @babel/preset-env webpack-node-externals -D
+  </code></pre></figure>
+
+<h3 id="lib-react-components-library">lib/: react components library</h3>
+
+<p>Our library of React reusable components. When bundled (into <code class="highlighter-rouge">/dist/lib</code>) you’ll
+be able to consume them in another project by quickly installing this as a npm
+package, which could be public (where it’s possible to use the npm registry) or
+private (where gemfury could be used, for example). The <code class="highlighter-rouge">index.js</code> at the root
+of the <code class="highlighter-rouge">lib</code> folder will be responsible to export all the components of the
+library. For this case, you’ll be exporting a simple button only.</p>
+
+<p>So our <code class="highlighter-rouge">lib/index.js</code> contains all the exported components by the library,
+(which will be a simple button for this case), so it will contain</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">    export { Button };
+  </code></pre></figure>
+
+<p>And in <code class="highlighter-rouge">lib/Button/index.js</code> , you’ll create and export a simple button. You
+could also have styling and it would still be bundled into one file.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">Button</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">text</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">button</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">text</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/button&gt;</span><span class="err">;
+</span>    <span class="k">export</span> <span class="p">{</span> <span class="nx">Button</span> <span class="p">};</span>  
+
+  </code></pre></figure>
+
+<h3 id="docs-documenting-and-showcasing-the-components">docs/: documenting and showcasing the components</h3>
+
+<p>The <code class="highlighter-rouge">docs</code>folder will showcase our library’s components as well as any other
+documentation needed (such as the API for the components, for example). It is
+just a small React application inside our main application. When bundled (into
+/dist/docs) it can easy be uploaded anywhere. Using the github pages would be a
+good cenario.</p>
+
+<p>Now, you’ll create both and <code class="highlighter-rouge">index.js</code> and <code class="highlighter-rouge">index.html</code>, where the first one
+includes a component from the <code class="highlighter-rouge">lib</code> folder.</p>
+
+<p>So, the <code class="highlighter-rouge">index.js</code> will contain</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
+    <span class="k">import</span> <span class="nx">ReactDOM</span> <span class="k">from</span> <span class="s1">'react-dom'</span><span class="p">;</span>
+    <span class="k">import</span> <span class="p">{</span> <span class="nx">Button</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../lib/Button'</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">My</span> <span class="nx">UI</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Button</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Here</span><span class="s1">'s an example of button.&lt;/p&gt;
+        &lt;Button text="Click me!" /&gt;
+      &lt;/div&gt;
+    );
+
+    ReactDOM.render(&lt;App /&gt;, document.getElementById('</span><span class="nx">root</span><span class="s1">'));
+  </span></code></pre></figure>
+
+<p>Nothing too fancy and the main gist is that it’s possible to see that there is a
+Button being imported from the library of components.</p>
+
+<h3 id="webpackconfigjs">Webpack.config.js</h3>
+
+<p>As mentioned, webpack is responsible to bundle the components library (and not
+the documentation). Let’s take a look at its configuration. The most important
+value here is the <code class="highlighter-rouge">libraryTarget: ‘commonJS'</code> which allows individual exporting
+of components.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">entry</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'src/lib/index.js'</span><span class="p">),</span>
+      <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'./build/lib'</span><span class="p">),</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'index.js'</span><span class="p">,</span>
+        <span class="na">library</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+        <span class="na">libraryTarget</span><span class="p">:</span> <span class="s1">'commonjs'</span>
+      <span class="p">},</span>
+      <span class="na">externals</span><span class="p">:</span> <span class="p">[</span><span class="nx">nodeExternals</span><span class="p">()],</span>
+      <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">,</span>
+            <span class="na">exclude</span><span class="p">:</span> <span class="sr">/</span><span class="se">(</span><span class="sr">node_modules|bower_components</span><span class="se">)</span><span class="sr">/</span><span class="p">,</span>
+            <span class="na">loader</span><span class="p">:</span> <span class="s1">'babel-loader'</span><span class="p">,</span>
+            <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'@babel/preset-env'</span><span class="p">,</span> <span class="s1">'@babel/react'</span><span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+            <span class="na">use</span><span class="p">:</span> <span class="p">[</span><span class="s1">'style-loader'</span><span class="p">,</span> <span class="s1">'css-loader'</span><span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+  </code></pre></figure>
+
+<h3 id="packagejson">Package.json</h3>
+
+<p>The most important thing of the package.json is the “main”. After uploading the
+library to a registry (wether its npm or gemfury or other), this signals which
+file will be served as the entry point. The <code class="highlighter-rouge">./dist/lib/index.js</code> contains all
+the code bundled from <code class="highlighter-rouge">lib</code> .</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="p">{</span>
+
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"myui"</span><span class="p">,</span>
+
+      <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"0.0.1"</span><span class="p">,</span>
+
+      <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"Bootstrapping a UI component library"</span><span class="p">,</span>
+
+      <span class="s2">"main"</span><span class="p">:</span> <span class="s2">"./dist/lib/index.js"</span><span class="p">,</span>
+
+      <span class="s2">"scripts"</span><span class="p">:</span> <span class="p">{</span>
+
+      <span class="s2">"start"</span><span class="p">:</span> <span class="s2">"./node_modules/.bin/parcel src/docs/index.html"</span><span class="p">,</span>
+
+      <span class="s2">"build"</span><span class="p">:</span> <span class="s2">"./node_modules/.bin/webpack --mode=production"</span><span class="p">,</span>
+
+      <span class="s2">"build:docs"</span><span class="p">:</span> <span class="s2">"./node_modules/.bin/parcel build src/docs/index.js -d dist/docs/"</span>
+
+    <span class="p">},</span>
+
+      <span class="s2">"author"</span><span class="p">:</span> <span class="s2">"Pedro Madruga"</span><span class="p">,</span>
+
+      <span class="s2">"license"</span><span class="p">:</span> <span class="s2">"MIT"</span><span class="p">,</span>
+
+      <span class="s2">"dependencies"</span><span class="p">:</span> <span class="p">{</span>
+
+        <span class="s2">"react"</span><span class="p">:</span> <span class="s2">"^16.2.0"</span><span class="p">,</span>
+
+        <span class="s2">"react-dom"</span><span class="p">:</span> <span class="s2">"^16.2.0"</span>
+
+    <span class="p">},</span>
+
+      <span class="s2">"peerDependencies"</span><span class="p">:</span> <span class="p">{</span>
+
+        <span class="s2">"react"</span><span class="p">:</span> <span class="s2">"^16.2.0"</span><span class="p">,</span>
+
+        <span class="s2">"react-dom"</span><span class="p">:</span> <span class="s2">"^16.2.0"</span>
+
+    <span class="p">},</span>
+
+       <span class="s2">"devDependencies"</span><span class="p">:</span> <span class="p">{</span>
+
+       <span class="s2">"@babel/core"</span><span class="p">:</span> <span class="s2">"^7.0.0-beta.42"</span><span class="p">,</span>
+
+       <span class="s2">"@babel/preset-env"</span><span class="p">:</span> <span class="s2">"^7.0.0-beta.42"</span><span class="p">,</span>
+
+       <span class="s2">"@babel/preset-react"</span><span class="p">:</span> <span class="s2">"^7.0.0-beta.42"</span><span class="p">,</span>
+
+       <span class="s2">"babel-core"</span><span class="p">:</span> <span class="s2">"6"</span><span class="p">,</span>
+
+       <span class="s2">"babel-loader"</span><span class="p">:</span> <span class="s2">"^8.0.0-beta"</span><span class="p">,</span>
+
+       <span class="s2">"parcel-bundler"</span><span class="p">:</span> <span class="s2">"^1.6.2"</span><span class="p">,</span>
+
+       <span class="s2">"webpack"</span><span class="p">:</span> <span class="s2">"^4.1.1"</span><span class="p">,</span>
+
+       <span class="s2">"webpack-cli"</span><span class="p">:</span> <span class="s2">"^2.0.12"</span><span class="p">,</span>
+
+       <span class="s2">"webpack-node-externals"</span><span class="p">:</span> <span class="s2">"^1.6.0"</span>
+
+     <span class="p">}</span>
+
+    <span class="p">}</span>
+
+  </code></pre></figure>
+
+<h3 id="importing-from-another-project">Importing from another project</h3>
+
+<p><strong>Assuming your project is published somewhere</strong> (wether npm or gemfury), it
+will be easy as:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">  `yarn add myUI`</code></pre></figure>
+
+<p>and then in your file:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s2">`import { Button } from ‘myUI’`</span></code></pre></figure>
+
+<p>That’s it! Remember to check the repository for this example in
+<a href="https://github.com/pmadruga/myUI">https://github.com/pmadruga/myUI</a></p>
+
+          </div>
+          <div class="article-share">
+            
+            
+            <a href="https://twitter.com/home?status=Create+and+showcase+your+own+React+UI+library+using+Webpack+4%20-%20http://localhost:4000/2017/03/17/your-own-ui-library.html%20by%20@pedroforaday" title="Share on Twitter" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6 -18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6 0.8 15 2.5 22.1 -80.5-4-151.9-42.6-199.6-101.3 -8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7C67 210.7 52 206.3 39 199c0 0.4 0 0.8 0 1.2 0 47 33.4 86.1 77.7 95 -8.1 2.2-16.7 3.4-25.5 3.4 -6.2 0-12.3-0.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3 -33.1 26-74.9 41.5-120.3 41.5 -7.8 0-15.5-0.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-0.1-8.4-0.3-12.5C462.6 146 479 129 492 109.5z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2017/03/17/your-own-ui-library.html" title="Share on Facebook" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M288 192v-38.1c0-17.2 3.8-25.9 30.5-25.9H352V64h-55.9c-68.5 0-91.1 31.4-91.1 85.3V192h-45v64h45v192h83V256h56.4l7.6-64H288z"/></svg>
+            </a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/2017/03/17/your-own-ui-library.html" title="Share on Google+" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 128 128"><path d="M40.7 55.9v16.1c0 0 15.6 0 22 0C59.2 82.5 53.8 88.2 40.7 88.2c-13.3 0-23.7-10.8-23.7-24.2s10.4-24.2 23.7-24.2c7.1 0 11.6 2.5 15.8 5.9 3.3-3.3 3.1-3.8 11.6-11.9 -7.2-6.6-16.8-10.6-27.4-10.6C18.2 23.3 0 41.5 0 64c0 22.5 18.2 40.7 40.7 40.7 33.6 0 41.8-29.3 39-48.8H40.7zM113.9 56.7V42.6h-10.1v14.1H89.4v10.1h14.5v14.5h10.1V66.8H128V56.7H113.9z"/></svg>
+            </a>
+          </div>
+
+          
+        </article>
+        <footer class="footer scrollappear">
+  <p>
+  </p>
+</footer>
+      </div>
+    </div>
+  </main>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38416409-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-38416409-1');
+  </script>
+
+
+<script src="/assets/vendor-0fb4b91f7ad6c193a69224eba7a01b691a2d7528ee672607575ccc0df3aea545.js" type="text/javascript"></script>
+
+
+  <script src="/assets/webfonts-1adf0837c1a468f92a833caa77b4b02ba091a65c554f79043da5a1ed148fd4db.js" type="text/javascript"></script>
+
+
+
+  <script src="/assets/scrollappear-e2da8ea567e418637e31266cc5302126eaa79f62a2273739086358b589a89ee6.js" type="text/javascript"></script>
+
+
+<script src="/assets/application-cfde13ac81ddaf4351b2e739603e2baf688d0fcc9aba613fe62bbb1c7b037fb9.js" type="text/javascript"></script>
+
+</body>
+</html>
