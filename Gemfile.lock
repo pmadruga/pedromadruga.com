@@ -8,7 +8,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    autoprefixer-rails (9.0.0)
+    autoprefixer-rails (9.0.2)
       execjs
     backports (3.11.3)
     colorator (1.1.0)
@@ -51,6 +51,9 @@ GEM
       image_size (~> 1.5)
       in_threads (~> 1.3)
       progress (~> 3.0, >= 3.0.1)
+    image_optim_pack (0.5.1)
+      fspath (>= 2.1, < 4)
+      image_optim (~> 0.19)
     image_size (1.5.0)
     in_threads (1.5.0)
     jekyll (3.8.3)
@@ -156,7 +159,7 @@ GEM
       ethon (>= 0.9.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.16)
+    uglifier (4.1.17)
       execjs (>= 0.3.0, < 3)
     yell (2.0.7)
     yui-compressor (0.12.0)
@@ -168,6 +171,7 @@ DEPENDENCIES
   autoprefixer-rails
   html-proofer
   image_optim
+  image_optim_pack
   jekyll
   jekyll-admin
   jekyll-assets

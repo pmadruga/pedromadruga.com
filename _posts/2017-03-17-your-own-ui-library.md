@@ -6,7 +6,7 @@ guidelines to ensure consistency throughout. What if you could have a showcase
 for your styled components and still be able to use those components in other
 projects, with something as easy as a installing a npm package?"
 thumb_image: "https://cdn-images-1.medium.com/max/1600/0*SdbWagCZ6YyyY2vJ."
-tags: [software_development]
+tags: [development]
 ---
 
 ![](https://cdn-images-1.medium.com/max/1600/0*SdbWagCZ6YyyY2vJ.)

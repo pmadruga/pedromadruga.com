@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "setup": "bin/setup",
-    "start": "bundle exec jekyll serve --drafts --livereload",
+    "start": "rm -rf _assets/images/originals && bundle exec jekyll serve --drafts --livereload",
     "build": "bundle exec jekyll build && git add . && git commit -m 'build' && git push",
     "publish": "bin/deploy"
   },

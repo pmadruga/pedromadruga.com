@@ -101,4 +101,8 @@ plugins:
   - jekyll-sitemap
   - jemoji
 paginate_path: /blog/page/:num/
+image_optim:
+  archive_dir: "_assets/images/originals"
+  cache_file: "tmp/_image_optime_cache.yml"
+  image_glob: "build/assets/images/**/*.{gif,png,jpg,jpeg}"
 #permalink: posts/:slug
