@@ -94,6 +94,7 @@ exclude:
   - vendor/
   - yarn.lock
   - docs
+  - node_modules
 destination: docs
 plugins:
   - jekyll-assets
