@@ -520,6 +520,17 @@ img {
   max-width: 100%;
   margin: 0; }
 
+button {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  padding: 10px 30px;
+  border-radius: 3px;
+  border-color: #212121;
+  background-color: #212121; }
+  button a {
+    color: #efefef;
+    text-decoration: none; }
+
 .notfound-wrapper {
   margin-top: 100px;
   margin-bottom: 100px;
@@ -672,6 +683,11 @@ img {
 .about > img {
   margin: 0 auto;
   border-radius: 4px; }
+
+.section__hire-me {
+  justify-content: space-around;
+  display: flex;
+  margin-top: 43px; }
 
 .article {
   display: block;

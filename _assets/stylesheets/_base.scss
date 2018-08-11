@@ -153,6 +153,20 @@ img {
   margin: 0;
 }
 
+button {
+  font-family: $sans-serif;
+  cursor: pointer;
+  padding: 10px 30px;
+  border-radius: 3px;
+  border-color: #212121;
+  
+  background-color: #212121;
+  & a {
+    color: #efefef;
+    text-decoration: none;
+  }
+}
+
 .notfound-wrapper {
   margin-top: 100px;
   margin-bottom: 100px;
