@@ -814,6 +814,7 @@ button {
   .article-content h3,
   .article-content h4 {
     display: block;
+    margin-top: 50px;
     margin-bottom: 10px;
     font-family: "Lato", Helvetica, Arial, sans-serif;
     color: #121111; }
