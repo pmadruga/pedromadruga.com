@@ -14,4 +14,5 @@ gem "sass"
 gem "sprockets"
 gem "uglifier"
 gem "jekyll-minifier"
-gem 'jekyll-admin', group: :jekyll_plugins
+gem "jekyll-email-protect"
+gem "jekyll-admin", group: :jekyll_plugins
