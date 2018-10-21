@@ -2,11 +2,12 @@
   <a href="{{ '/' | relative_url }}" class="header-logo" title="{{ site.name }}">{{ site.name }}</a>
   <div class="header-nav-links">
     <ul class="header-links">
+
       <li {% if page.url=="/" %}class="active" {% endif %}>
         <a href="/">home</a>
       </li>
-      <li {% if page.url=="/blog" %}class="active" {% endif %}>
-        <a href="/blog">blog</a>
+      <li {% if page.url=="/blog/index.html" %}class="active" {% endif %}>
+        <a href="{{ 'blog' | relative_url }}">blog</a>
       </li>
       <!-- <li {% if page.url=="/timeline" %}class="active" {% endif %}>
         <a href="/timeline">timeline</a>

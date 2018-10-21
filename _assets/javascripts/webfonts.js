@@ -2,6 +2,6 @@
 
 WebFont.load({
   google: {
-    families: ['Lato:300,400,500,700', 'Lora: 400']
+    families: ['Open sans:300,400,500,700', 'Merriweather: 400']
   }
 });

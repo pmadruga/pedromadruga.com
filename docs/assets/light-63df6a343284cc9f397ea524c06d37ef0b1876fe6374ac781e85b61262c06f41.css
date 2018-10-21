@@ -413,7 +413,7 @@ html {
 
 body {
   margin: 0 auto;
-  font-family: "Lora", Courier, serif;
+  font-family: "Merriweather", Courier, serif;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   line-height: 1.8;
@@ -439,7 +439,7 @@ h6 {
   margin: 0;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
-  font-family: "Lato", Helvetica, Arial, sans-serif; }
+  font-family: "Merriweather", Courier, serif; }
 
 h1 {
   font-size: 28.8px;
@@ -501,7 +501,7 @@ abbr {
 blockquote {
   padding: 0 0 4px 15px;
   margin: 0 0 0 -20px;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-style: italic;
   line-height: 1.6;
@@ -521,7 +521,7 @@ img {
   margin: 0; }
 
 button {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   cursor: pointer;
   padding: 10px 30px;
   border-radius: 3px;
@@ -815,8 +815,9 @@ button {
   .article-content h4 {
     display: block;
     margin-top: 50px;
-    margin-bottom: 10px;
-    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    margin-bottom: 17px;
+    font-family: "Merriweather", Courier, serif;
     color: #121111; }
   .article-content blockquote p {
     margin-bottom: 0; }
@@ -889,7 +890,7 @@ button {
 
 .header-logo {
   display: inline-block;
-  font-family: "Lora", Courier, serif;
+  font-family: "Merriweather", Courier, serif;
   font-size: 36px;
   font-weight: 500;
   color: #000;
@@ -897,7 +898,7 @@ button {
 
 .header-nav-links {
   display: flex;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   flex-direction: row;
   justify-content: space-between;
   flex: 1;

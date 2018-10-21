@@ -19,6 +19,6 @@ g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d))}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<
 
 WebFont.load({
   google: {
-    families: ['Lato:300,400,500,700', 'Lora: 400']
+    families: ['Open sans:300,400,500,700', 'Merriweather: 400']
   }
 });
