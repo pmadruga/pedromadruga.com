@@ -4,6 +4,7 @@ blog_theme: light # Or use dark
 name: Pedro Madruga
 paginate: 10
 url: https://pedromadruga.com
+derp: flerp
 
 # Optional settings
 about_enabled: false # Change to true if you wish to show an icon in the navigation that redirects to the about page
