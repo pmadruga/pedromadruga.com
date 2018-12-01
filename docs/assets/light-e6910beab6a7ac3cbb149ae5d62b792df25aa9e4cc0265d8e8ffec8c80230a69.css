@@ -424,7 +424,8 @@ p {
   margin: 0;
   font-weight: 400;
   font-size: 18px;
-  color: rgba(0, 0, 0, 0.84); }
+  color: rgba(0, 0, 0, 0.84);
+  margin-bottom: 17px; }
 
 b,
 strong {
@@ -526,6 +527,7 @@ button {
   padding: 10px 30px;
   border-radius: 3px;
   border-color: #212121;
+  border-width: 0;
   background-color: #212121; }
   button a {
     color: #efefef;

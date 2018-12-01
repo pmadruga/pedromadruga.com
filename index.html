@@ -1,21 +1,35 @@
 ---
 layout: default
-title: "pedromadruga.com"
-description: "Software engineer."
+title: 'pedromadruga.com'
+description: 'Software engineer.'
 ---
 
 <div class="about {% if site.scrollappear_enabled %}scrollappear{% endif %}">
   <img src="{% asset "about_new3.jpg" @path %}" alt="About Pedro Madruga header image" />
   <div class="about">
-  <p>
-    I am a freelance software engineer located in Denmark and the founder of <a href="https://occam.ooo">Occam.ooo</a>, a company that builds MVP's 🚀. I am a podcast co-host at <a href="http://scopecreeperspodcast.com">Scope Creepers
-    Podcast</a> 🎤, where a developer and a project manager give their insights on different software development topics. A co-organiser
-    of the <a href="https://www.meetup.com/React-Native-CPH/">Copenhagen React Native Meetup</a> 👥 and a volunteer helping <a href="https://www.foreningen-nydansker.dk/">foreigners integrating in Denmark</a>. An absolute fan of
-    creating things by code and empathy. Love to practice boxing 🥊.
-  </p>
-  <div class="section__hire-me">
+    <p>
+      I am a freelance software engineer located in Denmark, currently working at
+      <a href="https://www.karnovgroup.dk/">Karnov</a> as a Senior Frontend Developer.
+    </p>
+    <p>
+      I'm also the the founder of <a href="https://occam.ooo">Occam.ooo</a>. I am a podcast co-host
+      at <a href="http://scopecreeperspodcast.com">Scope Creepers Podcast</a> 🎤, where a developer
+      and a project manager give their insights on different software development topics.
+    </p>
+    <p>
+      A co-organiser of the
+      <a href="https://www.meetup.com/React-Native-CPH/">Copenhagen React Native Meetup</a> 👥 and a
+      volunteer helping
+      <a href="https://www.foreningen-nydansker.dk/">foreigners integrating in Denmark</a>.
+    </p>
+    <p>An absolute fan of creating things by code and empathy. Love to practice boxing 🥊.</p>
 
-  <button><a href="mailto:{{ 'hello@pedromadruga.com' | encode_email }}" title="Contact me">Contact me</a></button>
-  </div>
+    <div class="section__hire-me">
+      <button>
+        <a href="mailto:{{ 'hello@pedromadruga.com' | encode_email }}" title="Contact me"
+          >Contact me</a
+        >
+      </button>
+    </div>
   </div>
 </div>
