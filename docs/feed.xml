@@ -3,23 +3,23 @@
   <channel>
     <title>Pedro Madruga</title>
     <description></description>
-    <link>http://localhost:4000</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <link>https://pedromadruga.com</link>
+    <atom:link href="https://pedromadruga.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title> Converting to TypeScript with React Native in 5 minutes</title>
         <description>Enabling typescript on a React Native codebase.</description>
         <pubDate>Mon, 15 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/2018/10/15/typescript-react-native.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/10/15/typescript-react-native.html</guid>
+        <link>https://pedromadruga.com/2018/10/15/typescript-react-native.html</link>
+        <guid isPermaLink="true">https://pedromadruga.com/2018/10/15/typescript-react-native.html</guid>
       </item>
     
       <item>
         <title>Create and showcase your own React UI library using Webpack 4</title>
         <description>When working in a company with multiple projects, you might want to have design guidelines to ensure consistency throughout. What if you could have a showcase for your styled components and still be able to use those components in other projects, with something as easy as a installing a npm package?</description>
         <pubDate>Sat, 17 Mar 2018 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/2018/03/17/your-own-ui-library.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/03/17/your-own-ui-library.html</guid>
+        <link>https://pedromadruga.com/2018/03/17/your-own-ui-library.html</link>
+        <guid isPermaLink="true">https://pedromadruga.com/2018/03/17/your-own-ui-library.html</guid>
       </item>
     
   </channel>
