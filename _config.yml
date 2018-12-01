@@ -12,7 +12,7 @@ discus_identifier: # Add your Disqus identifier
 ga_analytics: UA-38416409-1
 local_fonts: false # Change to true if you wish to use local fonts
 rss_enabled: true # Change to false if not
-scrollappear_enabled: true # Change to false to disable
+scrollappear_enabled: false # Change to false to disable
 social:
   dribbble: # Add your Dribbble handle
   facebook: # Add your Facebook handle
