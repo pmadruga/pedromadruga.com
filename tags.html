@@ -12,7 +12,6 @@ sitemap: false
   </h1>
 
   {% assign my_tags = site.collections | where: "label", "my_tags" | first %}
-
   {% assign sorted_tags = site.tags | sort %}
 
   {% for tag in sorted_tags %}
