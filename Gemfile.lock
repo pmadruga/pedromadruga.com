@@ -124,7 +124,7 @@ GEM
       forwardable-extended (~> 2.6)
     progress (3.4.0)
     public_suffix (3.0.2)
-    rack (1.6.10)
+    rack (1.6.11)
     rack-protection (1.5.5)
       rack
     rack-test (1.1.0)
