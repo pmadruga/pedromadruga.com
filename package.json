@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
-    "npm": "^6.13.7",
     "retinajs": "^2.1.1",
     "svgxuse": "^1.2.4",
     "webfontloader": "^1.6.28",
