@@ -7,7 +7,7 @@ url: https://pedromadruga.com
 
 # Optional settings
 about_enabled: false # Change to true if you wish to show an icon in the navigation that redirects to the about page
-baseurl: ''
+baseurl: ""
 discus_identifier: # Add your Disqus identifier
 ga_analytics: UA-38416409-1
 local_fonts: false # Change to true if you wish to use local fonts
@@ -31,7 +31,7 @@ social:
   docker: # Add your Docker Hub handle
   instagram: #pedroforaday
   keybase: # Add your Keybase handle
-  medium: '@pedroforaday'
+  medium: "@pedroforaday"
   spotify: # Add your Spotify handle
   stackoverflow: # Add your Stack Overflow ID number
   steam: # Add your Steam handle
@@ -69,13 +69,14 @@ assets:
     - _assets/javascripts
     - _assets/stylesheets
     - _assets/yarn
+    - _assets/documents
 collections:
   my_tags:
     output: true
     permalink: /tag/:slug/
 defaults:
   - scope:
-      path: ''
+      path: ""
       type: my_tags
     values:
       layout: articles_by_tag
@@ -101,7 +102,7 @@ plugins:
   - jekyll-email-protect
 paginate_path: /blog/page/:num/
 image_optim:
-  archive_dir: '_assets/images/originals'
-  cache_file: 'tmp/_image_optime_cache.yml'
-  image_glob: 'build/assets/images/**/*.{gif,png,jpg,jpeg}'
+  archive_dir: "_assets/images/originals"
+  cache_file: "tmp/_image_optime_cache.yml"
+  image_glob: "build/assets/images/**/*.{gif,png,jpg,jpeg}"
 #permalink: posts/:slug
