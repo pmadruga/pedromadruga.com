@@ -8,7 +8,7 @@
     "publish": "bin/deploy"
   },
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "retinajs": "^2.1.1",
     "svgxuse": "^1.2.4",
     "webfontloader": "^1.6.28",
