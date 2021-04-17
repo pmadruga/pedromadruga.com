@@ -100,6 +100,8 @@ plugins:
   - jekyll-sitemap
   - jemoji
   - jekyll-email-protect
+  - jekyll-feed
+  - jekyll-twitter-plugin
 paginate_path: /blog/page/:num/
 image_optim:
   archive_dir: "_assets/images/originals"

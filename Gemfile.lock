@@ -86,6 +86,8 @@ GEM
       pathutil (~> 0.16)
       sprockets (>= 3.3, < 4.1.beta)
     jekyll-email-protect (1.1.0)
+    jekyll-feed (0.15.1)
+      jekyll (>= 3.7, < 5.0)
     jekyll-minifier (0.0.6)
       htmlcompressor (~> 0.3.0)
       jekyll (>= 3.0.0)
@@ -97,6 +99,7 @@ GEM
       sass (~> 3.4)
     jekyll-sitemap (1.2.0)
       jekyll (~> 3.3)
+    jekyll-twitter-plugin (2.1.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     jemoji (0.10.0)
@@ -177,9 +180,11 @@ DEPENDENCIES
   jekyll-admin
   jekyll-assets
   jekyll-email-protect
+  jekyll-feed
   jekyll-minifier
   jekyll-paginate
   jekyll-sitemap
+  jekyll-twitter-plugin
   jemoji
   mini_magick
   sass
