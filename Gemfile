@@ -18,3 +18,4 @@ gem "jekyll-email-protect"
 gem "jekyll-admin", group: :jekyll_plugins
 gem 'jekyll-feed'
 gem 'jekyll-twitter-plugin'
+gem 'jekyll-seo-tag'

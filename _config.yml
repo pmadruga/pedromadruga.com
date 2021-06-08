@@ -19,7 +19,7 @@ social:
   flickr: # Add your Flickr handle
   github: pmadruga
   linkedin: pedromadruga
-  twitter: isaacsthirdlaw
+  twitter: pmadruga_
   bitcoin: # Add your Bitcoin link or address
   ethereum: # Add your Ethereum link or address
   gitlab: # Add your GitLab handle
@@ -102,6 +102,7 @@ plugins:
   - jekyll-email-protect
   - jekyll-feed
   - jekyll-twitter-plugin
+  - jekyll-seo-tag
 paginate_path: /blog/page/:num/
 image_optim:
   archive_dir: "_assets/images/originals"

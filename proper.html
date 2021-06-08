@@ -1,0 +1,636 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Proper - presentation</title><style>
+	/* cspell:disable-file */
+	/* webkit printing magic: print all background colors */
+	html {
+		-webkit-print-color-adjust: exact;
+	}
+	* {
+		box-sizing: border-box;
+		-webkit-print-color-adjust: exact;
+	}
+	
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	@media only screen {
+		body {
+			margin: 2em auto;
+			max-width: 900px;
+			color: rgb(55, 53, 47);
+		}
+	}
+	
+	body {
+		line-height: 1.5;
+		white-space: pre-wrap;
+	}
+	
+	a,
+	a.visited {
+		color: inherit;
+		text-decoration: underline;
+	}
+	
+	.pdf-relative-link-path {
+		font-size: 80%;
+		color: #444;
+	}
+	
+	h1,
+	h2,
+	h3 {
+		letter-spacing: -0.01em;
+		line-height: 1.2;
+		font-weight: 600;
+		margin-bottom: 0;
+	}
+	
+	.page-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-top: 0;
+		margin-bottom: 0.75em;
+	}
+	
+	h1 {
+		font-size: 1.875rem;
+		margin-top: 1.875rem;
+	}
+	
+	h2 {
+		font-size: 1.5rem;
+		margin-top: 1.5rem;
+	}
+	
+	h3 {
+		font-size: 1.25rem;
+		margin-top: 1.25rem;
+	}
+	
+	.source {
+		border: 1px solid #ddd;
+		border-radius: 3px;
+		padding: 1.5em;
+		word-break: break-all;
+	}
+	
+	.callout {
+		border-radius: 3px;
+		padding: 1rem;
+	}
+	
+	figure {
+		margin: 1.25em 0;
+		page-break-inside: avoid;
+	}
+	
+	figcaption {
+		opacity: 0.5;
+		font-size: 85%;
+		margin-top: 0.5em;
+	}
+	
+	mark {
+		background-color: transparent;
+	}
+	
+	.indented {
+		padding-left: 1.5em;
+	}
+	
+	hr {
+		background: transparent;
+		display: block;
+		width: 100%;
+		height: 1px;
+		visibility: visible;
+		border: none;
+		border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+	}
+	
+	img {
+		max-width: 100%;
+	}
+	
+	@media only print {
+		img {
+			max-height: 100vh;
+			object-fit: contain;
+		}
+	}
+	
+	@page {
+		margin: 1in;
+	}
+	
+	.collection-content {
+		font-size: 0.875rem;
+	}
+	
+	.column-list {
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	.column {
+		padding: 0 1em;
+	}
+	
+	.column:first-child {
+		padding-left: 0;
+	}
+	
+	.column:last-child {
+		padding-right: 0;
+	}
+	
+	.table_of_contents-item {
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.3;
+		padding: 0.125rem;
+	}
+	
+	.table_of_contents-indent-1 {
+		margin-left: 1.5rem;
+	}
+	
+	.table_of_contents-indent-2 {
+		margin-left: 3rem;
+	}
+	
+	.table_of_contents-indent-3 {
+		margin-left: 4.5rem;
+	}
+	
+	.table_of_contents-link {
+		text-decoration: none;
+		opacity: 0.7;
+		border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+	}
+	
+	table,
+	th,
+	td {
+		border: 1px solid rgba(55, 53, 47, 0.09);
+		border-collapse: collapse;
+	}
+	
+	table {
+		border-left: none;
+		border-right: none;
+	}
+	
+	th,
+	td {
+		font-weight: normal;
+		padding: 0.25em 0.5em;
+		line-height: 1.5;
+		min-height: 1.5em;
+		text-align: left;
+	}
+	
+	th {
+		color: rgba(55, 53, 47, 0.6);
+	}
+	
+	ol,
+	ul {
+		margin: 0;
+		margin-block-start: 0.6em;
+		margin-block-end: 0.6em;
+	}
+	
+	li > ol:first-child,
+	li > ul:first-child {
+		margin-block-start: 0.6em;
+	}
+	
+	ul > li {
+		list-style: disc;
+	}
+	
+	ul.to-do-list {
+		text-indent: -1.7em;
+	}
+	
+	ul.to-do-list > li {
+		list-style: none;
+	}
+	
+	.to-do-children-checked {
+		text-decoration: line-through;
+		opacity: 0.375;
+	}
+	
+	ul.toggle > li {
+		list-style: none;
+	}
+	
+	ul {
+		padding-inline-start: 1.7em;
+	}
+	
+	ul > li {
+		padding-left: 0.1em;
+	}
+	
+	ol {
+		padding-inline-start: 1.6em;
+	}
+	
+	ol > li {
+		padding-left: 0.2em;
+	}
+	
+	.mono ol {
+		padding-inline-start: 2em;
+	}
+	
+	.mono ol > li {
+		text-indent: -0.4em;
+	}
+	
+	.toggle {
+		padding-inline-start: 0em;
+		list-style-type: none;
+	}
+	
+	/* Indent toggle children */
+	.toggle > li > details {
+		padding-left: 1.7em;
+	}
+	
+	.toggle > li > details > summary {
+		margin-left: -1.1em;
+	}
+	
+	.selected-value {
+		display: inline-block;
+		padding: 0 0.5em;
+		background: rgba(206, 205, 202, 0.5);
+		border-radius: 3px;
+		margin-right: 0.5em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+		white-space: nowrap;
+	}
+	
+	.collection-title {
+		display: inline-block;
+		margin-right: 1em;
+	}
+	
+	time {
+		opacity: 0.5;
+	}
+	
+	.icon {
+		display: inline-block;
+		max-width: 1.2em;
+		max-height: 1.2em;
+		text-decoration: none;
+		vertical-align: text-bottom;
+		margin-right: 0.5em;
+	}
+	
+	img.icon {
+		border-radius: 3px;
+	}
+	
+	.user-icon {
+		width: 1.5em;
+		height: 1.5em;
+		border-radius: 100%;
+		margin-right: 0.5rem;
+	}
+	
+	.user-icon-inner {
+		font-size: 0.8em;
+	}
+	
+	.text-icon {
+		border: 1px solid #000;
+		text-align: center;
+	}
+	
+	.page-cover-image {
+		display: block;
+		object-fit: cover;
+		width: 100%;
+		height: 30vh;
+	}
+	
+	.page-header-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.page-header-icon-with-cover {
+		margin-top: -0.72em;
+		margin-left: 0.07em;
+	}
+	
+	.page-header-icon img {
+		border-radius: 3px;
+	}
+	
+	.link-to-page {
+		margin: 1em 0;
+		padding: 0;
+		border: none;
+		font-weight: 500;
+	}
+	
+	p > .user {
+		opacity: 0.5;
+	}
+	
+	td > .user,
+	td > time {
+		white-space: nowrap;
+	}
+	
+	input[type="checkbox"] {
+		transform: scale(1.5);
+		margin-right: 0.6em;
+		vertical-align: middle;
+	}
+	
+	p {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+	
+	.image {
+		border: none;
+		margin: 1.5em 0;
+		padding: 0;
+		border-radius: 0;
+		text-align: center;
+	}
+	
+	.code,
+	code {
+		background: rgba(135, 131, 120, 0.15);
+		border-radius: 3px;
+		padding: 0.2em 0.4em;
+		border-radius: 3px;
+		font-size: 85%;
+		tab-size: 2;
+	}
+	
+	code {
+		color: #eb5757;
+	}
+	
+	.code {
+		padding: 1.5em 1em;
+	}
+	
+	.code-wrap {
+		white-space: pre-wrap;
+		word-break: break-all;
+	}
+	
+	.code > code {
+		background: none;
+		padding: 0;
+		font-size: 100%;
+		color: inherit;
+	}
+	
+	blockquote {
+		font-size: 1.25em;
+		margin: 1em 0;
+		padding-left: 1em;
+		border-left: 3px solid rgb(55, 53, 47);
+	}
+	
+	.bookmark {
+		text-decoration: none;
+		max-height: 8em;
+		padding: 0;
+		display: flex;
+		width: 100%;
+		align-items: stretch;
+	}
+	
+	.bookmark-title {
+		font-size: 0.85em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: 1.75em;
+		white-space: nowrap;
+	}
+	
+	.bookmark-text {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.bookmark-info {
+		flex: 4 1 180px;
+		padding: 12px 14px 14px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	
+	.bookmark-image {
+		width: 33%;
+		flex: 1 1 180px;
+		display: block;
+		position: relative;
+		object-fit: cover;
+		border-radius: 1px;
+	}
+	
+	.bookmark-description {
+		color: rgba(55, 53, 47, 0.6);
+		font-size: 0.75em;
+		overflow: hidden;
+		max-height: 4.5em;
+		word-break: break-word;
+	}
+	
+	.bookmark-href {
+		font-size: 0.75em;
+		margin-top: 0.25em;
+	}
+	
+	.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+	.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+	.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+	.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+	.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+	
+	.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+	
+	.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+	
+	.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+	
+	.highlight-default {
+	}
+	.highlight-gray {
+		color: rgb(155,154,151);
+	}
+	.highlight-brown {
+		color: rgb(100,71,58);
+	}
+	.highlight-orange {
+		color: rgb(217,115,13);
+	}
+	.highlight-yellow {
+		color: rgb(223,171,1);
+	}
+	.highlight-teal {
+		color: rgb(15,123,108);
+	}
+	.highlight-blue {
+		color: rgb(11,110,153);
+	}
+	.highlight-purple {
+		color: rgb(105,64,165);
+	}
+	.highlight-pink {
+		color: rgb(173,26,114);
+	}
+	.highlight-red {
+		color: rgb(224,62,62);
+	}
+	.highlight-gray_background {
+		background: rgb(235,236,237);
+	}
+	.highlight-brown_background {
+		background: rgb(233,229,227);
+	}
+	.highlight-orange_background {
+		background: rgb(250,235,221);
+	}
+	.highlight-yellow_background {
+		background: rgb(251,243,219);
+	}
+	.highlight-teal_background {
+		background: rgb(221,237,234);
+	}
+	.highlight-blue_background {
+		background: rgb(221,235,241);
+	}
+	.highlight-purple_background {
+		background: rgb(234,228,242);
+	}
+	.highlight-pink_background {
+		background: rgb(244,223,235);
+	}
+	.highlight-red_background {
+		background: rgb(251,228,228);
+	}
+	.block-color-default {
+		color: inherit;
+		fill: inherit;
+	}
+	.block-color-gray {
+		color: rgba(55, 53, 47, 0.6);
+		fill: rgba(55, 53, 47, 0.6);
+	}
+	.block-color-brown {
+		color: rgb(100,71,58);
+		fill: rgb(100,71,58);
+	}
+	.block-color-orange {
+		color: rgb(217,115,13);
+		fill: rgb(217,115,13);
+	}
+	.block-color-yellow {
+		color: rgb(223,171,1);
+		fill: rgb(223,171,1);
+	}
+	.block-color-teal {
+		color: rgb(15,123,108);
+		fill: rgb(15,123,108);
+	}
+	.block-color-blue {
+		color: rgb(11,110,153);
+		fill: rgb(11,110,153);
+	}
+	.block-color-purple {
+		color: rgb(105,64,165);
+		fill: rgb(105,64,165);
+	}
+	.block-color-pink {
+		color: rgb(173,26,114);
+		fill: rgb(173,26,114);
+	}
+	.block-color-red {
+		color: rgb(224,62,62);
+		fill: rgb(224,62,62);
+	}
+	.block-color-gray_background {
+		background: rgb(235,236,237);
+	}
+	.block-color-brown_background {
+		background: rgb(233,229,227);
+	}
+	.block-color-orange_background {
+		background: rgb(250,235,221);
+	}
+	.block-color-yellow_background {
+		background: rgb(251,243,219);
+	}
+	.block-color-teal_background {
+		background: rgb(221,237,234);
+	}
+	.block-color-blue_background {
+		background: rgb(221,235,241);
+	}
+	.block-color-purple_background {
+		background: rgb(234,228,242);
+	}
+	.block-color-pink_background {
+		background: rgb(244,223,235);
+	}
+	.block-color-red_background {
+		background: rgb(251,228,228);
+	}
+	.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+	.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+	.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+	.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+	.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+	.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+	.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+	.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+	.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+	.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+	
+	.checkbox {
+		display: inline-flex;
+		vertical-align: text-bottom;
+		width: 16;
+		height: 16;
+		background-size: 16px;
+		margin-left: 2px;
+		margin-right: 5px;
+	}
+	
+	.checkbox-on {
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+	}
+	
+	.checkbox-off {
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+	}
+		
+	</style></head><body><article id="efa2b389-20ef-4044-adbd-5e44bb4bbf96" class="page sans"><header><h1 class="page-title">Proper - presentation</h1></header><div class="page-body"><nav id="99c7f080-0167-4424-bf82-f0899a5e4579" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fa4c5e04-063c-4091-b289-6e2c05273af3">Goal</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#372d6cf1-4401-4125-b3ed-4ff82c646c93">Data Engineering</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6b727f1a-0d94-4f08-b8d9-dd4ec3102e9b">Data Extraction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#07ebd3c8-00ed-4c12-86e1-53603c86ea90">Data Transformation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c13e3005-5638-43f4-b687-6eb6e7738d38">Containerization</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#97f246a6-c8fb-408d-a4d2-9e3592730f25">Data Science</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3f66f522-3f48-425c-bc46-d5ea582c4668">Data Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d73e6135-fe29-4160-b320-7d1890ed1120">Visualization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ce0e3415-1a9c-4b44-919c-592ad0218332">Natural Language Processing</a></div></nav><h1 id="fa4c5e04-063c-4091-b289-6e2c05273af3" class="">Goal</h1><p id="ff80a36c-83d8-4419-a893-afeb548779d9" class="">The goal is to showcase different skills by sharing links to existing open source projects. The links refer to specific parts of different projects, so that it fits the criteria. The #1 criteria is to showcase work that fits Proper&#x27;s upcoming Data Science position - and its current challenges in order to get there. Thus, it was divided into Data Engineering and Data Science projects. There is also a Software Engineering project, developed over a period of 3 years, to be shown but the repositories are private at the moment.</p><p id="150c1516-2912-4cea-ba30-2646cca8cd00" class="">
+	</p><p id="673fbee2-7afe-41f6-932f-a4cf92f0ba9c" class="">A part of a successful data science position is the ability to explain terms. Some terms might not be known but the session will include explanations.</p><h1 id="372d6cf1-4401-4125-b3ed-4ff82c646c93" class="">Data Engineering</h1><p id="5d21527f-8d7a-481a-b00d-18da94368699" class="">A standard data engineering pipeline is normally divided into three parts: Extraction, Transformation and Load. Below, I provide example that partially (since this is an aggregation of different opensource projects) fit into an ELT pipeline.</p><h2 id="6b727f1a-0d94-4f08-b8d9-dd4ec3102e9b" class="">Data Extraction</h2><p id="1d428806-425b-4edf-aa32-8cd3c8533a7a" class=""><strong>Example 1</strong><div class="indented"><p id="c27dc086-084e-40ee-9a52-5eaa275f9339" class="">Context: The goal of this project was to extract data from jobindex.dk, and store it in a Data Warehouse (running PostgreSQL, thus including the Data Load part from an ETL pipeline). It runs a Flask API. </p><p id="7a4352e1-23f3-4c9f-a708-13d56c68d477" class="">Link: </p><figure id="f3fda260-38e1-4e96-b583-2e46b2d8469a"><a href="https://github.com/pmadruga/jobindex-scraper" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">pmadruga/jobindex-scraper</div><div class="bookmark-description">Contribute to pmadruga/jobindex-scraper development by creating an account on GitHub.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/pmadruga/jobindex-scraper</div></div><img src="https://opengraph.githubassets.com/51de541ead30221d3e293c13d972cf130e9db88b90df609e76e738b91c192cde/pmadruga/jobindex-scraper" class="bookmark-image"/></a></figure></div></p><p id="cd8c1223-fb3d-443a-a8c9-c72ed2dc588a" class="">
+	</p><h2 id="07ebd3c8-00ed-4c12-86e1-53603c86ea90" class="">Data Transformation</h2><p id="48ecbae6-4f9d-423d-8233-76e16b24efda" class=""><strong>Example 1</strong><div class="indented"><p id="263f7c49-144b-428a-b9f8-f4928be16d34" class="">Context: Inside  <code>process_text.py</code>, I&#x27;m pre-processing Danish text using several different known techniques (like Stemming and Lemmatization). This example is relevant for cases where the data has several different formats in the original data set but also to properly handle text in Danish. </p><p id="a92337e8-c530-4ef8-8c3c-80a6383e4904" class="">Link:</p><figure id="8483984d-5f65-4b3f-a6c0-afe6f00991ea"><a href="https://github.com/pmadruga/ds-jobindex/tree/master/src/features" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">pmadruga/ds-jobindex</div><div class="bookmark-description">Machine learning techniques applied to the jobindex.dk dataset - pmadruga/ds-jobindex</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/pmadruga/ds-jobindex/tree/master/src/features</div></div><img src="https://opengraph.githubassets.com/7ca1afb0cf3f6bd2847f3bdf636dcdad734fa70d98750184c58b85f4e56d8f43/pmadruga/ds-jobindex" class="bookmark-image"/></a></figure></div></p><h2 id="c13e3005-5638-43f4-b687-6eb6e7738d38" class="">Containerization</h2><p id="91b67f69-6380-4e85-830c-bc2a250c7d00" class=""><strong>Example 1</strong></p><p id="97b00e9e-85d7-4246-9d42-379574e2c647" class="">Context: This is a simple docker-compose that deploys a Ghost CMS blog with a MySQL DB into a raspberry pi. I use it for docker swarm.</p><figure id="b9a24eba-cfd1-424a-9fb4-0c6bf8356454"><a href="https://github.com/pmadruga/ghost-raspberry-docker-compose/blob/master/docker-compose.yml" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">pmadruga/ghost-raspberry-docker-compose</div><div class="bookmark-description">Contribute to pmadruga/ghost-raspberry-docker-compose development by creating an account on GitHub.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/pmadruga/ghost-raspberry-docker-compose/blob/master/docker-compose.yml</div></div><img src="https://opengraph.githubassets.com/5c27bd1229e6a8babfefcfd646c56172c5e5b084cbec853145d3face1de75c68/pmadruga/ghost-raspberry-docker-compose" class="bookmark-image"/></a></figure><p id="2efa3436-eccb-4e97-93dc-5dd67bcbac9b" class="">
+	</p><h1 id="97f246a6-c8fb-408d-a4d2-9e3592730f25" class="">Data Science</h1><h2 id="3f66f522-3f48-425c-bc46-d5ea582c4668" class="">Data Analysis</h2><p id="fb774586-3743-4aec-af68-a8abf7af000a" class=""><strong>Example 1</strong></p><p id="ea0e8579-0eb4-4e01-8e72-b9c0ec92c24d" class="">Context: DCB is a project dedicated to analyse Danish data. Here, an exploratory data analysis is made on a dataset. Exploratory analysis are at the core of understanding a dataset before any changes are performed on it. In the case below, it&#x27;s possible to see that the dataset has a flaw (missing data, in this case). </p><p id="e59911af-02b1-4127-b91a-6cc8d79f32b9" class="">Link:</p><figure id="67ae852c-85d0-4458-8e61-3925b5634f2a"><a href="https://github.com/pmadruga/dcb/blob/master/notebooks/jobindex%20-%20exploratory%20data%20analysis.ipynb" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">pmadruga/dcb</div><div class="bookmark-description">Contribute to pmadruga/dcb development by creating an account on GitHub.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/pmadruga/dcb/blob/master/notebooks/jobindex%20-%20exploratory%20data%20analysis.ipynb</div></div><img src="https://opengraph.githubassets.com/178f15b29e7f5d3d4a7c2082576b506d954a542dffd5d1995c5cf69f640e875f/pmadruga/dcb" class="bookmark-image"/></a></figure><h2 id="d73e6135-fe29-4160-b320-7d1890ed1120" class="">Visualization</h2><p id="6f7e5991-2fae-45a8-8037-401a85b60d47" class=""><strong>Example 1 </strong></p><p id="ba2d11e3-f690-403a-a94c-0a568792de84" class="">Context: The goal of this project is to analyze different professions on a dataset with 4million job postings, by quarter.</p><p id="1a57336f-1c36-40f2-b602-9ba2b0b7c3ff" class="">Link:</p><figure id="53ee0bb5-001e-4920-89ef-2bfe34d9d63b"><a href="https://github.com/pmadruga/dcb/blob/master/notebooks/Job%20analysis%20by%20quarter.ipynb" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">pmadruga/dcb</div><div class="bookmark-description">Contribute to pmadruga/dcb development by creating an account on GitHub.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/pmadruga/dcb/blob/master/notebooks/Job%20analysis%20by%20quarter.ipynb</div></div><img src="https://opengraph.githubassets.com/178f15b29e7f5d3d4a7c2082576b506d954a542dffd5d1995c5cf69f640e875f/pmadruga/dcb" class="bookmark-image"/></a></figure><p id="d1b6d8d3-90ce-4e03-9582-386a8212d651" class="">
+	</p><p id="591ff24e-c241-4185-b49d-6edcc30d31b6" class=""><strong>Example 2</strong></p><p id="8c533089-617e-4d9d-b78c-39f72e5290f9" class="">Context: This is part of a machine learning project regarding Heart Rate Variability. The purpose is to show different types of data visualization to convey information in a simple way. For example, inside &quot;Variable Correlation&quot; there&#x27;s a heatmap correlation grid which easily conveys how two variables correlate with each other. </p><p id="da3425bd-b461-4602-a8e7-0609898139ab" class="">Link: </p><figure id="f5bfa235-9f44-4945-8dd3-8aeaa4601f27"><a href="https://github.com/pmadruga/ml_project/blob/master/report/report.md" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://github.com/pmadruga/ml_project/blob/master/report/report.md</div></div></a></figure><p id="8d17b0c0-01cd-42da-94d9-1936e3821003" class="">
+	</p><h2 id="ce0e3415-1a9c-4b44-919c-592ad0218332" class="">Natural Language Processing</h2><p id="f85530d4-b9bb-48da-b423-180b0ecc706e" class=""><strong>Example 1</strong></p><p id="1d0f437f-6d68-4158-a785-359b0fdd7328" class="">Context: Here you&#x27;ll find how to create embeddings (or in other words, a spacial representation) of words using BERT algorithm, TF-IDF, and via Cosine Similarity.</p><p id="c69ace19-676d-4bb3-891c-6989e4b8df06" class="">Link: </p><figure id="0fbcbc9b-4a62-48a3-ab10-7d0fa3128f39"><a href="https://github.com/pmadruga/ds-jobindex/blob/master/src/features/build_features.py" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">pmadruga/ds-jobindex</div><div class="bookmark-description">Machine learning techniques applied to the jobindex.dk dataset - pmadruga/ds-jobindex</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/pmadruga/ds-jobindex/blob/master/src/features/build_features.py</div></div><img src="https://opengraph.githubassets.com/7ca1afb0cf3f6bd2847f3bdf636dcdad734fa70d98750184c58b85f4e56d8f43/pmadruga/ds-jobindex" class="bookmark-image"/></a></figure><p id="c0629102-15c5-4707-87ac-0d4c684b7136" class="">
+	</p><p id="2acb65ab-319c-40c0-9b6e-90f559d54ac9" class="">Context: This is the final blogpost regarding the application of different techniques to determine word similarity. It&#x27;s the final part of a 4-month long side project.</p><p id="6909f7fb-1142-4e47-b8c9-2ecc5b9ebede" class="">Link:</p><figure id="8126fcb8-05c9-4db3-a7da-bf0965eaa8af"><a href="https://johnconnor.ai/deep-learning-applying-googles-latest-search-algorithm-on-biggest-danish-job-site/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Deep Learning: Applying Google&#x27;s Latest Search algorithm on 4.2million Danish job postings</div><div class="bookmark-description">AbstractSearch engine results are a common challenge, especially for non-English languages. In this project, different models - including Google Search&#x27;s underlying technique (BERT) - are applied to improve the search engine of Denmark&#x27;s most significant job portal: jobindex.dk. The goal is to determine whether modern Artificial Intelligence (AI) and</div></div><div class="bookmark-href"><img src="https://johnconnor.ai/favicon.ico" class="icon bookmark-icon"/>https://johnconnor.ai/deep-learning-applying-googles-latest-search-algorithm-on-biggest-danish-job-site/</div></div><img src="https://johnconnor.ai/content/images/2021/04/markus-winkler-IrRbSND5EUc-unsplash-1.jpg" class="bookmark-image"/></a></figure><p id="e80e2cad-afe1-4ed1-9b10-49a372638fdf" class="">
+	</p><p id="9cecf864-0f95-4341-95ce-2a1a842f4ffb" class="">
+	</p></div></article></body></html>
