@@ -8,10 +8,6 @@
   /* border: 1px solid var(--border); */
 }
 
-.first-entry {
-  text-align: center;
-}
-
 .post-entry:hover {
   background: var(--entry);
   /* border: 1px solid var(--border); */
@@ -26,4 +22,17 @@
 
 .post-entry:hover {
   background: var(--entry);
+}
+
+.button-newsletter {
+  color: var(--primary);
+}
+
+.newsletter-placeholder {
+  padding-top: 2.5vh;
+  padding-bottom: 1vh;
+}
+
+#bd-email {
+  color: var(--primary);
 }

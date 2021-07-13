@@ -8,7 +8,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-googleAnalytics: UA-123-45
+googleAnalytics: #UA-123-45
 
 minify:
   disableXML: true
@@ -37,7 +37,7 @@ params:
   hidemeta: false
   hideSummary: false
   showtoc: true
-  tocopen: true
+  tocopen: false
 
   # assets:
   #   # disableHLJS: true # to disable highlight.js
@@ -56,32 +56,38 @@ params:
   # profile-mode
   profileMode:
     enabled: true # needs to be explicitly set
-    title: ExampleSite
-    subtitle: "This is subtitle"
-    imageUrl: "<img location>"
+    title: "Hi, I'm Pedro  \U0001F44B"
+    subtitle:
+      "A Data Scientist based in Copenhagen. I write about **AI**, **Data Science**, **Data Engineering**, **Software Engineering**. That includes tips, tricks and others. Subscribe to my **newsletter** below 👇 Check my **[blogposts](posts)** ✍🏼, see my **[work](work)** 🧠 or just **[say hi](contact)** 📨.
+      "
+    imageUrl: "/profile.jpg"
     imageWidth: 120
     imageHeight: 120
     imageTitle: my image
-    buttons:
-      - name: Posts
-        url: posts
-      - name: Tags
-        url: tags
+    # buttons:
+    #   - name: About
+    #     url: about
+    #   - name: Posts
+    #     url: posts
+    #   - name: Tags
+    #     url: tags
 
   # home-info mode
   homeInfoParams:
-    Title: # "Hi, I'm Pedro \U0001F44B"
+    Title: "Hi, I'm Pedro \U0001F44B"
     Content: Welcome to my blog.
 
   socialIcons:
     - name: twitter
       url: "https://twitter.com/pmadruga_"
-    # - name: twitch
-    #   url: "https://twitch.tv/indiebreaker"
+    - name: medium
+      url: "https://medium.com/@pmadruga"
     - name: github
       url: "https://github.com/pmadruga"
-    # - name: instagram
-    #   url: "https://instagram.com/indiebreaker"
+    - name: stackoverflow
+      url: "https://stackoverflow.com/users/12418383"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/pedromadruga"
 
   # analytics:
   #   google:
@@ -132,6 +138,14 @@ menu:
     - identifier: search
       name: search
       url: /search/
+      weight: 40
+    - identifier: about
+      name: about
+      url: /about/
+      weight: 40
+    - identifier: work
+      name: work
+      url: /work/
       weight: 40
     # - identifier: example
     #   name: example.org
