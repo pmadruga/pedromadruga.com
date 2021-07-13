@@ -1,4 +1,0 @@
----
-slug: development
-name: Development
----

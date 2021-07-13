@@ -1,0 +1,29 @@
+.post-entry {
+  position: relative;
+  margin-bottom: var(--gap);
+  padding: var(--gap);
+  /* background: var(--entry); */
+  border-radius: var(--radius);
+  transition: transform 0.1s;
+  /* border: 1px solid var(--border); */
+}
+
+.first-entry {
+  text-align: center;
+}
+
+.post-entry:hover {
+  background: var(--entry);
+  /* border: 1px solid var(--border); */
+  /* padding: var(--gap); */
+}
+
+.post-entry {
+  border: 1px solid black;
+  background: none;
+  border: none;
+}
+
+.post-entry:hover {
+  background: var(--entry);
+}
