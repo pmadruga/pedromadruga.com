@@ -29,13 +29,13 @@ params:
   ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: true
-  ShowBreadCrumbs: true
+  ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
   disableSpecial1stPost: false
   disableScrollToTop: false
   comments: false
   hidemeta: false
-  hideSummary: false
+  hideSummary: true
   showtoc: true
   tocopen: false
 
@@ -57,13 +57,11 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: "Hi, I'm Pedro  \U0001F44B"
-    subtitle:
-      "A Data Scientist based in Copenhagen. I write about **AI**, **Data Science**, **Data Engineering**, **Software Engineering**. That includes tips, tricks and others. Subscribe to my **newsletter** below 👇 Check my **[blogposts](posts)** ✍🏼, see my **[work](work)** 🧠 or just **[say hi](contact)** 📨.
-      "
+    subtitle: "Data Scientist."
     imageUrl: "/profile.jpg"
     imageWidth: 120
     imageHeight: 120
-    imageTitle: my image
+    imageTitle: profile
     # buttons:
     #   - name: About
     #     url: about
@@ -100,7 +98,8 @@ params:
   cover:
     hidden: true # hide everywhere but not in structured data
     hiddenInList: true # hide on list pages and home
-    hiddenInSingle: true # hide on single page
+    hiddenInSingle: false # hide on single page
+    responsiveImages: true
 
   editPost:
     URL: "https://github.com/pedromadruga.com/content"
@@ -130,11 +129,11 @@ menu:
     - identifier: contact
       name: contact
       url: /contact/
-      weight: 20
-    - identifier: archives
-      name: archives
-      url: /archives/
-      weight: 30
+      weight: 50
+    # - identifier: archives
+    #   name: archives
+    #   url: /archives/
+    #   weight: 30
     - identifier: search
       name: search
       url: /search/
@@ -142,11 +141,15 @@ menu:
     - identifier: about
       name: about
       url: /about/
-      weight: 40
-    - identifier: work
-      name: work
-      url: /work/
-      weight: 40
+      weight: 30
+    - identifier: blog
+      name: blog
+      url: /posts/
+      weight: 20
+    - identifier: newsletter
+      name: newsletter
+      url: /newsletter/
+      weight: 20
     # - identifier: example
     #   name: example.org
     #   url: https://example.org

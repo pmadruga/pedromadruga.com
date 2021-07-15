@@ -49,11 +49,11 @@
       {{- if .Draft }}<div class="entry-isdraft"><sup>&nbsp;&nbsp;[draft]</sup></div>{{ end -}}
     </h2> 
   </header>
-  <!-- {{- if (ne (.Param "hideSummary") true) }}
+  {{- if (ne (.Param "hideSummary") true) }}
   <section class="entry-content">
     <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
   </section>
-  {{- end }} -->
+  {{- end }}
   {{- if not (.Param "hideMeta") }}
   <footer class="entry-footer">
     {{- partial "post_meta.html" . -}}

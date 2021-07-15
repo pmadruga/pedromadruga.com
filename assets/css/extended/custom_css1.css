@@ -33,6 +33,11 @@
   padding-bottom: 1vh;
 }
 
+.newsletter-form-wrapper {
+  padding-top: 2.5vh;
+  /* padding-bottom: 1vh; */
+}
+
 #bd-email {
   color: var(--primary);
 }

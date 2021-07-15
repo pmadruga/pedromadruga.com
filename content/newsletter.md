@@ -1,5 +1,19 @@
+---
+title: "Newsletter" # in any language you want
+summary: "newsletter"
+showtoc: false
+---
+
+## What's in the box?
+- My latest blog posts
+- Data Science / AI top news
+- Machine Learning tips and tricks
+- Software engineering
+- Interview questions
+
+{{< rawhtml >}}
 <div class="newsletter-form-wrapper">
-    <span>Subscribe to my <b>newsletter</b> below 👇</span>
+
     <form
     class="newsletter-placeholder"
     action="https://buttondown.email/api/emails/embed-subscribe/pmadruga"
@@ -15,3 +29,4 @@
         
     </form>
 </div>
+{{< /rawhtml >}}
