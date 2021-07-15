@@ -142,10 +142,10 @@ menu:
       name: about
       url: /about/
       weight: 30
-    - identifier: blog
-      name: blog
-      url: /posts/
-      weight: 20
+    # - identifier: blog
+    #   name: blog
+    #   url: /posts/
+    #   weight: 20
     - identifier: newsletter
       name: newsletter
       url: /newsletter/
