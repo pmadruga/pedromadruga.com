@@ -11,7 +11,7 @@ cover:
   relative: read # To use relative path for cover image, used in hugo Page-bundles
 ---
 
-Airflow is a tool commonly used for Data Engineering. It's great to orchestrate workflows. Version 2 of Airflow only supports Python 3+ versions so we need to make sure that we use Python 3 to install it. We could probably install this on another linux distribution, too.
+Airflow is a tool commonly used for Data Engineering. It's great to orchestrate workflows. Version 2 of Airflow only supports Python 3+ versions, so we need to make sure that we use Python 3 to install it. We could probably install this on another Linux distribution, too.
 
 This is the first post of a series, where we'll build an **entire Data Engineering pipeline** (using Raspberry Pi's). To follow this series, just **subscribe to the [newsletter](https://pedromadruga.com/newsletter)**.
 
@@ -45,7 +45,7 @@ alias python=$(which python3)
 alias pip=pip3
 ```
 
-Alternatively, you can install using `pip3` directly. So instead of using aliases, type `pip3 install airflow...` directly. For this tutorial, we'll assume aliases are in use.
+Alternatively, you can install using `pip3` directly. For this tutorial, we'll assume aliases are in use.
 
 ## Install Airflow
 
@@ -76,7 +76,7 @@ CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${A
 pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
 ```
 
-### Init database
+### Initialize database
 
 Before running Airflow, we need to initialize the database. There are several different options for this setup: 1) running Airflow against a separate database and 2) running a simple SQLite database. The SQLite database is in use in this tutorial, so there's not much to do other than initializing the database.
 
@@ -171,7 +171,7 @@ cd ~/airflow
 touch env
 ```
 
-Edit the env file and place the contents:
+Edit the `env` file and place the contents:
 
 ```
 AIRFLOW_CONFIG=/home/pi/airflow/airflow.cfg
@@ -190,7 +190,7 @@ sudo systemctl start airflow-scheduler.service
 
 ## That's it! What's next?
 
-In the next blogpost of this Data Engineering series, we'll create our first Directed Acyclic Graph (DAG) using Airflow. Subscribe to the [newsletter](https://pedromadruga.com), and don't miss out!
+In the next blog post of this Data Engineering series, we'll create our first Directed Acyclic Graph (DAG) using Airflow. Subscribe to the [newsletter](https://pedromadruga.com), and don't miss out!
 
 ## Sources
 
