@@ -1,0 +1,162 @@
+baseURL: http://pedromadruga.com/
+languageCode: en-us
+title: Pedro Madruga
+theme: "PaperMod"
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+googleAnalytics: UA-38416409-1
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: Pedro Madruga
+  description: "Data Science | Machine Learning | Data Engineering"
+  keywords: [Blog, Data Science, Machine Learning, Data Engineering, Javascript]
+  author: pmadruga
+  # author: ["Me", "You"] # multiple authors
+  images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: false
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: true
+  disableSpecial1stPost: false
+  disableScrollToTop: true
+  comments: false
+  hidemeta: false
+  hideSummary: true
+  showtoc: true
+  tocopen: false
+
+  # assets:
+  #   # disableHLJS: true # to disable highlight.js
+  #   # disableFingerprinting: true
+  #   favicon: "<link / abs url>"
+  #   favicon16x16: "<link / abs url>"
+  #   favicon32x32: "<link / abs url>"
+  #   apple_touch_icon: "<link / abs url>"
+  #   safari_pinned_tab: "<link / abs url>"
+
+  # label:
+  #   text: "Home"
+  #   icon: /apple-touch-icon.png
+  #   iconHeight: 35
+
+  # profile-mode
+  profileMode:
+    enabled: true # needs to be explicitly set
+    title: "Hi, I'm Pedro  \U0001F44B"
+    subtitle: "I'm a **Data Scientist** and sometimes a **Data Engineer**."
+    imageUrl: "/profile2.jpg"
+    imageWidth: 120
+    imageHeight: 120
+    imageTitle: profile
+    # buttons:
+    #   - name: About
+    #     url: about
+    #   - name: Posts
+    #     url: posts
+    #   - name: Tags
+    #     url: tags
+
+  # home-info mode
+  homeInfoParams:
+    Title: "Hi, I'm Pedro \U0001F44B"
+    Content: "I'm a **Data Scientist** and sometimes a **Data Engineer**. I have a cluster of **Raspberry Pi's** that I enjoy hacking in my free time. I write about all of it - check out my [**newsletter**](/newsletter). "
+
+  socialIcons:
+    - name: twitter
+      url: "https://twitter.com/pmadruga_"
+    - name: medium
+      url: "https://medium.com/@pmadruga"
+    - name: github
+      url: "https://github.com/pmadruga"
+    - name: stackoverflow
+      url: "https://stackoverflow.com/users/12418383"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/pedromadruga"
+
+  # analytics:
+  #   google:
+  #     SiteVerificationTag: "XYZabc"
+  #   bing:
+  #     SiteVerificationTag: "XYZabc"
+  #   yandex:
+  #     SiteVerificationTag: "XYZabc"
+
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: false # hide on single page
+    responsiveImages: true
+
+  editPost:
+    URL: "https://github.com/pedromadruga.com/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+menu:
+  main:
+    # - identifier: categories
+    #   name: categories
+    #   url: /categories/
+    #   weight: 10
+    # - identifier: about
+    #   name: about
+    #   url: /about/
+    #   weight: 10
+    # - identifier: contact
+    #   name: contact
+    #   url: /contact/
+    #   weight: 50
+    # - identifier: archives
+    #   name: archives
+    #   url: /archives/
+    #   weight: 30
+    - identifier: search
+      name: search
+      url: /search/
+      weight: 40
+    - identifier: about
+      name: about
+      url: /about/
+      weight: 30
+    - identifier: blog
+      name: blog
+      url: /posts/
+      weight: 20
+    - identifier: newsletter
+      name: newsletter
+      url: /newsletter/
+      weight: 20
+    # - identifier: example
+    #   name: example.org
+    #   url: https://example.org
+    #   weight: 30
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary

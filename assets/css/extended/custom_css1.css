@@ -1,0 +1,48 @@
+.post-entry {
+  position: relative;
+  margin-bottom: var(--gap);
+  padding: var(--gap);
+  /* background: var(--entry); */
+  border-radius: var(--radius);
+  transition: transform 0.1s;
+  /* border: 1px solid var(--border); */
+}
+
+.post-entry:hover {
+  background: var(--entry);
+  /* border: 1px solid var(--border); */
+  /* padding: var(--gap); */
+}
+
+.post-entry {
+  border: 1px solid black;
+  background: none;
+  border: none;
+}
+
+.post-entry:hover {
+  background: var(--entry);
+}
+
+.button-newsletter {
+  color: var(--primary);
+}
+
+.newsletter-placeholder {
+  padding-top: 2.5vh;
+  padding-bottom: 1vh;
+}
+
+.newsletter-form-wrapper {
+  padding-top: 2.5vh;
+  /* padding-bottom: 1vh; */
+}
+
+#bd-email {
+  color: var(--primary);
+}
+
+.social-icons {
+  /* display: flex; */
+  padding: 30px 0;
+}
