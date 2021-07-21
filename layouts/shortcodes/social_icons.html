@@ -1,5 +1,5 @@
 <div class="social-icons">
-    {{- range . }}
+    {{- range .Site.Params.socialIcons }}
     <a href="{{ trim .url " " }}" target="_blank" rel="noopener noreferrer me" title="{{ .name | title }}">
         <!-- {{ partial "svg.html" . }}  -->
         {{ .name }}

@@ -41,3 +41,8 @@
 #bd-email {
   color: var(--primary);
 }
+
+.social-icons {
+  /* display: flex; */
+  padding: 30px 0;
+}

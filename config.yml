@@ -26,13 +26,13 @@ params:
   defaultTheme: auto # dark, light
   disableThemeToggle: false
 
-  ShowReadingTime: true
+  ShowReadingTime: false
   ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
   disableSpecial1stPost: false
-  disableScrollToTop: false
+  disableScrollToTop: true
   comments: false
   hidemeta: false
   hideSummary: true
@@ -57,8 +57,8 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: "Hi, I'm Pedro  \U0001F44B"
-    subtitle: "Data Scientist."
-    imageUrl: "/profile.jpg"
+    subtitle: "I'm a **Data Scientist** and sometimes a **Data Engineer**."
+    imageUrl: "/profile2.jpg"
     imageWidth: 120
     imageHeight: 120
     imageTitle: profile
@@ -73,7 +73,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi, I'm Pedro \U0001F44B"
-    Content: Welcome to my blog.
+    Content: "I'm a **Data Scientist** and sometimes a **Data Engineer**. I have a cluster of **Raspberry Pi's** that I enjoy hacking in my free time. I write about all of it - check out my [**newsletter**](/newsletter). "
 
   socialIcons:
     - name: twitter
@@ -142,10 +142,10 @@ menu:
       name: about
       url: /about/
       weight: 30
-    # - identifier: blog
-    #   name: blog
-    #   url: /posts/
-    #   weight: 20
+    - identifier: blog
+      name: blog
+      url: /posts/
+      weight: 20
     - identifier: newsletter
       name: newsletter
       url: /newsletter/
