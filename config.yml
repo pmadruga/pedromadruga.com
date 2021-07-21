@@ -102,7 +102,7 @@ params:
     responsiveImages: true
 
   editPost:
-    URL: "https://github.com/pmadruga/pedromadruga.com/content"
+    URL: "https://github.com/pmadruga/pedromadruga.com/tree/master/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
