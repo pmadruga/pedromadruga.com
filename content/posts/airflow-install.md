@@ -111,7 +111,7 @@ Once authenticated, it's now possible to see the main screen:
 
 ### Start airflow automatically
 
-You'll need three files: `airflow-webserver.service`, `airflow-scheduler.service`, and an `environment` file. Let's break this into parts:
+In order to start both the webserver and the scheduler automatically on system boot, we'll need three files: `airflow-webserver.service`, `airflow-scheduler.service`, and an `environment` file. Let's break this into parts:
 
 1. Go to [Airflow's github repo](https://github.com/apache/airflow/tree/master/scripts/systemd) and download the `airflow-webserver.service` and the `airflow-scheduler.service`
 
