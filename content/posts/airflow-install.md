@@ -1,7 +1,7 @@
 ---
 title: "Install Airflow 2 on a Raspberry Pi (using Python 3.x)"
 tags: ["airflow", "raspberry pi", "data engineering"]
-date: 2021-07-16T11:30:03+00:00
+date: 2021-07-21T11:30:03+00:00
 cover:
   image: "/posts/airflow2.png"
   # can also paste direct link from external site
@@ -11,9 +11,11 @@ cover:
   relative: read # To use relative path for cover image, used in hugo Page-bundles
 ---
 
-Airflow is a tool commonly used for Data Engineering. It's great to orchestrate workflows. Version 2 of Airflow only supports Python 3+ versions so we need to make sure that we use Python 3 to install it.
+Airflow is a tool commonly used for Data Engineering. It's great to orchestrate workflows. Version 2 of Airflow only supports Python 3+ versions so we need to make sure that we use Python 3 to install it. We could probably install this on another linux distribution, too.
 
-**This is the first post** of a series, where I'll build an ** entire Data Engineering pipeline** (using Raspberry Pi's). To follow this series, just **subscribe to the [newsletter](https://pedromadruga.com/newsletter)**.
+This is the first post of a series, where we'll build an **entire Data Engineering pipeline** (using Raspberry Pi's). To follow this series, just **subscribe to the [newsletter](https://pedromadruga.com/newsletter)**.
+
+This post was originally published at [pedromadruga.com](https://pedromadruga.com/posts/airflow-install/).
 
 ## Install dependencies
 
