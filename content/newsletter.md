@@ -9,7 +9,7 @@ showtoc: false
 - Data Science / AI top news
 - Machine Learning tips and tricks
 - Software engineering
-- Interview questions
+- Interview questions (Occasionally)
 
 {{< rawhtml >}}
 <div class="newsletter-form-wrapper">
