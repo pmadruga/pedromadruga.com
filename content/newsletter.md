@@ -12,6 +12,8 @@ showtoc: false
 👨🏻‍💻 Software engineering\
 💼 Interview questions (Occasionally)
 
+View preview issues in the 🏛 [Archive](https://buttondown.email/pmadruga/archive/) or subscribe to the [RSS](https://buttondown.email/pmadruga/rss)
+
 {{< rawhtml >}}
 
 <div class="newsletter-form-wrapper">
