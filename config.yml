@@ -57,7 +57,7 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: "Hi, I'm Pedro  \U0001F44B"
-    subtitle: "I'm a **Data Scientist** and sometimes a **Data Engineer**."
+    subtitle: "Data scientist with 10+ years of Software Engineering experience."
     imageUrl: "/profile2.jpg"
     imageWidth: 120
     imageHeight: 120
