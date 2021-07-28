@@ -94,6 +94,8 @@ It's now possible to run both the server and the scheduler:
 airflow webserver -p 8080 & airflow scheduler
 ```
 
+Now open `http://localhost:8080` on a browser.
+
 If you need to log in, you'll need to create a new user. Here's an example:
 
 ```bash
