@@ -111,6 +111,8 @@ Once authenticated, it's now possible to see the main screen:
 
 ![Airflow main](/posts/airflow1.png)
 
+**And that's it - you've now installed Airflow!** Optionally, you can take extra steps.
+
 ## Optional
 
 ### Start airflow automatically
