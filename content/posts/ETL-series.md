@@ -10,8 +10,8 @@ In this series, a full Extract, Load, Transform pipeline is built from the groun
 ## Content
 
 [1. Airflow 2.0 installation](/posts/airflow-install/)\
-[2. The simplest DAG using Airflow 2.0](/posts/airflow2-simple-dag/)\
-3. A simple DAG with groups of tasks\
+[2. A simple DAG using Airflow 2.0](/posts/airflow2-simple-dag/)\
+3. A DAG with groups of tasks\
 4. Connect to a Database\
 5. A full ETL\
 6. Transforming data in Apache Spark

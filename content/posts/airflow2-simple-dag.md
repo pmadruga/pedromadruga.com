@@ -16,7 +16,7 @@ cover:
 
 ### What we'll do
 
-Airflow 2.x is a game-changer, especially regarding its simplified syntax using the new Taskflow API. In this tutorial, we're building the simplest **DAG with only two tasks**. The DAG's tasks generate a random number (task 1) and print that number (task 2).
+Airflow 2.x is a game-changer, especially regarding its simplified syntax using the new Taskflow API. In this tutorial, we're building a DAG with only two tasks. The DAG's tasks include generating a random number (task 1) and print that number (task 2).
 
 ### Background
 
@@ -86,7 +86,42 @@ Visually, the DAG graph view will look like this:
 
 ![Graph View](https://pedromadruga.com/posts/simple_dag_1.png)
 
-The code before and after refers to the `@dag` operator and the dependencies. Next, we'll put everything together.
+The code before and after refers to the `@dag` operator and the dependencies. Next, we'll put everything together:
+
+```python
+from airflow.decorators import dag, task
+from airflow.utils.dates import days_ago
+
+from random import random
+
+# Use the DAG decorator from Airflow
+# `schedule_interval='@daily` means the DAG will run everyday at midnight.
+# It's possible to set the schedule_interval to None (without quotes).
+@dag(schedule_interval=None, start_date=days_ago(2), catchup=False)
+# The function name will be the ID of the DAG.
+# In this case it's called `EXAMPLE_simple`.
+def EXAMPLE_simple():
+
+    @task
+    def task_1():
+        # Generate a random number
+        return random()
+
+    @task
+    def task_2(value):
+        # Print the random number to the logs
+        print(f'The randomly generated number is {value} .')
+
+    # This will determine the direction of the tasks.
+    # As you can see, task_2 runs after task_1 is done.
+    # Task_2 then uses the result from task_1.
+    return task_2(task_1())
+
+
+dag = EXAMPLE_simple()
+```
+
+That's it. Let's run this.
 
 ## Running the DAG
 
@@ -142,7 +177,7 @@ Assuming your airflow installation is in the `$HOME` directory, it's possible to
 cd ~/airflow/logs/EXAMPLE_simple/task_2
 ```
 
-And select the correct timestamp:
+And select the correct timestamp (in my case it was):
 
 ```bash
 tail 2021-08-06T14:57:35.762094+00:00/1.log
@@ -150,7 +185,7 @@ tail 2021-08-06T14:57:35.762094+00:00/1.log
 
 Where the output should include:
 
-![DAG log](https://pedromadruga.com/posts/simple_dag_9.png)
+![DAG log](/posts/simple_dag_9.png)
 
 ## Conclusion
 
