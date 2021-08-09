@@ -1,6 +1,6 @@
 ---
 title: "A simple DAG using Airflow 2.0"
-description: "Leveraging Taskflow API from Airflow 2 to build a simple DAG, with two tasks"
+description: "Airflow 2.x is a game-changer, especially regarding its simplified syntax using the new Taskflow API. In this tutorial, we're building a DAG with only two tasks. The DAG's tasks include generating a random number (task 1) and print that number (task 2)."
 tags: ["airflow", "raspberry pi", "data engineering"]
 date: 2021-08-05
 cover:
@@ -13,10 +13,6 @@ cover:
 ---
 
 ## Intro
-
-### What we'll do
-
-Airflow 2.x is a game-changer, especially regarding its simplified syntax using the new Taskflow API. In this tutorial, we're building a DAG with only two tasks. The DAG's tasks include generating a random number (task 1) and print that number (task 2).
 
 ### Background
 
@@ -186,6 +182,8 @@ tail 2021-08-06T14:57:35.762094+00:00/1.log
 Where the output should include:
 
 ![DAG log](/posts/simple_dag_9.png)
+
+Followed by the actual number we've generated in this run.
 
 ## Conclusion
 
