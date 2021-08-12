@@ -3,6 +3,8 @@ title: >-
   Deep Learning: Applying Google’s Latest Search algorithm on 4.2million Danish
   job postings
 description:
+showtoc: true
+tocopen: true
 date: "2020-11-17T19:16:48.780Z"
 tags: [data science, deep learning, BERT, TFIDF]
 slug: >-
