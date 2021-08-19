@@ -6,7 +6,7 @@ description:
 showtoc: true
 tocopen: true
 date: "2020-11-17T19:16:48.780Z"
-tags: [data science, deep learning, BERT, TFIDF]
+tags: [data science, deep learning, natural language processing]
 slug: >-
   /deep-learning-applying-googles-latest-search-algorithm-on-4-2million-danish-job-postings
 ---

@@ -3,15 +3,16 @@ title: "[Series] Building an ETL pipeline from scratch, using Airflow 2.0 (and R
 tags: ["airflow", "raspberry pi", "data engineering"]
 date: 2021-07-19
 showtoc: false
+url: /posts/ETL-pipeline/
 ---
 
-In this series, a full Extract, Load, Transform pipeline is built from the ground up, using Airflow 2.0's newest and clear syntax, and leveraging the flexbility of the Raspberry Pi.
+In this series, a full Extract, Load, Transform pipeline is built from the ground up, using Airflow 2.0's newest and straightforward syntax, and leveraging the flexibility of the Raspberry Pi.
 
 ## Content
 
-[1. Airflow 2.0 installation](/posts/airflow-install/)\
-[2. A simple DAG using Airflow 2.0](/posts/airflow2-simple-dag/)\
-3. A DAG with groups of tasks\
-4. Connect to a Database\
-5. A full ETL\
-6. Transforming data in Apache Spark
+1. [Airflow 2.0 installation](/posts/airflow-install/)
+2. [A simple DAG](/posts/airflow2-simple-dag/)
+3. Getting started with Task Groups
+4. Connect to a Database
+5. A full ETL pipeline
+6. BONUS: Transforming data in Apache Spark
