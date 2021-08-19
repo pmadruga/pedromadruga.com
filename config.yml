@@ -146,6 +146,10 @@ menu:
       name: blog
       url: /posts/
       weight: 20
+    - identifier: projects
+      name: projects
+      url: /projects/
+      weight: 20
     - identifier: newsletter
       name: newsletter
       url: /newsletter/
