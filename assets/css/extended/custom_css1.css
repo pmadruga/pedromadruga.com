@@ -46,3 +46,8 @@
   /* display: flex; */
   padding: 30px 0;
 }
+
+.post-footer-custom {
+  text-align: center;
+  font-style: italic;
+}
