@@ -82,7 +82,7 @@ Looking at the code above it's possible to see that:
 @task_group(group_id='group_1')
 def group_1(value):
 
-  # The @tasks below can be defined outside function `section_1`
+  # The @tasks below can be defined outside function `group_1`
   # What matters is where they are referenced
   @task(task_id='subtask_1')
   def task_1(value):
@@ -108,14 +108,14 @@ def group_1(value):
 return [task_1_result, task_2_result, task_3_result]
 ```
 
-The `section_1` function receives the result from the `init()` task.
-And notice what's being returned here: a list of the three values. Each of the value stems from `subtask_1` , `subtask_2` and `subtask_3`. This list of values is what's going to be sent to `group_2`.
+The `group_1` function receives the result from the `init()` task.
+And notice what's being returned here: a list of the three values. Each of the value stems from `subtask_1`, `subtask_2` and `subtask_3`. This list of values is what's going to be sent to `group_2`.
 
 ### Task Group #2 (`group_2`)
 
 ![taskgroup - group_2](https://pedromadruga.com/posts/2021/08/taskgroup_group_2.png)
 
-`group_2` is rather simple. It receives the list sent from `group_1` and sums all values (task_4 does it) and then task_5 just multiplies by two the result from task_4:
+`group_2` is rather simple. It receives the list sent from `group_1` and sums all values (`subtask_4` does it) and then `subtask_5` just multiplies by two the result from task_4:
 
 ```python
 @task_group(group_id='group_2')
@@ -137,6 +137,10 @@ def group_2(list):
 ```
 
 That's it - the next task is the `end()`, and it has been handled before in this post. Again, it's possible to see the full code [here](https://github.com/pmadruga/airflow-dags/blob/main/taskgroup.py).
+
+If you check the log of the `end()` task (see my previous post to know how to check for task logs), you'll see the result printed. The final result should be `12`.
+
+Success! 🎉
 
 ## Conclusion
 

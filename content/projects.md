@@ -17,4 +17,4 @@ showtoc: false
 
 ## Data Engineering
 
-- [Build an ETL pipeline from scratch, using Airflow 2.0](/posts/etl-series/)
+- [Build an ETL pipeline from scratch, using Airflow 2.0 [2021]](/posts/ETL-pipeline/)
