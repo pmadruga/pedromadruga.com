@@ -23,7 +23,7 @@ The complete code is available [here](https://github.com/pmadruga/airflow-dags/b
 
 Before Task Groups in Airflow 2.0, Subdags were the go-to API to group tasks. With Airflow 2.0, SubDags [are being relegated](https://www.astronomer.io/guides/subdags) and now replaced with the Task Group feature. The TaskFlow API is simple and allows for a proper code structure, favoring a clear separation of concerns.
 
-What we're building today is a simple pipeline with two groups of tasks, using the `@taskgroup` decorator from the TaskFlow API from Airflow 2. The graph view is:
+What we're building today is a simple DAG with two groups of tasks, using the `@taskgroup` decorator from the TaskFlow API from Airflow 2. The graph view is:
 
 ![taskgroup - graphview](https://pedromadruga.com/posts/2021/08/taskgroup.png)
 
