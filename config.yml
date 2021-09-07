@@ -19,14 +19,14 @@ params:
   title: Pedro Madruga
   description: "Data Science | Machine Learning | Data Engineering"
   keywords: [Blog, Data Science, Machine Learning, Data Engineering, Javascript]
-  author: pmadruga
+  # author: pmadruga
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
 
-  ShowReadingTime: false
+  ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: false
@@ -37,7 +37,7 @@ params:
   hidemeta: false
   hideSummary: true
   showtoc: true
-  tocopen: false
+  tocopen: true
 
   # assets:
   #   # disableHLJS: true # to disable highlight.js
@@ -104,7 +104,7 @@ params:
   editPost:
     URL: "https://github.com/pmadruga/pedromadruga.com/tree/master/content"
     Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+    appendFilePath: false # to append file path to Edit link
 
   # for search
   # https://fusejs.io/api/options.html
@@ -145,6 +145,10 @@ menu:
     - identifier: blog
       name: blog
       url: /posts/
+      weight: 20
+    - identifier: projects
+      name: projects
+      url: /projects/
       weight: 20
     - identifier: newsletter
       name: newsletter

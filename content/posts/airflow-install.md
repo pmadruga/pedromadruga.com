@@ -13,9 +13,7 @@ cover:
 
 Airflow is a tool commonly used for Data Engineering. It's great to orchestrate workflows. Version 2 of Airflow only supports Python 3+ versions, so we need to make sure that we use Python 3 to install it. We could probably install this on another Linux distribution, too.
 
-This is the first post of a series, where we'll build an **entire Data Engineering pipeline** (using Raspberry Pi's). To follow this series, just **subscribe to the [newsletter](https://pedromadruga.com/newsletter)**.
-
-This post was originally published at [pedromadruga.com](https://pedromadruga.com/posts/airflow-install/).
+This is the first post of a series, where we'll build an **entire Data Engineering pipeline**. To follow this series, just **subscribe to the [newsletter](https://pedromadruga.com/newsletter)**.
 
 ## Install dependencies
 
