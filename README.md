@@ -1,0 +1,5 @@
+## Development
+
+```
+hugo serve -D
+```
