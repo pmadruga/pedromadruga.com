@@ -56,7 +56,7 @@ params:
   # profile-mode
   profileMode:
     enabled: true # needs to be explicitly set
-    title: "Hi, I'm Pedro  \U0001F44B"
+    title: "Hi, I'm Pedro  🧙‍♂️"
     subtitle: "Data scientist with 10+ years of Software Engineering experience."
     imageUrl: "/profile2.jpg"
     imageWidth: 120
