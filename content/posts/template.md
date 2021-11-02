@@ -13,5 +13,4 @@ cover:
   relative: read # To use relative path for cover image, used in hugo Page-bundles
 ---
 
-This blogpost was originally posted on **LINK**. For more posts, follow me on **twitter** and/or subscribe to my **newsletter**.
-The code is **here**
+This blogpost was originally posted at **[pedromadruga.com](https://pedromadruga.com/posts/ETL-pipeline)**. For more posts, follow me on **[twitter](https://twitter.com/pmadruga_)** and/or subscribe to my **[newsletter](https://pedromadruga.com/newsletter)**. The code is **here**.
