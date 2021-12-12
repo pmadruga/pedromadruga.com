@@ -17,6 +17,6 @@ Through my software engineering skills and experience, I bring a unique capacity
 
 Having created different companies and lead teams over the years allows me to bring high-quality communication skills to the table and a will to handle and tackle risk head-on. I've also profoundly embraced pragmatism and excellent product quality.
 
-I have a course certification in Machine Learning from DTU (Denmark) and a background in Environmental Engineering (UNL, Portugal). These allowed having a solid foundation for tackling all the challenges above.
+I have a course certification in Machine Learning from DTU (Denmark) and an M.Sc. in Engineering (UNL, Portugal). These allowed having a solid foundation for tackling all the challenges above.
 
 As a tech writer, podcast host, community maintainer, and homemade cluster computer builder, my community involvement is an expression of the passion I place in every project I embrace.
