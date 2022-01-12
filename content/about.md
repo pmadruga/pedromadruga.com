@@ -9,7 +9,7 @@ showtoc: false
 
 {{< social_icons ".Site.Params.socialIcons" >}}
 
-I'm a Data Scientist and Data Engineer based in Copenhagen, Denmark. I have 10+ years of Software Engineering experience and 4+ years of consulting experience. My profile fits in a business-oriented Data Scientist profile and is less academic - I value real-world, hands-on experience and understanding customer's needs.
+I'm a Data Scientist and Data Engineer based in Copenhagen, Denmark. I have 10+ years of Software Engineering experience and 4+ years of consulting experience. My profile fits in a business-oriented Data Scientist and is less academic - I value real-world, hands-on experience and understanding customer's needs.
 
 I have a pragmatic approach to improving a product: small iterations to validate ideas. I'm constantly finding new ways to determine how can Data Science/AI improve a product and I help companies doing so.
 
