@@ -58,7 +58,7 @@ params:
     enabled: true # needs to be explicitly set
     title: "Hi, I'm Pedro  🧙‍♂️"
     subtitle: "Data scientist with 10+ years of Software Engineering experience. M.Sc., Engineering."
-    imageUrl: "/profile2.jpg"
+    imageUrl: "/profile3.jpg"
     imageWidth: 120
     imageHeight: 120
     imageTitle: profile
