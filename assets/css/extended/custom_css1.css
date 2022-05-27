@@ -1,3 +1,27 @@
+/* include charter font family as a type of font */
+@font-face {
+  font-family: 'Charter';
+  src: url('/fonts/charter_regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Charter", serif;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+h1 {  
+  margin-bottom: 2.5rem;
+
+}
+
+.post-content h2 {
+  margin-top: 3.8rem;
+  margin-bottom: 0.7rem;
+}
+
 .post-entry {
   position: relative;
   margin-bottom: var(--gap);
