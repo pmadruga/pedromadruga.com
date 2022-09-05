@@ -1,77 +1,80 @@
 /* include charter font family as a type of font */
+
 @font-face {
-  font-family: 'Charter';
-  src: url('/fonts/charter_regular-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Charter';
+    src: url('/fonts/charter_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
-  font-family: "Charter", serif;
-  font-size: 1.2em;
-  line-height: 1.4;
+    font-family: "Charter", serif;
+    font-size: 1.2em;
+    line-height: 1.4;
 }
 
-h1 {  
-  margin-bottom: 2.5rem;
-
+h1 {
+    margin-bottom: 2.5rem;
 }
 
 .post-content h2 {
-  margin-top: 3.8rem;
-  margin-bottom: 0.7rem;
+    margin-top: 3.8rem;
+    margin-bottom: 0.7rem;
 }
 
 .post-entry {
-  position: relative;
-  margin-bottom: var(--gap);
-  padding: var(--gap);
-  /* background: var(--entry); */
-  border-radius: var(--radius);
-  transition: transform 0.1s;
-  /* border: 1px solid var(--border); */
+    position: relative;
+    margin-bottom: var(--gap);
+    padding: var(--gap);
+    /* background: var(--entry); */
+    border-radius: var(--radius);
+    transition: transform 0.1s;
+    /* border: 1px solid var(--border); */
 }
 
 .post-entry:hover {
-  background: var(--entry);
-  /* border: 1px solid var(--border); */
-  /* padding: var(--gap); */
+    background: var(--entry);
+    /* border: 1px solid var(--border); */
+    /* padding: var(--gap); */
 }
 
 .post-entry {
-  border: 1px solid black;
-  background: none;
-  border: none;
+    border: 1px solid black;
+    background: none;
+    border: none;
 }
 
 .post-entry:hover {
-  background: var(--entry);
+    background: var(--entry);
 }
 
 .button-newsletter {
-  color: var(--primary);
+    color: var(--primary);
 }
 
 .newsletter-placeholder {
-  /* padding-top: 2.5vh; */
-  /* padding-bottom: 1vh; */
+    padding-top: 2.5vh;
+    padding-bottom: 3vh;
+    display: flex;
+    justify-content: center;
 }
 
 .newsletter-form-wrapper {
-  /* padding-top: 2.5vh; */
-  /* padding-bottom: 1vh; */
+    /* padding-top: 2.5vh; */
+    /* padding-bottom: 1vh; */
 }
 
 #bd-email {
-  color: var(--primary);
+    color: var(--primary);
+    padding: 10px;
 }
 
 .social-icons {
-  /* display: flex; */
-  padding: 30px 0;
+    /* display: flex; */
+    padding: 30px 0;
 }
 
 .post-footer-custom {
-  text-align: center;
-  font-style: italic;
+    text-align: center;
+    font-style: italic;
 }

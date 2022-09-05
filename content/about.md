@@ -29,4 +29,4 @@ I have a background in Engineering (MSc) and a course in Machine Learning, which
 
 As a technical writer about data science/machine learning/data engineering but also a podcast host, open-source maintainer, and homemade cluster computer builder, my community involvement expresses the passion I place in every project I embrace.
 
-What motivates me as a Data Scientist is the ability to use all my knowledge gathered over the years while being able to solve different challenges throughout the process. 
+What motivates me as a Data Scientist is the ability to use all my knowledge gathered over the years while being able to solve different challenges throughout the process, while being surrounded by exceptional and motivated people.
