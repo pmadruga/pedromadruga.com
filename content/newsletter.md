@@ -1,7 +1,7 @@
 ---
-title: "Subscribe" # in any language you want
+title: "Newsletter" # in any language you want
 summary: "5 minutes of Data Science"
-# description: "📨 Newsletter"
+description: "5 minutes of data science"
 showtoc: false
 weight: 1
 ShowReadingTime: false
@@ -24,14 +24,14 @@ ShowReadingTime: false
         <label for="bd-email"></label>
         <input type="email" name="email" id="bd-email" class="button" placeholder="e-mail" />
         <input type="hidden" value="1" name="embed" />
-        <input type="submit" class="button button-newsletter" value="Submit" />
+        <input type="submit" class="button button-newsletter" value="Subscribe" />
 
     </form>
 
 </div>
 {{< /rawhtml >}}
 
-5 minutes of Data Science is a newsletter with a weekly recap of all things Data Science and Machine Learning. It aggregates last week's data from:
+**5 minutes of Data Science** is a newsletter with a weekly recap of all things Data Science and Machine Learning. It aggregates last week's data from:
 
 - **research blogs**, _from OpenAI, DeepMind, Amazon Science, Apple Machine Learning, etc_. 
 - **podcasts**, *like Data Skeptic, DataFramed, etc*.
