@@ -33,11 +33,11 @@ ShowReadingTime: false
 
 **5 minutes of Data Science** is a newsletter with a weekly recap of all things Data Science and Machine Learning. It aggregates last week's data from:
 
-- **research blogs**, _from OpenAI, DeepMind, Amazon Science, Apple Machine Learning, etc_. 
-- **podcasts**, *like Data Skeptic, DataFramed, etc*.
-- **youtube channels**, *such as DataSkeptic*. 
-- **reddit community top posts**, *such as r/DataScience, r/MachineLearning, etc*.
-- **github repository trends**.
+- 🧠 **research blogs**, _from OpenAI, DeepMind, Amazon Science, Apple Machine Learning, etc_. 
+- 🎙️ **podcasts**, *like Data Skeptic, DataFramed, etc*.
+- 🎥 **youtube channels**, *such as DataSkeptic*. 
+- 🗨️ **reddit community top posts**, *such as r/DataScience, r/MachineLearning, etc*.
+- 💟 **github repository trends**.
 
 It's [opensource](https://github.com/pmadruga/etl-newsletter) and built as a pipeline using airflow. 
 If you have any feedback and/or suggestions, write them [here](https://github.com/pmadruga/ETL-newsletter/issues).

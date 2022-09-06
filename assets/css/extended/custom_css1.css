@@ -78,3 +78,7 @@ h1 {
     text-align: center;
     font-style: italic;
 }
+
+.post-content code {
+    font-size: 1em
+}
