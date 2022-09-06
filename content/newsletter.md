@@ -1,6 +1,6 @@
 ---
-title: "Newsletter" # in any language you want
-summary: "5 minutes of Data Science"
+title: "5 Minutes of Data Science" # in any language you want
+summary: "📨 Newsletter"
 description: "5 minutes of data science"
 showtoc: false
 weight: 1
