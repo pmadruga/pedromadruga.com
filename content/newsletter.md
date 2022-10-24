@@ -23,11 +23,10 @@ ShowReadingTime: false
     >
         <label for="bd-email"></label>
         <input type="email" name="email" id="bd-email" class="button" placeholder="e-mail" />
-        <input type="hidden" value="1" name="embed" />
-        <input type="submit" class="button button-newsletter" value="Subscribe" />
+        <input type="submit" class="button" value="Subscribe" />
 
     </form>
-
+    
 </div>
 {{< /rawhtml >}}
 
