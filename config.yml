@@ -57,7 +57,7 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: "Hi, I'm Pedro  🧙‍♂️"
-    subtitle: "Data scientist with 10+ years of Software Engineering experience. M.Sc., Engineering."
+    subtitle: "Data scientist with 10+ years of Software Engineering experience. \n\nM.Sc., Environmental Engineering."
     imageUrl: "/profile3.jpg"
     imageWidth: 120
     imageHeight: 120
@@ -73,17 +73,19 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi, I'm Pedro \U0001F44B"
-    Content: "I'm a **Data Scientist** and sometimes a **Data Engineer**. I have a cluster of **Raspberry Pi's** that I enjoy hacking in my free time. I write about all of it - check out my [**newsletter**](/newsletter). "
+    Content: "I'm a **Data Scientist** and **Machine Learning Engineer**. I have a cluster of **Raspberry Pi's** that I enjoy hacking in my free time. I write about all of it - check out my [**newsletter**](/newsletter). "
 
   socialIcons:
+    - name: mastodon
+      url: "https://sigmoid.social/@pmadruga"
     - name: twitter
       url: "https://twitter.com/pmadruga_"
     - name: medium
       url: "https://medium.com/@pmadruga"
     - name: github
       url: "https://github.com/pmadruga"
-    - name: stackoverflow
-      url: "https://stackoverflow.com/users/12418383"
+    # - name: stackoverflow
+    #   url: "https://stackoverflow.com/users/12418383"
     - name: linkedin
       url: "https://www.linkedin.com/in/pedromadruga"
 
