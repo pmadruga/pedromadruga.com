@@ -156,6 +156,10 @@ menu:
       name: newsletter
       url: /newsletter/
       weight: 20
+    # - identifier: experiment
+    #   name: experiment
+    #   url: /experiment/
+    #   weight: 20
     # - identifier: example
     #   name: example.org
     #   url: https://example.org
