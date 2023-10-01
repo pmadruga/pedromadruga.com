@@ -124,10 +124,10 @@ menu:
     #   name: categories
     #   url: /categories/
     #   weight: 10
-    # - identifier: about
-    #   name: about
-    #   url: /about/
-    #   weight: 10
+    - identifier: about
+      name: about
+      url: /about/
+      weight: 10
     # - identifier: contact
     #   name: contact
     #   url: /contact/
