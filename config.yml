@@ -17,8 +17,8 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Pedro Madruga
-  description: "Data Science | Machine Learning | Data Engineering"
-  keywords: [Blog, Data Science, Machine Learning, Data Engineering, Javascript]
+  description: "Data Science | Machine Learning | AI Engineering"
+  keywords: [Blog, Data Science, Machine Learning ]
   # author: pmadruga
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
@@ -136,26 +136,26 @@ menu:
     #   name: archives
     #   url: /archives/
     #   weight: 30
-    - identifier: search
-      name: search
-      url: /search/
-      weight: 40
-    - identifier: about
-      name: about
-      url: /about/
-      weight: 30
-    - identifier: blog
-      name: blog
-      url: /posts/
-      weight: 20
-    - identifier: projects
-      name: projects
-      url: /projects/
-      weight: 20
-    - identifier: newsletter
-      name: newsletter
-      url: /newsletter/
-      weight: 20
+#    - identifier: search
+#      name: search
+#      url: /search/
+#      weight: 40
+#    - identifier: about
+#      name: about
+#      url: /about/
+#      weight: 30
+#    - identifier: blog
+#      name: blog
+#      url: /posts/
+#      weight: 20
+#    - identifier: projects
+#      name: projects
+#      url: /projects/
+#      weight: 20
+#    - identifier: newsletter
+#      name: newsletter
+#      url: /newsletter/
+#      weight: 20
     # - identifier: experiment
     #   name: experiment
     #   url: /experiment/
