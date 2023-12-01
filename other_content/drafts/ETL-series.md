@@ -4,6 +4,7 @@ tags: ["airflow", "raspberry pi", "data engineering"]
 date: 2021-07-19
 showtoc: false
 url: /posts/ETL-pipeline/
+draft: true
 ---
 
 In this series, a full Extract, Load, Transform pipeline is built from the ground up, using Airflow 2.0's newest and straightforward syntax.

@@ -1,10 +1,12 @@
 ---
 title: "About" # in any language you want
-# layout: "about" # is necessary
+layout: "about" # is necessary
 # url: "/archive"
 # description: "Description for About"
-summary: "about"
+# summary: "about"
 showtoc: false
+draft: false
+disableComments: true
 ---
 
 {{< social_icons ".Site.Params.socialIcons" >}}

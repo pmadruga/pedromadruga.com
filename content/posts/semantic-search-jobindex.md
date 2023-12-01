@@ -1,20 +1,18 @@
 ---
 title: >-
-  Deep Learning: Applying Google’s Latest Search algorithm on 4.2million Danish
-  job postings
-description:
+  Semantic Search using BERT on 4.2million Danish job postings
+description: An non-technical introduction to Semantic Search.
 showtoc: true
 tocopen: true
-draft: true
-date: "2020-11-17T19:16:48.780Z"
-tags: [data science, deep learning, natural language processing]
+draft: false
+date: "2020-02-17T19:16:48.780Z"
 slug: >-
   /deep-learning-applying-googles-latest-search-algorithm-on-4-2million-danish-job-postings
 ---
 
 ## Abstract
 
-Search engine results are a common challenge, especially for non-English languages. In this project, different models — including Google Search’s underlying technique (BERT) — are applied to improve the search engine of Denmark’s most significant job portal: [jobindex.dk](https://jobindex.dk). The goal is to determine whether modern Artificial Intelligence (AI) and Natural Language Processing (NLP) techniques can improve Danish-language search results. After comparing direct results amongst different models and methods, it’s possible to conclude that BERT excels. It’s incredibly successful on search queries that don’t usually return results or very long and complex queries since it’s based on word similarity.
+Search engine results are a common challenge, especially for non-English languages. In this project, different models — including Google Search’s underlying transformer model (BERT) — are applied to improve the search engine of Denmark’s most significant job portal: [jobindex.dk](https://jobindex.dk). The goal is to determine whether modern Artificial Intelligence (AI) and Natural Language Processing (NLP) techniques can improve Danish-language search results. After comparing direct results amongst different models and methods, it’s possible to conclude that BERT excels. It’s incredibly successful on search queries that don’t usually return results or very long and complex queries since it’s based on word similarity.
 
 ## Disclaimer
 

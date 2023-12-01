@@ -1,8 +1,7 @@
 ---
 title: "Machine Learning Techniques applied to Heart
-Rate Variability"
+Rate Variability - DTU Course final report"
 description: "A 3-month long report where Supervised and Unsupervised Learning techniques were applied to a dataset that has a set of features, including Heart Rate Variability. Data stems from two years of health data from an Apple Watch ⌚️. Includes the final report for the Machine Learning course of Technical University of Denmark (DTU)."
-tags: ["data science", "machine learning"]
 date: 2019-12-31
 showtoc: false
 ---

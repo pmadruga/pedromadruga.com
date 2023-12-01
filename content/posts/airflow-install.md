@@ -1,6 +1,5 @@
 ---
 title: "Install Airflow 2 on a Raspberry Pi (using Python 3.x)"
-tags: ["airflow", "raspberry pi", "data engineering"]
 date: 2021-07-21T11:30:03+00:00
 cover:
   image: "/posts/airflow2.png"

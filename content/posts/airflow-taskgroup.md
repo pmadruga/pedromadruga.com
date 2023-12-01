@@ -1,7 +1,6 @@
 ---
 title: "Getting started with Task Groups"
 description: "A simple pipeline with two groups of tasks, using the @taskgroup decorator of the TaskFlow API from Airflow 2."
-tags: ["airflow", "raspberry pi", "data engineering"]
 date: 2021-08-22T11:30:03+00:00
 draft: false
 cover:
@@ -13,9 +12,7 @@ cover:
   relative: read # To use relative path for cover image, used in hugo Page-bundles
 ---
 
-## Background
-
-This post is part of the [ETL series](/posts/ETL-pipeline/) tutorial. This was originally posted on [pedromadruga.com](https://pedromadruga.com).
+## Source code
 
 The complete code is available [here](https://github.com/pmadruga/airflow-dags/blob/main/taskgroup.py).
 
