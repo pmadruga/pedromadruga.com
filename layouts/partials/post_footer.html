@@ -1,13 +1,18 @@
-<!--
 <hr />
 <div class="post-footer-custom">
   <p>
-    Hi there! If you liked this post, consider subscribing to the
-    <a href="/newsletter"><u>newsletter</u></a
-    >.
+    Hi there! If you liked this post, consider subscribing to the newsletter,
+    where I write about business-applied AI, Machine Learning Research and Data Engineering.
+    {{ partial "newsletter_form_footer.html" . }}
   </p>
   <p>
     Contact me on: {{- partial "social_icons.html" $.Site.Params.socialIcons -}}
   </p>
 </div>
--->
+
+
+<!-- {{ partial "newsletter_form.html" . }} -->
+
+<hr />
+
+<!-- {{ partial "newsletter_form_footer.html" . }} -->
