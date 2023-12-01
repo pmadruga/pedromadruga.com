@@ -8,8 +8,6 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-# googleAnalytics: UA-38416409-1
-
 minify:
   disableXML: true
   minifyOutput: true
@@ -18,26 +16,30 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Pedro Madruga
   description: "Data Science | Machine Learning | AI Engineering"
-  keywords: [Blog, Data Science, Machine Learning ]
+  keywords: [Blog, Data Science, Machine Learning, Artificial Intelligence ]
   # author: pmadruga
   # author: ["Me", "You"] # multiple authors
-  images: ["<link or path of image for opengraph, twitter-cards>"]
-  DateFormat: "January 2, 2006"
-  defaultTheme: auto # dark, light
-  disableThemeToggle: false
+  # images: ["<link or path of image for opengraph, twitter-cards>"]
 
-  ShowReadingTime: true
+  DateFormat: "January 2, 2006"
+  defaultTheme: light # dark, light
+  disableThemeToggle: true
+
+  # mainSections:
+  #   - blog
+
+  ShowReadingTime: false
   ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
   disableSpecial1stPost: false
   disableScrollToTop: true
-  comments: false
+  # comments: true
   hidemeta: false
   hideSummary: true
   showtoc: true
-  tocopen: true
+  tocopen: false
 
   # assets:
   #   # disableHLJS: true # to disable highlight.js
@@ -56,24 +58,17 @@ params:
   # profile-mode
   profileMode:
     enabled: true # needs to be explicitly set
-    title: "Hi, I'm Pedro  🧙‍♂️"
-    subtitle: "Data scientist with 10+ years of Software Engineering experience. \n\nM.Sc., Environmental Engineering."
-    imageUrl: "/profile3.jpg"
+    title: "Hello world, \n\n I'm Pedro."
+    subtitle: "Data Scientist and Machine Learning Engineer, \n\n living in Denmark."
+    imageUrl: "/profile4.jpg"
     imageWidth: 120
     imageHeight: 120
     imageTitle: profile
-    # buttons:
-    #   - name: About
-    #     url: about
-    #   - name: Posts
-    #     url: posts
-    #   - name: Tags
-    #     url: tags
 
   # home-info mode
   homeInfoParams:
     Title: "Hi, I'm Pedro \U0001F44B"
-    Content: "I'm a **Data Scientist** and **Machine Learning Engineer**. I have a cluster of **Raspberry Pi's** that I enjoy hacking in my free time. I write about all of it - check out my [**newsletter**](/newsletter). "
+    Content: "I'm a **Data Scientist** and **Machine Learning Engineer**."
 
   socialIcons:
     - name: mastodon
@@ -120,34 +115,27 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    # - identifier: categories
-    #   name: categories
-    #   url: /categories/
-    #   weight: 10
+    - identifier: blog
+      name: blog
+      url: /blog/
+      weight: 20
     - identifier: about
       name: about
       url: /about/
-      weight: 10
-    # - identifier: contact
-    #   name: contact
-    #   url: /contact/
-    #   weight: 50
+      weight: 40
+    - identifier: search
+      name: search
+      url: /search/
+      weight: 40
     # - identifier: archives
-    #   name: archives
-    #   url: /archives/
-    #   weight: 30
-#    - identifier: search
-#      name: search
-#      url: /search/
-#      weight: 40
+    #    name: archives
+    #    url: /archives/
+    #    weight: 20
+   
 #    - identifier: about
 #      name: about
 #      url: /about/
 #      weight: 30
-#    - identifier: blog
-#      name: blog
-#      url: /posts/
-#      weight: 20
 #    - identifier: projects
 #      name: projects
 #      url: /projects/
