@@ -1,13 +1,13 @@
 ---
 title: >-
-  Semantic Search using BERT on 4.2million Danish job postings
-description: An non-technical introduction to Semantic Search.
+  A gentle introduction and example of Semantic Search using BERT on Danish text
+# description: An non-technical introduction to Semantic Search.
 showtoc: true
 tocopen: true
 draft: false
 date: "2020-02-17T19:16:48.780Z"
-slug: >-
-  /deep-learning-applying-googles-latest-search-algorithm-on-4-2million-danish-job-postings
+# slug: >-
+#   /deep-learning-applying-googles-latest-search-algorithm-on-4-2million-danish-job-postings
 ---
 
 ## Abstract
