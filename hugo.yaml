@@ -59,7 +59,7 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: "Hello world, \n\n I'm Pedro."
-    subtitle: "Data Scientist and Machine Learning Engineer, \n\n living in Denmark."
+    subtitle: "Applied AI Scientist and Machine Learning Engineer, \n\n living in Denmark."
     imageUrl: "/profile4.jpg"
     imageWidth: 120
     imageHeight: 120
@@ -71,10 +71,10 @@ params:
     Content: "I'm a **Data Scientist** and **Machine Learning Engineer**."
 
   socialIcons:
+    - name: bluesky
+      url: https://bsky.app/profile/pedromadruga.com
     - name: mastodon
       url: "https://sigmoid.social/@pmadruga"
-    - name: twitter
-      url: "https://twitter.com/pmadruga_"
     - name: medium
       url: "https://medium.com/@pmadruga"
     - name: github
