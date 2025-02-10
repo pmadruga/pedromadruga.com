@@ -12,7 +12,7 @@ body {
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple;
     font-size: 1.1em;
     line-height: 1.4;
-    background: var(--code-bg);
+    /* background: var(--code-bg); */
 }
 
 h1 {
