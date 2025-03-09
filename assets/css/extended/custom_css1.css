@@ -106,3 +106,7 @@ h1 {
 .post-content code {
     font-size: 1em
 }
+
+.description-link {
+    text-decoration:underline;
+}
