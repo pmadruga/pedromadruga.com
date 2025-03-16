@@ -1,6 +1,7 @@
 ---
 title: "Install Airflow 2 on a Raspberry Pi (using Python 3.x)"
 date: 2021-07-21T11:30:03+00:00
+type: "blog"
 cover:
   image: "/posts/airflow2.png"
   # can also paste direct link from external site

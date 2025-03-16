@@ -15,14 +15,14 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Pedro Madruga
-  description: "Data Science | Machine Learning | Artificial Intelligence | AI Engineering"
+  description: "Pedro Madruga - personal website and AI-related blog."
   keywords: [Blog, Data Science, Machine Learning, Artificial Intelligence ]
   # author: pmadruga
   # author: ["Me", "You"] # multiple authors
   # images: ["<link or path of image for opengraph, twitter-cards>"]
 
   DateFormat: "January 2, 2006"
-  defaultTheme: light # dark, light
+  defaultTheme: auto # dark, light
   disableThemeToggle: false
 
   # mainSections:
@@ -30,7 +30,7 @@ params:
 
   ShowReadingTime: false
   ShowShareButtons: false
-  ShowPostNavLinks: true
+  ShowPostNavLinks: false
   ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
   disableSpecial1stPost: false
@@ -40,7 +40,7 @@ params:
   hideSummary: true
   showtoc: true
   tocopen: false
-  # ShowFullTextinRSS: true
+  ShowFullTextinRSS: true
 
   # assets:
   #   # disableHLJS: true # to disable highlight.js
@@ -60,22 +60,24 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: "Hello world, \n\n I'm Pedro."
-    subtitle: "Applied AI Scientist and Machine Learning Engineer, \n\n living in Denmark."
-    imageUrl: "/profile4.jpg"
-    imageWidth: 120
-    imageHeight: 120
+    subtitle: "AI Scientist living in Denmark."
+    imageUrl: "/profile5.jpeg"
+    imageWidth: 250
+    imageHeight: 250
     imageTitle: profile
 
   # home-info mode
   homeInfoParams:
     Title: "Hi, I'm Pedro \U0001F44B"
-    Content: "I'm an **AI Scientist** and **Machine Learning Engineer**."
+    Content: "I'm an **AI Scientist**."
 
   socialIcons:
     - name: bluesky
       url: https://bsky.app/profile/pedromadruga.com
-    # - name: mastodon
-    #  url: "https://sigmoid.social/@pmadruga"
+    # - name: newsletter
+    #   url: https://pedromadruga.com/newsletter
+    - name: mastodon
+      url: "https://sigmoid.social/@pmadruga"
     # - name: medium
     #  url: "https://medium.com/@pmadruga"
     - name: github
@@ -85,16 +87,13 @@ params:
     - name: linkedin
       url: "https://www.linkedin.com/in/pedromadruga"
     - name: rss
-      url: "https://pedromadruga.com/index.xml"
+      url: "https://pedromadruga.com/blog/index.xml"
 
   # analytics:
   #   google:
   #     SiteVerificationTag: "XYZabc"
-  #   bing:
-  #     SiteVerificationTag: "XYZabc"
-  #   yandex:
-  #     SiteVerificationTag: "XYZabc"
 
+  
   cover:
     hidden: true # hide everywhere but not in structured data
     hiddenInList: true # hide on list pages and home
@@ -122,10 +121,18 @@ menu:
       name: blog
       url: /blog/
       weight: 20
+    - identifier: newsletter
+      name: newsletter
+      url: /newsletter/
+      weight: 30
     - identifier: about
       name: about
       url: /about/
       weight: 40
+    # - identifier: cv
+    #   name: cv
+    #   url: /cv/
+    #   weight: 40
     - identifier: search
       name: search
       url: /search/

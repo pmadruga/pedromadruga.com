@@ -64,6 +64,8 @@ h1 {
 .newsletter-form-wrapper {
     /* padding-top: 2.5vh; */
     /* padding-bottom: 1vh; */
+    display: flex;
+    justify-content: space-around;
 }
 
 .newsletter_form_frontpage {
