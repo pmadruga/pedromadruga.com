@@ -16,3 +16,7 @@ git submodule update --init --recursive # needed when you reclone your repo (sub
 ```
 git submodule update --remote --merge
 ```
+
+## Troubleshooting
+
+- If Search returns repeated results in Dev mode, just restart the server.
