@@ -9,9 +9,10 @@
 
 body {
     /* font-family: "Charter", serif; */
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple;
+    /* font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple; */
+    font-family: noto sans, palatino linotype, system-ui, segoe ui, sans-serif;
     font-size: 1.2em;
-    line-height: 1.4;
+    line-height: 1.5;
     /* background: var(--code-bg); */
 }
 
