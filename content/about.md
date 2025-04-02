@@ -9,7 +9,7 @@ Hey there, I'm Pedro.
 
 I'm the Lead AI Scientist at [Karnov Group](https://karnovgroup.com) - a 150-year-old European-wide company that provides information solutions in the areas of legal, tax, and auditing. I have been leading a (growing) team of AI scientists in the North Region.
 
-Starting in 2023, I have created, developed, and led an AI-powered legal research assistant that has been featured in several Danish newspapers ([Berlingske](https://www.berlingske.dk/virksomheder/kunstig-intelligens-er-for-alvor-rykket-ind-paa-advokatkontoret-vi-er), [Borsen](https://borsen.dk/nyheder/tech/dansk-virksomhed-fra-1867-gar-i-offensiven-med-ai)), and is used by top law firms in Denmark as well as the supreme courts in Sweden.
+Starting in 2023, I have created, developed, and led an AI-powered legal research assistant that has been featured in several Danish newspapers ([Berlingske](https://www.berlingske.dk/virksomheder/kunstig-intelligens-er-for-alvor-rykket-ind-paa-advokatkontoret-vi-er), [Børsen](https://borsen.dk/nyheder/tech/dansk-virksomhed-fra-1867-gar-i-offensiven-med-ai)), and is used by top law firms in Denmark as well as the supreme courts in Sweden.
 
 I started my Data Science career in 2018 and have worked with Artificial Intelligence in the legal, financial, and philanthropic sectors. I have worked mostly with Natural Language Processing but also with time series challenges. Since 2022, I've worked with Generative AI in the legal domain.
 
