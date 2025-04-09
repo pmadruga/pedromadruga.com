@@ -11,7 +11,7 @@ body {
     /* font-family: "Charter", serif; */
     /* font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple; */
     font-family: noto sans, palatino linotype, system-ui, segoe ui, sans-serif;
-    font-size: 1.2em;
+    font-size: 1.1em;
     line-height: 1.5;
     /* background: var(--code-bg); */
 }
@@ -89,15 +89,18 @@ h1 {
 }
 
 
-
-
 #bd-email input:focus {
     border-color: var(--secondary);
 }
 
 .social-icons {
-    /* display: flex; */
+    display: flex;
     padding: 30px 0;
+    justify-content: center;
+}
+
+.social-icons a {
+    box-shadow: none;
 }
 
 .post-footer-custom {
