@@ -75,7 +75,7 @@ I developed and delivered multiple applications, both frontend and backend, usin
 ### **Founder and Software Engineer**, `Occam.ooo`
 November 2016 - March 2017 • _Copenhagen, Denmark_
 
-I led mobile development for Mobilab in Germany, contributed to frontend development for Competencehouse in Denmark, and handled mobile development for WithDipp in the USA. I designed, engineered, and delivered a mobile app called Nu Events. Additionally, I managed company operations.
+I was the technical lead for a mobile development project for Mobilab in Germany, contributed to frontend development for Competencehouse in Denmark, and handled mobile development for WithDipp in the USA. I designed, engineered, and delivered a mobile app called Nu Events. Additionally, I managed company operations.
 
 ---
 
