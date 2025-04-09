@@ -1,11 +1,12 @@
 ---
-title: "About" 
+title: "About"
 showtoc: false
 draft: false
 disableComments: true
 ---
 
-Hey there, I'm Pedro.
+{{< social_icons >}}
+
 
 I'm the Lead AI Scientist at [Karnov Group](https://karnovgroup.com) - a 150-year-old European-wide company that provides information solutions in the areas of legal, tax, and auditing. I have been leading a (growing) team of AI scientists in the North Region.
 

@@ -16,6 +16,8 @@ I’ll write about industry-applied Artificial Intelligence, which is [my main e
 
 I'm writing this at the very beginning of this newsletter, but hopefully, you can help me with accountability to keep writing. :)
 
+Opinions are and will always be my own.
+
 {{< rawhtml >}}
 
 <div class="newsletter-form-wrapper newsletter_form_frontpage">
