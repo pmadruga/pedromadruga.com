@@ -34,7 +34,7 @@ params:
   ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
   disableSpecial1stPost: false
-  disableScrollToTop: true
+  disableScrollToTop: false
   # comments: true
   hidemeta: false
   hideSummary: true
@@ -129,18 +129,18 @@ menu:
       name: about
       url: /about/
       weight: 40
-    # - identifier: cv
-    #   name: cv
-    #   url: /cv/
-    #   weight: 40
+    - identifier: cv
+      name: cv
+      url: /cv/
+      weight: 40
     - identifier: search
       name: search
       url: /search/
       weight: 40
-    # - identifier: archives
-    #    name: archives
-    #    url: /archives/
-    #    weight: 20
+    - identifier: contact
+      name: contact
+      url: /contact/
+      weight: 50
    
 #    - identifier: about
 #      name: about
