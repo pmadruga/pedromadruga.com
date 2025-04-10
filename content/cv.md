@@ -13,7 +13,7 @@ As the Technical AI Lead for the Nordics, I led a team of 5 AI Scientists, worki
 
 Spearheading AI research and innovation, I collaborated closely with business stakeholders to ensure new initiatives were brought to market, powered by state-of-the-art AI.
 
-**Tools**: PydanticAI, Langgraph, Python, Google Gemini, OpenAI, LocalLLMs, Docker, Google Cloud Platform (GCP), Generative AI, Information Retrieval, DeepSearch.
+**Tools & Techniques**: PydanticAI, Langgraph, Python, Google Gemini, OpenAI, LocalLLMs, Docker, Google Cloud Platform (GCP), Generative AI, Information Retrieval, DeepSearch.
 
 ---
 
@@ -26,7 +26,7 @@ My role encompassed continuous product development through GenAI/ML research and
 
 In addition to technical leadership, I played a crucial role in knowledge sharing and collaboration. As an AI and Machine Learning educator, I conducted workshops and knowledge sessions to leverage in-house domain expertise and software engineering knowledge with AI/ML insights.
 
-**Tools**: Transformers, RAG, Semantic Search, PyTorch, Information Retrieval, Kubernetes, Docker, Python, SQL, Machine Learning, Natural Language Processing (NLP), LangChain.
+**Tools & Techniques**: Transformers, RAG, Semantic Search, PyTorch, Information Retrieval, Kubernetes, Docker, Python, SQL, Machine Learning, Natural Language Processing (NLP), LangChain.
 
 ---
 
