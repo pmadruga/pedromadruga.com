@@ -11,7 +11,7 @@ October 2024 - Present • _Copenhagen, Denmark_
 
 As the Technical AI Lead for the Nordics, I led a team of 5 AI Scientists, working on KAILA - a GenAI agentic-powered legal assistant that I created and scaled to manage 3.5M documents. KAILA now has a team of over 50 people, consistently generates millions in revenue, and has been featured in multiple newspapers. It is used by top firms in both Denmark and Sweden.
 
-Spearheading AI research and innovation, I collaborated closely with business stakeholders to ensure new initiatives were brought to market, powered by state-of-the-art AI.
+Spearheading AI research and innovation, I collaborated closely with business stakeholders to ensure new initiatives were brought to market while ensuring research and implementation of state-of-the-art AI.
 
 **Tools & Techniques**: PydanticAI, Langgraph, Python, Google Gemini, OpenAI, LocalLLMs, Docker, Google Cloud Platform (GCP), Generative AI, Information Retrieval, DeepSearch.
 
@@ -20,11 +20,11 @@ Spearheading AI research and innovation, I collaborated closely with business st
 ### **Senior AI Developer**, `Karnov Group AB`
 October 2022 - December 2024 • _Copenhagen, Denmark_
 
-As a technical AI lead, I spearheaded the creation and scaling of KAILA, a GenAI-based conversational legal assistant, growing its document capacity from 5k to 3.5M in just six months. This involved designing and implementing a robust AI cloud-based infrastructure to support rapid expansion, as well as growing the team from a single AI developer to a unit of five AI developers and more than five software engineers.
+Created KAILA, an agentic GenAI-based conversational legal assistant, growing its document capacity from 5k to 3.5M and delivered in six months.
 
-My role encompassed continuous product development through GenAI/ML research and infrastructure improvements, ensuring that our AI solutions remained at the forefront of innovation. I also analyzed user interactions with the Karnov search engine to gain insights into platform usage, which informed our development strategies.
+Grew the AI team from one to a unit of 5 AI developers and collaborated with several software engineers and business stakeholders across multiple teams. Overviewed the embeddings creation pipeline, database storage, and cloud infrastructure that supports KAILA.
 
-In addition to technical leadership, I played a crucial role in knowledge sharing and collaboration. As an AI and Machine Learning educator, I conducted workshops and knowledge sessions to leverage in-house domain expertise and software engineering knowledge with AI/ML insights.
+Created several other PoCs, conducted several sessions to ensure knowledge sharing, and analyzed the efficiency of several million search queries.
 
 **Tools & Techniques**: Transformers, RAG, Semantic Search, PyTorch, Information Retrieval, Kubernetes, Docker, Python, SQL, Machine Learning, Natural Language Processing (NLP), LangChain.
 
