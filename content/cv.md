@@ -1,7 +1,7 @@
 ---
 title: "CV"
 showtoc: true
-tocopen: true
+tocopen: false
 draft: false
 ---
 
