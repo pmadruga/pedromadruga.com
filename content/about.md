@@ -14,7 +14,7 @@ Starting in 2023, I have created, developed, and led an AI-powered legal researc
 
 I started my Data Science career in 2018 and have worked with Artificial Intelligence in the legal, financial, and philanthropic sectors. I have worked mostly with Natural Language Processing but also with time series challenges. Since 2022, I've worked with Generative AI in the legal domain.
 
-From 2012 to 2018, I worked as a Software Engineer in Copenhagen, Denmark. I have contributed to React Native with a [library](https://github.com/pmadruga/react-native-clean-project) with 1000+ stars on Github, and have won 3rd place in React Europe's hackathon 2018 edition.
+From 2012 to 2018, I worked as a Software Engineer in Copenhagen, Denmark. I have built software for the largest banks in the Nordics and for the Danish Public Transport (DOT). I have contributed to React Native with a [library](https://github.com/pmadruga/react-native-clean-project) with 1000+ stars on Github, and have won 3rd place in React Europe's hackathon 2018 edition.
 
 I have briefly worked as a Data Analyst and have work featured on [Business Insider](https://www.businessinsider.com/the-worlds-20-most-bike-friendly-cities-2013-4).
 
