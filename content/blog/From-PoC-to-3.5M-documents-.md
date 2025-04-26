@@ -18,25 +18,21 @@ It has been a fantastic journey creating and seeing a proof-of-concept going all
 
 A bit of context:
 
-In 2022, I returned to Karnov - a 150 year-old company with offices throughout Europe and over a thousand employees. Karnov is a leader in providing information for the legal industry.
+In 2022, I returned to Karnov - a 150 year-old company with offices throughout Europe and over a thousand employees. Karnov is a leader in providing information for the legal industry. However, fast-forward to the age of industrialized Generative AI, it has been an experience being part of the transformation of the company towards AI, especially with so many competitors out there. So Karnov inevitably moved in that direction, leading up to the first large-scale company-wide AI-product: Karnov AI Legal Assistant - KAILA.
 
-However, fast-forward to the age of industrialized Generative AI, it's been an experience being part of the transformation of the company towards AI, especially with so many great competitors out there.
-
-So Karnov inevitably moved in that direction, leading up to the first large-scale company-wide legal assistant
-
-The following is a recollection of events, challenges and learnings that led to KAILA - Karnov AI Legal Assistant - and where it is today.
+The following is a recollection of events, challenges and learnings that led to KAILA and where it is today.
 
 # 2023
 
 ### The first lines of code
 
-ChatGPT came out in November 2022, powered by GPT3.5, and it changed everything - especially in the legal industry. Suddenly, there was wide awareness about Generative AI.
+ChatGPT came out in November 2022, powered by GPT3.5, and it changed everything - especially in the legal industry. Suddenly, there was worldwide awareness of Generative AI and its capabilities.
 
-In February 2023, I started experimenting with doing Information Retrieval on law-related documents within Karnov. I was using [Haystack](<https://haystack.deepset.ai/> "Haystack") at the time, and the term Retrieval Augmented Generation (RAG) wasn't even [popular](<https://trends.google.com/trends/explore?date=today%205-y&q=retrieval%20augmented%20generation&hl=en-US>) by then - despite the term RAG being coined [in a paper during 2020](<https://www.patricklewis.io/publication/rag/> "in a paper during 2020") by the very talented . The pool of vector databases was exploding and by then I experimented with PineCone and FAISS. Both were great for the scale I was working on but, in the end, I opted for different database - something I'll leave for another blogpost.
+In February 2023, I started experimenting with doing Information Retrieval on law-related documents within Karnov. I was using [Haystack](<https://haystack.deepset.ai/) at the time, and the term Retrieval Augmented Generation (RAG) wasn't even [popular](https://trends.google.com/trends/explore?date=today%205-y&q=retrieval%20augmented%20generation&hl=en-US) by then - despite the term RAG being coined [in a paper during 2020](https://www.patricklewis.io/publication/rag/) by the very talented Dr. Patrick Lewis. The number of vector databases was exploding and at the time I experimented with PineCone and FAISS. Both were great for the scale I was working on although, in the end, I opted for different database (Qdrant) - something I'll leave for another blogpost.
 
-The work continued intermitently for a few months and around the summer of 2023, this project became down-prioritized and it was close to go into the “cemitery of the dead experiments”. But in a hot summer afternoon in August the same year, I joined forces with Gustav (then, working with Business Innovation at Karnov Denmark) and we decided to embrace our "healthy disregard for the status quo" and revived the project. That decision marked the birth of the proof-of-concept "KAILA - Karnov AI Legal Assistant". That afternoon is where I suggested Gustav that name. Which became the name of the project and the final product (in Sweden, the final product was renamed to JUNO AI).
+The work continued as a down-prioritized side project for a few months. Around the summer of 2023, this project was close to go into the “cemitery of the dead experiments”. But in a hot summer afternoon in August of the same year, I joined forces with Gustav (then, working with Business Innovation at Karnov Denmark) and we decided to embrace our "healthy disregard for the status quo" and revived the project. That decision marked the birth of the proof-of-concept "KAILA - Karnov AI Legal Assistant". That same afternoon is where I suggested Gustav the name of the project, which ended being the official name of the final product (in Sweden, the final product was renamed to JUNO AI).
 
-Before the project had an internal green light, Gustav and I reached out to a couple of developers who helped building a UI, a Ruby backend wrapping a Python API and what came to be the embeddings pipeline. The developers were nothing short of amazing and embraced this incredibly uncertain project. Novelty and working with AI were the drawing factors to collaborate in this project. This was also incredibly helpful since it allowed me to work on the most critical part: the Information Retrieval Engine - and engine responsible for fetching the correct documents
+Before the project had an internal green light, Gustav and I reached out to a couple of developers who helped building a UI as well as a Ruby backend which wrapped a Python API. The developers also helped in creating what came to be the embeddings pipeline. These developers were nothing short of amazing and embraced this incredibly uncertain project. By then, and even before being a priority, was drawing voluntary interest from the people working on it: novelty, curiosity and working with AI became the drawing factors to collaborate in this project. This was also incredibly helpful since it allowed me to work on the most critical part: the Information Retrieval Engine - and engine responsible for fetching the correct documents
 
 The proof-of-concept was pitched to management in late 2023, and in early 2024 the project kick-started officially, with the goal of launching in September 2024.
 
