@@ -29,19 +29,19 @@ The following is a recollection of events, challenges and learnings that led to 
 
 ChatGPT came out in November 2022, powered by GPT3.5, and it changed everything - especially in the legal industry. Suddenly, there was worldwide awareness of Generative AI and its capabilities.
 
-In February 2023, I started experimenting with doing Information Retrieval on law-related documents within Karnov. I was using [Haystack](<https://haystack.deepset.ai/) at the time, and the term Retrieval Augmented Generation (RAG) wasn't even [popular](https://trends.google.com/trends/explore?date=today%205-y&q=retrieval%20augmented%20generation&hl=en-US) by then - despite the term RAG being coined [in a paper during 2020](https://www.patricklewis.io/publication/rag/) by the very talented Dr. Patrick Lewis. The number of vector databases was exploding and at the time I experimented with PineCone and FAISS. Both were great for the scale I was working on although, in the end, I opted for different database (Qdrant) - something I'll leave for another blogpost.
+In February 2023, I started experimenting with doing Information Retrieval on law-related documents within Karnov. I was using [Haystack](https://haystack.deepset.ai/) at the time, and the term Retrieval Augmented Generation (RAG) wasn't even [popular](https://trends.google.com/trends/explore?date=today%205-y&q=retrieval%20augmented%20generation&hl=en-US) by then - despite the term RAG being coined [in a paper during 2020](https://www.patricklewis.io/publication/rag/) by the very talented Dr. Patrick Lewis. The number of vector databases was exploding and at the time I experimented with PineCone and FAISS. Both were great for the scale I was working on although, in the end, I opted for different database (Qdrant) - something I'll leave for another blogpost.
 
 The work continued as a down-prioritized side project for a few months. Around the summer of 2023, this project was close to go into the “cemitery of the dead experiments”. But in a hot summer afternoon in August of the same year, I joined forces with Gustav (then, working with Business Innovation at Karnov Denmark) and we decided to embrace our "healthy disregard for the status quo" and revived the project. That decision marked the birth of the proof-of-concept "KAILA - Karnov AI Legal Assistant". That same afternoon is where I suggested Gustav the name of the project, which ended being the official name of the final product (in Sweden, the final product was renamed to JUNO AI).
 
-Before the project had an internal green light, Gustav and I reached out to a couple of developers who helped building a UI as well as a Ruby backend which wrapped a Python API. The developers also helped in creating what came to be the embeddings pipeline. These developers were nothing short of amazing and embraced this incredibly uncertain project. By then, and even before being a priority, was drawing voluntary interest from the people working on it: novelty, curiosity and working with AI became the drawing factors to collaborate in this project. This was also incredibly helpful since it allowed me to work on the most critical part: the Information Retrieval Engine - and engine responsible for fetching the correct documents
+Before the project had an internal green light, Gustav and I reached out to a couple of developers who helped building a UI as well as a Ruby backend which wrapped a Python API. The developers also helped in creating what came to be the embeddings pipeline. These developers were nothing short of amazing and embraced this incredibly uncertain project. By then, and even before being a priority, was drawing voluntary interest from the developers working on it: novelty, curiosity and working with AI became the drawing factors to collaborate in this project. This help was also incredibly helpful since it allowed me to work on the most critical part: the Information Retrieval Engine - and engine responsible for fetching the correct documents.
 
-The proof-of-concept was pitched to management in late 2023, and in early 2024 the project kick-started officially, with the goal of launching in September 2024.
+Then, the proof-of-concept was pitched to management in late 2023, and in early 2024 the project kick-started officially, with the goal of launching in September 2024.
 
 Looking back, and understanding that this project was almost shelved, made me realize that it's healthy to follow-through with my gut feeling.
 
 # 2024
 
-\## General disbelief
+## General disbelief
 
 ### A scalability and factuality challenge
 
@@ -49,7 +49,7 @@ Early in 2024, one extra AI developer was added to the project. It also became c
 
 - **How do we go from 5k to 3.5M documents, where none of the infrastructure was in place**? I realised that an Architect was needed and a clear and close collaboration with the Operations team, since they'd be responsible for the infrastructure needed (setup pipelines, databases, authentication, etc). Embeddings alone where not enough
 
-- **How do we keep factuality**? And how do we evaluate it? From my point-of-view, this became the core of KAILA's identify: factuality above anything else. In other words, users had to be able to get correct answers where documents where the source of truth for all the answers. And for that we needed domain knowledge - a lot of it.
+- **How do we reach the highest levels of factuality**? And how do we evaluate it? From my point-of-view, this became the core of KAILA's identify: factuality above anything else. In other words, users had to be able to get correct answers where documents where the source of truth for all the answers. And for that we needed domain knowledge - a lot of it.
 
 - **How do we move fast**? This was essential and we had to disregard some of the common conventions of product development. I realized that the conventional software development approach - and its ceremonies - hinder AI development.
 
@@ -59,7 +59,7 @@ In this post, I won't dive too much into the bullet points above. Instead, I'll 
 
 ### Semantic similarity isn’t enough - and how domain knowledge csme to the rescue
 
-Factuality and semantic similaity
+Factuality and semantic similarity
 
 every other option is now on the table
 
@@ -67,7 +67,13 @@ Domain and content knowledge came in handy here, in fact they are the tipping po
 
 ### Breaking silos and the importance of domain knowledge
 
-When the development officially started, in March 2024, my main focus was to have the best quality of answers. And in legal terms, that translates to factuality. That means, that a close collaboration with domain and content experts was essential. And by "close collaboration" I mean that there were periods where I sat done and coded live in front of two (wonderful) domain and content experts. I couldn't understand whether an answer from KAILA was good - but they did.
+When the development officially started, in March 2024, my main focus was factuality - answers had to be as close to the truth as possible, complete, coherent while  hallucinations were reduced to a minimum. Without factuality there was no point in having a product. To this day, our constant and daily strife for factuality remains our AI-based products' identity. 
+
+Problem was, that my knowledge was limited in regards to the legal domain. Thus, a close collaboration with domain and content experts was essential. 
+
+And "close collaboration" was taken to heart: there were periods where I sat down and coded live in front of two (wonderful) domain and content experts. I couldn't understand whether an answer from KAILA was good - but they did. 
+
+And that changed everything for the better. It became a lesson and a foundation of AI development that domain expertise is fundamental for any AI-based products we (and possibly, many many other companies) develop and release. 
 
 I spent weeks trying to understand the legal method, the type of documents Karnov has, the metadata it has, how a lawyer approaches research, etc. I had the advantage to have dedicated people helping me getting domain knowledge - essential for the success of a data science project -, even before lines of code were written. And when code was written, it was *with* them.
 
@@ -76,8 +82,6 @@ Around April we had the first breakthrough. Something that we understood and eva
 This close collaboration between tech and business, with domain knowledge as the core of AI development within the legal industry, set the standard to how we approach every AI-based product in Karnov today.
 
 Moreover, I don't see KAILA being successful without these two colleagues and I'm very thankful for having learned so much. We had an incredible time together, something I'll never forget throughout my career.
-
-
 
 ### Testing KAILA with outside users
 
