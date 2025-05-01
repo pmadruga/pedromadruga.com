@@ -19,21 +19,31 @@ It has been a fantastic journey creating and seeing a proof-of-concept going all
 
 A bit of context:
 
-In 2022, I returned to Karnov - a 150 year-old company with offices throughout Europe and over a thousand employees. Karnov is a leader in providing information for the legal industry. However, fast-forward to the age of industrialized Generative AI, it has been an experience being part of the transformation of the company towards AI, especially with so many competitors out there. So Karnov inevitably moved in that direction, leading up to the first large-scale company-wide AI-product: Karnov AI Legal Assistant - KAILA.
+In 2022, I returned to Karnov - a 150 year-old company with offices throughout Europe and over a thousand employees. Karnov is a leader in providing information for the legal industry. 
 
-The following is a recollection of events, challenges and learnings that led to KAILA and where it is today.
+Fast-forward to the age of industrialized Generative AI - when Karnov dived in. 
+
+It has been an incredible experience being part of the transformation of the company towards AI, especially with so many competitors out there. Several POC's were created leading up to the first large-scale company-wide AI-product: Karnov AI Legal Assistant - KAILA.
+
+This blogpost is about KAILA. The following is a recollection of events, challenges and learnings that led to KAILA and where it is today.
 
 # 2023
 
 ### The first lines of code
 
-ChatGPT came out in November 2022, powered by GPT3.5, and it changed everything - especially in the legal industry. Suddenly, there was worldwide awareness of Generative AI and its capabilities.
+ChatGPT came out in November 2022, powered by GPT3.5, and it changed everything. Suddenly, there was worldwide awareness of Generative AI and its capabilities. Of course, the hype came along but in the legal industry there were first signs of actual value generated. 
 
-In February 2023, I started experimenting with doing Information Retrieval on law-related documents within Karnov. I was using [Haystack](https://haystack.deepset.ai/) at the time, and the term Retrieval Augmented Generation (RAG) wasn't even [popular](https://trends.google.com/trends/explore?date=today%205-y&q=retrieval%20augmented%20generation&hl=en-US) by then - despite the term RAG being coined [in a paper during 2020](https://www.patricklewis.io/publication/rag/) by the very talented Dr. Patrick Lewis. The number of vector databases was exploding and at the time I experimented with PineCone and FAISS. Both were great for the scale I was working on although, in the end, I opted for different database (Qdrant) - something I'll leave for another blogpost.
+In February 2023, I started experimenting with doing Information Retrieval on law-related documents within Karnov. I was using [Haystack](https://haystack.deepset.ai/) at the time, and the term Retrieval Augmented Generation (RAG) wasn't even [popular](https://trends.google.com/trends/explore?date=today%205-y&q=retrieval%20augmented%20generation&hl=en-US) by then - despite the term RAG being coined [in a paper during 2020](https://www.patricklewis.io/publication/rag/) by the very talented Dr. Patrick Lewis. The number of vector databases was exploding and, at the time, I experimented with PineCone and FAISS. Both were great for the scale I was working on, although in the end I opted for different database (Qdrant) - something I'll leave for another blogpost.
 
-The work continued as a down-prioritized side project for a few months. Around the summer of 2023, this project was close to go into the “cemitery of the dead experiments”. But in a hot summer afternoon in August of the same year, I joined forces with Gustav (then, working with Business Innovation at Karnov Denmark) and we decided to embrace our "healthy disregard for the status quo" and revived the project. That decision marked the birth of the proof-of-concept "KAILA - Karnov AI Legal Assistant". That same afternoon is where I suggested Gustav the name of the project, which ended being the official name of the final product (in Sweden, the final product was renamed to JUNO AI).
+The work continued as a side project for a few months. Around the summer of 2023, this project was close to go into the “cemitery of the dead experiments”. 
 
-Before the project had an internal green light, Gustav and I reached out to a couple of developers who helped building a UI as well as a Ruby backend which wrapped a Python API. The developers also helped in creating what came to be the embeddings pipeline. These developers were nothing short of amazing and embraced this incredibly uncertain project. By then, and even before being a priority, was drawing voluntary interest from the developers working on it: novelty, curiosity and working with AI became the drawing factors to collaborate in this project. This help was also incredibly helpful since it allowed me to work on the most critical part: the Information Retrieval Engine - and engine responsible for fetching the correct documents.
+But in a hot summer afternoon in August of the same year, I joined forces with Gustav (then, working with Business Innovation at Karnov Denmark) and we decided to embrace our "healthy disregard for the status quo" and revived the project. In hindsight, Gustav's words "let's do it" were a catalyst for this story to happen. That decision to revive this proof-of-concept marked the birth of "KAILA - Karnov AI Legal Assistant". That same afternoon is where I suggested Gustav the name of the project, which ended up being the official name of the final product (in Sweden, the final product was renamed to JUNO AI).
+
+This collaboration between business and tech set a fundamental standard that is essential to successful products. No silos, just the eternal curiosity for the uncertain.
+
+Before the project had an internal green light, Gustav and I reached out to a couple of developers who helped building a UI as well as a Ruby backend which wrapped a Python API. The developers also helped in creating what came to be the embeddings pipeline. They were nothing short of amazing and embraced this incredibly uncertain project from the moment we pitched them. 
+
+By then, and even before being a priority, this proof-of-concept was drawing voluntary interest from the developers working on it: novelty, curiosity and working with AI became the drawing factors to collaborate in this project. This delegation of responsibilities allowed me to work on the most critical part: the Information Retrieval Engine - and engine responsible for fetching the correct documents.
 
 Then, the proof-of-concept was pitched to management in late 2023, and in early 2024 the project kick-started officially, with the goal of launching in September 2024.
 
