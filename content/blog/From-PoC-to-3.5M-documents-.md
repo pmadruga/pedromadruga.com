@@ -1,7 +1,6 @@
 ---
-title: "From PoC to 3.5M documents "
-created_at: 30-03-2025 08:32 PM
-updated_at: 24-04-2025 08:32 PM
+title: "From PoC to 3.5M documents"
+date: 2021-07-21T11:30:03+00:00
 pinned: true
 tags: Blog
 draft: true
@@ -41,41 +40,49 @@ But in a hot summer afternoon in August of the same year, I joined forces with G
 
 This collaboration between business and tech set a fundamental standard that is essential to successful products. No silos, just the eternal curiosity for the uncertain.
 
-Before the project had an internal green light, Gustav and I reached out to a couple of developers who helped building a UI as well as a Ruby backend which wrapped a Python API. The developers also helped in creating what came to be the embeddings pipeline. They were nothing short of amazing and embraced this incredibly uncertain project from the moment we pitched them. 
+Before the project had an internal green light, Gustav and I reached out to a couple of developers who helped building a UI as well as a Ruby backend which wrapped a Python API. The developers also helped in creating what came to be the embeddings pipeline. They were nothing short of amazing and embraced this incredibly uncertain project from the moment we pitched it to them. 
 
-By then, and even before being a priority, this proof-of-concept was drawing voluntary interest from the developers working on it: novelty, curiosity and working with AI became the drawing factors to collaborate in this project. This delegation of responsibilities allowed me to work on the most critical part: the Information Retrieval Engine - and engine responsible for fetching the correct documents.
+By then, and even before being a priority, this proof-of-concept was drawing voluntary interest: novelty, curiosity and working with AI became the drawing factors to collaborate in this project. This delegation of responsibilities by onboarding new people allowed me to work on the most critical part: the Information Retrieval Engine - and engine responsible for fetching the correct documents.
 
 Then, the proof-of-concept was pitched to management in late 2023, and in early 2024 the project kick-started officially, with the goal of launching in September 2024.
 
-Looking back, and understanding that this project was almost shelved, made me realize that it's healthy to follow-through with my gut feeling.
+Looking back, and understanding that this project was almost shelved, made me realize that it's healthy to listen to gut feelings. 
 
 # 2024
 
-## General disbelief
+## A scalability and factuality challenge, with a tight deadline
 
-### A scalability and factuality challenge
+Early in 2024, one extra AI developer was added to the project - the project was scaling in resources. It also became clear that KAILA had several questions to be answered, such as:
 
-Early in 2024, one extra AI developer was added to the project. It also became clear that KAILA had several challenges to be solved ahead, such as:
+- **How to go from 5k to 3.5M documents, where none of the infrastructure was in place**? 
+- **How to reach the highest levels of factuality**? 
+- **But why did we move so fast**? 
 
-- **How do we go from 5k to 3.5M documents, where none of the infrastructure was in place**? I realised that an Architect was needed and a clear and close collaboration with the Operations team, since they'd be responsible for the infrastructure needed (setup pipelines, databases, authentication, etc). Embeddings alone where not enough
+---
 
-- **How do we reach the highest levels of factuality**? And how do we evaluate it? From my point-of-view, this became the core of KAILA's identify: factuality above anything else. In other words, users had to be able to get correct answers where documents where the source of truth for all the answers. And for that we needed domain knowledge - a lot of it.
+I realised that an Architect was needed as well as close collaboration with the Operations team, since they'd be responsible for the infrastructure needed (setting up pipelines, databases, authentication, etc). 
 
-- **How do we move fast**? This was essential and we had to disregard some of the common conventions of product development. I realized that the conventional software development approach - and its ceremonies - hinder AI development.
+But the most revealing part was that embeddings alone where not enough for a _large_ set of documents. It might have worked for a small set of documents but not for the entire pool of documents. It was time to think a bit outside the box and use all resources possible: such as the usage of metadata and other techniques. Which worked quite well and set the foundation for every thing done after that.
 
+- **How to reach the highest levels of factuality**? 
 
+The main reason to use different techniques was to achieve the highest levels of factuality. By the time of the early steps of KAILA, the main question internally was about hallucinations. 
 
-In this post, I won't dive too much into the bullet points above. Instead, I'll break those down into individual posts, since each is a story on its own.
+This became the core of KAILA's identify: factuality above anything else. In other words, users had to be able to get correct answers where documents where the source of truth for all the answers. And for that we needed domain knowledge - a lot of it.
 
-### Semantic similarity isn’t enough - and how domain knowledge csme to the rescue
+So we started collaboration with domain and content experts. This collaboration became a foundational aspect of all AI development in Karnov. The bridge between the KAILA AI development team and the experts was as close as possible: no meetings, no JIRA tickets, no protocols - just sitting in a room and getting instant feedback on how KAILA was performing. 
 
-Factuality and semantic similarity
+In hindsight, this was our first evaluation method - completely made by humans. Only further down the road we included automated evaluation pipelines, because it doesn't scale that well for obvious reasons. But even the evaluation pipelines have carefully human curated benchmarks which allows the team to move fast.  
 
-every other option is now on the table
+- **So wow did we move fast**? 
 
-Domain and content knowledge came in handy here, in fact they are the tipping point
+This was essential due to the timeline and, for that, we had to disregard some of the common conventions of product development. I realized that the conventional software development approach - and its ceremonies - hinder AI development.
 
-### Breaking silos and the importance of domain knowledge
+An incredible dosage of pragmatism, near-perfect silo-free collaboration between business and development created a very smooth product delivery, despite general skepticism outside the collaborators of KAILA at this point. 
+
+---
+
+## Breaking silos and the importance of domain knowledge
 
 When the development officially started, in March 2024, my main focus was factuality - answers had to be as close to the truth as possible, complete, coherent while  hallucinations were reduced to a minimum. Without factuality there was no point in having a product. To this day, our constant and daily strife for factuality remains our AI-based products' identity. 
 
@@ -87,13 +94,13 @@ And that changed everything for the better. It became a lesson and a foundation 
 
 I spent weeks trying to understand the legal method, the type of documents Karnov has, the metadata it has, how a lawyer approaches research, etc. I had the advantage to have dedicated people helping me getting domain knowledge - essential for the success of a data science project -, even before lines of code were written. And when code was written, it was *with* them.
 
-Around April we had the first breakthrough. Something that we understood and evaluated as a leap in terms of quality of not only the retrieved documents but also the quality of the answers.
+Around April we had the first breakthrough. Something that we understood and evaluated internally as a leap in terms of quality of not only the retrieved documents but also the quality of the answers.
 
 This close collaboration between tech and business, with domain knowledge as the core of AI development within the legal industry, set the standard to how we approach every AI-based product in Karnov today.
 
 Moreover, I don't see KAILA being successful without these two colleagues and I'm very thankful for having learned so much. We had an incredible time together, something I'll never forget throughout my career.
 
-### Testing KAILA with outside users
+### The first tests with external users
 
 Around June, the close collaboration was then extended to outside. We needed feedback beyond our internal expertise in order to get KAILA to another new level of quality.
 
