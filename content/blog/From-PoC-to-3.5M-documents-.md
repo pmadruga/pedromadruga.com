@@ -2,7 +2,6 @@
 title: "From PoC to 3.5M documents"
 date: 2021-07-21T11:30:03+00:00
 pinned: true
-tags: Blog
 draft: true
 ---
 
@@ -84,9 +83,11 @@ An incredible dosage of pragmatism, near-perfect silo-free collaboration between
 
 ## Breaking silos and the importance of domain knowledge
 
-When the development officially started, in March 2024, my main focus was factuality - answers had to be as close to the truth as possible, complete, coherent while  hallucinations were reduced to a minimum. Without factuality there was no point in having a product. To this day, our constant and daily strife for factuality remains our AI-based products' identity. 
+When the development officially started, in March 2024, the main focus was factuality - answers had to be as close to the truth as possible, complete, coherent while hallucinations had to be reduced to a minimum. In fact, without factuality there was no point in having a product - it was a deal breaker to launch. To this day, our constant and daily strife for factuality remains the core of our AI-based products' identity.
 
-Problem was, that my knowledge was limited in regards to the legal domain. Thus, a close collaboration with domain and content experts was essential. 
+But the best answers were limited to the AI developers' knowledge in regards to the legal domain. In other words, we didn't know when an answer was actually good or not. 
+
+It was clear we needed domain knowledge. Thus, a close collaborationb between AI devloeprs and domain and content experts was essential. 
 
 And "close collaboration" was taken to heart: there were periods where I sat down and coded live in front of two (wonderful) domain and content experts. I couldn't understand whether an answer from KAILA was good - but they did. 
 
@@ -99,6 +100,20 @@ Around April we had the first breakthrough. Something that we understood and eva
 This close collaboration between tech and business, with domain knowledge as the core of AI development within the legal industry, set the standard to how we approach every AI-based product in Karnov today.
 
 Moreover, I don't see KAILA being successful without these two colleagues and I'm very thankful for having learned so much. We had an incredible time together, something I'll never forget throughout my career.
+
+---
+
+In March 2024, when we officially began development, our main focus was on ensuring factuality. Our answers needed to be as accurate, complete, and coherent as possible, with minimal inaccuracies. Without this commitment to factuality, the product wouldn't have been viable—it was essential for our launch. To this day, our constant pursuit of factuality remains central to our AI-based products.
+
+However, the quality of our answers was limited by our knowledge of the legal domain. We couldn't always determine if an answer was truly good or not, making it clear that we needed domain expertise. Thus, close collaboration between AI developers and domain/content experts became essential.
+
+We took "close collaboration" seriously. There were times when I coded live in front of two amazing domain and content experts. While I couldn't judge the quality of KAILA's answers, they could, which changed everything for the better. This collaboration became a foundational lesson in AI development: domain expertise is crucial for any AI-based products we develop and release.
+
+I spent weeks learning about the legal method, the types of documents Karnov has, their metadata, and how lawyers approach research. I was fortunate to have dedicated people helping me gain this essential domain knowledge, even before writing any code. And when we did write code, it was alongside them.
+
+Around April, we had our first breakthrough—a significant leap in the quality of both the retrieved documents and the answers. This close collaboration between tech and business, with domain knowledge at the core of AI development in the legal industry, set the standard for how we approach every AI-based product at Karnov today.
+
+Moreover, I don't see KAILA being successful without these two colleagues, and I'm very thankful for everything I learned from them. We had an incredible time together, something I'll never forget throughout my career.
 
 ### The first tests with external users
 
