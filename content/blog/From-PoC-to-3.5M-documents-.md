@@ -128,15 +128,17 @@ Along the way, it was clear that a lot of the barriers where being removed in su
 
 This was essential for the launch of KAILA and beyond and, while it's obvious that support from management is critical, it became another standard within Karnov for the upcoming future.
 
-### Growing (and leading) the team
+### Scaling (and leading) the team
 
-Nonetheless, as time progressed, both the team grew as well as the people involved. In the projected kicked off we were two AI developers. I was working on the retrieval engine but also spent a lot of time managing stakeholders, giving status updates, assisting in building infrastructure and etc. In fact, "etc" is carrying a lot of weight here. In May, we were already 5 people in the AI team.
+Nonetheless, as time progressed, both the team grew as well as the people involved. In the projected kicked off we were two AI developers. I was working on the retrieval engine but also spent a lot of time managing stakeholders, giving status updates, assisting in building infrastructure, etc. In fact, "etc" is carrying a lot of weight here. In May, we were already 5 people in the AI team.
 
-Scaling the team allowed taking KAILA to an entire new level of quality. Which keeps on happening and I'm very fortunate to see KAILA's quality exponentially growing over the time.
+Nonetheless, scaling the team allowed taking KAILA to an entire new level of quality. Which keeps on happening and I'm very fortunate to see KAILA's quality exponentially growing over the time.
 
-Not only the team grew, as well as the people involved outside the team. We learned to collaborate with other software development teams, with sales department, marketing department, business department and so forth.
+Not only the team grew, as well as the people involved outside the team but within Karnov. We learned to collaborate with other software development teams, with sales department, marketing department, business department and so forth. 
 
-The identity of being approachable from the outside is something that is today seen as a given thing, but it took time and careful consideration to reach this point. For example, when recruiting new AI developer candidates, communication - and the skills to communicate complicated things simply - is essential in Karnov's process. It's very important that the AI team does not become a silo and I like to believe that we are - and have been - doing this correctly.
+Communication is a fundamental pilar of the AI team and its something that we strive to maintain and improve. I have worked in Data Science teams working in silos before and it was important to not make the same mistake. It's a quality that I'll take to any team in the future.  
+
+The identity of being approachable from the outside is something that is taken for granted nowadays, but it took time and careful consideration to reach this point. For example, when recruiting new AI developer candidates, communication - and the skills to communicate complicated things simply - became an essential and deciding factor for a given candidate. 
 
 ### The launch of KAILA
 
