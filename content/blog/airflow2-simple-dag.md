@@ -44,6 +44,7 @@ We start by defining the DAG and its parameters. We'll determine the interval in
 @dag(schedule_interval='@daily', start_date=days_ago(2))
 # The function name will be the ID of the DAG.
 # In this case, it's called `EXAMPLE_simple`.
+# In this case it's called `EXAMPLE_simple`.
 def EXAMPLE_simple():
 
 
@@ -106,6 +107,7 @@ def EXAMPLE_simple():
     def task_2(value):
         # Print the random number to the logs
         print(f'The randomly generated number is {value} .')
+        print(f'The randomly generated number is {value}.')
 
     # This will determine the direction of the tasks.
     # As you can see, task_2 runs after task_1 is done.
@@ -159,6 +161,7 @@ Success again 🎉!
 ### Run via terminal
 
 An alternative to the UI, when it comes to unpause and trigger and DAG, is straightforward. Knowing the ID of the DAG, then all we need is:
+An alternative to the UI, when it comes to unpause and trigger a DAG, is straightforward. Knowing the ID of the DAG, then all we need is:
 
 ```bash
 airflow dags unpause EXAMPLE_simple && airflow dags trigger EXAMPLE_simple
