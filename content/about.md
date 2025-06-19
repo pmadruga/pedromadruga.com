@@ -9,6 +9,7 @@ disableComments: true
 
 
 I'm the Lead AI Scientist at [Karnov Group](https://karnovgroup.com) - a 150-year-old European-wide company that provides information solutions in the areas of legal, tax, and auditing. I have been leading a (growing) team of AI scientists in the North Region.
+I'm the Lead AI Scientist at [Karnov Group](https://karnovgroup.com) - a 150-year-old European-wide company that provides information solutions in the areas of legal, tax, and auditing. I have been leading a growing team of AI scientists in the North Region.
 
 Starting in 2023, I have created, developed, and led an AI-powered legal research assistant that has been featured in several Danish newspapers ([Berlingske](https://www.berlingske.dk/virksomheder/kunstig-intelligens-er-for-alvor-rykket-ind-paa-advokatkontoret-vi-er), [Børsen](https://borsen.dk/nyheder/tech/dansk-virksomhed-fra-1867-gar-i-offensiven-med-ai)), and is used by top law firms in Denmark as well as several courts in Sweden.
 
