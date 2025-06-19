@@ -21,5 +21,6 @@ I have briefly worked as a Data Analyst and have work featured on [Business Insi
 I have an engineering background. I studied Computer Engineering in the early 2000s, followed by a Master's Degree in Environmental Engineering (with specialization in Environmental Impacts). I have a Machine Learning course from [DTU](https://www.dtu.dk/english/continuing-education/courses/digital-competency-courses/machine-learning) - including a [final project](posts/machine-learning-heart-rate/).
 
 I love spending time with my family, running, and reading books. I have ran a couple of marathons and one ultra-marathon. Here's me ~running~ walking in the ultra-marathon (2023):
+I love spending time with my family, running, and reading books. I have run a couple of marathons and one ultra-marathon. Here's me ~running~ walking in the ultra-marathon (2023):
 
 ![About](/about.jpg)
