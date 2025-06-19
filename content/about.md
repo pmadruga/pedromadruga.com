@@ -8,7 +8,6 @@ disableComments: true
 {{< social_icons >}}
 
 
-I'm the Lead AI Scientist at [Karnov Group](https://karnovgroup.com) - a 150-year-old European-wide company that provides information solutions in the areas of legal, tax, and auditing. I have been leading a (growing) team of AI scientists in the North Region.
 I'm the Lead AI Scientist at [Karnov Group](https://karnovgroup.com) - a 150-year-old European-wide company that provides information solutions in the areas of legal, tax, and auditing. I have been leading a growing team of AI scientists in the North Region.
 
 Starting in 2023, I have created, developed, and led an AI-powered legal research assistant that has been featured in several Danish newspapers ([Berlingske](https://www.berlingske.dk/virksomheder/kunstig-intelligens-er-for-alvor-rykket-ind-paa-advokatkontoret-vi-er), [Børsen](https://borsen.dk/nyheder/tech/dansk-virksomhed-fra-1867-gar-i-offensiven-med-ai)), and is used by top law firms in Denmark as well as several courts in Sweden.
@@ -21,7 +20,6 @@ I have briefly worked as a Data Analyst and have work featured on [Business Insi
 
 I have an engineering background. I studied Computer Engineering in the early 2000s, followed by a Master's Degree in Environmental Engineering (with specialization in Environmental Impacts). I have a Machine Learning course from [DTU](https://www.dtu.dk/english/continuing-education/courses/digital-competency-courses/machine-learning) - including a [final project](posts/machine-learning-heart-rate/).
 
-I love spending time with my family, running, and reading books. I have ran a couple of marathons and one ultra-marathon. Here's me ~running~ walking in the ultra-marathon (2023):
 I love spending time with my family, running, and reading books. I have run a couple of marathons and one ultra-marathon. Here's me ~running~ walking in the ultra-marathon (2023):
 
 ![About](/about.jpg)
