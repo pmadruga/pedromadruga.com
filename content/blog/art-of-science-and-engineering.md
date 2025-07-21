@@ -2,7 +2,7 @@
 title: "The art of (AI) science and engineering - an intro"
 date: 2025-07-21T11:30:03+00:00
 type: "blog"
-draft: true
+draft: false
 description: "A few thoughts about SIGIR 2025 and how to apply academic research in the industry."
 cover:
   image: "/posts/sigir2025.jpg"
