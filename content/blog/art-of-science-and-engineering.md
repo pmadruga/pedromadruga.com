@@ -18,7 +18,7 @@ cover:
 > 
 ― Richard Hamming, The Art of Doing Science and Engineering
 
-Just returned from Padova after attending [SIGIR 2025](https://sigir2025.dei.unipd.it/), the most prestigious conference on Information Retrieval (IR) in the world (A* CORE Ranking). An experience full of learnings - but I was struck by the amount of research that could be applied in the industry already. It's evident that the gap between research and industry is incredibly narrow.
+Just returned from Padova after attending [SIGIR 2025](https://sigir2025.dei.unipd.it/), the most prestigious conference on Information Retrieval (IR) in the world (A* CORE Ranking). An experience full of learnings - but I was struck by the amount of research that could be applied in the industry already. It's evident that the gap between research and industry is incredibly narrow nowadays.
 
 A bit of context: Where LLMs fall short on things like actual and truthful answers - two essential factors for the legal industry -, IR capabilities come to the rescue. The rapid pace of AI development (especially in IR) demands a tight integration between research and product development. In other words, experimentation must be embedded into product development, not treated as an afterthought, a nuisance or a nice-to-have.
 
