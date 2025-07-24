@@ -1,18 +1,5 @@
-/* include charter font family as a type of font */
-
-/* @font-face {
-    font-family: 'Charter';
-    src: url('/fonts/charter_regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-} */
-
-
 body {
-  /* font-family: "Charter", serif; */
-  /* font-family: apple, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple; */
-  font-family: 'Noto Sans', palatino linotype, system-ui, segoe ui, sans-serif;
-  /* font-family: 'Noto Sans', system-ui, segoe ui, sans-serif !important; */
+  font-family: 'Atkinson Hyperlegible', apple, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, sans-serif, apple;
 
   font-size: 1.1em;
   line-height: 1.5;
