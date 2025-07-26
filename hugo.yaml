@@ -133,10 +133,10 @@ menu:
       name: cv
       url: /cv/
       weight: 40
-    - identifier: search
-      name: search
-      url: /search/
-      weight: 40
+    # - identifier: search
+    #   name: search
+    #   url: /search/
+    #   weight: 40
     - identifier: contact
       name: contact
       url: /contact/
