@@ -6,6 +6,10 @@ body {
   /* background: var(--code-bg); */
 }
 
+.list {
+  background: var(--theme);
+}
+
 h1 {
   margin-bottom: 2.5rem;
 }
