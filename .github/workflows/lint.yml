@@ -1,0 +1,35 @@
+name: Lint Code Base
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Linting
+        run: npm run lint
+
+      - name: Run Formatting Check
+        run: npm run format -- --check
+
+      - name: Run Markdown Lint
+        run: npx markdownlint '**/*.md' --config .markdownlint.yaml
+
+      - name: Run Hugo Lint (if available)
+        run: |
+          if command -v hugo &> /dev/null; then
+            hugo lint
+          else
+            echo "Hugo not installed, skipping Hugo lint"
+          fi
