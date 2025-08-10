@@ -18,7 +18,7 @@ Spearheading AI research and innovation, I collaborated closely with business st
 ---
 
 ### **Senior AI Developer**, `Karnov Group AB`
-October 2022 - December 2024 • _Copenhagen, Denmark_
+October 2022 - September 2024 • _Copenhagen, Denmark_
 
 Created KAILA, an agentic GenAI-based conversational legal assistant, growing its document capacity from 5k to 3.5M and delivered in six months.
 

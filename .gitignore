@@ -5,3 +5,7 @@
 # Local Netlify folder
 .netlify
 .aider*
+
+# Node modules
+node_modules/
+package-lock.json

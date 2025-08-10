@@ -1,0 +1,4 @@
+# markdownlint-cli2 configuration - uses .markdownlint.json for rules
+# Additional ignore patterns (beyond .gitignore)
+ignores:
+  - ".aider.chat.history.md"
