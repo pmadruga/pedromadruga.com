@@ -1,0 +1,15 @@
+{
+  "name": "pedromadruga-website",
+  "version": "1.0.0",
+  "description": "Pedro Madruga's personal website",
+  "scripts": {
+    "lint": "markdownlint-cli2 'content/**/*.md' 'README.md'",
+    "lint:fix": "markdownlint-cli2 --fix 'content/**/*.md' 'README.md'",
+    "format": "prettier --write '**/*.{json,yaml,yml}'",
+    "format:check": "prettier --check '**/*.{json,yaml,yml}'"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.13.0",
+    "prettier": "^3.2.5"
+  }
+}
