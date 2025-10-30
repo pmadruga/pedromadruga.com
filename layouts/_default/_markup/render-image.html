@@ -1,0 +1,67 @@
+{{- /* Image render hook with modern format support and responsive images */ -}}
+{{- $img := .Page.Resources.GetMatch .Destination -}}
+{{- $alt := .Text -}}
+{{- $title := .Title -}}
+
+{{- if $img -}}
+  {{- /* Define responsive widths */ -}}
+  {{- $widths := slice 400 800 1200 1600 -}}
+
+  {{- /* Get image dimensions */ -}}
+  {{- $width := $img.Width -}}
+  {{- $height := $img.Height -}}
+
+  <picture>
+    {{- /* Generate AVIF sources if Hugo supports it */ -}}
+    {{- if ge hugo.Version "0.104.0" -}}
+    <source
+      type="image/avif"
+      srcset="
+        {{- range $i, $w := $widths -}}
+          {{- if le $w $width -}}
+            {{- $resized := $img.Resize (printf "%dx avif q85" $w) -}}
+            {{- $resized.RelPermalink }} {{ $w }}w
+            {{- if ne $i (sub (len $widths) 1) -}}, {{ end -}}
+          {{- end -}}
+        {{- end -}}"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+    />
+    {{- end -}}
+
+    {{- /* Generate WebP sources */ -}}
+    <source
+      type="image/webp"
+      srcset="
+        {{- range $i, $w := $widths -}}
+          {{- if le $w $width -}}
+            {{- $resized := $img.Resize (printf "%dx webp q85" $w) -}}
+            {{- $resized.RelPermalink }} {{ $w }}w
+            {{- if ne $i (sub (len $widths) 1) -}}, {{ end -}}
+          {{- end -}}
+        {{- end -}}"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+    />
+
+    {{- /* Fallback to original format */ -}}
+    <img
+      src="{{ $img.RelPermalink }}"
+      alt="{{ $alt }}"
+      {{- with $title }} title="{{ . }}"{{ end }}
+      width="{{ $width }}"
+      height="{{ $height }}"
+      loading="lazy"
+      decoding="async"
+      {{- /* Add fetchpriority=high for first image */ -}}
+      {{- if eq .Ordinal 0 }} fetchpriority="high"{{ end }}
+    />
+  </picture>
+{{- else -}}
+  {{- /* External image or resource not found - use simple img tag */ -}}
+  <img
+    src="{{ .Destination | safeURL }}"
+    alt="{{ $alt }}"
+    {{- with $title }} title="{{ . }}"{{ end }}
+    loading="lazy"
+    decoding="async"
+  />
+{{- end -}}

@@ -1,0 +1,39 @@
+{{- /* JSON-LD structured data for blog posts */ -}}
+{{- if eq .Type "blog" -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | jsonify }}{{ end }},
+  "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": {{ .Site.Title | jsonify }},
+    "url": {{ .Site.BaseURL | jsonify }}
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": {{ .Site.Title | jsonify }},
+    "url": {{ .Site.BaseURL | jsonify }}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink | jsonify }}
+  },
+  {{- with .Params.images -}}
+  "image": {{ index . 0 | absURL | jsonify }},
+  {{- else -}}
+  {{- with .Site.Params.images -}}
+  "image": {{ index . 0 | absURL | jsonify }},
+  {{- end -}}
+  {{- end -}}
+  "keywords": {{ with .Params.tags }}{{ delimit . ", " | jsonify }}{{ else }}{{ .Site.Params.keywords | jsonify }}{{ end }},
+  "articleSection": "{{ .Section }}",
+  "url": {{ .Permalink | jsonify }},
+  "wordCount": {{ .WordCount }},
+  "inLanguage": "{{ .Site.LanguageCode }}"
+}
+</script>
+{{- end -}}

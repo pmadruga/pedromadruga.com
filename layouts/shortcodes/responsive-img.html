@@ -1,0 +1,63 @@
+{{- /*
+  Responsive image shortcode with modern formats
+  Usage: {{< responsive-img src="image.jpg" alt="Description" priority="high" >}}
+*/ -}}
+
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $priority := .Get "priority" | default "auto" -}}
+{{- $class := .Get "class" | default "" -}}
+
+{{- $img := .Page.Resources.GetMatch $src -}}
+
+{{- if $img -}}
+  {{- $widths := slice 400 800 1200 1600 -}}
+  {{- $width := $img.Width -}}
+  {{- $height := $img.Height -}}
+
+  <picture{{ with $class }} class="{{ . }}"{{ end }}>
+    {{- /* AVIF format */ -}}
+    {{- if ge hugo.Version "0.104.0" -}}
+    <source
+      type="image/avif"
+      srcset="
+        {{- range $i, $w := $widths -}}
+          {{- if le $w $width -}}
+            {{- $resized := $img.Resize (printf "%dx avif q85" $w) -}}
+            {{- $resized.RelPermalink }} {{ $w }}w
+            {{- if ne $i (sub (len $widths) 1) -}}, {{ end -}}
+          {{- end -}}
+        {{- end -}}"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+    />
+    {{- end -}}
+
+    {{- /* WebP format */ -}}
+    <source
+      type="image/webp"
+      srcset="
+        {{- range $i, $w := $widths -}}
+          {{- if le $w $width -}}
+            {{- $resized := $img.Resize (printf "%dx webp q85" $w) -}}
+            {{- $resized.RelPermalink }} {{ $w }}w
+            {{- if ne $i (sub (len $widths) 1) -}}, {{ end -}}
+          {{- end -}}
+        {{- end -}}"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+    />
+
+    {{- /* Original format fallback */ -}}
+    <img
+      src="{{ $img.RelPermalink }}"
+      alt="{{ $alt }}"
+      width="{{ $width }}"
+      height="{{ $height }}"
+      {{- if eq $priority "high" }} fetchpriority="high"{{ end }}
+      {{- if eq $priority "low" }} loading="lazy"{{ end }}
+      {{- if ne $priority "high" }} loading="lazy"{{ end }}
+      decoding="async"
+    />
+  </picture>
+{{- else -}}
+  <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
+{{- end -}}

@@ -1,8 +1,20 @@
 {{- /* Head custom content area start */ -}}
+
+{{- /* Preconnect to external domains for faster resource loading */ -}}
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+{{- /* Load fonts with display=swap to prevent FOIT (Flash of Invisible Text) */ -}}
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
+
+{{- /* SEO: Structured Data */ -}}
+{{- partial "seo/schema-website.html" . -}}
+{{- partial "seo/schema-blog.html" . -}}
+{{- partial "seo/schema-breadcrumb.html" . -}}
+{{- partial "seo/opengraph.html" . -}}
+
 <style>
 </style>
-
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
 
 {{- /* Insert any custom code (web-analytics, resources, etc.) - it will appear
 in the <head></head> section of every page. */ -}} {{- /* Can be overwritten by

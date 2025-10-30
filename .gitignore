@@ -9,3 +9,11 @@
 # Node modules
 node_modules/
 package-lock.json
+
+# Hugo
+/public/
+/resources/
+.hugo_build.lock
+
+# Theme backups
+.theme-backups/

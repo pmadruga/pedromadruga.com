@@ -12,6 +12,14 @@ minify:
   disableXML: true
   minifyOutput: true
 
+# Image processing configuration for optimization
+imaging:
+  resampleFilter: "Lanczos"
+  quality: 85
+  anchor: "Smart"
+  bgColor: "#ffffff"
+  hint: "photo"
+
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Pedro Madruga

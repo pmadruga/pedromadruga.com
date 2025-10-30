@@ -6,7 +6,11 @@
     "lint": "markdownlint-cli2 'content/**/*.md' 'README.md'",
     "lint:fix": "markdownlint-cli2 --fix 'content/**/*.md' 'README.md'",
     "format": "prettier --write '**/*.{json,yaml,yml}'",
-    "format:check": "prettier --check '**/*.{json,yaml,yml}'"
+    "format:check": "prettier --check '**/*.{json,yaml,yml}'",
+    "theme:update": "bash scripts/update-theme.sh --update --test",
+    "theme:update-safe": "bash scripts/update-theme.sh --update",
+    "theme:rollback": "bash scripts/update-theme.sh --rollback",
+    "theme:list-backups": "bash scripts/update-theme.sh --list-backups"
   },
   "devDependencies": {
     "markdownlint-cli2": "^0.13.0",
