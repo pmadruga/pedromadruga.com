@@ -5,7 +5,7 @@ type: "blog"
 draft: false
 description: "A few thoughts about SIGIR 2025 and how to apply academic research by experimenting in the industry."
 cover:
-  image: "/posts/sigir2025.jpg"
+  image: "sigir2025.jpg"
   # can also paste direct link from external site
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
   alt: "SIGIR 2025 - (c) pedromadruga.com"

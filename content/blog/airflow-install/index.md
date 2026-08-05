@@ -4,7 +4,7 @@ description: "Step-by-step guide to installing Apache Airflow 2 on a Raspberry P
 date: 2021-07-21T11:30:03+00:00
 type: "blog"
 cover:
-  image: "/posts/airflow2.png"
+  image: "airflow2.png"
   # can also paste direct link from external site
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
   alt: "Airflow 2"
@@ -106,7 +106,7 @@ airflow users create \
 
 Once authenticated, it's now possible to see the main screen:
 
-![Airflow main](/posts/airflow1.png)
+![Airflow main](airflow1.png)
 
 **And that's it - you've now installed Airflow!** Optionally, you can take extra steps.
 
