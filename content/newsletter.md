@@ -1,5 +1,6 @@
 ---
 title: "Newsletter" # in any language you want
+description: "Subscribe to Pedro Madruga's newsletter — blog posts on industry-applied AI, delivered to your inbox."
 showtoc: false
 weight: 1
 ShowReadingTime: false
@@ -25,7 +26,7 @@ Opinions are and will always be my own.
     <form class="newsletter-placeholder embeddable-buttondown-form"
         action="https://buttondown.email/api/emails/embed-subscribe/pedromadruga"
         method="post" target="popupwindow" id="bd-email">
-        <label for="bd-email_input"></label>
+        <label for="bd-email_input" class="sr-only">Email address</label>
         <input type="email" name="email" id="bd-email_input" class="button" placeholder="e-mail" />
         <input type="hidden" value="1" name="embed" />
         <button type="submit" class="button button-newsletter">Subscribe </button>

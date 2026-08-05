@@ -7,14 +7,9 @@
 {{- /* Load fonts with display=swap to prevent FOIT (Flash of Invisible Text) */ -}}
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-{{- /* SEO: Structured Data */ -}}
+{{- /* SEO: homepage WebSite/SearchAction schema. Article, breadcrumb,
+opengraph and twitter metadata come from the theme's head.html. */ -}}
 {{- partial "seo/schema-website.html" . -}}
-{{- partial "seo/schema-blog.html" . -}}
-{{- partial "seo/schema-breadcrumb.html" . -}}
-{{- partial "seo/opengraph.html" . -}}
-
-<style>
-</style>
 
 {{- /* Insert any custom code (web-analytics, resources, etc.) - it will appear
 in the <head></head> section of every page. */ -}} {{- /* Can be overwritten by

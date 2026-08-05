@@ -69,10 +69,10 @@ params:
     enabled: true # needs to be explicitly set
     title: "Hello world, \n\n I'm Pedro."
     subtitle: 'AI Scientist living in Denmark.'
-    imageUrl: '/profile5.jpeg'
+    imageUrl: 'images/profile5.jpeg'
     imageWidth: 250
     imageHeight: 250
-    imageTitle: profile
+    imageTitle: 'Portrait of Pedro Madruga'
 
   # home-info mode
   homeInfoParams:
@@ -141,10 +141,10 @@ menu:
     #   name: cv
     #   url: /cv/
     #   weight: 40
-    # - identifier: search
-    #   name: search
-    #   url: /search/
-    #   weight: 40
+    - identifier: search
+      name: search
+      url: /search/
+      weight: 45
     - identifier: contact
       name: contact
       url: /contact/
