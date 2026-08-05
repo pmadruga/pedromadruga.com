@@ -33,7 +33,7 @@
   "articleSection": "{{ .Section }}",
   "url": {{ .Permalink | jsonify }},
   "wordCount": {{ .WordCount }},
-  "inLanguage": "{{ .Site.LanguageCode }}"
+  "inLanguage": "{{ .Site.Language.Locale }}"
 }
 </script>
 {{- end -}}

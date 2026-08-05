@@ -3,12 +3,11 @@
   const topButton = document.getElementById("top-link");
   if (topButton) {
     window.onscroll = function() {
-      if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-        topButton.style.visibility = "visible";
-        topButton.style.opacity = "1";
+      const scrollThreshold = window.innerHeight;
+      if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+        topButton.classList.remove("hidden");
       } else {
-        topButton.style.visibility = "hidden";
-        topButton.style.opacity = "0";
+        topButton.classList.add("hidden");
       }
     };
   }

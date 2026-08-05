@@ -21,13 +21,8 @@
     {{- end }}
   </h1>
   <div class="post-description">
-    {{ .Description }} Subscribe to my <a class="description-link" href="/newsletter/">newsletter</a> and get these posts in your inbox.
+    {{ with .Description }}{{ . }} {{ end }}Subscribe to my <a class="description-link" href="/newsletter/">newsletter</a> and get these posts in your inbox.
   </div>
-  {{- if .Description }}
-  <div class="post-description">
-    {{ .Description }} 
-  </div>
-  {{- end }}
 </header>
 
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
