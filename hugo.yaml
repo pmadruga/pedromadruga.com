@@ -1,7 +1,7 @@
-baseURL: http://pedromadruga.com/
+baseURL: https://pedromadruga.com/
 languageCode: en-us
 title: Pedro Madruga
-theme: "PaperMod"
+theme: 'PaperMod'
 
 enableRobotsTXT: true
 buildDrafts: false
@@ -14,22 +14,22 @@ minify:
 
 # Image processing configuration for optimization
 imaging:
-  resampleFilter: "Lanczos"
+  resampleFilter: 'Lanczos'
   quality: 85
-  anchor: "Smart"
-  bgColor: "#ffffff"
-  hint: "photo"
+  anchor: 'Smart'
+  bgColor: '#ffffff'
+  hint: 'photo'
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Pedro Madruga
-  description: "Pedro Madruga - personal website and AI-related blog."
-  keywords: [Blog, Data Science, Machine Learning, Artificial Intelligence ]
+  description: 'Pedro Madruga - personal website and AI-related blog.'
+  keywords: [Blog, Data Science, Machine Learning, Artificial Intelligence]
   # author: pmadruga
   # author: ["Me", "You"] # multiple authors
   # images: ["<link or path of image for opengraph, twitter-cards>"]
 
-  DateFormat: "January 2, 2006"
+  DateFormat: 'January 2, 2006'
   defaultTheme: auto # dark, light
   disableThemeToggle: false
 
@@ -68,8 +68,8 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: "Hello world, \n\n I'm Pedro."
-    subtitle: "AI Scientist living in Denmark."
-    imageUrl: "/profile5.jpeg"
+    subtitle: 'AI Scientist living in Denmark.'
+    imageUrl: '/profile5.jpeg'
     imageWidth: 250
     imageHeight: 250
     imageTitle: profile
@@ -85,23 +85,22 @@ params:
     # - name: newsletter
     #   url: https://pedromadruga.com/newsletter
     - name: mastodon
-      url: "https://sigmoid.social/@pmadruga"
+      url: 'https://sigmoid.social/@pmadruga'
     # - name: medium
     #  url: "https://medium.com/@pmadruga"
     - name: github
-      url: "https://github.com/pmadruga"
+      url: 'https://github.com/pmadruga'
     # - name: stackoverflow
     #   url: "https://stackoverflow.com/users/12418383"
     - name: linkedin
-      url: "https://www.linkedin.com/in/pedromadruga"
+      url: 'https://www.linkedin.com/in/pedromadruga'
     - name: rss
-      url: "https://pedromadruga.com/blog/index.xml"
+      url: 'https://pedromadruga.com/blog/index.xml'
 
   # analytics:
   #   google:
   #     SiteVerificationTag: "XYZabc"
 
-  
   cover:
     hidden: true # hide everywhere but not in structured data
     hiddenInList: true # hide on list pages and home
@@ -109,8 +108,8 @@ params:
     responsiveImages: true
 
   editPost:
-    URL: "https://github.com/pmadruga/pedromadruga.com/tree/master/content"
-    Text: "Suggest Changes" # edit text
+    URL: 'https://github.com/pmadruga/pedromadruga.com/tree/master/content'
+    Text: 'Suggest Changes' # edit text
     appendFilePath: false # to append file path to Edit link
 
   # for search
@@ -122,7 +121,7 @@ params:
     distance: 1000
     threshold: 0.4
     minMatchCharLength: 0
-    keys: ["title", "permalink", "summary", "content"]
+    keys: ['title', 'permalink', 'summary', 'content']
 menu:
   main:
     - identifier: blog
@@ -149,7 +148,7 @@ menu:
       name: contact
       url: /contact/
       weight: 50
-   
+
 #    - identifier: about
 #      name: about
 #      url: /about/
@@ -162,14 +161,14 @@ menu:
 #      name: newsletter
 #      url: /newsletter/
 #      weight: 20
-    # - identifier: experiment
-    #   name: experiment
-    #   url: /experiment/
-    #   weight: 20
-    # - identifier: example
-    #   name: example.org
-    #   url: https://example.org
-    #   weight: 30
+# - identifier: experiment
+#   name: experiment
+#   url: /experiment/
+#   weight: 20
+# - identifier: example
+#   name: example.org
+#   url: https://example.org
+#   weight: 30
 
 outputs:
   home:

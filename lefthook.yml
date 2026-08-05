@@ -1,0 +1,9 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint-markdown:
+      glob: '*.md'
+      run: bunx markdownlint-cli2 {staged_files}
+    check-formatting:
+      glob: '*.{json,yaml,yml}'
+      run: bunx prettier --check {staged_files}

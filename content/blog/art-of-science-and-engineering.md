@@ -15,7 +15,7 @@ cover:
 
 > ***"In science if you know what you are doing you should not be doing it.
 > In engineering if you do not know what you are doing you should not be doing it.*”**
-> 
+>
 ― Richard Hamming, The Art of Doing Science and Engineering
 
 Just returned from Padova after attending [SIGIR 2025](https://sigir2025.dei.unipd.it/), the most prestigious conference on Information Retrieval (IR) in the world (A* CORE Ranking). An experience full of learnings - but I was struck by the amount of research that could be applied in the industry already. It's evident that the gap between research and industry is incredibly narrow nowadays.
@@ -26,10 +26,10 @@ Only experimentation will determine whether something from academia is applicabl
 
 And the dance between science and engineering is a very hard dance to dance; but far from impossible.
 
-Traditional approaches handle experiments "when there's time" and some claim "it takes too long", not understanding that they're creating AI legacy by doing that. AI development is far more fluid and experimental than traditional development. Unknowns happen way more often and some scramble for safety - which comes in the form of confidence. However, confidence is still being mistaken for competence. 
+Traditional approaches handle experiments "when there's time" and some claim "it takes too long", not understanding that they're creating AI legacy by doing that. AI development is far more fluid and experimental than traditional development. Unknowns happen way more often and some scramble for safety - which comes in the form of confidence. However, confidence is still being mistaken for competence.
 
-There's also a trade-off here (hence being a dance): too much experimentation and there's a risk of low rate of productionalization, whereas too much engineering and there's a risk of AI legacy. The companies who release products in tune with this balance between science and engineering will come out on top. 
+There's also a trade-off here (hence being a dance): too much experimentation and there's a risk of low rate of productionalization, whereas too much engineering and there's a risk of AI legacy. The companies who release products in tune with this balance between science and engineering will come out on top.
 
-But for now, in my role, I have to find what AI capabilities are there that can benefit our customers. And SIGIR was the perfect place for that. There's a lot to unpack in this topic which I'll keep writing about. Feel free to follow me [here](/newsletter).
+But for now, in my role, I have to find what AI capabilities are there that can benefit our customers. And SIGIR was the perfect place for that. There's a lot to unpack in this topic which I'll keep writing about. Feel free to follow me [here](/newsletter/).
 
 Thanks to Karnov for enabling this learning opportunity at SIGIR 2025 in Padova.
