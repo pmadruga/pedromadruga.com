@@ -2,7 +2,24 @@
   "default": true,
   "MD013": false,
   "MD033": {
-    "allowed_elements": ["br", "sup", "sub", "kbd", "details", "summary", "img", "a", "div", "span", "iframe", "script"]
+    "allowed_elements": [
+      "br",
+      "sup",
+      "sub",
+      "kbd",
+      "details",
+      "summary",
+      "img",
+      "a",
+      "div",
+      "span",
+      "iframe",
+      "script",
+      "form",
+      "label",
+      "input",
+      "button"
+    ]
   },
   "MD041": false,
   "MD025": true,
@@ -30,5 +47,6 @@
   "MD047": true,
   "MD007": {
     "indent": 2
-  }
+  },
+  "MD059": false
 }

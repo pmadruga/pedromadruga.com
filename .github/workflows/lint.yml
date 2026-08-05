@@ -1,34 +1,89 @@
-name: Lint Code Base
+name: CI
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+    paths:
+      - 'content/**'
+      - 'layouts/**'
+      - 'assets/**'
+      - 'static/**'
+      - 'hugo.yaml'
+      - 'package.json'
+      - '.markdownlint.json'
+      - '.prettierrc'
+
+permissions:
+  contents: read
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
 
       - name: Install Dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
-      - name: Run Markdown Lint
-        run: npm run lint
+      - name: Markdown Lint
+        run: bun run lint
 
-      - name: Run Formatting Check
-        run: npm run format:check
+      - name: Formatting Check
+        run: bun run format:check
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: true
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
         with:
-          hugo-version: 'latest'
+          hugo-version: '0.147.8'
           extended: true
 
-      - name: Run Hugo Build Check
+      - name: Cache Hugo Resources
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            resources/
+            /tmp/hugo_cache/
+          key: hugo-${{ github.ref_name }}-${{ hashFiles('hugo.yaml', 'content/**', 'layouts/**') }}
+          restore-keys: |
+            hugo-${{ github.ref_name }}-
+
+      - name: Build Site
         run: hugo --minify --buildDrafts=false
+
+      - name: Cache htmltest
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: /usr/local/bin/htmltest
+          key: htmltest-0.17.0
+
+      - name: Install htmltest
+        run: |
+          if [ ! -f /usr/local/bin/htmltest ]; then
+            HTMLTEST_VERSION=0.17.0
+            BASE="https://github.com/wjdp/htmltest/releases/download/v${HTMLTEST_VERSION}"
+            ARCHIVE="htmltest_${HTMLTEST_VERSION}_linux_amd64.tar.gz"
+            curl -sSL -o "$ARCHIVE" "$BASE/$ARCHIVE"
+            curl -sSL -o checksums.txt "$BASE/htmltest_${HTMLTEST_VERSION}_checksums.txt"
+            grep " ${ARCHIVE}\$" checksums.txt | sha256sum -c -
+            tar xzf "$ARCHIVE" -C /usr/local/bin htmltest
+            rm -f "$ARCHIVE" checksums.txt
+          fi
+
+      - name: HTML Validation
+        # No path arg: htmltest only honours .htmltest.yml when invoked
+        # without one (DirectoryPath/CheckExternal/IgnoreURLs come from there).
+        run: htmltest

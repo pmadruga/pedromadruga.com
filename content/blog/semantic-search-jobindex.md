@@ -66,14 +66,14 @@ The computations are made in a Macbook Pro 2016 model.
 
 The preprocessing included several subtasks:
 
-1.  Lower casing of words
-2.  Lemmatization
-3.  Stemming
-4.  Removing stop words in Danish
+1. Lower casing of words
+2. Lemmatization
+3. Stemming
+4. Removing stop words in Danish
 
 Apart from lemmatization and stemming — already explained in the Introduction — it’s necessary to remove stop words. Stop words are common words in a given language. Some of the danish stop words are:
 
-```
+```text
 'og', 'i', 'jeg', 'det', 'at', 'en', 'den',
 ```
 
@@ -123,7 +123,7 @@ The [github repository](https://github.com/pmadruga/ds-jobindex) shows the prepr
 
 A few different types of examples of job searches are used to compare the different approaches. A concise query term is the first example, followed by a medium (2 words) and finished by a long query (3+ words), as shown below:
 
-### Example 1 — “_kok_”:
+### Example 1 — “_kok_”
 
 This search query translates as “chef”.
 
@@ -133,23 +133,23 @@ In this example, all models are compared, including also the results from Jobind
 
 Several conclusions are drawn from studying the first results table:
 
-1.  The results from Jobindex.dk are not bad, since a few of them include the word “kok” or “køkken”. However, they are not in order. Also, they are interspersed with unrelated job titles, such as “Sygeplejerske” on result #3 and #8.
-2.  Direct search (using the algorithm above) presents quite good results. All of the results include the word kok.
-3.  TFIDF presents relatively good results, but some noise as well.
-4.  BERT returns a lot of noise, with only one good result.
+1. The results from Jobindex.dk are not bad, since a few of them include the word “kok” or “køkken”. However, they are not in order. Also, they are interspersed with unrelated job titles, such as “Sygeplejerske” on result #3 and #8.
+2. Direct search (using the algorithm above) presents quite good results. All of the results include the word kok.
+3. TFIDF presents relatively good results, but some noise as well.
+4. BERT returns a lot of noise, with only one good result.
 
 The main reason for the TFIDF and BERT present noise is because when they are processed, the description of the job postings is included. Some descriptions are not representative of the actual job title. However, the Direct Search results do not include job descriptions, hence the good results. But what happens when search queries become more specific and more complex? Let’s take two more examples.
 
-### Example 2 — “_Fysioterapeut til neurorehabilitering_”:
+### Example 2 — “_Fysioterapeut til neurorehabilitering_”
 
 ![](/posts/1____2KvjtS8k8TAgxoKofR1EA.png)
 
 When the search query (“Fysioterapeut til neurorehabilitering”, in this case) starts getting longer, a few interpretations can be drawn, shown in the table above:
 
-1.  A few results returned via Jobindex.dk are irrelevant. The remaining results are in the health sector but still somewhat distant from the actual query.
-2.  Direct Search returns one result only since all the terms in the query are present in Direct Search results, but not more than those. This Direct Search result does not appear in the Jobindex results.
-3.  The first result from TFIDF is the actual query. The remainder of the results is also quite relevant since they revolve around Neurorehabilitation and/or Therapists. It’s the first example where we get similar results to the actual query, without using words from the initial query.
-4.  BERT also presents outstanding results. The first result matches the query and subsequent results demonstrate variations of the word “neurorehabilitering”, such as “neuropædiatri”, “Neurologi”,”Neuroteam” and “Neurologisk”.
+1. A few results returned via Jobindex.dk are irrelevant. The remaining results are in the health sector but still somewhat distant from the actual query.
+2. Direct Search returns one result only since all the terms in the query are present in Direct Search results, but not more than those. This Direct Search result does not appear in the Jobindex results.
+3. The first result from TFIDF is the actual query. The remainder of the results is also quite relevant since they revolve around Neurorehabilitation and/or Therapists. It’s the first example where we get similar results to the actual query, without using words from the initial query.
+4. BERT also presents outstanding results. The first result matches the query and subsequent results demonstrate variations of the word “neurorehabilitering”, such as “neuropædiatri”, “Neurologi”,”Neuroteam” and “Neurologisk”.
 
 It’s now possible to see that BERT exceeds in the quality of returned results. Specifically, the word “neurorehabilitation” is the area of expertise.
 
@@ -187,10 +187,10 @@ In this example, we’re searching for results for the query “advokat til ejen
 
 Here are the top four results:
 
-1.  _Jurist med speciale i fast ejendom til Københavns Ejendomme og Indkøb_
-2.  _Jurist med kendskab til erhvervslejeret og fast ejendom til Udlejning i Københavns Ejendomme & Indkøb_
-3.  _Jurist med kendskab til erhvervslejeret og fast ejendom til Udlejning hos Københavns Ejendomme & Indkøb_
-4.  _Advokatfuldmægtige til København_
+1. _Jurist med speciale i fast ejendom til Københavns Ejendomme og Indkøb_
+2. _Jurist med kendskab til erhvervslejeret og fast ejendom til Udlejning i Københavns Ejendomme & Indkøb_
+3. _Jurist med kendskab til erhvervslejeret og fast ejendom til Udlejning hos Københavns Ejendomme & Indkøb_
+4. _Advokatfuldmægtige til København_
 
 When it comes to relevance, there’s a clear distinction between “ejendomme” and “advokat”. “Jurist” results appear on top since what we want is the area of expertise and not the profession itself. In the last place, we have the “advokat”-related result. It’s noticeable that the results prioritise Copenhagen too: even though the location in search query was in English, the results returned contain the word “Københavns/København”.
 

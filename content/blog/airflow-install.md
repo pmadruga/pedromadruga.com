@@ -13,7 +13,7 @@ cover:
 
 Airflow is a tool commonly used for Data Engineering. It's great to orchestrate workflows. Version 2 of Airflow only supports Python 3+ versions, so we need to make sure that we use Python 3 to install it. We could probably install this on another Linux distribution, too.
 
-This is the first post of a series, where we'll build an **entire Data Engineering pipeline**. To follow this series, just **subscribe to the [newsletter](https://pedromadruga.com/newsletter)**.
+This is the first post of a series, where we'll build an **entire Data Engineering pipeline**. To follow this series, just **subscribe to the [newsletter](https://pedromadruga.com/newsletter/)**.
 
 ## Install dependencies
 
@@ -88,7 +88,7 @@ airflow db init
 
 It's now possible to run both the server and the scheduler:
 
-```
+```bash
 airflow webserver -p 8080 & airflow scheduler
 ```
 
@@ -121,72 +121,72 @@ In order to start both the webserver and the scheduler automatically on system b
 
 3. Edit both files. Firstly, `airflow-webserver.service` should look like:
 
-```bash
-[Unit]
-Description=Airflow webserver daemon
-After=network.target postgresql.service mysql.service redis.service rabbitmq-server.service
-Wants=postgresql.service mysql.service redis.service rabbitmq-server.service
+   ```bash
+   [Unit]
+   Description=Airflow webserver daemon
+   After=network.target postgresql.service mysql.service redis.service rabbitmq-server.service
+   Wants=postgresql.service mysql.service redis.service rabbitmq-server.service
 
-[Service]
-EnvironmentFile=/home/pi/airflow/env
-User=pi
-Group=pi
-Type=simple
-ExecStart=/bin/bash -c 'airflow webserver --pid /home/pi/airflow/webserver.pid'
-Restart=on-failure
-RestartSec=5s
-PrivateTmp=true
+   [Service]
+   EnvironmentFile=/home/pi/airflow/env
+   User=pi
+   Group=pi
+   Type=simple
+   ExecStart=/bin/bash -c 'airflow webserver --pid /home/pi/airflow/webserver.pid'
+   Restart=on-failure
+   RestartSec=5s
+   PrivateTmp=true
 
-[Install]
-WantedBy=multi-user.target
-```
+   [Install]
+   WantedBy=multi-user.target
+   ```
 
-Now moving on to edit `airflow-scheduler.service` file, which should look like:
+   Now moving on to edit `airflow-scheduler.service` file, which should look like:
 
-```bash
-[Unit]
-Description=Airflow scheduler daemon
-After=network.target postgresql.service mysql.service redis.service rabbitmq-server.service
-Wants=postgresql.service mysql.service redis.service rabbitmq-server.service
+   ```bash
+   [Unit]
+   Description=Airflow scheduler daemon
+   After=network.target postgresql.service mysql.service redis.service rabbitmq-server.service
+   Wants=postgresql.service mysql.service redis.service rabbitmq-server.service
 
-[Service]
-EnvironmentFile=/home/pi/airflow/env
-User=pi
-Group=pi
-Type=simple
-ExecStart=/bin/bash -c 'airflow scheduler'
-Restart=always
-RestartSec=5s
+   [Service]
+   EnvironmentFile=/home/pi/airflow/env
+   User=pi
+   Group=pi
+   Type=simple
+   ExecStart=/bin/bash -c 'airflow scheduler'
+   Restart=always
+   RestartSec=5s
 
-[Install]
-WantedBy=multi-user.target
-```
+   [Install]
+   WantedBy=multi-user.target
+   ```
 
-Notice that the `user` and `Group` have changed, as well as the `ExecStart`. You'll also notice that there's an `EnvironmentFile` that hasn't been created yet. That's what we'll do now.
+   Notice that the `user` and `Group` have changed, as well as the `ExecStart`. You'll also notice that there's an `EnvironmentFile` that hasn't been created yet. That's what we'll do now.
 
 4. Create an environment file. You can call it any name. I chose to call it `env` and placed it on the `/home/pi/airflow` folder. In other words:
 
-```
-cd ~/airflow
-touch env
-```
+   ```bash
+   cd ~/airflow
+   touch env
+   ```
 
-Edit the `env` file and place the contents:
+   Edit the `env` file and place the contents:
 
-```
-AIRFLOW_CONFIG=/home/pi/airflow/airflow.cfg
-AIRFLOW_HOME=/home/pi/airflow/
-```
+   ```ini
+   AIRFLOW_CONFIG=/home/pi/airflow/airflow.cfg
+   AIRFLOW_HOME=/home/pi/airflow/
+   ```
 
 5. Lastly, let's reload the system daemons:
 
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable airflow-webserver.service
-sudo systemctl enable airflow-scheduler.service
-sudo systemctl start airflow-webserver.service
-sudo systemctl start airflow-scheduler.service
-```
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl enable airflow-webserver.service
+   sudo systemctl enable airflow-scheduler.service
+   sudo systemctl start airflow-webserver.service
+   sudo systemctl start airflow-scheduler.service
+   ```
 
 ## That's it! What's next?
 
