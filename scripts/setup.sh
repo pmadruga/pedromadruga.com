@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-HUGO_VERSION="0.147.8"
+HUGO_VERSION="0.164.0"
 HTMLTEST_VERSION="0.17.0"
 BUN_VERSION="1.3.14"
 INSTALL_DIR="${HOME}/.local/bin"
