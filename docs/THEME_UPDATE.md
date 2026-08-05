@@ -5,6 +5,7 @@ This guide explains how to safely update the PaperMod Hugo theme using the autom
 ## Overview
 
 The theme update script (`scripts/update-theme.sh`) provides:
+
 - ✅ Automatic theme updates via git submodule
 - ✅ Backup creation before updates
 - ✅ Build testing after updates
@@ -20,6 +21,7 @@ npm run theme:update
 ```
 
 This command:
+
 1. Creates a backup of the current theme
 2. Updates to the latest PaperMod version
 3. Tests the Hugo build
@@ -103,7 +105,7 @@ bash scripts/update-theme.sh --rollback
 
 ### Backup Structure
 
-```
+```text
 .theme-backups/
 ├── PaperMod_20251030_143022/
 │   ├── .commit-hash          # Original commit
@@ -124,7 +126,7 @@ npm run theme:rollback
 
 You'll see a list of available backups:
 
-```
+```text
 Available backups:
   - PaperMod_20251030_143022 (commit: a1b2c3d4)
   - PaperMod_20251029_091545 (commit: e5f6g7h8)
@@ -152,6 +154,7 @@ bash scripts/update-theme.sh --rollback <<< "PaperMod_20251029_091545"
 **Problem:** Theme update encounters merge conflicts
 
 **Solution:**
+
 1. The script will automatically stop and show an error
 2. Your original theme is preserved in the backup
 3. Run rollback to restore: `npm run theme:rollback`
@@ -161,6 +164,7 @@ bash scripts/update-theme.sh --rollback <<< "PaperMod_20251029_091545"
 **Problem:** Hugo build fails with the new theme version
 
 **Solution:**
+
 1. If you used `--test`, rollback happens automatically
 2. If not, manually rollback: `npm run theme:rollback`
 3. Report the issue to PaperMod: https://github.com/adityatelange/hugo-PaperMod/issues
@@ -188,6 +192,7 @@ git submodule update --init --recursive
 **Problem:** "No backups found" when trying to rollback
 
 **Solution:**
+
 - Backups are only created when using the update script
 - If you manually updated, there's no backup
 - The theme submodule uses git, so you can still use: `cd themes/PaperMod && git log` to see history
@@ -197,12 +202,14 @@ git submodule update --init --recursive
 ### Before Updating
 
 1. **Commit your changes**
+
    ```bash
    git add .
    git commit -m "Save work before theme update"
    ```
 
 2. **Check current version**
+
    ```bash
    cd themes/PaperMod
    git describe --tags
@@ -216,6 +223,7 @@ git submodule update --init --recursive
 ### After Updating
 
 1. **Test locally**
+
    ```bash
    hugo serve -D
    ```
@@ -289,7 +297,7 @@ Your customizations override theme defaults and won't be affected by updates.
 
 ## Script Options Reference
 
-```
+```text
 Usage: scripts/update-theme.sh [OPTIONS]
 
 OPTIONS:

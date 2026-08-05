@@ -1,4 +1,49 @@
-# markdownlint-cli2 configuration - uses .markdownlint.json for rules
-# Additional ignore patterns (beyond .gitignore)
+# markdownlint-cli2 configuration (rules + ignores in one place)
+config:
+  default: true
+  MD001: true
+  MD007:
+    indent: 2
+  MD009: true
+  MD012:
+    maximum: 2
+  MD013: false
+  MD022: true
+  MD024:
+    siblings_only: true
+  MD025: true
+  MD026: true
+  MD029: true
+  MD030:
+    ul_single: 1
+    ol_single: 1
+    ul_multi: 1
+    ol_multi: 1
+  MD033:
+    allowed_elements:
+      - br
+      - sup
+      - sub
+      - kbd
+      - details
+      - summary
+      - img
+      - a
+      - div
+      - span
+      - iframe
+      - script
+      - form
+      - label
+      - input
+      - button
+  MD034: false
+  MD040: true
+  MD041: false
+  MD045: false
+  MD047: true
+  MD049: true
+  MD059: false
+
 ignores:
   - '.aider.chat.history.md'

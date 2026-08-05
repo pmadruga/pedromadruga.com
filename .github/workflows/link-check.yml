@@ -1,0 +1,43 @@
+name: Link Check
+
+on:
+  schedule:
+    # Mondays at 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  external-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: true
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
+        with:
+          hugo-version: '0.164.0'
+          extended: true
+
+      - name: Build Site
+        run: hugo --minify --buildDrafts=false
+
+      - name: Install htmltest
+        run: |
+          HTMLTEST_VERSION=0.17.0
+          BASE="https://github.com/wjdp/htmltest/releases/download/v${HTMLTEST_VERSION}"
+          ARCHIVE="htmltest_${HTMLTEST_VERSION}_linux_amd64.tar.gz"
+          curl -sSL -o "$ARCHIVE" "$BASE/$ARCHIVE"
+          curl -sSL -o checksums.txt "$BASE/htmltest_${HTMLTEST_VERSION}_checksums.txt"
+          grep " ${ARCHIVE}\$" checksums.txt | sha256sum -c -
+          tar xzf "$ARCHIVE" -C /usr/local/bin htmltest
+          rm -f "$ARCHIVE" checksums.txt
+
+      - name: Check External Links
+        run: htmltest --conf .htmltest.external.yml

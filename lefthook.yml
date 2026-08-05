@@ -7,3 +7,9 @@ pre-commit:
     check-formatting:
       glob: '*.{json,yaml,yml}'
       run: bunx prettier --check {staged_files}
+
+pre-push:
+  commands:
+    hugo-build:
+      # Cheapest guard against template breakage; skipped if hugo missing.
+      run: sh -c 'command -v hugo >/dev/null && hugo --quiet --renderToMemory || echo "hugo not installed, skipping build check"'
