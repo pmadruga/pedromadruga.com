@@ -2,6 +2,11 @@
   publish = "public"
   command = "hugo --gc --minify"
 
+# NODE_VERSION: the build image defaults to an ancient Node (12.x), which
+# breaks Netlify extensions (e.g. prerender pulls in puppeteer, Node >= 18).
+[build.environment]
+  NODE_VERSION = "20"
+
 [context.production.environment]
   HUGO_VERSION = "0.147.8"
   HUGO_ENV = "production"
