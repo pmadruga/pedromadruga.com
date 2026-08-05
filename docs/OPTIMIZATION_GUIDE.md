@@ -5,6 +5,7 @@ This document describes the performance optimizations implemented for pedromadru
 ## Overview
 
 The optimizations focus on four key areas:
+
 1. **Image Optimization** - Modern formats and responsive images
 2. **Font Loading** - Optimized web font delivery
 3. **JavaScript** - Modular, minified, and deferred scripts
@@ -15,6 +16,7 @@ The optimizations focus on four key areas:
 ### Automatic Image Processing
 
 All markdown images are automatically processed through a custom render hook that:
+
 - Generates WebP and AVIF formats (25-50% size reduction)
 - Creates responsive srcsets for multiple screen sizes (400px, 800px, 1200px, 1600px)
 - Adds proper lazy loading with `loading="lazy"`
@@ -22,7 +24,7 @@ All markdown images are automatically processed through a custom render hook tha
 - Sets `fetchpriority="high"` for the first image (above-the-fold)
 - Includes width/height attributes to prevent layout shifts (CLS optimization)
 
-**File:** `layouts/_default/_markup/render-image.html`
+**File:** `layouts/_markup/render-image.html`
 
 ### Manual Image Shortcode
 
@@ -33,12 +35,13 @@ For more control, use the responsive-img shortcode:
 ```
 
 **Parameters:**
+
 - `src` - Image filename (must be in page bundle)
 - `alt` - Alt text for accessibility
 - `priority` - "high" (above-fold), "low", or "auto"
 - `class` - Optional CSS class
 
-**File:** `layouts/shortcodes/responsive-img.html`
+**File:** `layouts/_shortcodes/responsive-img.html`
 
 ### Image Configuration
 
@@ -76,15 +79,16 @@ Preconnect hints reduce DNS lookup and connection time:
 The `display=swap` parameter prevents FOIT (Flash of Invisible Text):
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 ```
 
 **Benefits:**
+
 - Text visible immediately with fallback font
 - Smooth transition when custom font loads
 - Better perceived performance
 
-**File:** `layouts/partials/extend_head.html`
+**File:** `layouts/_partials/extend_head.html`
 
 ## 3. JavaScript Optimization
 
@@ -101,6 +105,7 @@ All inline JavaScript has been extracted into separate modules:
 ### Hugo Pipes Processing
 
 Scripts are processed through Hugo Pipes for:
+
 - **Minification** - Removes whitespace and comments
 - **Fingerprinting** - Adds content hash for cache busting
 - **Deferred loading** - Scripts load after page content
@@ -119,8 +124,9 @@ Scripts are processed through Hugo Pipes for:
 - Conditional loading (only load what's needed)
 
 **Files:**
+
 - Source: `assets/js/*.js`
-- Template: `layouts/partials/footer.html`
+- Template: `layouts/_partials/footer.html`
 
 ## 4. SEO Enhancements
 
@@ -129,6 +135,7 @@ Scripts are processed through Hugo Pipes for:
 Four types of structured data are automatically generated:
 
 #### Website Schema (Homepage)
+
 ```json
 {
   "@type": "WebSite",
@@ -141,6 +148,7 @@ Four types of structured data are automatically generated:
 ```
 
 #### Blog Post Schema
+
 ```json
 {
   "@type": "BlogPosting",
@@ -152,20 +160,24 @@ Four types of structured data are automatically generated:
 ```
 
 #### Breadcrumb Schema
+
 Automatically generates navigation breadcrumbs for better SERP display.
 
 #### OpenGraph & Twitter Cards
+
 Enhanced social media metadata for better sharing previews.
 
 **Files:**
-- `layouts/partials/seo/schema-website.html`
-- `layouts/partials/seo/schema-blog.html`
-- `layouts/partials/seo/schema-breadcrumb.html`
-- `layouts/partials/seo/opengraph.html`
+
+- `layouts/_partials/seo/schema-website.html`
+- `layouts/_partials/seo/schema-blog.html`
+- `layouts/_partials/seo/schema-breadcrumb.html`
+- `layouts/_partials/seo/opengraph.html`
 
 ### Meta Tags
 
 Enhanced meta tags include:
+
 - `description` - Page/site description
 - `og:*` - OpenGraph for Facebook/LinkedIn
 - `twitter:*` - Twitter Card metadata
@@ -177,17 +189,20 @@ Enhanced meta tags include:
 These optimizations target 2025 Core Web Vitals benchmarks:
 
 ### LCP (Largest Contentful Paint) < 2.5s
+
 - ✅ Image optimization (WebP/AVIF)
 - ✅ Responsive images with srcsets
 - ✅ fetchpriority="high" for hero images
 - ✅ Font preconnect and display=swap
 
 ### INP (Interaction to Next Paint) < 200ms
+
 - ✅ Deferred JavaScript loading
 - ✅ Minimal inline scripts
 - ✅ Efficient event handlers
 
 ### CLS (Cumulative Layout Shift) < 0.1
+
 - ✅ Width/height attributes on images
 - ✅ Font display=swap
 - ✅ No dynamically inserted content
@@ -195,16 +210,19 @@ These optimizations target 2025 Core Web Vitals benchmarks:
 ## Testing & Validation
 
 ### Build Test
+
 ```bash
 hugo --minify
 ```
 
 Should complete without errors. Check `public/` for:
+
 - Generated responsive images
 - Minified JS files with fingerprints
 - JSON-LD in page sources
 
 ### Local Development
+
 ```bash
 hugo serve -D
 ```
@@ -237,18 +255,21 @@ hugo serve -D
 ## Maintenance
 
 ### Adding New JavaScript
+
 1. Create file in `assets/js/`
 2. Use IIFE pattern for encapsulation
 3. Add to footer.html with minify and fingerprint
 4. Use `defer` attribute
 
 ### Updating Images
+
 - Images in markdown are automatically optimized
 - No additional work needed
 - First build may be slow (image processing)
 - Subsequent builds use cached images
 
 ### SEO Updates
+
 - Update `hugo.yaml` for site-wide defaults
 - Add `description` to page front matter
 - Add `images` array for custom OG images
@@ -263,14 +284,13 @@ hugo serve -D
 
 ## File Structure
 
-```
+```text
 layouts/
-├── _default/
-│   └── _markup/
-│       └── render-image.html      # Automatic image processing
-├── shortcodes/
+├── _markup/
+│   └── render-image.html          # Automatic image processing
+├── _shortcodes/
 │   └── responsive-img.html        # Manual image shortcode
-└── partials/
+└── _partials/
     ├── extend_head.html           # Head enhancements
     ├── footer.html                # JS loading
     └── seo/
@@ -301,6 +321,7 @@ docs/
 ## Support
 
 For issues or questions:
+
 - Check Hugo documentation
 - Test with `hugo --debug`
 - Validate structured data with Google's tools

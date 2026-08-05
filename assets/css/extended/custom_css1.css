@@ -1,9 +1,25 @@
 body {
-  font-family: 'Atkinson Hyperlegible', apple, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, sans-serif, apple;
+  font-family: 'Noto Serif', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
   font-size: 1.1em;
-  line-height: 1.5;
+  line-height: 1.6;
   /* background: var(--code-bg); */
+}
+
+/* Post titles, links and headings keep Atkinson Hyperlegible;
+   body/reading text above is Noto Serif. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+.post-title,
+.entry-header,
+.logo,
+#menu {
+  font-family: 'Atkinson Hyperlegible', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .list {
