@@ -136,10 +136,11 @@ menu:
       name: about
       url: /about/
       weight: 40
-    - identifier: cv
-      name: cv
-      url: /cv/
-      weight: 40
+    # cv temporarily disabled
+    # - identifier: cv
+    #   name: cv
+    #   url: /cv/
+    #   weight: 40
     # - identifier: search
     #   name: search
     #   url: /search/
