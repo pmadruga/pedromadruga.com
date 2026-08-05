@@ -10,17 +10,27 @@ on:
       - 'layouts/**'
       - 'assets/**'
       - 'static/**'
+      - 'themes/**'
       - 'hugo.yaml'
+      - 'netlify.toml'
       - 'package.json'
-      - '.markdownlint.json'
+      - 'bun.lock'
+      - '.htmltest.yml'
+      - '.markdownlint-cli2.yaml'
       - '.prettierrc'
+      - '.github/workflows/**'
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout Code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -39,6 +49,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout Code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
