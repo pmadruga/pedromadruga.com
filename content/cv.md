@@ -2,7 +2,7 @@
 title: "CV"
 showtoc: true
 tocopen: false
-draft: false
+draft: true # temporarily disabled
 ---
 
 ## Work Experience
