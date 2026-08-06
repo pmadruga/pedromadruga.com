@@ -1,0 +1,16 @@
+# Weekly external link check (used by .github/workflows/link-check.yml).
+DirectoryPath: 'public'
+CheckExternal: true
+CheckInternal: true
+CheckInternalHash: true
+CheckImages: true
+CheckScripts: true
+ExternalTimeout: 30
+IgnoreURLs:
+  - 'https://fonts.googleapis.com'
+  - 'https://fonts.gstatic.com'
+  # Bot-hostile hosts that rate-limit or block link checkers
+  - 'https://www.linkedin.com'
+  - 'https://linkedin.com'
+  - 'https://x.com'
+  - 'https://twitter.com'
