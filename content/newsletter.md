@@ -24,7 +24,7 @@ Opinions are and will always be my own.
 <div class="newsletter-form-wrapper newsletter_form_frontpage">
     <!-- <span>Subscribe to my <b>newsletter</b> below 👇</span> -->
     <form class="newsletter-placeholder embeddable-buttondown-form"
-        action="https://buttondown.email/api/emails/embed-subscribe/pedromadruga"
+        action="https://buttondown.com/api/emails/embed-subscribe/pedromadruga"
         method="post" target="popupwindow" id="bd-email">
         <label for="bd-email_input" class="sr-only">Email address</label>
         <input type="email" name="email" id="bd-email_input" class="button" placeholder="e-mail" />
