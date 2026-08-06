@@ -6,15 +6,14 @@ body {
   /* background: var(--code-bg); */
 }
 
-/* Post titles, links and headings keep Atkinson Hyperlegible;
-   body/reading text above is Noto Serif. */
+/* Post titles and headings keep Atkinson Hyperlegible; body/reading
+   text above is Noto Serif. Links inherit the surrounding font. */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-a,
 .post-title,
 .entry-header,
 .logo,
