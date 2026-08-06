@@ -4,7 +4,7 @@ description: "A simple pipeline with two groups of tasks, using the @taskgroup d
 date: 2021-08-22T11:30:03+00:00
 draft: false
 cover:
-  image: "https://pedromadruga.com/posts/2021/08/taskgroup.png"
+  image: "taskgroup.png"
   # can also paste direct link from external site
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
   alt: "Airflow 2"
@@ -22,7 +22,7 @@ Before Task Groups in Airflow 2.0, Subdags were the go-to API to group tasks. Wi
 
 What we're building today is a simple DAG with two groups of tasks, using the `@taskgroup` decorator from the TaskFlow API from Airflow 2. The graph view is:
 
-![taskgroup - graphview](https://pedromadruga.com/posts/2021/08/taskgroup.png)
+![taskgroup - graphview](taskgroup.png)
 
 What this pipeline does is different manipulations to a given initial value. The `init()` task instantiates a variable with the value `0`. It then passes to a group of subtasks (`group_1`) that manipulate that initial value. `group_2` will aggregate all the values into one. Finally, the `end()` subtask will print out the final result.
 
@@ -34,7 +34,7 @@ As you can see in the image above, there's an `init()` and `end()` task. In betw
 
 ### `init()` task and `end()` task
 
-![taskgroup - init+end](https://pedromadruga.com/posts/2021/08/taskgroup_2.png)
+![taskgroup - init+end](taskgroup_2.png)
 
 The `init()` task is the starting point for this pipeline - it returns the initial value that will be manipulated throughout the pipeline: 0. The `end()` task will print out all the manipulations in the pipeline, to the console.
 
@@ -68,7 +68,7 @@ Looking at the code above it's possible to see that:
 
 ### Task Group #1 (`group_1`)
 
-![taskgroup - group_1](https://pedromadruga.com/posts/2021/08/taskgroup_group_1.png)
+![taskgroup - group_1](taskgroup_group_1.png)
 
 `group_1` has a set of three tasks that manipulate the original number:
 
@@ -110,7 +110,7 @@ And notice what's being returned here: a list of the three values. Each of the v
 
 ### Task Group #2 (`group_2`)
 
-![taskgroup - group_2](https://pedromadruga.com/posts/2021/08/taskgroup_group_2.png)
+![taskgroup - group_2](taskgroup_group_2.png)
 
 `group_2` is rather simple. It receives the list sent from `group_1` and sums all values (`subtask_4` does it) and then `subtask_5` just multiplies by two the result from task_4:
 

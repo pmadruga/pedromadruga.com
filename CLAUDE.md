@@ -47,13 +47,13 @@ npm run theme:rollback     # Rollback to previous theme version
 
 - **Content** (`content/`): Markdown files with Hugo front matter. Blog posts in `content/blog/`. Static pages: about, cv, newsletter, contact, search.
 - **Layouts** (`layouts/`): Custom templates that override/extend the PaperMod theme. Key customizations:
-  - `layouts/_default/_markup/render-image.html` — image render hook for automatic AVIF/WebP responsive images
-  - `layouts/partials/extend_head.html` — font preloading and SEO structured data (JSON-LD)
-  - `layouts/partials/footer.html` — JavaScript loading via Hugo Pipes (bundled, minified, fingerprinted)
-  - `layouts/partials/seo/` — schema.org structured data partials
-  - `layouts/shortcodes/responsive-img.html` — manual responsive image shortcode
+  - `layouts/_markup/render-image.html` — image render hook for automatic AVIF/WebP responsive images
+  - `layouts/_partials/extend_head.html` — font preloading and SEO structured data (JSON-LD)
+  - `layouts/_partials/footer.html` — JavaScript loading via Hugo Pipes (bundled, minified, fingerprinted)
+  - `layouts/_partials/seo/` — schema.org structured data partials
+  - `layouts/_shortcodes/responsive-img.html` — manual responsive image shortcode
 - **Assets** (`assets/`): CSS overrides in `assets/css/extended/`. Modular JS files in `assets/js/` (theme toggle, code copy, smooth scroll, scroll-to-top, menu scroll).
-- **Static** (`static/`): Images, favicon, CV PDF. Blog post images in `static/posts/`.
+- **Static** (`static/`): Favicons, CV PDF, misc images. Blog post images live in each post's page bundle (`content/blog/<slug>/`).
 - **Theme** (`themes/PaperMod/`): Git submodule. Do not edit directly — override via `layouts/`.
 - **Config** (`hugo.yaml`): Site configuration, menus, params, image processing settings.
 
@@ -71,8 +71,8 @@ Both jobs run on every push to `master` and on pull requests targeting `master`.
 - Theme customizations go in `layouts/`, never edit `themes/PaperMod/` directly.
 - Blog posts use front matter type `"blog"` and live in `content/blog/`.
 - Images are automatically optimized (AVIF/WebP, srcset, lazy loading) through the render-image hook.
-- JavaScript is bundled via `resources.Concat` in `layouts/partials/footer.html` into a single `main.js` (menu-scroll, smooth-scroll, scroll-to-top, theme-toggle). `code-copy.js` loads separately on post pages only. Add new JS files to `assets/js/` and reference them in `footer.html`.
-- Markdown linting rules are in `.markdownlint.json`. Line length (MD013) is disabled. Several HTML elements are allowed via MD033.
+- JavaScript is bundled via `resources.Concat` in `layouts/_partials/footer.html` into a single `main.js` (menu-scroll, smooth-scroll, scroll-to-top, theme-toggle). `code-copy.js` loads separately on post pages only. Add new JS files to `assets/js/` and reference them in `footer.html`.
+- Markdown linting rules are in `.markdownlint-cli2.yaml` (under the `config:` key). Line length (MD013) is disabled. Several HTML elements are allowed via MD033.
 - Deployment is automatic via Netlify on push to master. Preview deploys are created for PRs.
 
 ## Git Hooks

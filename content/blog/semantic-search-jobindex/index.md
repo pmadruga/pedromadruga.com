@@ -54,7 +54,7 @@ The dataset is comprised of 4.2m jobs from jobindex.dk, from 2000 until March 20
 
 Here’s an excerpt of the dataset:
 
-![](/posts/1__xz4lXxU__YdFgks8XUhI__vw.png)
+![](1__xz4lXxU__YdFgks8XUhI__vw.png)
 
 _Title_, _location_, _description_ and _date_ are some of the features in the original dataset. The remainder is excluded since they don’t provide a signal to the project at hand. Some of the entries have empty rows for certain features, due to some difficulty upon scraping the data.
 
@@ -107,7 +107,7 @@ By creating the vectorial representation of job postings, it’s then possible t
 
 The results results from the actual jobindex.dk website are then compared with direct search, TFIDF and BERT techniques. The direct search is a very simple approach to return direct results, as explained before. Without going into details, it’s limited into one algorithm in this project:
 
-![](/posts/1____HbkDCuOjBT2r3__x__t6GmA.png)
+![](1____HbkDCuOjBT2r3__x__t6GmA.png)
 
 Direct Search results algorithm
 
@@ -129,7 +129,7 @@ This search query translates as “chef”.
 
 In this example, all models are compared, including also the results from Jobindex.dk, limited to a maximum of 10 results. As a reminder, below are the results of the subset of data. So, for this query, the results are:
 
-![](/posts/1__9mz4Yipdti4cC202jYfdGA.png)
+![](1__9mz4Yipdti4cC202jYfdGA.png)
 
 Several conclusions are drawn from studying the first results table:
 
@@ -142,7 +142,7 @@ The main reason for the TFIDF and BERT present noise is because when they are pr
 
 ### Example 2 — “_Fysioterapeut til neurorehabilitering_”
 
-![](/posts/1____2KvjtS8k8TAgxoKofR1EA.png)
+![](1____2KvjtS8k8TAgxoKofR1EA.png)
 
 When the search query (“Fysioterapeut til neurorehabilitering”, in this case) starts getting longer, a few interpretations can be drawn, shown in the table above:
 
@@ -159,7 +159,7 @@ On the other hand, TFIDF revolves around variations of the profession, hence los
 
 This query roughly translates to “Technician for neurorehabilitation”. With this query, there are no Direct Search results, hence no TFIDF results. For that reason, the table below omits Direct Search and TFIDF columns.
 
-![](/posts/1__vq66dDLU3jdjkvv6fODCig.png)
+![](1__vq66dDLU3jdjkvv6fODCig.png)
 
 This is were BERT vastly exceeds: on top of actually returning results (compared to the previously mentioned approaches), it yields very relevant job titles. It also vastly exceeds the quality when compared to the Jobindex.dk results.
 
@@ -173,7 +173,7 @@ The BERT model always returns results. Instead of analysing which of the models 
 
 Below are the execution times compared:
 
-![](/posts/1__2Lgx0I6yHW0x8v1uGJIldw.png)
+![](1__2Lgx0I6yHW0x8v1uGJIldw.png)
 
 BERT exceeds TFIDF by a large margin. As expected, Direct Search is the fastest. However, Direct Search does not usually return relevant results, only the _what words you search is what words you get_. The execution times can be decreased with better memory optimisation and avoiding doing calculations in memory as much as possible.
 
