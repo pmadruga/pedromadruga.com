@@ -9,7 +9,7 @@ description: How I created, scaled and lead a genAI legal assistant that is now 
 
 
 
-# Intro
+## Intro
 
 I have been busy.
 
@@ -17,67 +17,67 @@ It has been a fantastic journey creating and seeing a proof-of-concept going all
 
 A bit of context:
 
-In 2022, I returned to Karnov - a 150 year-old company with offices throughout Europe and over a thousand employees. Karnov is a leader in providing information for the legal industry. 
+In 2022, I returned to Karnov - a 150 year-old company with offices throughout Europe and over a thousand employees. Karnov is a leader in providing information for the legal industry.
 
-Fast-forward to the age of industrialized Generative AI - when Karnov dived in. 
+Fast-forward to the age of industrialized Generative AI - when Karnov dived in.
 
 It has been an incredible experience being part of the transformation of the company towards AI, especially with so many competitors out there. Several POC's were created leading up to the first large-scale company-wide AI-product: Karnov AI Legal Assistant - KAILA.
 
 This blogpost is about KAILA. The following is a recollection of events, challenges and learnings that led to KAILA and where it is today.
 
-# 2023
+## 2023
 
 ### The first lines of code
 
-ChatGPT came out in November 2022, powered by GPT3.5, and it changed everything. Suddenly, there was worldwide awareness of Generative AI and its capabilities. Of course, the hype came along but in the legal industry there were first signs of actual value generated. 
+ChatGPT came out in November 2022, powered by GPT3.5, and it changed everything. Suddenly, there was worldwide awareness of Generative AI and its capabilities. Of course, the hype came along but in the legal industry there were first signs of actual value generated.
 
 In February 2023, I started experimenting with doing Information Retrieval on law-related documents within Karnov. I was using [Haystack](https://haystack.deepset.ai/) at the time, and the term Retrieval Augmented Generation (RAG) wasn't even [popular](https://trends.google.com/trends/explore?date=today%205-y&q=retrieval%20augmented%20generation&hl=en-US) by then - despite the term RAG being coined [in a paper during 2020](https://www.patricklewis.io/publication/rag/) by the very talented Dr. Patrick Lewis. The number of vector databases was exploding and, at the time, I experimented with PineCone and FAISS. Both were great for the scale I was working on, although in the end I opted for different database (Qdrant) - something I'll leave for another blogpost.
 
-The work continued as a side project for a few months. Around the summer of 2023, this project was close to go into the “cemitery of the dead experiments”. 
+The work continued as a side project for a few months. Around the summer of 2023, this project was close to go into the “cemitery of the dead experiments”.
 
 But in a hot summer afternoon in August of the same year, I joined forces with Gustav (then, working with Business Innovation at Karnov Denmark) and we decided to embrace our "healthy disregard for the status quo" and revived the project. In hindsight, Gustav's words "let's do it" were a catalyst for this story to happen. That decision to revive this proof-of-concept marked the birth of "KAILA - Karnov AI Legal Assistant". That same afternoon is where I suggested Gustav the name of the project, which ended up being the official name of the final product (in Sweden, the final product was renamed to JUNO AI).
 
 This collaboration between business and tech set a fundamental standard that is essential to successful products. No silos, just the eternal curiosity for the uncertain.
 
-Before the project had an internal green light, Gustav and I reached out to a couple of developers who helped building a UI as well as a Ruby backend which wrapped a Python API. The developers also helped in creating what came to be the embeddings pipeline. They were nothing short of amazing and embraced this incredibly uncertain project from the moment we pitched it to them. 
+Before the project had an internal green light, Gustav and I reached out to a couple of developers who helped building a UI as well as a Ruby backend which wrapped a Python API. The developers also helped in creating what came to be the embeddings pipeline. They were nothing short of amazing and embraced this incredibly uncertain project from the moment we pitched it to them.
 
 By then, and even before being a priority, this proof-of-concept was drawing voluntary interest: novelty, curiosity and working with AI became the drawing factors to collaborate in this project. This delegation of responsibilities by onboarding new people allowed me to work on the most critical part: the Information Retrieval Engine - and engine responsible for fetching the correct documents.
 
 Then, the proof-of-concept was pitched to management in late 2023, and in early 2024 the project kick-started officially, with the goal of launching in September 2024.
 
-Looking back, and understanding that this project was almost shelved, made me realize that it's healthy to listen to gut feelings. 
+Looking back, and understanding that this project was almost shelved, made me realize that it's healthy to listen to gut feelings.
 
-# 2024
+## 2024
 
 ## A scalability and factuality challenge, with a tight deadline
 
 Early in 2024, one extra AI developer was added to the project - the project was scaling in resources. It also became clear that KAILA had several questions to be answered, such as:
 
-- **How to go from 5k to 3.5M documents, where none of the infrastructure was in place**? 
-- **How to reach the highest levels of factuality**? 
-- **But why did we move so fast**? 
+- **How to go from 5k to 3.5M documents, where none of the infrastructure was in place**?
+- **How to reach the highest levels of factuality**?
+- **But why did we move so fast**?
 
 ---
 
-I realised that an Architect was needed as well as close collaboration with the Operations team, since they'd be responsible for the infrastructure needed (setting up pipelines, databases, authentication, etc). 
+I realised that an Architect was needed as well as close collaboration with the Operations team, since they'd be responsible for the infrastructure needed (setting up pipelines, databases, authentication, etc).
 
 But the most revealing part was that embeddings alone where not enough for a _large_ set of documents. It might have worked for a small set of documents but not for the entire pool of documents. It was time to think a bit outside the box and use all resources possible: such as the usage of metadata and other techniques. Which worked quite well and set the foundation for every thing done after that.
 
-- **How to reach the highest levels of factuality**? 
+- **How to reach the highest levels of factuality**?
 
-The main reason to use different techniques was to achieve the highest levels of factuality. By the time of the early steps of KAILA, the main question internally was about hallucinations. 
+The main reason to use different techniques was to achieve the highest levels of factuality. By the time of the early steps of KAILA, the main question internally was about hallucinations.
 
 This became the core of KAILA's identify: factuality above anything else. In other words, users had to be able to get correct answers where documents where the source of truth for all the answers. And for that we needed domain knowledge - a lot of it.
 
-So we started collaboration with domain and content experts. This collaboration became a foundational aspect of all AI development in Karnov. The bridge between the KAILA AI development team and the experts was as close as possible: no meetings, no JIRA tickets, no protocols - just sitting in a room and getting instant feedback on how KAILA was performing. 
+So we started collaboration with domain and content experts. This collaboration became a foundational aspect of all AI development in Karnov. The bridge between the KAILA AI development team and the experts was as close as possible: no meetings, no JIRA tickets, no protocols - just sitting in a room and getting instant feedback on how KAILA was performing.
 
 In hindsight, this was our first evaluation method - completely made by humans. Only further down the road we included automated evaluation pipelines, because it doesn't scale that well for obvious reasons. But even the evaluation pipelines have carefully human curated benchmarks which allows the team to move fast.  
 
-- **So wow did we move fast**? 
+- **So wow did we move fast**?
 
 This was essential due to the timeline and, for that, we had to disregard some of the common conventions of product development. I realized that the conventional software development approach - and its ceremonies - hinder AI development.
 
-An incredible dosage of pragmatism, near-perfect silo-free collaboration between business and development created a very smooth product delivery, despite general skepticism outside the collaborators of KAILA at this point. 
+An incredible dosage of pragmatism, near-perfect silo-free collaboration between business and development created a very smooth product delivery, despite general skepticism outside the collaborators of KAILA at this point.
 
 ---
 
@@ -85,15 +85,15 @@ An incredible dosage of pragmatism, near-perfect silo-free collaboration between
 
 When the development officially started, in March 2024, the main focus was factuality - answers had to be as close to the truth as possible, complete, coherent while hallucinations had to be reduced to a minimum. In fact, without factuality there was no point in having a product - it was a deal breaker to launch. To this day, our constant and daily strife for factuality remains the core of our AI-based products' identity.
 
-But the best answers were limited to the AI developers' knowledge in regards to the legal domain. In other words, we didn't know when an answer was actually good or not. 
+But the best answers were limited to the AI developers' knowledge in regards to the legal domain. In other words, we didn't know when an answer was actually good or not.
 
-It was clear we needed domain knowledge. Thus, a close collaborationb between AI devloeprs and domain and content experts was essential. 
+It was clear we needed domain knowledge. Thus, a close collaborationb between AI devloeprs and domain and content experts was essential.
 
-And "close collaboration" was taken to heart: there were periods where I sat down and coded live in front of two (wonderful) domain and content experts. I couldn't understand whether an answer from KAILA was good - but they did. 
+And "close collaboration" was taken to heart: there were periods where I sat down and coded live in front of two (wonderful) domain and content experts. I couldn't understand whether an answer from KAILA was good - but they did.
 
-And that changed everything for the better. It became a lesson and a foundation of AI development that domain expertise is fundamental for any AI-based products we (and possibly, many many other companies) develop and release. 
+And that changed everything for the better. It became a lesson and a foundation of AI development that domain expertise is fundamental for any AI-based products we (and possibly, many many other companies) develop and release.
 
-I spent weeks trying to understand the legal method, the type of documents Karnov has, the metadata it has, how a lawyer approaches research, etc. I had the advantage to have dedicated people helping me getting domain knowledge - essential for the success of a data science project -, even before lines of code were written. And when code was written, it was *with* them.
+I spent weeks trying to understand the legal method, the type of documents Karnov has, the metadata it has, how a lawyer approaches research, etc. I had the advantage to have dedicated people helping me getting domain knowledge - essential for the success of a data science project -, even before lines of code were written. And when code was written, it was _with_ them.
 
 Around April we had the first breakthrough. Something that we understood and evaluated internally as a leap in terms of quality of not only the retrieved documents but also the quality of the answers.
 
@@ -134,19 +134,19 @@ Nonetheless, as time progressed, both the team grew as well as the people involv
 
 Nonetheless, scaling the team allowed taking KAILA to an entire new level of quality. Which keeps on happening and I'm very fortunate to see KAILA's quality exponentially growing over the time.
 
-Not only the team grew, as well as the people involved outside the team but within Karnov. We learned to collaborate with other software development teams, with sales department, marketing department, business department and so forth. 
+Not only the team grew, as well as the people involved outside the team but within Karnov. We learned to collaborate with other software development teams, with sales department, marketing department, business department and so forth.
 
 Communication is a fundamental pilar of the AI team and its something that we strive to maintain and improve. I have worked in Data Science teams working in silos before and it was important to not make the same mistake. It's a quality that I'll take to any team in the future.  
 
-The identity of being approachable from the outside is something that is taken for granted nowadays, but it took time and careful consideration to reach this point. For example, when recruiting new AI developer candidates, communication - and the skills to communicate complicated things simply - became an essential and deciding factor for a given candidate. 
+The identity of being approachable from the outside is something that is taken for granted nowadays, but it took time and careful consideration to reach this point. For example, when recruiting new AI developer candidates, communication - and the skills to communicate complicated things simply - became an essential and deciding factor for a given candidate.
 
 ### The launch of KAILA
 
 In September 2024, KAILA / JUNO AI was launched. The feedback was incredibly positive. To this day, it still is. KAILA is consistently being sold at a very high pace, is being used by top lawyer firms in Denmark and Sweden, as well as courts. It has been featured in major newspapers in Denmark. It has now around 50 people working in it. It has been responsible for generating millions in revenue. There has been numerous talks, webinars and interviews.  
   
-In October I was officially promoted to Principal AI Developer and alongside came a shift in what my focus was. From then on, and looking at the early success of KAILA, I wanted to avoid complacency - both from a technological but also from a competitive standpoint. I invested a lot of time in making sure we're working on State of the Art AI while giving space for new features and products coming in. It was also very important in my new role to share the credit with the people I've worked with along the way. Having my team members doing talks and interviews in order to see them flourish and prepare them for future leadership was a personal goal of mine. I let others do the talking and take the spotlight - and I'd do it again since I'd like my type of leadership to be *silent but effective*.
+In October I was officially promoted to Principal AI Developer and alongside came a shift in what my focus was. From then on, and looking at the early success of KAILA, I wanted to avoid complacency - both from a technological but also from a competitive standpoint. I invested a lot of time in making sure we're working on State of the Art AI while giving space for new features and products coming in. It was also very important in my new role to share the credit with the people I've worked with along the way. Having my team members doing talks and interviews in order to see them flourish and prepare them for future leadership was a personal goal of mine. I let others do the talking and take the spotlight - and I'd do it again since I'd like my type of leadership to be _silent but effective_.
 
-# 2025 and beyond
+## 2025 and beyond
 
 Fast forward to April 2025, this proof-of-content turned official that has been adopted by a few of the largest lawyer companies, both in Denmark and Sweden, as well as major courts. It has generated dozens of millions in revenue for [Karnov Group](<https://www.karnovgroup.com/en/wp-content/uploads/sites/2/2025/02/karnovgroup-publication-of-karnov-groups-annual-report-and-sustainability-report-2024-250331.pdf> "Karnov Group") and has been featured in major media in the Nordics, such as [Børsen](<https://borsen.dk/nyheder/tech/dansk-virksomhed-fra-1867-gar-i-offensiven-med-ai> "Børsen") and [Berlingske](<https://www.berlingske.dk/virksomheder/kunstig-intelligens-er-for-alvor-rykket-ind-paa-advokatkontoret-vi-er>).
 
@@ -165,61 +165,51 @@ It's only fair.
 In the end, we're all doing this because we believe that society benefits from a competitive legal industry. And we'll keep our core identity throughout changes.
 
 
-
 ### success is a blessing and a curse
 
 
-
-# Conclusion
+## Conclusion
 
 This blogpost only brings to light a very small set of everything that happened. Of course somethings are kept in private while others would make this blogpost even longer. These learnings I wrote above, and many others, I'll carry them for life. As well as some wonderful people that I was lucky to be able to work with.
 
 KAILA will always be a work in progress. As I like to say: "what you're seeing today, is still the worst version of it" - because it keeps getting better and better.
 
 
-
-
-
 ---
-
-
-
 
 
 this article is about Kaila , karnov legal research assistant and an overall view of my learnings since I started developing it’s first lines
 
-As one can imagine, there's a lot to unpack that happened within this period of close to two years. Below, I'm giving a summarized version of the main learnings and how the path to were we are now. In the upcoming months, I'm planning to post in detail about these (feel free to follow my [newsletter](<https://pedromadruga.com/newsletter> "newsletter")).
+As one can imagine, there's a lot to unpack that happened within this period of close to two years. Below, I'm giving a summarized version of the main learnings and how the path to were we are now. In the upcoming months, I'm planning to post in detail about these (feel free to follow my [newsletter](<https://pedromadruga.com/newsletter/> "newsletter")).
 
-## The path to success 
+## The path to success
 
 (Define success)
 
 Before this i was obssessed on what makes a data science project successfull
 
 
-
 - Domain expertise
 
-    - achieved via close collaboration with experts from multiple departments
+  - achieved via close collaboration with experts from multiple departments
 
-    - Along the way I have learned a lot about the legal domain. I benefited a lot from incredible talented and knowledgeable people which were easy to get access to in Karnov
+  - Along the way I have learned a lot about the legal domain. I benefited a lot from incredible talented and knowledgeable people which were easy to get access to in Karnov
 
 - Disregarding the status quo of product develoment (this is something I will dive deep and continuously in my blog)
 
 - Incredible respect for competitors
 
-    - We follow the competition closely which keeps our feet close to the ground. Although Karnov is a major player in the legal industry for the last 150 years, we recognized that the techniques that powered the tools being developed by us and competitors falls into the same spectrum of AI techniques.
+  - We follow the competition closely which keeps our feet close to the ground. Although Karnov is a major player in the legal industry for the last 150 years, we recognized that the techniques that powered the tools being developed by us and competitors falls into the same spectrum of AI techniques.
 
-    - Alongside it's long life in the market, Karnov having a size of 1500 employees spread over Europe, needs to move in different ways than of startups, for example.
+  - Alongside it's long life in the market, Karnov having a size of 1500 employees spread over Europe, needs to move in different ways than of startups, for example.
 
 - Do homework before jumping into a project.
 
-# Scaling
+## Scaling
 
 ## From 5k to 3.5 million documents
 
 In this proof-of-concept, I experimented doing augmented retrieval with a few thousand documents.
-
 
 
 From one pwrson to two people to 50 people
@@ -235,28 +225,23 @@ From one pwrson to two people to 50 people
 - It started with me writing thr first lines of Kaila since I was the only data scientist in Karnov
 
 
-
 ## Number of userS
 
 
-
-# Success is a blessing and a curse
-
+## Success is a blessing and a curse
 
 
-# Acknowledgements
+## Acknowledgements
 
 People who have reviewed to this blogpost.
 
 -
 
 
-
 ---
 
 
-
-# Final
+## Final
 
 - **\`\`\`\`\`\`\`\`\`\`\`\`JUNO**
 
@@ -266,7 +251,7 @@ People who have reviewed to this blogpost.
 
 - **30 million swedish crowns in revenue over a single quarter**
 
-# Draft
+## Draft
 
 - What started as a proof-of-content in 2023, for a legal chatbot
 
@@ -282,9 +267,7 @@ People who have reviewed to this blogpost.
 -
 
 
-
 ---
-
 
 
 - Linkedin: from a side-project to the cover of Berlingske, to the biggest lawyer firm in DK and the Swedish supreme courts: a 2024 recap. Got promoted to Principal Data Scientist (and we're hiring!) along the journey.
@@ -295,7 +278,7 @@ People who have reviewed to this blogpost.
 
 In the course of just over a year, a lot has happened. Quite a few things can be shared - hence why I'm resuming this blog.
 
-## Here's a bit a story:
+## Here's a bit a story
 
 - In June I was promoted to Lead AI Scientist in Karnov
 
@@ -312,9 +295,7 @@ With this process, I've learned a lot about generative information retrieval in 
 If you're interested in the topics above, visit [pedromadruga.com](<http://pedromadruga.com>). I'm restarting my blog after a few years of hiatus.
 
 
-
 ---
-
 
 
 - What started as a proof-of-content in 2023, for a legal chatbot
@@ -334,6 +315,4 @@ If you're interested in the topics above, visit [pedromadruga.com](<http://pedro
 - lessons like: how to scale, how to do continuous research,
 
 - Kaila stands for Karnov AI Legal Assistant.
-
-
 

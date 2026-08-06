@@ -24,20 +24,23 @@
 {{- partial "extend_footer.html" . }}
 
 {{- /* Load optimized external JavaScript with Hugo Pipes */ -}}
-{{- $menuScroll := resources.Get "js/menu-scroll.js" | minify | fingerprint -}}
-{{- $smoothScroll := resources.Get "js/smooth-scroll.js" | minify | fingerprint -}}
-<script src="{{ $menuScroll.RelPermalink }}" defer></script>
-<script src="{{ $smoothScroll.RelPermalink }}" defer></script>
+{{- $menuScroll := resources.Get "js/menu-scroll.js" -}}
+{{- $smoothScroll := resources.Get "js/smooth-scroll.js" -}}
+{{- $newsletter := resources.Get "js/newsletter.js" -}}
+{{- $bundle := slice $menuScroll $smoothScroll $newsletter -}}
 
 {{- if (not .Site.Params.disableScrollToTop) }}
-  {{- $scrollToTop := resources.Get "js/scroll-to-top.js" | minify | fingerprint -}}
-  <script src="{{ $scrollToTop.RelPermalink }}" defer></script>
+  {{- $scrollToTop := resources.Get "js/scroll-to-top.js" -}}
+  {{- $bundle = $bundle | append $scrollToTop -}}
 {{- end }}
 
 {{- if (not .Site.Params.disableThemeToggle) }}
-  {{- $themeToggle := resources.Get "js/theme-toggle.js" | minify | fingerprint -}}
-  <script src="{{ $themeToggle.RelPermalink }}" defer></script>
+  {{- $themeToggle := resources.Get "js/theme-toggle.js" -}}
+  {{- $bundle = $bundle | append $themeToggle -}}
 {{- end }}
+
+{{- $main := $bundle | resources.Concat "js/main.js" | minify | fingerprint -}}
+<script src="{{ $main.RelPermalink }}" defer></script>
 
 {{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Site.Params.ShowCodeCopyButtons)) }}
   {{- $codeCopy := resources.Get "js/code-copy.js" | minify | fingerprint -}}
