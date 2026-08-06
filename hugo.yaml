@@ -25,16 +25,15 @@ params:
   title: Pedro Madruga
   description: 'Pedro Madruga - personal website and AI-related blog.'
   keywords: [Blog, Data Science, Machine Learning, Artificial Intelligence]
-  # author: pmadruga
-  # author: ["Me", "You"] # multiple authors
+  author: Pedro Madruga
   # images: ["<link or path of image for opengraph, twitter-cards>"]
 
   DateFormat: 'January 2, 2006'
   defaultTheme: auto # dark, light
   disableThemeToggle: false
 
-  # mainSections:
-  #   - blog
+  mainSections:
+    - blog
 
   ShowReadingTime: false
   ShowShareButtons: false
@@ -73,11 +72,6 @@ params:
     imageWidth: 250
     imageHeight: 250
     imageTitle: 'Portrait of Pedro Madruga'
-
-  # home-info mode
-  homeInfoParams:
-    Title: "Hi, I'm Pedro \U0001F44B"
-    Content: "I'm an **AI Scientist**."
 
   socialIcons:
     - name: bluesky
@@ -171,6 +165,16 @@ menu:
 #   name: example.org
 #   url: https://example.org
 #   weight: 30
+
+markup:
+  highlight:
+    # Class-based highlighting (theme ships chroma-styles.css) instead of
+    # inline style attributes on every code element.
+    noClasses: false
+
+services:
+  rss:
+    limit: 20
 
 outputs:
   home:
