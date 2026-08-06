@@ -8,15 +8,15 @@
   NODE_VERSION = "20"
 
 [context.production.environment]
-  HUGO_VERSION = "0.147.8"
+  HUGO_VERSION = "0.164.0"
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
 
 [context.branch-deploy.environment]
-  HUGO_VERSION = "0.147.8"
+  HUGO_VERSION = "0.164.0"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.147.8"
+  HUGO_VERSION = "0.164.0"
 
 [context.deploy-preview]
   command = "hugo --gc --minify -b $DEPLOY_PRIME_URL --buildFuture"
@@ -41,7 +41,7 @@ publish = "./public/"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' https://giscus.app 'sha256-18OJdeGxaqdolTGAJtZ8LKg6Qa5DuUGQQaiY+s00cgs='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://giscus.app; frame-src https://giscus.app; form-action 'self' https://buttondown.email; base-uri 'self'; object-src 'none'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://giscus.app 'sha256-BpEdBCM/4BJbN8LWEqCQKlp9VGzetdD0UbdMayNyD28='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://giscus.app; frame-src https://giscus.app; form-action 'self' https://buttondown.email; base-uri 'self'; object-src 'none'"
     Cache-Control = "public, max-age=0, must-revalidate"
 
 # Fingerprinted (content-hashed) assets — safe to cache permanently.

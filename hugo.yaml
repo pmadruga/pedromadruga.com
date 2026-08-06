@@ -1,5 +1,5 @@
 baseURL: https://pedromadruga.com/
-languageCode: en-us
+locale: en-us
 title: Pedro Madruga
 theme: 'PaperMod'
 
@@ -107,10 +107,11 @@ params:
     hiddenInSingle: false # hide on single page
     responsiveImages: true
 
-  editPost:
-    URL: 'https://github.com/pmadruga/pedromadruga.com/tree/master/content'
-    Text: 'Suggest Changes' # edit text
-    appendFilePath: false # to append file path to Edit link
+  # editPost disabled — uncomment to show a "Suggest Changes" link on posts
+  # editPost:
+  #   URL: 'https://github.com/pmadruga/pedromadruga.com/tree/master/content'
+  #   Text: 'Suggest Changes' # edit text
+  #   appendFilePath: false # to append file path to Edit link
 
   # for search
   # https://fusejs.io/api/options.html

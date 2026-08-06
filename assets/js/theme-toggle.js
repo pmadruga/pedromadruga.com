@@ -3,12 +3,13 @@
   const themeToggle = document.getElementById("theme-toggle");
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
-      if (document.body.className.includes("dark")) {
-        document.body.classList.remove('dark');
-        localStorage.setItem("pref-theme", 'light');
+      const html = document.querySelector("html");
+      if (html.dataset.theme === "dark") {
+        html.dataset.theme = "light";
+        localStorage.setItem("pref-theme", "light");
       } else {
-        document.body.classList.add('dark');
-        localStorage.setItem("pref-theme", 'dark');
+        html.dataset.theme = "dark";
+        localStorage.setItem("pref-theme", "dark");
       }
     });
   }
