@@ -9,7 +9,7 @@ cover:
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
   alt: "Airflow 2"
   caption: "What we're building today"
-  relative: read # To use relative path for cover image, used in hugo Page-bundles
+  relative: true # cover image lives in this page bundle
 ---
 
 ## Source code
