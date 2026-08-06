@@ -3,7 +3,7 @@ title: "A simple DAG using Airflow 2.0"
 description: "Airflow 2.x is a game-changer, especially regarding its simplified syntax using the new Taskflow API. In this tutorial, we're building a DAG with only two tasks. The DAG's tasks include generating a random number (task 1) and print that number (task 2)."
 date: 2021-08-05
 cover:
-  image: "/posts/simple_dag_2.png"
+  image: "simple_dag_2.png"
   # can also paste direct link from external site
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
   alt: "Airflow 2"
@@ -15,7 +15,7 @@ cover:
 
 ### Background
 
-This blog post is part of a series where an [entire ETL pipeline](https://pedromadruga.com/posts/etl-series/) is built using Airflow 2.0's newest syntax and Raspberry Pis. It entails knowledge of some terms, so [here's](https://www.astronomer.io/guides/intro-to-airflow) a great place to refresh memory. Also, check my previous post on how to install [Airflow 2 on a Raspberry Pi](https://pedromadruga.com/posts/airflow-install/).
+This blog post is part of a series where an [entire ETL pipeline](/blog/) is built using Airflow 2.0's newest syntax and Raspberry Pis. It entails knowledge of some terms, so [here's](https://www.astronomer.io/guides/intro-to-airflow) a great place to refresh memory. Also, check my previous post on how to install [Airflow 2 on a Raspberry Pi](/blog/airflow-install/).
 
 The full code is on [Github](https://github.com/pmadruga/airflow-dags/blob/main/simplest.py).
 
@@ -80,7 +80,7 @@ Now that the `@dag` wrapper is settled, we need to define the two tasks inside. 
 
 Visually, the DAG graph view will look like this:
 
-![Graph View](https://pedromadruga.com/posts/simple_dag_1.png)
+![Graph View](simple_dag_1.png)
 
 The code before and after refers to the `@dag` operator and the dependencies. Next, we'll put everything together:
 
@@ -128,21 +128,21 @@ Once the DAG definition file is created, and inside the `airflow/dags` folder, i
 
 First, you should see the DAG on the list:
 
-![simple dag](https://pedromadruga.com/posts/simple_dag_3.png)
+![simple dag](simple_dag_3.png)
 
 In this example, I've run the DAG before (hence some columns already have values), but you should have a clean slate.
 
 Now we enable the DAG (1) and trigger it (2), so it can run right away:
 
-![simple dag](https://pedromadruga.com/posts/simple_dag_4.png)
+![simple dag](simple_dag_4.png)
 
 Click the DAG ID (in this case, called `EXAMPLE_simple`), and you'll see the Tree View. Having triggered a new run, you'll see that the DAG is running:
 
-![simple dag](https://pedromadruga.com/posts/simple_dag_5.png)
+![simple dag](simple_dag_5.png)
 
 Heading over to the **Graph View**, we can see that both tasks ran successfully 🎉:
 
-![Graph View](https://pedromadruga.com/posts/simple_dag_6.png)
+![Graph View](simple_dag_6.png)
 
 But what about the printed output of `task_2`, which shows a randomly generated number? We can check that in the logs.
 
@@ -150,11 +150,11 @@ But what about the printed output of `task_2`, which shows a randomly generated 
 
 Inside **Graph View**, click on `task_2`, and click `Log`.
 
-![task_2 details](https://pedromadruga.com/posts/simple_dag_7.png)
+![task_2 details](simple_dag_7.png)
 
 It's possible to see the output of the task:
 
-![task_2 output log](https://pedromadruga.com/posts/simple_dag_8.png)
+![task_2 output log](simple_dag_8.png)
 
 Success again 🎉!
 
@@ -183,7 +183,7 @@ tail 2021-08-06T14:57:35.762094+00:00/1.log
 
 Where the output should include:
 
-![DAG log](/posts/simple_dag_9.png)
+![DAG log](simple_dag_9.png)
 
 Followed by the actual number we've generated in this run.
 

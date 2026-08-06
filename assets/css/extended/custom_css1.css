@@ -127,6 +127,14 @@ h1 {
   text-decoration: underline;
 }
 
+/* Keep aspect ratio when max-width shrinks images that carry
+   width/height attributes (theme reset lacks height: auto) */
+.md-content img,
+.post-content img,
+.entry-cover img {
+  height: auto;
+}
+
 /* Visually hidden but available to screen readers */
 .sr-only {
   position: absolute;
