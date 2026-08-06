@@ -9,7 +9,7 @@ cover:
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
   alt: "Airflow 2"
   caption: "Airflow 2"
-  relative: read # To use relative path for cover image, used in hugo Page-bundles
+  relative: true # cover image lives in this page bundle
 ---
 
 Airflow is a tool commonly used for Data Engineering. It's great to orchestrate workflows. Version 2 of Airflow only supports Python 3+ versions, so we need to make sure that we use Python 3 to install it. We could probably install this on another Linux distribution, too.

@@ -5,6 +5,7 @@ type: "blog"
 draft: false
 description: "A few thoughts about SIGIR 2025 and how to apply academic research by experimenting in the industry."
 cover:
+  relative: true # cover image lives in this page bundle
   image: "sigir2025.jpg"
   # can also paste direct link from external site
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
