@@ -95,6 +95,9 @@ params:
   #   google:
   #     SiteVerificationTag: "XYZabc"
 
+  footer:
+    text: 'No tracking, no cookies, no analytics.'
+
   cover:
     hidden: true # hide everywhere but not in structured data
     hiddenInList: true # hide on list pages and home
