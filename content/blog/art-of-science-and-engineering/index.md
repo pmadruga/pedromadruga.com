@@ -6,6 +6,7 @@ draft: false
 description: "A few thoughts about SIGIR 2025 and how to apply academic research by experimenting in the industry."
 cover:
   relative: true # cover image lives in this page bundle
+  hiddenInSingle: true # image is placed at the end of the post instead
   image: "sigir2025.jpg"
   # can also paste direct link from external site
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
@@ -34,3 +35,5 @@ There's also a trade-off here (hence being a dance): too much experimentation an
 But for now, in my role, I have to find what AI capabilities are there that can benefit our customers. And SIGIR was the perfect place for that. There's a lot to unpack in this topic which I'll keep writing about. Feel free to follow me [here](/newsletter/).
 
 Thanks to Karnov for enabling this learning opportunity at SIGIR 2025 in Padova.
+
+![SIGIR 2025 - (c) pedromadruga.com](sigir2025.jpg)
