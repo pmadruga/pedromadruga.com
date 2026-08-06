@@ -67,7 +67,7 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: "Hello world, \n\n I'm Pedro."
-    subtitle: 'AI Scientist living in Denmark.'
+    subtitle: "AI Engineer  \nI write about applying and deploying AI projects, and lead AI teams."
     imageUrl: 'images/profile5.jpeg'
     imageWidth: 250
     imageHeight: 250
