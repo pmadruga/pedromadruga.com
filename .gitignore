@@ -1,7 +1,3 @@
-/_site
-/.jekyll-cache
-/public/*
-
 # Local Netlify folder
 .netlify
 .aider*
@@ -15,5 +11,11 @@ package-lock.json
 /resources/
 .hugo_build.lock
 
+# htmltest cache/output
+/tmp/
+
 # Theme backups
 .theme-backups/
+
+# Lefthook local overrides
+lefthook-local.yml
