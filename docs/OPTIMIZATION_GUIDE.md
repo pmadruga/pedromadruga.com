@@ -65,30 +65,20 @@ imaging:
 
 ## 2. Font Loading Optimization
 
-### Preconnect
+### Self-Hosted Fonts
 
-Preconnect hints reduce DNS lookup and connection time:
-
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-```
-
-### Display Swap
-
-The `display=swap` parameter prevents FOIT (Flash of Invisible Text):
-
-```html
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-```
+Fonts are self-hosted (no third-party requests, GDPR-friendly, CSP stays
+first-party): woff2 files in `static/fonts/`, `@font-face` rules with
+`font-display: swap` in `assets/css/extended/fonts.css`, and preload hints
+for the two primary files in `layouts/_partials/extend_head.html`.
 
 **Benefits:**
 
-- Text visible immediately with fallback font
-- Smooth transition when custom font loads
-- Better perceived performance
+- No DNS/TLS round-trips to Google Fonts
+- No visitor data shared with third parties
+- Text visible immediately with fallback font (`font-display: swap`)
 
-**File:** `layouts/_partials/extend_head.html`
+**Files:** `static/fonts/`, `assets/css/extended/fonts.css`, `layouts/_partials/extend_head.html`
 
 ## 3. JavaScript Optimization
 
