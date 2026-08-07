@@ -24,7 +24,7 @@
             {{- if ne $i (sub (len $widths) 1) -}}, {{ end -}}
           {{- end -}}
         {{- end -}}"
-      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+      sizes="(max-width: 768px) calc(100vw - 48px), 720px"
     />
     {{- end -}}
 
@@ -39,7 +39,7 @@
             {{- if ne $i (sub (len $widths) 1) -}}, {{ end -}}
           {{- end -}}
         {{- end -}}"
-      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+      sizes="(max-width: 768px) calc(100vw - 48px), 720px"
     />
 
     {{- /* Fallback to original format */ -}}
