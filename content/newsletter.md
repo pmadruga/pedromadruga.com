@@ -1,6 +1,6 @@
 ---
 title: "Newsletter" # in any language you want
-description: "Subscribe to Pedro Madruga's newsletter — blog posts on industry-applied AI, delivered to your inbox."
+# description: "Subscribe to Pedro Madruga's newsletter — blog posts on industry-applied AI, delivered to your inbox."
 showtoc: false
 weight: 1
 ShowReadingTime: false

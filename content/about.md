@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "About Pedro Madruga — AI scientist based in Denmark, working on industry-applied AI and information retrieval."
+# description: "About Pedro Madruga — AI scientist based in Denmark, working on industry-applied AI and information retrieval."
 showtoc: false
 draft: false
 disableComments: true
