@@ -24,7 +24,28 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Pedro Madruga
   description: 'Pedro Madruga - personal website and AI-related blog.'
-  keywords: [Blog, Data Science, Machine Learning, Artificial Intelligence]
+  keywords:
+    [
+      Blog,
+      Data Science,
+      Machine Learning,
+      Artificial Intelligence,
+      Generative AI,
+      Deep Learning,
+      AI Engineering,
+      AI Leadership,
+      AI Product Management,
+      AI Team Management,
+      AI Strategy,
+      AI Ethics,
+      AI Research,
+      AI Development,
+      AI Deployment,
+      AI Trends,
+      AI Applications,
+      AI Tools,
+      AI Frameworks,
+    ]
   author: Pedro Madruga
   images: ['/images/social-card.jpg'] # default opengraph/twitter card (pages with a cover use that instead)
 
@@ -66,8 +87,8 @@ params:
   # profile-mode
   profileMode:
     enabled: true # needs to be explicitly set
-    title: "Hello world, \n\n I'm Pedro."
-    subtitle: "AI Engineer  \nI lead AI teams and ship AI products — here's what I learn along the way."
+    title: "Hey there, \n\n I'm Pedro."
+    subtitle: 'I lead AI teams and ship AI products.'
     imageUrl: 'images/profile5.jpeg'
     imageWidth: 250
     imageHeight: 250
