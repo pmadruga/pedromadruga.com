@@ -3,7 +3,6 @@ title: "From PoC to 3.5M documents"
 date: 2021-07-21T11:30:03+00:00
 pinned: true
 draft: true
-description: How I created, scaled and lead a genAI legal assistant that is now being used by major law firms in Denmark and Sweden, and has been festured in major newspapers.
 ---
 
 
