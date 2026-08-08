@@ -75,6 +75,11 @@ Both jobs run on every push to `master` and on pull requests targeting `master`.
 - Markdown linting rules are in `.markdownlint-cli2.yaml` (under the `config:` key). Line length (MD013) is disabled. Several HTML elements are allowed via MD033.
 - Deployment is automatic via Netlify on push to master. Preview deploys are created for PRs.
 
+## Content Ownership
+
+- **Written content is Pedro's alone.** Claude must never write, rewrite, or edit the site's written content — blog post prose, page copy, titles, headlines, or any reader-facing text in `content/`. Only Pedro changes written content. Claude may make structural/technical changes (front matter mechanics, shortcodes, layout, formatting fixes) when explicitly asked.
+- **No descriptions on blog posts.** Blog posts must not have a `description` field in front matter; never add one.
+
 ## Git Hooks
 
 Pre-commit hooks are managed by [Lefthook](https://github.com/evilmartians/lefthook) (`lefthook.yml`). Hooks run in parallel on staged files:
