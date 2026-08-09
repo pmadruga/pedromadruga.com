@@ -56,7 +56,7 @@ params:
   mainSections:
     - blog
 
-  ShowReadingTime: false
+  ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: false
   ShowBreadCrumbs: false
