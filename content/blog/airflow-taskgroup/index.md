@@ -1,6 +1,5 @@
 ---
 title: "Getting started with Task Groups"
-description: "A simple pipeline with two groups of tasks, using the @taskgroup decorator of the TaskFlow API from Airflow 2."
 date: 2021-08-22T11:30:03+00:00
 draft: false
 cover:
