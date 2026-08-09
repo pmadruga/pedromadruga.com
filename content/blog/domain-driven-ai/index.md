@@ -1,6 +1,5 @@
 ---
 title: "Domain Driven AI"
-description: "A simple pipeline with two groups of tasks, using the @taskgroup decorator of the TaskFlow API from Airflow 2."
 date: 2026-08-05T11:30:03+00:00
 draft: true
 # cover:
