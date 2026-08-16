@@ -70,14 +70,16 @@ params:
   tocopen: false
   ShowFullTextinRSS: true
 
-  # assets:
-  #   # disableHLJS: true # to disable highlight.js
-  #   # disableFingerprinting: true
-  #   favicon: "<link / abs url>"
-  #   favicon16x16: "<link / abs url>"
-  #   favicon32x32: "<link / abs url>"
-  #   apple_touch_icon: "<link / abs url>"
-  #   safari_pinned_tab: "<link / abs url>"
+  assets:
+    # Favicon <link> tags are removed via the head.html override; this param
+    # only feeds the JSON-LD schema logo/image (templates/schema_json.html)
+    favicon: 'images/social-card.jpg'
+    # # disableHLJS: true # to disable highlight.js
+    # # disableFingerprinting: true
+    # favicon16x16: "<link / abs url>"
+    # favicon32x32: "<link / abs url>"
+    # apple_touch_icon: "<link / abs url>"
+    # safari_pinned_tab: "<link / abs url>"
 
   # label:
   #   text: "Home"

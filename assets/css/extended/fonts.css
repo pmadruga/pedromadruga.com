@@ -1,43 +1,20 @@
 /* Self-hosted webfonts (latin subset, downloaded from Google Fonts).
    Files live in static/fonts/. */
 
+/* Atkinson Hyperlegible Next variable fonts cover weights 200-800 in one
+   file per style */
 @font-face {
-  font-family: 'Atkinson Hyperlegible';
+  font-family: 'Atkinson Hyperlegible Next';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 200 800;
   font-display: swap;
-  src: url('/fonts/atkinson-hyperlegible-regular.woff2') format('woff2');
+  src: url('/fonts/atkinson-hyperlegible-next-var.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/atkinson-hyperlegible-bold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
+  font-family: 'Atkinson Hyperlegible Next';
   font-style: italic;
-  font-weight: 400;
+  font-weight: 200 800;
   font-display: swap;
-  src: url('/fonts/atkinson-hyperlegible-italic.woff2') format('woff2');
-}
-
-/* Noto Serif variable fonts cover weights 400-700 in one file per style */
-@font-face {
-  font-family: 'Noto Serif';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url('/fonts/noto-serif-var.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Noto Serif';
-  font-style: italic;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url('/fonts/noto-serif-italic-var.woff2') format('woff2');
+  src: url('/fonts/atkinson-hyperlegible-next-italic-var.woff2') format('woff2');
 }
