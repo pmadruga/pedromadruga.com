@@ -88,6 +88,24 @@ h1 {
   }
 }
 
+/* Blog post footer variant (extend_post_content.html): divider above the
+   form instead of below */
+.post-newsletter {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.post-newsletter .newsletter-form-wrapper {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.post-newsletter-text {
+  margin-bottom: 1rem;
+}
+
 .newsletter-form-wrapper {
   /* padding-top: 2.5vh; */
   /* padding-bottom: 1vh; */

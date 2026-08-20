@@ -1,0 +1,28 @@
+{{- /* Self-hosted video from the page bundle.
+Usage: {{< video src="file.mp4" poster="frame.jpg" caption="..." >}}
+Absolute URLs + poster-image fallback so the RSS/newsletter rendering
+(where <video> is stripped by email clients) degrades to a clickable
+poster linking to the post. */ -}}
+{{- $src := .Page.Resources.GetMatch (.Get "src") -}}
+{{- $poster := "" -}}
+{{- with .Get "poster" }}{{ with $.Page.Resources.GetMatch . }}{{ $poster = .Permalink }}{{ end }}{{ end -}}
+{{- if $src }}
+<figure class="video-figure">
+  <video
+    controls
+    preload="metadata"
+    playsinline
+    width="100%"
+    {{- with $poster }} poster="{{ . }}"{{ end }}>
+    <source src="{{ $src.Permalink }}" type="{{ $src.MediaType.Type }}">
+    <a href="{{ .Page.Permalink }}">
+      {{- with $poster }}<img src="{{ . }}" alt="Video: {{ $.Page.Title }}" width="100%" />{{ else }}Watch the video on the blog{{ end -}}
+    </a>
+  </video>
+  {{- with .Get "caption" }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+{{- else }}
+{{- errorf "video shortcode: resource %q not found in page bundle %q" (.Get "src") .Page.File.Path }}
+{{- end }}
