@@ -1,7 +1,7 @@
 ---
 title: "Domain Driven AI"
 date: 2026-08-20T07:30:03+00:00
-draft: false
+draft: true
 # cover:
 #   image: ""
 #   alt: ""
