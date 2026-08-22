@@ -2,11 +2,10 @@
 title: "Domain Driven AI"
 date: 2026-08-20T07:30:03+00:00
 draft: false
-# cover:
-#   image: ""
-#   alt: ""
-#   caption: ""
-#   relative: true # cover image lives in this page bundle
+cover:
+  image: "domain-driven-ai-card-2-transparent-light.png"
+  alt: "Domain Driven AI"
+  relative: true # cover image lives in this page bundle
 ---
 
 Early 2023 had me obsessing about why AI-based products fail. There were so many unanswered questions back then: why do they rarely leave the proof-of-concept stage? And the ones who do, why do they fail afterwards?

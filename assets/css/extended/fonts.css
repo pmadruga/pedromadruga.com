@@ -18,3 +18,14 @@
   font-display: swap;
   src: url('/fonts/atkinson-hyperlegible-next-italic-var.woff2') format('woff2');
 }
+
+/* Noto Serif variable font (weights 400-700), used for headers on blog posts
+   only (see extend_head.html). Upright only — italic headers are synthesized —
+   to keep the extra font cost to a single ~36KB file. */
+@font-face {
+  font-family: 'Noto Serif';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/noto-serif-var.woff2') format('woff2');
+}
