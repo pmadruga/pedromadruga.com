@@ -1,12 +1,12 @@
 /* Self-hosted webfonts (latin subset, downloaded from Google Fonts).
    Files live in static/fonts/. */
 
-/* Atkinson Hyperlegible Next variable fonts cover weights 200-800 in one
+/* Atkinson Hyperlegible Next variable fonts cover weights 400-700 in one
    file per style */
 @font-face {
   font-family: 'Atkinson Hyperlegible Next';
   font-style: normal;
-  font-weight: 200 800;
+  font-weight: 400 700;
   font-display: swap;
   src: url('/fonts/atkinson-hyperlegible-next-var.woff2') format('woff2');
 }
@@ -14,7 +14,7 @@
 @font-face {
   font-family: 'Atkinson Hyperlegible Next';
   font-style: italic;
-  font-weight: 200 800;
+  font-weight: 400 700;
   font-display: swap;
   src: url('/fonts/atkinson-hyperlegible-next-italic-var.woff2') format('woff2');
 }

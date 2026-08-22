@@ -47,7 +47,7 @@ npm run theme:rollback     # Rollback to previous theme version
 
 - **Content** (`content/`): Markdown files with Hugo front matter. Blog posts in `content/blog/`. Static pages: about, cv, newsletter, contact, search.
 - **Layouts** (`layouts/`): Custom templates that override/extend the PaperMod theme. Key customizations:
-  - `layouts/_markup/render-image.html` — image render hook for automatic AVIF/WebP responsive images
+  - `layouts/_markup/render-image.html` — image render hook for automatic WebP responsive images
   - `layouts/_partials/extend_head.html` — font preloading and SEO structured data (JSON-LD)
   - `layouts/_partials/footer.html` — JavaScript loading via Hugo Pipes (bundled, minified, fingerprinted)
   - `layouts/_partials/seo/` — schema.org structured data partials
@@ -70,10 +70,14 @@ Both jobs run on every push to `master` and on pull requests targeting `master`.
 
 - Theme customizations go in `layouts/`, never edit `themes/PaperMod/` directly.
 - Blog posts use front matter type `"blog"` and live in `content/blog/`.
-- Images are automatically optimized (AVIF/WebP, srcset, lazy loading) through the render-image hook.
+- Images are automatically optimized (WebP, srcset, lazy loading) through the render-image hook. AVIF was removed deliberately: Hugo's encoder produced files 40–65% *larger* than the WebP equivalents on this site's screenshot-heavy images.
 - JavaScript is bundled via `resources.Concat` in `layouts/_partials/footer.html` into a single `main.js` (menu-scroll, smooth-scroll, scroll-to-top, theme-toggle). `code-copy.js` loads separately on post pages only. Add new JS files to `assets/js/` and reference them in `footer.html`.
 - Markdown linting rules are in `.markdownlint-cli2.yaml` (under the `config:` key). Line length (MD013) is disabled. Several HTML elements are allowed via MD033.
 - Deployment is automatic via Netlify on push to master. Preview deploys are created for PRs.
+- **Rename-on-change for post media.** Everything under `/blog/<slug>/` is served with `Cache-Control: immutable` (netlify.toml). Hugo's `_hu_`-hashed image variants handle this automatically, but source images, videos, and posters keep their names in URLs — so never replace one in place: give the new file a new name (e.g. `-v2` suffix) and update references, or browsers/CDNs will serve the stale copy for up to a year.
+- **Forked theme templates.** These are full copies of theme files, not extensions, so they permanently shadow the theme's versions and will not receive upstream fixes. After `npm run theme:update`, diff each against its `themes/PaperMod/` counterpart and port changes manually:
+  - `layouts/_partials/cover.html` — adds WebP `<picture>` sources, caps srcset at 1500w
+  - `layouts/baseof.html`, `layouts/_partials/templates/opengraph.html`, `layouts/rss.xml` — only swap Hugo APIs deprecated in 0.158.0 (`.Language.LanguageDirection` → `.Language.Direction`, `site.Language.LanguageCode` → `site.Language.Locale`). Delete these forks once upstream PaperMod fixes them.
 
 ## Content Ownership
 

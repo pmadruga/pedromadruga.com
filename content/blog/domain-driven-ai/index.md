@@ -80,7 +80,7 @@ As demonstrated in this article, it's well-documented that there is not a single
 
 The days of having a hammer in the search of a nail are over.
 
-{{< video src="domain-driven-ai.mp4" poster="domain-driven-ai-poster.jpg" caption="Me talking about Domain Driven AI within Karnov's FLOW product launch, in June 2026">}}
+{{< video src="domain-driven-ai-720.mp4" poster="domain-driven-ai-poster.jpg" caption="Me talking about Domain Driven AI within Karnov's FLOW product launch, in June 2026">}}
 
 
 ## Disclaimer

@@ -56,9 +56,38 @@ publish = "./public/"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Blog post page-bundle media. Content-hashed image variants are safe to
+# cache forever. The mp4/poster/source originals are NOT hashed, so any
+# replaced media file must get a NEW filename (rename-on-change convention).
+[[headers]]
+  for = "/blog/:slug/:file"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Pagination pages (/blog/page/2/ etc.) would otherwise match the
+# :slug/:file rule above and get cached immutable — keep them fresh.
+# Same-header rules are last-match-wins, so this must come after it.
+[[headers]]
+  for = "/blog/page/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
 # Posts moved from /posts/<slug>/ to /blog/<slug>/ — preserve old
 # permalinks and backlinks.
 [[redirects]]
   from = "/posts/*"
   to = "/blog/:splat"
+  status = 301
+
+# The about photo moved into the page bundle; the video was re-encoded
+# under a new name (rename-on-change). Keep old public URLs alive for
+# external links, RSS readers, and newsletter archives.
+[[redirects]]
+  from = "/about.jpg"
+  to = "/about/about.jpg"
+  status = 301
+
+[[redirects]]
+  from = "/blog/domain-driven-ai/domain-driven-ai.mp4"
+  to = "/blog/domain-driven-ai/domain-driven-ai-720.mp4"
   status = 301
