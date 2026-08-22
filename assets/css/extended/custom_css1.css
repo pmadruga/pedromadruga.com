@@ -180,3 +180,8 @@ h1 {
   white-space: nowrap;
   border: 0;
 }
+
+/* Inlined SVGs (inline-svg shortcode), e.g. pull-quote cards */
+.post-content figure.inline-svg {
+  margin: 2.5rem 0;
+}

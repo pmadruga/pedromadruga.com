@@ -2,10 +2,6 @@
 title: "Domain Driven AI"
 date: 2026-08-20T07:30:03+00:00
 draft: false
-cover:
-  image: "domain-driven-ai-card-2-transparent-light.png"
-  alt: "Domain Driven AI"
-  relative: true # cover image lives in this page bundle
 ---
 
 Early 2023 had me obsessing about why AI-based products fail. There were so many unanswered questions back then: why do they rarely leave the proof-of-concept stage? And the ones who do, why do they fail afterwards?
@@ -17,6 +13,8 @@ My quest for understanding the reasons behind failed projects was straightforwar
 And that changed everything, especially in the legal industry where the value proposition was obvious. It then became clear that the lawyers would benefit from a dramatic increase in speed when performing legal tasks, such as research. That also meant the market was about to be flooded with startups that catered to the legal industry.
 
 The race for a successful product was on. And I was hunting for its formula.
+
+{{< inline-svg "domain-driven-ai-card-3.svg" >}}
 
 ## Why AI-based projects fail?
 
@@ -48,6 +46,8 @@ It's not hard to find this knowledge. In fact, within an organization, this info
 
 It depends on factors such as size and age of the company but if you're working in a company in a given domain, chances are that someone else knows something. And that something is very valuable because if done right, from an AI development standpoint, it will influence technical decisions such as architecture, infrastructure, evals, etc.
 
+{{< inline-svg "domain-driven-ai-card-2.svg" >}}
+
 ## How does domain knowledge impact AI development?
 
 Looking back, after being the co-creator (alongside two domain experts I mention further on in this post) and AI lead for two successful GenAI-based products in the legal industry, it's now possible to say with certainty that domain knowledge was a crucial factor to reach this success. AI development is generic without domain knowledge.
@@ -63,6 +63,8 @@ Domain knowledge drove AI.
 It was not about a state-of-the-art model nor the shiniest vector database. It was about converting that knowledge into AI. Technology listened to the domain, not the other way around.
 
 Fast-forward to August 2026, and a completely [new product called FLOW](https://www.karnovgroup.dk/produkt/ai/kaila-flow) successfully launched again in June, I can confidently say that, in an industy like legal (where trust is essential), a true connection between domain and technology is a fundamental step to achieve a successful product, in all its stages: from idea to production.
+
+{{< inline-svg "domain-driven-ai-card-1.svg" >}}
 
 ## Structuring around Domain Knowledge
 

@@ -1,0 +1,7 @@
+{{- /* Inlines an SVG from the page bundle so fill="currentColor" inherits the
+page text color and adapts to light/dark themes (an <img> would not). */ -}}
+{{- with .Page.Resources.Get (.Get 0) -}}
+<figure class="inline-svg">{{ .Content | safeHTML }}</figure>
+{{- else -}}
+{{- errorf "inline-svg: resource %q not found in bundle of %s" (.Get 0) .Page.File.Path -}}
+{{- end -}}
