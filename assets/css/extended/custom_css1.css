@@ -156,8 +156,20 @@ h1 {
   font-size: 1em
 }
 
+/* Prose links: amber, no underline. Loads after the theme's common CSS,
+   overriding md-content.css's underline rule. Light theme needs a darker
+   amber — #e6b450 on white is ~1.9:1 contrast; #9a6d00 is ~4.6:1 (AA). */
+.md-content a:not(.anchor),
+.post-content a:not(.anchor),
 .description-link {
-  text-decoration: underline;
+  color: #9a6d00;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .md-content a:not(.anchor),
+[data-theme='dark'] .post-content a:not(.anchor),
+[data-theme='dark'] .description-link {
+  color: #e6b450;
 }
 
 /* Keep aspect ratio when max-width shrinks images that carry
