@@ -11,6 +11,4 @@ layout: 'newsletter'
 
 This newsletter delivers what I write on [my blog](/blog/) straight to your inbox: lessons from shipping AI products in the real world, leading AI teams, and experiments with open-source LLMs and whatever else I'm hacking on.
 
-Prefer feeds? Subscribe via [RSS](/blog/index.xml) instead.
-
-Opinions are and will always be my own.
+Opinions are and will always be my own. No AI used to write my articles, ever.

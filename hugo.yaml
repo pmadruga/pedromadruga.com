@@ -119,7 +119,7 @@ params:
   #     SiteVerificationTag: "XYZabc"
 
   footer:
-    text: 'No tracking, no cookies, no analytics.'
+    text: 'No cookies used.'
 
   cover:
     hidden: true # hide everywhere but not in structured data
@@ -149,10 +149,6 @@ menu:
       name: blog
       url: /blog/
       weight: 20
-    - identifier: newsletter
-      name: newsletter
-      url: /newsletter/
-      weight: 30
     - identifier: about
       name: about
       url: /about/
@@ -162,10 +158,10 @@ menu:
     #   name: cv
     #   url: /cv/
     #   weight: 40
-    - identifier: search
-      name: search
-      url: /search/
-      weight: 45
+    - identifier: notes
+      name: notes
+      url: /notes/
+      weight: 25
     - identifier: contact
       name: contact
       url: /contact/
@@ -206,4 +202,10 @@ outputs:
   home:
     - HTML
     - RSS
-    - JSON # is necessary
+
+# The /notes/ page fetches the Bluesky feed at build time
+# (resources.GetRemote in layouts/notes.html); cap the remote cache so
+# every deploy picks up fresh posts.
+caches:
+  getresource:
+    maxAge: 10m

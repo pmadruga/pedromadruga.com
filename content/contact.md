@@ -8,3 +8,5 @@ disableComments: true
 ---
 
 Feel free to reach out via my [Linkedin profile](https://www.linkedin.com/in/pedromadruga).
+
+{{< social_icons >}}

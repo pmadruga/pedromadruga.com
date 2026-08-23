@@ -142,8 +142,305 @@ h1 {
   justify-content: center;
 }
 
+/* Notes page: build-time Bluesky feed (layouts/notes.html), styled as
+   social cards */
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.note-card {
+  padding: 16px 18px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s;
+  cursor: pointer; /* whole card opens the post (notes.js) */
+}
+
+.note-card:hover {
+  border-color: var(--tertiary);
+}
+
+.note-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.note-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.note-author {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+  min-width: 0;
+}
+
+.note-author-name {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.note-author-handle {
+  font-size: 0.85rem;
+  color: var(--secondary);
+}
+
+.note-meta {
+  margin-left: auto;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.note-date {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  white-space: nowrap;
+}
+
+.note-date:hover {
+  color: var(--primary);
+}
+
+.note-text {
+  margin-top: 10px;
+  color: var(--content);
+  line-height: 1.55;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+}
+
+.note-repost {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+.note-repost svg {
+  width: 14px;
+  height: 14px;
+}
+
+.note-images {
+  margin-top: 12px;
+}
+
+.note-images img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.note-images--multi {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.note-images--multi img {
+  width: 100%;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+}
+
+.note-copy-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary);
+  transition: color 0.15s ease;
+}
+
+/* hover picks up the site's amber accent */
+.note-copy-link:hover,
+.note-copy-link:focus-visible {
+  color: #9a6d00;
+}
+
+[data-theme='dark'] .note-copy-link:hover,
+[data-theme='dark'] .note-copy-link:focus-visible {
+  color: #e6b450;
+}
+
+.note-copy-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.note-open {
+  display: inline-flex;
+  align-items: center;
+  color: var(--secondary);
+  transition: color 0.15s ease;
+}
+
+.note-open:hover,
+.note-open:focus-visible {
+  color: #9a6d00;
+}
+
+[data-theme='dark'] .note-open:hover,
+[data-theme='dark'] .note-open:focus-visible {
+  color: #e6b450;
+}
+
+.note-open svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Minimal custom tooltip for the meta icons (replaces the native title
+   box): small themed bubble under the icon, delayed fade-in */
+.note-meta [data-tip] {
+  position: relative;
+}
+
+.note-meta [data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1;
+  padding: 4px 10px;
+  background: var(--entry);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease 0.4s;
+}
+
+.note-meta [data-tip]:hover::after,
+.note-meta [data-tip]:focus-visible::after {
+  opacity: 1;
+}
+
+.note-video {
+  position: relative;
+  display: block;
+  margin-top: 12px;
+}
+
+.note-video video {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.note-video img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.note-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  transition: background 0.15s ease;
+}
+
+.note-video:hover .note-video-play {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.note-video-play svg {
+  width: 22px;
+  height: 22px;
+  margin-left: 2px; /* optical centering of the triangle */
+}
+
+.note-link-card {
+  display: block;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.note-link-card:hover {
+  border-color: var(--secondary);
+}
+
+.note-link-title {
+  display: block;
+  color: var(--primary);
+  font-size: 0.95rem;
+  overflow-wrap: break-word;
+}
+
+.note-link-domain {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+.notes-more {
+  display: block;
+  margin: 24px auto 0;
+  padding: 8px 24px;
+  cursor: pointer;
+  background: var(--entry);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.notes-more:hover {
+  border-color: var(--tertiary);
+}
+
+/* Top nav menu links follow the amber link colors. Light mode is darker
+   than the prose amber (#9a6d00) because list pages use a #f5f5f5 body:
+   #8a6100 keeps ≥4.5:1 AA contrast there too. */
+#menu a {
+  color: #8a6100;
+}
+
+[data-theme='dark'] #menu a {
+  color: #e6b450;
+}
+
+/* Social icons follow the amber link colors (icons use currentColor) */
 .social-icons a {
   box-shadow: none;
+  color: #9a6d00;
+}
+
+[data-theme='dark'] .social-icons a {
+  color: #e6b450;
 }
 
 .post-footer-custom {
