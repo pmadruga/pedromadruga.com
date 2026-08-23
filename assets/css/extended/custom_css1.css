@@ -185,3 +185,13 @@ h1 {
 .post-content figure.inline-svg {
   margin: 2.5rem 0;
 }
+
+/* On narrow screens the cards scale down with the column and the quote
+   text gets small — let them bleed into the content padding for a
+   slightly larger render. No effect on wider viewports. */
+@media (max-width: 768px) {
+  .post-content figure.inline-svg {
+    margin-left: calc(var(--gap) * -1);
+    margin-right: calc(var(--gap) * -1);
+  }
+}

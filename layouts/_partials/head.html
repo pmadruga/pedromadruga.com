@@ -84,8 +84,14 @@
 {{- end }}
 {{- end -}}
 
-{{- /* Favicons removed intentionally (override of the theme's head.html;
-re-sync other sections after theme updates) */}}
+{{- /* Favicons: self-hosted set in static/ (replaces the theme's
+favicon block in this head.html override; re-sync other sections after
+theme updates). The ico carries 16/32/48; SVG serves hi-DPI; the
+manifest references the android-chrome icons. */}}
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="{{ site.Params.assets.theme_color | default "#2e2e33" }}">
 
 {{- /* RSS */}}

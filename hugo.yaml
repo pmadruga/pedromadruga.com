@@ -47,7 +47,7 @@ params:
       AI Frameworks,
     ]
   author: Pedro Madruga
-  images: ['/images/social-card.jpg'] # default opengraph/twitter card (pages with a cover use that instead)
+  images: ['/images/og-default.png'] # default opengraph/twitter card (pages with a cover use that instead)
 
   DateFormat: 'January 2, 2006'
   defaultTheme: auto # dark, light
@@ -71,9 +71,9 @@ params:
   ShowFullTextinRSS: true
 
   assets:
-    # Favicon <link> tags are removed via the head.html override; this param
+    # Favicon <link> tags are hardcoded in the head.html override; this param
     # only feeds the JSON-LD schema logo/image (templates/schema_json.html)
-    favicon: 'images/social-card.jpg'
+    favicon: 'android-chrome-512x512.png'
     # # disableHLJS: true # to disable highlight.js
     # # disableFingerprinting: true
     # favicon16x16: "<link / abs url>"
