@@ -1,0 +1,23 @@
+name: Scheduled Netlify build
+
+# Rebuilds the site on a schedule so the /notes/ Bluesky feed (fetched at
+# build time) stays fresh between pushes. Requires the repo secret
+# NETLIFY_BUILD_HOOK_URL — a Netlify build hook URL (Site configuration →
+# Build & deploy → Build hooks).
+
+on:
+  schedule:
+    - cron: '23 5 * * *' # daily at 05:23 UTC (off-peak, avoids top-of-hour load)
+  workflow_dispatch: # manual trigger for testing
+
+jobs:
+  trigger-netlify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify build hook
+        run: |
+          if [ -z "${{ secrets.NETLIFY_BUILD_HOOK_URL }}" ]; then
+            echo "NETLIFY_BUILD_HOOK_URL secret is not set" >&2
+            exit 1
+          fi
+          curl --fail-with-body -s -X POST -d '{}' "${{ secrets.NETLIFY_BUILD_HOOK_URL }}"
