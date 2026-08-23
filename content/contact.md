@@ -2,6 +2,7 @@
 title: "Contact"
 # description: "How to get in touch with Pedro Madruga."
 showtoc: false
+ShowReadingTime: false
 draft: false
 disableComments: true
 ---
