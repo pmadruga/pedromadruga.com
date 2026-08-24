@@ -89,7 +89,9 @@ params:
   # profile-mode
   profileMode:
     enabled: true # needs to be explicitly set
-    title: "Hey there, \n\n I'm Pedro."
+    # markdown hard break (two trailing spaces), not a paragraph break:
+    # a second paragraph would render invalid <p> elements inside the <h1>
+    title: "Hey there,  \nI'm Pedro."
     subtitle: 'I lead AI teams and ship AI products.'
     imageUrl: 'images/profile5.jpeg'
     imageWidth: 250
@@ -133,16 +135,6 @@ params:
   #   Text: 'Suggest Changes' # edit text
   #   appendFilePath: false # to append file path to Edit link
 
-  # for search
-  # https://fusejs.io/api/options.html
-  fuseOpts:
-    isCaseSensitive: false
-    shouldSort: true
-    location: 0
-    distance: 1000
-    threshold: 0.4
-    minMatchCharLength: 0
-    keys: ['title', 'permalink', 'summary', 'content']
 menu:
   main:
     - identifier: blog

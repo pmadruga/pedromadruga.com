@@ -11,32 +11,36 @@
   {{- $width := $img.Width -}}
   {{- $height := $img.Height -}}
 
+  {{- /* Collect candidates first so the srcset has no trailing comma and
+  is omitted entirely for images narrower than the smallest width */ -}}
+  {{- $candidates := slice -}}
+  {{- range $widths -}}
+    {{- if le . $width -}}
+      {{- $resized := $img.Resize (printf "%dx webp q85" .) -}}
+      {{- $candidates = $candidates | append (printf "%s %dw" $resized.RelPermalink .) -}}
+    {{- end -}}
+  {{- end -}}
   <picture>
-    {{- /* Generate WebP sources */ -}}
+    {{- with $candidates }}
     <source
       type="image/webp"
-      srcset="
-        {{- range $i, $w := $widths -}}
-          {{- if le $w $width -}}
-            {{- $resized := $img.Resize (printf "%dx webp q85" $w) -}}
-            {{- $resized.RelPermalink }} {{ $w }}w
-            {{- if ne $i (sub (len $widths) 1) -}}, {{ end -}}
-          {{- end -}}
-        {{- end -}}"
+      srcset="{{ delimit . `, ` }}"
       sizes="(max-width: 768px) calc(100vw - 48px), 720px"
     />
+    {{- end }}
 
-    {{- /* Fallback to original format */ -}}
+    {{- /* Fallback to original format. First image is the LCP candidate:
+    eager + fetchpriority (lazy would defeat the priority hint) */ -}}
     <img
       src="{{ $img.RelPermalink }}"
       alt="{{ $alt }}"
       {{- with $title }} title="{{ . }}"{{ end }}
       width="{{ $width }}"
       height="{{ $height }}"
-      loading="lazy"
+      {{- if eq .Ordinal 0 }} loading="eager" fetchpriority="high"
+      {{- else }} loading="lazy"
+      {{- end }}
       decoding="async"
-      {{- /* Add fetchpriority=high for first image */ -}}
-      {{- if eq .Ordinal 0 }} fetchpriority="high"{{ end }}
     />
   </picture>
 {{- else -}}

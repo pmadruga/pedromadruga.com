@@ -10,6 +10,24 @@ body {
   background: var(--theme);
 }
 
+/* Amber accent: single source of truth for link/icon color. The
+   data-theme="auto" rule covers no-JS visitors with a dark system
+   preference (the inline theme script normally rewrites auto to
+   dark/light before paint). */
+:root {
+  --amber: #9a6d00; /* 4.6:1 on white (AA) */
+}
+
+[data-theme='dark'] {
+  --amber: #e6b450; /* 8.75:1 on the dark background */
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='auto'] {
+    --amber: #e6b450;
+  }
+}
+
 h1 {
   margin-bottom: 2.5rem;
 }
@@ -17,32 +35,6 @@ h1 {
 .post-content h2 {
   margin-top: 3.8rem;
   margin-bottom: 0.7rem;
-}
-
-.post-entry {
-  position: relative;
-  margin-bottom: var(--gap);
-  padding: var(--gap);
-  /* background: var(--entry); */
-  border-radius: var(--radius);
-  transition: transform 0.1s;
-  /* border: 1px solid var(--border); */
-}
-
-.post-entry:hover {
-  background: var(--entry);
-  /* border: 1px solid var(--border); */
-  /* padding: var(--gap); */
-}
-
-.post-entry {
-  border: 1px solid black;
-  background: none;
-  border: none;
-}
-
-.post-entry:hover {
-  background: var(--entry);
 }
 
 .button-newsletter {
@@ -113,27 +105,18 @@ h1 {
   justify-content: space-around;
 }
 
-.newsletter_form_frontpage {
-  padding-top: 4.5vh;
-}
-
-/* #bd-email {
-    color: var(--primary);
-    padding: 10px;
-} */
-
 #bd-email input {
   background: 0 0;
   padding: 6px 10px;
   width: 66%;
   color: var(--primary);
-  border: 2px solid var(--tertiary);
+  /* --secondary, not --tertiary: field boundary needs ~3:1 contrast */
+  border: 2px solid var(--secondary);
   border-radius: var(--radius);
 }
 
-
 #bd-email input:focus {
-  border-color: var(--secondary);
+  border-color: var(--primary);
 }
 
 .social-icons {
@@ -152,14 +135,17 @@ h1 {
 
 .note-card {
   padding: 16px 18px;
-  background: var(--entry);
+  /* --code-bg, not --entry: in light mode --entry equals the page
+     background, leaving cards with a near-invisible 1.16:1 border as
+     their only boundary */
+  background: var(--code-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: border-color 0.15s;
 }
 
 .note-card:hover {
-  border-color: var(--tertiary);
+  border-color: var(--secondary);
 }
 
 .note-header {
@@ -190,6 +176,7 @@ h1 {
 .note-author-handle {
   font-size: 0.85rem;
   color: var(--secondary);
+  overflow-wrap: anywhere; /* long repost handles on narrow screens */
 }
 
 .note-meta {
@@ -204,10 +191,12 @@ h1 {
   font-size: 0.85rem;
   color: var(--secondary);
   white-space: nowrap;
+  transition: color 0.15s ease;
 }
 
-.note-date:hover {
-  color: var(--primary);
+.note-date:hover,
+.note-date:focus-visible {
+  color: var(--amber);
 }
 
 .note-text {
@@ -264,12 +253,7 @@ h1 {
 
 .note-open:hover,
 .note-open:focus-visible {
-  color: #9a6d00;
-}
-
-[data-theme='dark'] .note-open:hover,
-[data-theme='dark'] .note-open:focus-visible {
-  color: #e6b450;
+  color: var(--amber);
 }
 
 .note-open svg {
@@ -299,25 +283,19 @@ h1 {
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.15s ease 0.4s;
+  transition: opacity 0.15s ease; /* hide instantly… */
 }
 
 .note-meta [data-tip]:hover::after,
 .note-meta [data-tip]:focus-visible::after {
   opacity: 1;
+  transition-delay: 0.4s; /* …show after a short delay */
 }
 
 .note-video {
   position: relative;
   display: block;
   margin-top: 12px;
-}
-
-.note-video video {
-  display: block;
-  width: 100%;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
 }
 
 .note-video img {
@@ -379,31 +357,17 @@ h1 {
   color: var(--secondary);
 }
 
-/* Top nav menu links follow the amber link colors. Light mode is darker
-   than the prose amber (#9a6d00) because list pages use a #f5f5f5 body:
-   #8a6100 keeps ≥4.5:1 AA contrast there too. */
+/* Top nav menu links follow the amber accent (all pages render on a
+   white/--theme background — the .list override above removes the theme's
+   #f5f5f5 list background) */
 #menu a {
-  color: #8a6100;
+  color: var(--amber);
 }
 
-[data-theme='dark'] #menu a {
-  color: #e6b450;
-}
-
-/* Social icons follow the amber link colors (icons use currentColor) */
+/* Social icons follow the amber accent (icons use currentColor) */
 .social-icons a {
   box-shadow: none;
-  color: #9a6d00;
-}
-
-[data-theme='dark'] .social-icons a {
-  color: #e6b450;
-}
-
-.post-footer-custom {
-  /* text-align: center; */
-  font-style: italic;
-  padding-top: 2vh;
+  color: var(--amber);
 }
 
 .post-content code {
@@ -411,19 +375,12 @@ h1 {
 }
 
 /* Prose links: amber, no underline. Loads after the theme's common CSS,
-   overriding md-content.css's underline rule. Light theme needs a darker
-   amber — #e6b450 on white is ~1.9:1 contrast; #9a6d00 is ~4.6:1 (AA). */
+   overriding md-content.css's underline rule. */
 .md-content a:not(.anchor),
 .post-content a:not(.anchor),
 .description-link {
-  color: #9a6d00;
+  color: var(--amber);
   text-decoration: none;
-}
-
-[data-theme='dark'] .md-content a:not(.anchor),
-[data-theme='dark'] .post-content a:not(.anchor),
-[data-theme='dark'] .description-link {
-  color: #e6b450;
 }
 
 /* Keep aspect ratio when max-width shrinks images that carry

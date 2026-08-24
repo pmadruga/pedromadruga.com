@@ -13,15 +13,24 @@ on:
     - cron: '23 5 * * *' # daily at 05:23 UTC (off-peak, avoids top-of-hour load)
   workflow_dispatch: # manual trigger for testing
 
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-deploy
+  cancel-in-progress: false
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           submodules: recursive
           fetch-depth: 0 # full history for --enableGitInfo
+          persist-credentials: false # third-party CLI runs later in this workspace
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
@@ -32,10 +41,16 @@ jobs:
       - name: Build Site
         env:
           HUGO_ENV: production
+          # notes.html errors the build when the Bluesky feed comes back
+          # empty, so an API outage keeps yesterday's deploy instead of
+          # silently publishing an empty /notes/ page.
+          HUGO_NOTES_REQUIRE_FEED: 'true'
         run: hugo --gc --minify --enableGitInfo
 
       - name: Deploy to Netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: npx --yes netlify-cli deploy --prod --dir public --message "Scheduled daily build (notes feed refresh)"
+        # version-pinned: unpinned npx would run whatever is latest on npm
+        # each morning with the Netlify token in env
+        run: npx --yes netlify-cli@27.1.2 deploy --prod --dir public --message "Scheduled daily build (notes feed refresh)"

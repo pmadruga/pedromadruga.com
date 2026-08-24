@@ -30,8 +30,7 @@
 {{- /* Load optimized external JavaScript with Hugo Pipes */ -}}
 {{- $menuScroll := resources.Get "js/menu-scroll.js" -}}
 {{- $smoothScroll := resources.Get "js/smooth-scroll.js" -}}
-{{- $newsletter := resources.Get "js/newsletter.js" -}}
-{{- $bundle := slice $menuScroll $smoothScroll $newsletter -}}
+{{- $bundle := slice $menuScroll $smoothScroll -}}
 
 {{- if (not .Site.Params.disableScrollToTop) }}
   {{- $scrollToTop := resources.Get "js/scroll-to-top.js" -}}
@@ -46,7 +45,7 @@
 {{- $main := $bundle | resources.Concat "js/main.js" | minify | fingerprint -}}
 <script src="{{ $main.RelPermalink }}" defer></script>
 
-{{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Param "ShowCodeCopyButtons")) }}
+{{- if (and (eq .Kind "page") (ne .Layout "archives") (.Param "ShowCodeCopyButtons")) }}
   {{- $codeCopy := resources.Get "js/code-copy.js" | minify | fingerprint -}}
   <script src="{{ $codeCopy.RelPermalink }}" defer></script>
 {{- end }}

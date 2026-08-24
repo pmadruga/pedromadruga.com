@@ -28,8 +28,21 @@
     {{- with .Err }}
       {{- warnf "Bluesky feed fetch failed: %s" . }}
     {{- else with .Value }}
-      {{- $feed = (.Content | transform.Unmarshal).feed }}
+      {{- /* guard the parse too: a 200 with a non-JSON body must not
+      break the unattended daily build */ -}}
+      {{- with try (transform.Unmarshal .Content) }}
+        {{- with .Err }}
+          {{- warnf "Bluesky feed parse failed: %s" . }}
+        {{- else with .Value }}
+          {{- with .feed }}{{ $feed = . }}{{ end }}
+        {{- end }}
+      {{- end }}
     {{- end }}
+  {{- end }}
+  {{- if and (not $feed) (eq (os.Getenv "HUGO_NOTES_REQUIRE_FEED") "true") }}
+    {{- /* scheduled deploys set this: fail instead of silently replacing
+    a working /notes/ page with the empty fallback */ -}}
+    {{- errorf "Bluesky feed is empty and HUGO_NOTES_REQUIRE_FEED is set — aborting build" }}
   {{- end }}
 
   {{- if $feed }}
@@ -46,16 +59,27 @@
       {{- end }}
       <header class="note-header">
         {{- with $post.author.avatar }}
-        <img class="note-avatar" src="{{ . }}" alt="" loading="lazy" decoding="async" width="42" height="42" />
+        {{- /* the API returns full-size (~1000px) avatars; the CDN's
+        thumbnail variant is ~95% smaller for this 42px render */ -}}
+        <img class="note-avatar" src="{{ replace . "/img/avatar/" "/img/avatar_thumbnail/" }}" alt="" loading="lazy" decoding="async" width="42" height="42" />
         {{- end }}
         <div class="note-author">
           <span class="note-author-name">{{ $post.author.displayName | default $post.author.handle }}</span>
           <span class="note-author-handle">@{{ $post.author.handle }}</span>
         </div>
         <div class="note-meta">
+          {{- /* third-party reposts set createdAt client-side; skip the
+          date rather than fail the build on a malformed value (the
+          Bluesky icon still links to the post) */ -}}
+          {{- $when := "" }}
+          {{- with try (time.AsTime ($post.record.createdAt | default "")) }}
+            {{- with .Value }}{{ $when = . }}{{ end }}
+          {{- end }}
+          {{- with $when }}
           <a class="note-date" href="{{ $link }}" target="_blank" rel="noopener noreferrer">
-            {{- (time.AsTime $post.record.createdAt).Format "Jan 2, 2006" -}}
+            {{- .Format "Jan 2, 2006" -}}
           </a>
+          {{- end }}
           <a class="note-open" href="{{ $link }}" target="_blank" rel="noopener noreferrer"
             data-tip="Open on Bluesky" aria-label="Open on Bluesky">
             <svg viewBox="-25 0 400 320" fill="none" stroke="currentColor" stroke-width="30"><path d="M180 141.964C163.699 110.262 119.308 51.1817 78.0347 22.044C38.4971 -5.86834 23.414 -1.03207 13.526 3.43594C2.08093 8.60755 0 26.1785 0 36.5164C0 46.8542 5.66748 121.272 9.36416 133.694C21.5786 174.738 65.0603 188.607 105.104 184.156C107.151 183.852 109.227 183.572 111.329 183.312C109.267 183.642 107.19 183.924 105.104 184.156C46.4204 192.847 -5.69621 214.233 62.6582 290.33C137.848 368.18 165.705 273.637 180 225.702C194.295 273.637 210.76 364.771 295.995 290.33C360 225.702 313.58 192.85 254.896 184.158C252.81 183.926 250.733 183.645 248.671 183.315C250.773 183.574 252.849 183.855 254.896 184.158C294.94 188.61 338.421 174.74 350.636 133.697C354.333 121.275 360 46.8568 360 36.519C360 26.1811 357.919 8.61012 346.474 3.43851C336.586 -1.02949 321.503 -5.86576 281.965 22.0466C240.692 51.1843 196.301 110.262 180 141.964Z"></path></svg>
@@ -100,7 +124,7 @@
   </div>
   {{- else }}
   <p class="notes-empty">Couldn't load posts right now — find them directly on
-    <a href="https://bsky.app/profile/{{ $handle }}" target="_blank" rel="noopener noreferrer">Bluesky</a>.</p>
+    <a class="description-link" href="https://bsky.app/profile/{{ $handle }}" target="_blank" rel="noopener noreferrer">Bluesky</a>.</p>
   {{- end }}
 </article>
 
