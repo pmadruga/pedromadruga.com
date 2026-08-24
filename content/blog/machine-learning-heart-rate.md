@@ -17,7 +17,7 @@ This report is structured into three main parts: data analysis, supervised, and 
 
 ## Report
 
-[Download full report (41 pages)](https://raw.githubusercontent.com/pmadruga/ml_project/master/dist/report.pdf?token=AA3TGZGN2CDGQNBFJEUW4M3BDZHHW)
+[Download full report (41 pages)](https://raw.githubusercontent.com/pmadruga/ml_project/master/dist/report.pdf)
 
 ## Code
 

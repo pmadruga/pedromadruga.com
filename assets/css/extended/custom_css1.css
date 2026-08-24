@@ -221,27 +221,40 @@ h1 {
   height: 14px;
 }
 
-.note-images {
-  margin-top: 12px;
+/* Media embeds aren't rendered — this hint links to the post instead */
+.note-media-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  transition: color 0.15s ease;
 }
 
-.note-images img {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
+.note-media-hint:hover,
+.note-media-hint:focus-visible {
+  color: var(--amber);
 }
 
-.note-images--multi {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+.note-media-hint svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
-.note-images--multi img {
-  width: 100%;
-  aspect-ratio: 1.5;
-  object-fit: cover;
+/* Link facets from the post text, rendered as chips */
+.note-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: 10px;
+}
+
+.note-link-chip {
+  font-size: 0.85rem;
+  color: var(--amber);
+  overflow-wrap: anywhere;
 }
 
 .note-open {
@@ -292,45 +305,6 @@ h1 {
   transition-delay: 0.4s; /* …show after a short delay */
 }
 
-.note-video {
-  position: relative;
-  display: block;
-  margin-top: 12px;
-}
-
-.note-video img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-}
-
-.note-video-play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
-  transition: background 0.15s ease;
-}
-
-.note-video:hover .note-video-play {
-  background: rgba(0, 0, 0, 0.75);
-}
-
-.note-video-play svg {
-  width: 22px;
-  height: 22px;
-  margin-left: 2px; /* optical centering of the triangle */
-}
-
 .note-link-card {
   display: block;
   margin-top: 12px;
@@ -367,6 +341,17 @@ h1 {
 /* Social icons follow the amber accent (icons use currentColor) */
 .social-icons a {
   box-shadow: none;
+  color: var(--amber);
+}
+
+/* Blog list (archives layout): give post titles a visible link
+   affordance — amber on hover/focus, matching the rest of the site */
+.archive-entry .archive-entry-title {
+  transition: color 0.15s ease;
+}
+
+.archive-entry:hover .archive-entry-title,
+.archive-entry:focus-within .archive-entry-title {
   color: var(--amber);
 }
 
