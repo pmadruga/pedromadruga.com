@@ -45,7 +45,7 @@ npm run theme:rollback     # Rollback to previous theme version
 
 ## Architecture
 
-- **Content** (`content/`): Markdown files with Hugo front matter. Blog posts in `content/blog/`. Static pages: about, cv, newsletter, contact, notes (build-time Bluesky feed via `layouts/notes.html`).
+- **Content** (`content/`): Markdown files with Hugo front matter. Blog posts in `content/blog/`. Static pages: about, cv, newsletter, contact, notes (build-time Bluesky feed via `layouts/notes.html`, no client JS; refreshed by the daily deploy workflow `.github/workflows/daily-deploy.yml`).
 - **Layouts** (`layouts/`): Custom templates that override/extend the PaperMod theme. Key customizations:
   - `layouts/_markup/render-image.html` — image render hook for automatic WebP responsive images
   - `layouts/_partials/extend_head.html` — font preloading and SEO structured data (JSON-LD)
@@ -71,7 +71,7 @@ Both jobs run on every push to `master` and on pull requests targeting `master`.
 - Theme customizations go in `layouts/`, never edit `themes/PaperMod/` directly.
 - Blog posts use front matter type `"blog"` and live in `content/blog/`.
 - Images are automatically optimized (WebP, srcset, lazy loading) through the render-image hook. AVIF was removed deliberately: Hugo's encoder produced files 40–65% *larger* than the WebP equivalents on this site's screenshot-heavy images.
-- JavaScript is bundled via `resources.Concat` in `layouts/_partials/footer.html` into a single `main.js` (menu-scroll, smooth-scroll, scroll-to-top, theme-toggle). `code-copy.js` loads separately on post pages only. Add new JS files to `assets/js/` and reference them in `footer.html`. `assets/js/vendor/hls.light.min.js` (hls.js 1.7.1) is vendored for inline Bluesky video on /notes/ — lazy-loaded by `notes.js` on first play, never bundled.
+- JavaScript is bundled via `resources.Concat` in `layouts/_partials/footer.html` into a single `main.js` (menu-scroll, smooth-scroll, scroll-to-top, theme-toggle). `code-copy.js` loads separately on post pages only. Add new JS files to `assets/js/` and reference them in `footer.html`.
 - Markdown linting rules are in `.markdownlint-cli2.yaml` (under the `config:` key). Line length (MD013) is disabled. Several HTML elements are allowed via MD033.
 - Deployment is automatic via Netlify on push to master. Preview deploys are created for PRs.
 - **Rename-on-change for post media.** Everything under `/blog/<slug>/` is served with `Cache-Control: immutable` (netlify.toml). Hugo's `_hu_`-hashed image variants handle this automatically, but source images, videos, and posters keep their names in URLs — so never replace one in place: give the new file a new name (e.g. `-v2` suffix) and update references, or browsers/CDNs will serve the stale copy for up to a year.

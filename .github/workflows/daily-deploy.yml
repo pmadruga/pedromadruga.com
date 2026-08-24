@@ -1,0 +1,41 @@
+name: Daily build and deploy
+
+# Rebuilds and deploys the site once a day so the /notes/ Bluesky feed
+# (fetched at build time, no client JS) stays fresh between pushes.
+# Mirrors the Netlify production build (Hugo 0.164.0 extended, --gc
+# --minify, git info). Requires two repo secrets:
+#   NETLIFY_AUTH_TOKEN — personal access token (Netlify → User settings →
+#                        Applications → New access token)
+#   NETLIFY_SITE_ID    — the site's API ID (Site configuration → General)
+
+on:
+  schedule:
+    - cron: '23 5 * * *' # daily at 05:23 UTC (off-peak, avoids top-of-hour load)
+  workflow_dispatch: # manual trigger for testing
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          submodules: recursive
+          fetch-depth: 0 # full history for --enableGitInfo
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
+        with:
+          hugo-version: '0.164.0'
+          extended: true
+
+      - name: Build Site
+        env:
+          HUGO_ENV: production
+        run: hugo --gc --minify --enableGitInfo
+
+      - name: Deploy to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: npx --yes netlify-cli deploy --prod --dir public --message "Scheduled daily build (notes feed refresh)"

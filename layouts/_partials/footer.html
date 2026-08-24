@@ -50,8 +50,3 @@
   {{- $codeCopy := resources.Get "js/code-copy.js" | minify | fingerprint -}}
   <script src="{{ $codeCopy.RelPermalink }}" defer></script>
 {{- end }}
-
-{{- if eq .Layout "notes" }}
-  {{- $notes := resources.Get "js/notes.js" | minify | fingerprint -}}
-  <script src="{{ $notes.RelPermalink }}" defer></script>
-{{- end }}

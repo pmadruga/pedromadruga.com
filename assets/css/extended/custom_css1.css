@@ -156,7 +156,6 @@ h1 {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: border-color 0.15s;
-  cursor: pointer; /* whole card opens the post (notes.js) */
 }
 
 .note-card:hover {
@@ -254,33 +253,6 @@ h1 {
   width: 100%;
   aspect-ratio: 1.5;
   object-fit: cover;
-}
-
-.note-copy-link {
-  display: inline-flex;
-  align-items: center;
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--secondary);
-  transition: color 0.15s ease;
-}
-
-/* hover picks up the site's amber accent */
-.note-copy-link:hover,
-.note-copy-link:focus-visible {
-  color: #9a6d00;
-}
-
-[data-theme='dark'] .note-copy-link:hover,
-[data-theme='dark'] .note-copy-link:focus-visible {
-  color: #e6b450;
-}
-
-.note-copy-link svg {
-  width: 14px;
-  height: 14px;
 }
 
 .note-open {
@@ -405,21 +377,6 @@ h1 {
   margin-top: 2px;
   font-size: 0.8rem;
   color: var(--secondary);
-}
-
-.notes-more {
-  display: block;
-  margin: 24px auto 0;
-  padding: 8px 24px;
-  cursor: pointer;
-  background: var(--entry);
-  color: var(--primary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-}
-
-.notes-more:hover {
-  border-color: var(--tertiary);
 }
 
 /* Top nav menu links follow the amber link colors. Light mode is darker
