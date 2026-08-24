@@ -8,6 +8,9 @@
 # which is what Agent Runners / dependency detection actually read.
 [build.environment]
   NODE_VERSION = "22"
+  # Netlify auto-runs `bun install` because bun.lock is committed; pin the
+  # Bun version (otherwise it silently tracks the build image's default).
+  BUN_VERSION = "1.3.8"
   HUGO_VERSION = "0.164.0"
 
 [context.production.environment]
