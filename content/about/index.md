@@ -2,16 +2,13 @@
 title: "About"
 # summary, not description: description renders visibly under the title
 # (post-description), duplicating the first paragraph. summary feeds the
-# meta/og description tags without being displayed. The auto-summary can't
-# be used here: the page starts with the social_icons shortcode, so Hugo's
-# first-70-words summary is icon markup.
+# meta/og description tags without being displayed.
 summary: "I'm an AI engineer and leader based in Copenhagen. I build AI products that put domain experts at the center - a way of working I call Domain Driven AI: embedding experts into the development loop from prototype through validation. I've applied it across legal, financial, and philanthropic sectors."
 showtoc: false
 draft: false
 disableComments: true
+hidemeta: true # no reading time / meta line on this page
 ---
-
-{{< social_icons >}}
 
 
 I'm an AI engineer and leader based in Copenhagen. I build AI products that put domain experts at the center - a way of working I call [**Domain Driven AI**](https://pedromadruga.com/blog/domain-driven-ai/): embedding experts into the development loop from prototype through validation. I've applied it across legal, financial, and philanthropic sectors.
