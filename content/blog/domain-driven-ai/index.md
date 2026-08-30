@@ -1,5 +1,6 @@
 ---
 title: "Domain Driven AI"
+summary: "Why do most AI-based products fail? Lessons from building two successful GenAI products in the legal industry: domain knowledge must drive AI development, with experts embedded from prototype through validation."
 date: 2026-08-20T07:30:03+00:00
 draft: false
 ---

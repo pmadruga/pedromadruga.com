@@ -1,5 +1,6 @@
 ---
 title: "Install Airflow 2 on a Raspberry Pi (using Python 3.x)"
+summary: "How to install Airflow 2 on a Raspberry Pi using Python 3 — the first post of a series where we build an entire Data Engineering pipeline."
 date: 2021-07-21T11:30:03+00:00
 type: "blog"
 cover:

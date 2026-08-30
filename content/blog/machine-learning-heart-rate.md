@@ -1,6 +1,7 @@
 ---
 title: "Machine Learning Techniques applied to Heart
 Rate Variability - DTU Course final report"
+summary: "Final report for DTU's Machine Learning course: supervised and unsupervised learning applied to Heart Rate Variability data to predict and cluster HRV values."
 date: 2019-12-31
 showtoc: false
 ---

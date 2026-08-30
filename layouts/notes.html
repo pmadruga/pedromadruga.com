@@ -60,7 +60,7 @@
         {{- with $post.author.avatar }}
         {{- /* the API returns full-size (~1000px) avatars; the CDN's
         thumbnail variant is ~95% smaller for this 42px render */ -}}
-        <img class="note-avatar" src="{{ replace . "/img/avatar/" "/img/avatar_thumbnail/" }}" alt="" loading="lazy" decoding="async" width="42" height="42" />
+        <img class="note-avatar" src="{{ replace . "/img/avatar/" "/img/avatar_thumbnail/" }}" alt="Avatar of @{{ $post.author.handle }}" loading="lazy" decoding="async" width="42" height="42" />
         {{- end }}
         <div class="note-author">
           <span class="note-author-name">{{ $post.author.displayName | default $post.author.handle }}</span>

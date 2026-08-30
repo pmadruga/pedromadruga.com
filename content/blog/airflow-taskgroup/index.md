@@ -1,5 +1,6 @@
 ---
 title: "Getting started with Task Groups"
+summary: "Task Groups replace SubDAGs in Airflow 2.0. Building a simple DAG with two groups of tasks using the @taskgroup decorator from the TaskFlow API."
 date: 2021-08-22T11:30:03+00:00
 draft: false
 cover:

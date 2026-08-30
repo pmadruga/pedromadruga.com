@@ -7,8 +7,15 @@ CheckImages: true
 CheckScripts: true
 ExternalTimeout: 30
 IgnoreURLs:
-  # Bot-hostile hosts that rate-limit or block link checkers
-  - 'https://www.linkedin.com'
-  - 'https://linkedin.com'
+  # Bot-hostile hosts that rate-limit or block link checkers. Entries are
+  # regexes matched anywhere in the URL (so subdomains like uk.linkedin.com
+  # are covered too).
+  - 'linkedin\.com'
   - 'https://x.com'
   - 'https://twitter.com'
+  # doi.org returns 202/403 to non-browser agents
+  - 'doi\.org'
+  # medium.com 403s link checkers
+  - 'medium\.com'
+  # jobindex.dk intermittently 503s bots
+  - 'jobindex\.dk'

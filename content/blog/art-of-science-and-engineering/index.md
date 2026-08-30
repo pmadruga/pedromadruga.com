@@ -1,5 +1,6 @@
 ---
 title: "The art of (AI) science and engineering"
+summary: "Back from SIGIR 2025: the gap between Information Retrieval research and industry is incredibly narrow, and experimentation must be embedded into product development - not treated as an afterthought."
 date: 2025-07-21T11:30:03+00:00
 type: "blog"
 draft: false

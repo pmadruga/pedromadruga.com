@@ -86,7 +86,7 @@ Version pins that must move in lockstep: Hugo in `netlify.toml`, `lint.yml`, `li
 ## Content Ownership
 
 - **Written content is Pedro's alone.** Claude must never write, rewrite, or edit the site's written content — blog post prose, page copy, titles, headlines, or any reader-facing text in `content/`. Only Pedro changes written content. Claude may make structural/technical changes (front matter mechanics, shortcodes, layout, formatting fixes) when explicitly asked.
-- **No descriptions on blog posts.** Blog posts must not have a `description` field in front matter; never add one.
+- **`summary`, not `description`, in front matter.** A `description` field renders visibly under the page title (PaperMod's post-description block), duplicating the opening prose — never add one. Use `summary` instead: it feeds the meta/og description tags and RSS without being displayed on the page.
 
 ## Git Hooks
 

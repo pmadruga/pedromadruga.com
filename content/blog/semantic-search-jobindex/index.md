@@ -1,7 +1,7 @@
 ---
 title: >-
   A gentle introduction and example of Semantic Search using BERT on Danish text
-# description: An non-technical introduction to Semantic Search.
+summary: "A non-technical introduction to Semantic Search: applying BERT and other NLP models to improve Danish-language search results on jobindex.dk, Denmark's most significant job portal."
 showtoc: true
 tocopen: true
 draft: false
@@ -54,7 +54,7 @@ The dataset is comprised of 4.2m jobs from jobindex.dk, from 2000 until March 20
 
 Here’s an excerpt of the dataset:
 
-![](1__xz4lXxU__YdFgks8XUhI__vw.png)
+![Table with a sample of the scraped job postings dataset, showing title, location, description, company, and date for five Danish job ads](1__xz4lXxU__YdFgks8XUhI__vw.png)
 
 _Title_, _location_, _description_ and _date_ are some of the features in the original dataset. The remainder is excluded since they don’t provide a signal to the project at hand. Some of the entries have empty rows for certain features, due to some difficulty upon scraping the data.
 
@@ -107,7 +107,7 @@ By creating the vectorial representation of job postings, it’s then possible t
 
 The results results from the actual jobindex.dk website are then compared with direct search, TFIDF and BERT techniques. The direct search is a very simple approach to return direct results, as explained before. Without going into details, it’s limited into one algorithm in this project:
 
-![](1____HbkDCuOjBT2r3__x__t6GmA.png)
+![Python code of the find_direct_results function, returning job postings whose processed title contains every word of the search query](1____HbkDCuOjBT2r3__x__t6GmA.png)
 
 Direct Search results algorithm
 
@@ -129,7 +129,7 @@ This search query translates as “chef”.
 
 In this example, all models are compared, including also the results from Jobindex.dk, limited to a maximum of 10 results. As a reminder, below are the results of the subset of data. So, for this query, the results are:
 
-![](1__9mz4Yipdti4cC202jYfdGA.png)
+![Table comparing the top 10 results for the query 'kok' across Jobindex.dk, Direct Search, TFIDF, and BERT](1__9mz4Yipdti4cC202jYfdGA.png)
 
 Several conclusions are drawn from studying the first results table:
 
@@ -142,7 +142,7 @@ The main reason for the TFIDF and BERT present noise is because when they are pr
 
 ### Example 2 — “_Fysioterapeut til neurorehabilitering_”
 
-![](1____2KvjtS8k8TAgxoKofR1EA.png)
+![Table comparing results for the query 'Fysioterapeut til neurorehabilitering': BERT returns relevant neurorehabilitation positions while Direct Search returns almost none](1____2KvjtS8k8TAgxoKofR1EA.png)
 
 When the search query (“Fysioterapeut til neurorehabilitering”, in this case) starts getting longer, a few interpretations can be drawn, shown in the table above:
 
@@ -159,7 +159,7 @@ On the other hand, TFIDF revolves around variations of the profession, hence los
 
 This query roughly translates to “Technician for neurorehabilitation”. With this query, there are no Direct Search results, hence no TFIDF results. For that reason, the table below omits Direct Search and TFIDF columns.
 
-![](1__vq66dDLU3jdjkvv6fODCig.png)
+![Table comparing Jobindex.dk and BERT results for the query 'Tekniker til neurorehabilitering', where Direct Search and TFIDF return no results](1__vq66dDLU3jdjkvv6fODCig.png)
 
 This is were BERT vastly exceeds: on top of actually returning results (compared to the previously mentioned approaches), it yields very relevant job titles. It also vastly exceeds the quality when compared to the Jobindex.dk results.
 
@@ -173,7 +173,7 @@ The BERT model always returns results. Instead of analysing which of the models 
 
 Below are the execution times compared:
 
-![](1__2Lgx0I6yHW0x8v1uGJIldw.png)
+![Table of execution times: Direct Search 26.8 ms, TFIDF 8860 ms, BERT 710 ms](1__2Lgx0I6yHW0x8v1uGJIldw.png)
 
 BERT exceeds TFIDF by a large margin. As expected, Direct Search is the fastest. However, Direct Search does not usually return relevant results, only the _what words you search is what words you get_. The execution times can be decreased with better memory optimisation and avoiding doing calculations in memory as much as possible.
 
@@ -202,7 +202,7 @@ Another limitation was the quality of the description of the job titles. Despite
 
 Although the results are promising, especially using BERT, there’s still room for improvement, such as:
 
-- _Improve direct search algorithm_. Can be done by leveraging existing technologies that handle search which will allow for better and more performant direct search results. [Here’s an example of BERT on top of Elasticsearch](https://www.sbert.net/docs/usage/semantic_search.html)
+- _Improve direct search algorithm_. Can be done by leveraging existing technologies that handle search which will allow for better and more performant direct search results. [Here’s an example of BERT on top of Elasticsearch](https://www.sbert.net/examples/applications/semantic-search/README.html)
 - _Train BERT_. This project uses a pre-trained BERT algorithm. Training BERT with the Jobindex data will most certainly yield better results.
 - _Improve model assessment_. Currently, the model performance is assessed on a _common sense_ basis. For example, if we search for “fysioterapists” and one of the results is “cook” then it’s possible to infer that the result is not good. This observational research can — and should — be evaluated in a more quantitatively way. If the model is trained using the Jobindex dataset (as suggested before), it will give a better numerical insight on how strong it is performing (by knowing how well it generalizes).
 - _Avoid using memory for calculations_. In order to get results, the preprocessed datasets were loaded into memory. Ideally, they should not for performance reasons so that a solution can be storing the results (the embeddings and the similarities) in a database. Alternatively (and probably ideally) the best solution is to serve the custom trained BERT model.

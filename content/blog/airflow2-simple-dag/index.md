@@ -1,5 +1,6 @@
 ---
 title: "A simple DAG using Airflow 2.0"
+summary: "Building a simple DAG with Airflow 2.0's new syntax, part of a series where an entire ETL pipeline is built using Airflow and Raspberry Pis."
 date: 2021-08-05
 cover:
   image: "simple_dag_2.png"

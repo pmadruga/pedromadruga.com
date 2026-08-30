@@ -1,5 +1,6 @@
 ---
 title: "From PoC to 3.5M documents"
+summary: "The story behind a proof-of-concept that went all the way to being adopted by thousands of users and major law firms in the age of industrialized Generative AI."
 date: 2021-07-21T11:30:03+00:00
 pinned: true
 draft: true
