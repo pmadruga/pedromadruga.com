@@ -101,8 +101,9 @@ params:
   socialIcons:
     - name: bluesky
       url: https://bsky.app/profile/pedromadruga.com
-    # - name: newsletter
-    #   url: https://pedromadruga.com/newsletter
+    # the theme has no "newsletter" icon; email envelope stands in for it
+    - name: email
+      url: https://pedromadruga.com/newsletter/
     - name: mastodon
       url: 'https://sigmoid.social/@pmadruga'
     # - name: medium
@@ -154,6 +155,10 @@ menu:
       name: notes
       url: /notes/
       weight: 25
+    - identifier: newsletter
+      name: newsletter
+      url: /newsletter/
+      weight: 30
     - identifier: contact
       name: contact
       url: /contact/
