@@ -26,3 +26,5 @@ I have an engineering background: Computer Engineering studies in the early 2000
 I love spending time with my family, running, and reading books. I have run a couple of marathons and one ultra-marathon. Here's me ~~running~~ walking in the ultra-marathon (2023):
 
 ![About](about.jpg)
+
+{{< cv-download updated="September 2026" >}}

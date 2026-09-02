@@ -403,3 +403,65 @@ h1 {
     margin-right: calc(var(--gap) * -1);
   }
 }
+
+/* CV download card (cv-download shortcode on the about page) */
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin: 4px 0;
+  padding: 14px 20px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.post-content a.cv-download {
+  color: var(--primary); /* override the amber prose-link color */
+  box-shadow: none; /* theme underlines links via box-shadow */
+}
+
+.cv-download:hover,
+.cv-download:focus-visible {
+  border-color: var(--amber);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.cv-download-icon {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--amber);
+}
+
+.cv-download-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.cv-download-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cv-download-title {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cv-download-meta {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  line-height: 1.3;
+}
+
+.cv-download-wrap {
+  text-align: center;
+}
+
+.cv-download-wrap .cv-download {
+  text-align: left; /* the wrapper's centering shouldn't reach the card text */
+}
