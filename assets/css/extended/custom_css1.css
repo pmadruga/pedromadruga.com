@@ -37,8 +37,25 @@ h1 {
   margin-bottom: 0.7rem;
 }
 
+/* Subscribe button, styled like the CV download card: entry background,
+   hairline border, amber accent on hover/focus */
 .button-newsletter {
+  background: var(--entry);
   color: var(--primary);
+  font-weight: 600;
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.button-newsletter:hover,
+.button-newsletter:focus-visible {
+  border-color: var(--amber);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .newsletter-placeholder {
@@ -67,11 +84,6 @@ h1 {
   flex: 1;
   width: auto;
   min-width: 0;
-}
-
-.newsletter-top #bd-email input[type='email'],
-.newsletter-top #bd-email .button-newsletter {
-  border-radius: 4px;
 }
 
 @media (max-width: 500px) {
@@ -106,17 +118,24 @@ h1 {
 }
 
 #bd-email input {
-  background: 0 0;
-  padding: 6px 10px;
+  background: var(--entry);
+  padding: 12px 16px;
   width: 66%;
   color: var(--primary);
-  /* --secondary, not --tertiary: field boundary needs ~3:1 contrast */
-  border: 2px solid var(--secondary);
+  /* --secondary, not --border: field boundary needs ~3:1 contrast
+     (the button can get away with the hairline; an empty input can't) */
+  border: 1px solid var(--secondary);
   border-radius: var(--radius);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
+#bd-email input:hover,
 #bd-email input:focus {
-  border-color: var(--primary);
+  outline: none;
+  border-color: var(--amber);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .social-icons {
