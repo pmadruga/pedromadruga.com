@@ -11,7 +11,7 @@ hidemeta: true # no reading time / meta line on this page
 ---
 
 
-I'm an AI engineer and leader based in Copenhagen. I build AI products that put domain experts at the center - a way of working I call [**Domain Driven AI**](https://pedromadruga.com/blog/domain-driven-ai/): embedding experts into the development loop from prototype through validation. I've applied it across legal, financial, and philanthropic sectors.
+I'm an AI engineer and leader based in Copenhagen. I build AI products that put domain experts at the center - a way of working I call [**Domain Driven AI**](/blog/domain-driven-ai/): embedding experts into the development loop from prototype through validation. I've applied it across legal, financial, and philanthropic sectors.
 
 My work spans the full arc of AI products: from first prototype to production systems serving thousands of daily users, and from working solo to building and leading engineering organizations.
 
