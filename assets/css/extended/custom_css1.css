@@ -157,25 +157,43 @@ h1 {
 
 /* Notes page: build-time Bluesky feed (layouts/notes.html), styled as
    social cards */
+
+/* the intro is one line; the theme's 30px .post-content margin plus the
+   paragraph gap put ~50px between it and the first card */
+.notes-intro {
+  margin-bottom: 1.25rem;
+}
+
+/* holder for <symbol> definitions referenced via <use>: must take no
+   space (the hidden attribute loses to the theme's svg display rule) */
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .notes-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
+/* same surface as the CV card and the subscribe button: entry background,
+   hairline border, amber accent on hover */
 .note-card {
   padding: 16px 18px;
-  /* --code-bg, not --entry: in light mode --entry equals the page
-     background, leaving cards with a near-invisible 1.16:1 border as
-     their only boundary */
-  background: var(--code-bg);
+  background: var(--entry);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: border-color 0.15s;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .note-card:hover {
-  border-color: var(--secondary);
+  border-color: var(--amber);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .note-header {
@@ -303,6 +321,13 @@ h1 {
   width: 14px;
   height: 14px;
 }
+
+/* 24px hit target (WCAG 2.5.8) without changing the 14px icon */
+.note-open {
+  padding: 5px;
+  margin: -5px;
+}
+
 
 /* Minimal custom tooltip for the meta icons (replaces the native title
    box): small themed bubble under the icon, delayed fade-in */
