@@ -110,7 +110,7 @@ An example of the raw data is given below, so we can inspect what data can we ex
     "title_detail": {
         "type": "text/plain",
         "language": null,
-        "base": "https://www.upwork.com/ab/feed/topics/rss?securityToken=26e45fcbe7a32a075990013cd72c6acaf979a1e2a5e41e343c6fb47bceae84a1ac096f6357fba8370094a50b507f9bb9462f82f0b57b6aeddf833cb7c41544bf&userUid=790521884263325696&orgUid=790521884267520001&topic=high-chance",
+        "base": "https://www.upwork.com/ab/feed/topics/rss?securityToken=<REDACTED>&userUid=<REDACTED>&orgUid=<REDACTED>&topic=high-chance",
         "value": "Unsupervised Deep Learning for Anomaly Detection - Upwork"
     },
     "links": [
@@ -125,14 +125,14 @@ An example of the raw data is given below, so we can inspect what data can we ex
     "summary_detail": {
         "type": "text/html",
         "language": null,
-        "base": "https://www.upwork.com/ab/feed/topics/rss?securityToken=26e45fcbe7a32a075990013cd72c6acaf979a1e2a5e41e343c6fb47bceae84a1ac096f6357fba8370094a50b507f9bb9462f82f0b57b6aeddf833cb7c41544bf&userUid=790521884263325696&orgUid=790521884267520001&topic=high-chance",
+        "base": "https://www.upwork.com/ab/feed/topics/rss?securityToken=<REDACTED>&userUid=<REDACTED>&orgUid=<REDACTED>&topic=high-chance",
         "value": "This is a short task that could only take a few hours or a day to complete. The main goal of this project is to build a deep learning model for anomaly detection using unsupervised transaction data. <br /><br />\nThe data has already been cleaned and is quite ready for modeling. You will be creating a deep learning model using the given data and also performing evaluation of the model. <br /><br />\nThis has a tight deadline so someone who is available now will be ideal. The script must be written in Python using a package like TensorFlow.<br /><br />\nPlease feel free to reach out to me, if you are familiar with this type of project. <br /><br /><b>Budget</b>: $60\n<br /><b>Posted On</b>: October 27, 2021 06:35 UTC<br /><b>Category</b>: Deep Learning<br /><b>Skills</b>:TensorFlow,     Deep Learning,     Keras,     Neural Networks,     Python,     Deep Neural Networks    \n<br /><b>Country</b>: Hong Kong\n<br /><a href='https://www.upwork.com/jobs/Unsupervised-Deep-Learning-for-Anomaly-Detection_%7E01ca9b14306d23deeb?source=rss'>click to apply</a>"
     },
     "content": [
         {
             "type": "text/html",
             "language": null,
-            "base": "https://www.upwork.com/ab/feed/topics/rss?securityToken=26e45fcbe7a32a075990013cd72c6acaf979a1e2a5e41e343c6fb47bceae84a1ac096f6357fba8370094a50b507f9bb9462f82f0b57b6aeddf833cb7c41544bf&userUid=790521884263325696&orgUid=790521884267520001&topic=high-chance",
+            "base": "https://www.upwork.com/ab/feed/topics/rss?securityToken=<REDACTED>&userUid=<REDACTED>&orgUid=<REDACTED>&topic=high-chance",
             "value": "This is a short task that could only take a few hours or a day to complete. The main goal of this project is to build a deep learning model for anomaly detection using unsupervised transaction data. <br /><br />\nThe data has already been cleaned and is quite ready for modeling. You will be creating a deep learning model using the given data and also performing evaluation of the model. <br /><br />\nThis has a tight deadline so someone who is available now will be ideal. The script must be written in Python using a package like TensorFlow.<br /><br />\nPlease feel free to reach out to me, if you are familiar with this type of project. <br /><br /><b>Budget</b>: $60\n<br /><b>Posted On</b>: October 27, 2021 06:35 UTC<br /><b>Category</b>: Deep Learning<br /><b>Skills</b>:TensorFlow,     Deep Learning,     Keras,     Neural Networks,     Python,     Deep Neural Networks    \n<br /><b>Country</b>: Hong Kong\n<br /><a href='https://www.upwork.com/jobs/Unsupervised-Deep-Learning-for-Anomaly-Detection_%7E01ca9b14306d23deeb?source=rss'>click to apply</a>"
         }
     ],
