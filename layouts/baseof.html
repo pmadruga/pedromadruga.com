@@ -24,8 +24,9 @@
 {{- else }}
 <body id="top">
 {{- end }}
+    <a class="skip-link sr-only" href="#main-content">Skip to content</a>
     {{ partialCached "header.html" . .Page -}}
-    <main class="main">
+    <main class="main" id="main-content" tabindex="-1">
         {{- block "main" . }}{{ end }}
     </main>
     {{- /* code-copy.js only on blog posts that contain a code block. The

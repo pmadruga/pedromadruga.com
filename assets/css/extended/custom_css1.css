@@ -15,7 +15,7 @@ body {
    preference (the inline theme script normally rewrites auto to
    dark/light before paint). */
 :root {
-  --amber: #9a6d00; /* 4.6:1 on white (AA) */
+  --amber: #916600; /* 5.1:1 on white, 4.7:1 on --code-bg (#f5f5f5) — AA on both surfaces */
 }
 
 [data-theme='dark'] {
@@ -133,9 +133,20 @@ h1 {
 
 #bd-email input:hover,
 #bd-email input:focus {
-  outline: none;
   border-color: var(--amber);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Keyboard focus needs more than the hover border swap (1.1:1 change);
+   the theme's reset zeroes input outlines, so restore a visible ring */
+#bd-email input:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+#bd-email input::placeholder {
+  color: var(--secondary); /* UA default (#a9a9a9) is 2.4:1 on the field */
+  opacity: 1;
 }
 
 .social-icons {
@@ -518,5 +529,91 @@ h1 {
 
   [data-theme='auto'] .not-by-ai .not-by-ai-dark {
     display: inline;
+  }
+}
+
+/* Code blocks: Catppuccin's comment color is 2.9:1 (dark) / 3.6:1 (light)
+   on the block background; overlay2 from the same palette clears AA */
+.chroma .c,
+.chroma .c1,
+.chroma .ch,
+.chroma .cm,
+.chroma .cp,
+.chroma .cpf,
+.chroma .ln,
+.chroma .lnt {
+  color: #9399b2;
+}
+
+/* Copy button: the theme hides it with display:none until :hover, which
+   removes it from the tab order. Keep it in the DOM, invisible until the
+   block is hovered or anything inside it has focus. */
+.copy-code {
+  display: block;
+  opacity: 0;
+}
+
+div.highlight:hover .copy-code,
+pre:hover .copy-code,
+div.highlight:focus-within .copy-code,
+pre:focus-within .copy-code,
+.copy-code:focus-visible {
+  opacity: 1;
+}
+
+/* Self-hosted video (layouts/_shortcodes/video.html): the element carries
+   the poster's pixel dimensions for aspect ratio; scale it to the column */
+.video-figure video,
+.video-figure img {
+  width: 100%;
+  height: auto;
+}
+
+/* Skip link (baseof.html): visually hidden via .sr-only until focused */
+.skip-link:focus-visible {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 8px 12px;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--entry);
+  color: var(--primary);
+  border-radius: var(--radius);
+  outline: 2px solid var(--amber);
+}
+
+#main-content:focus {
+  outline: none; /* programmatic focus target only */
+}
+
+@media print {
+  .header,
+  .top-link,
+  .toc,
+  .post-newsletter,
+  .newsletter-top,
+  .not-by-ai,
+  .social-icons,
+  .footer,
+  .copy-code,
+  .skip-link {
+    display: none !important;
+  }
+
+  .md-content a:not(.anchor),
+  .post-content a:not(.anchor) {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .post-content a[href^='http']:not(.anchor)::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.85em;
   }
 }

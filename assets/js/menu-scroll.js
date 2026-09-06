@@ -2,7 +2,10 @@
 (function() {
   const menu = document.getElementById('menu');
   if (menu) {
-    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    const stored = localStorage.getItem("menu-scroll-position");
+    if (stored) {
+      menu.scrollLeft = parseInt(stored, 10);
+    }
     menu.onscroll = function() {
       localStorage.setItem("menu-scroll-position", menu.scrollLeft);
     };

@@ -6,6 +6,8 @@
     const copybutton = document.createElement('button');
     copybutton.classList.add('copy-code');
     copybutton.innerText = 'copy';
+    // the "copied!" text change is announced instead of being silent
+    copybutton.setAttribute('aria-live', 'polite');
 
     function copyingDone() {
       copybutton.innerText = 'copied!';
