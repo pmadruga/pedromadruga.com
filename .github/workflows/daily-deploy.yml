@@ -26,9 +26,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          submodules: recursive
+          submodules: true
           fetch-depth: 0 # full history for --enableGitInfo
           persist-credentials: false # third-party CLI runs later in this workspace
 
@@ -47,10 +47,21 @@ jobs:
           HUGO_NOTES_REQUIRE_FEED: 'true'
         run: hugo --gc --minify --enableGitInfo
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: '1.3.14' # keep in sync with netlify.toml, lint.yml, scripts/setup.sh
+
+      # The CLI's whole dependency tree is frozen by .github/netlify-cli/bun.lock
+      # (Dependabot tracks it) and installed with scripts disabled — with the
+      # account-wide Netlify token in env, a bare `npx netlify-cli@x` would
+      # re-resolve hundreds of transitive packages from the registry each
+      # morning and run their install scripts.
+      - name: Install Netlify CLI
+        run: bun install --frozen-lockfile --ignore-scripts --cwd .github/netlify-cli
+
       - name: Deploy to Netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        # version-pinned: unpinned npx would run whatever is latest on npm
-        # each morning with the Netlify token in env
-        run: npx --yes netlify-cli@27.1.2 deploy --prod --dir public --message "Scheduled daily build (notes feed refresh)"
+        run: .github/netlify-cli/node_modules/.bin/netlify deploy --prod --dir public --message "Scheduled daily build (notes feed refresh)"
