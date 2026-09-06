@@ -28,7 +28,12 @@
     <main class="main">
         {{- block "main" . }}{{ end }}
     </main>
-    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+    {{- /* code-copy.js only on blog posts that contain a code block. The
+    decision must be part of the cache key: the footer is rendered once per
+    key combination, so a content-dependent check inside it would be frozen
+    by whichever page rendered first. */}}
+    {{- $codeCopy := and (eq .Kind "page") (eq .Type "blog") (.Param "ShowCodeCopyButtons") (gt (len (findRE "<pre" .Content 1)) 0) }}
+    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") $codeCopy -}}
 </body>
 
 </html>

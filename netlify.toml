@@ -84,6 +84,50 @@ publish = "./public/"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# The explicit /blog/<slug>/index.html URL also matches :slug/:file — a
+# page pinned immutable for a year would keep serving a stale CSP-hashed
+# inline script after a theme update.
+[[headers]]
+  for = "/blog/:slug/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# The about page bundle (photo + its _hu_ WebP variants) — same rules as
+# blog media: variants are hashed, about.jpg follows rename-on-change.
+[[headers]]
+  for = "/about/:file"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/about/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Favicons and the manifest are unhashed: a day, not immutable.
+[[headers]]
+  for = "/favicon*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/apple-touch-icon*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/android-chrome-*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Netlify has no MIME mapping for .webmanifest and serves it as
+# application/octet-stream, which nosniff makes browsers distrust.
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=86400"
+
 # /search/ was removed — send old links to the post archive.
 [[redirects]]
   from = "/search/"

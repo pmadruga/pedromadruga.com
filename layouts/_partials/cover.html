@@ -48,7 +48,7 @@
                     srcset='{{ delimit . ", " }}'
                     sizes="(min-width: 768px) 720px, 100vw">
                 {{- end }}
-                <img loading="{{$loading}}"
+                <img loading="{{$loading}}"{{ if $.IsSingle }} fetchpriority="high"{{ end }}
                     {{- with $imgSrcset }}
                     srcset='{{ delimit . ", " }}'
                     {{- end }}

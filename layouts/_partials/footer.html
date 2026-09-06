@@ -45,7 +45,10 @@
 {{- $main := $bundle | resources.Concat "js/main.js" | minify | fingerprint -}}
 <script src="{{ $main.RelPermalink }}" defer></script>
 
-{{- if (and (eq .Kind "page") (ne .Layout "archives") (.Param "ShowCodeCopyButtons")) }}
+{{- /* only where there is a code block to copy (about/contact/newsletter
+and prose-only posts otherwise paid an extra request for nothing). Same
+expression as the $codeCopy cache key in baseof.html — keep them in sync. */}}
+{{- if (and (eq .Kind "page") (eq .Type "blog") (.Param "ShowCodeCopyButtons") (gt (len (findRE "<pre" .Content 1)) 0)) }}
   {{- $codeCopy := resources.Get "js/code-copy.js" | minify | fingerprint -}}
   <script src="{{ $codeCopy.RelPermalink }}" defer></script>
 {{- end }}

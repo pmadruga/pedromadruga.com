@@ -1,5 +1,11 @@
 {{- /* Head custom content area start */ -}}
 
+{{- /* /notes/: avatars come from Bluesky's CDN; warm the connection before
+the parser reaches the first card */ -}}
+{{- if eq .Layout "notes" }}
+<link rel="preconnect" href="https://cdn.bsky.app">
+{{- end }}
+
 {{- /* Preload the homepage LCP image (profile photo). Mirrors the
 resize the theme's index_profile does, so the hashed URL is identical
 and the browser starts the fetch before CSS parsing finishes. */ -}}
@@ -31,7 +37,7 @@ to. */ -}}
   .post-content h4,
   .post-content h5,
   .post-content h6 {
-    font-family: 'Noto Serif', Georgia, 'Times New Roman', serif;
+    font-family: 'Noto Serif', 'Noto Serif Fallback', Georgia, 'Times New Roman', serif;
   }
 </style>
 {{- end }}

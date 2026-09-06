@@ -1,20 +1,30 @@
 {{- /* Self-hosted video from the page bundle.
-Usage: {{< video src="file.mp4" poster="frame.jpg" caption="..." >}}
+Usage: {{< video src="file.mp4" poster="frame.jpg" caption="..." captions="file.vtt" >}}
+The poster's dimensions become the element's width/height (CSS scales it
+to the column, see .video-figure in custom_css1.css) so the slot has its
+final height before the poster loads. `captions` is an optional WebVTT
+file in the bundle, emitted as a default English <track>.
 Absolute URLs + poster-image fallback so the RSS/newsletter rendering
 (where <video> is stripped by email clients) degrades to a clickable
 poster linking to the post. */ -}}
 {{- $src := .Page.Resources.GetMatch (.Get "src") -}}
 {{- $poster := "" -}}
-{{- with .Get "poster" }}{{ with $.Page.Resources.GetMatch . }}{{ $poster = .Permalink }}{{ end }}{{ end -}}
+{{- $posterRes := "" -}}
+{{- with .Get "poster" }}{{ with $.Page.Resources.GetMatch . }}{{ $posterRes = . }}{{ $poster = .Permalink }}{{ end }}{{ end -}}
+{{- $captions := "" -}}
+{{- with .Get "captions" }}{{ with $.Page.Resources.GetMatch . }}{{ $captions = .Permalink }}{{ end }}{{ end -}}
 {{- if $src }}
 <figure class="video-figure">
   <video
     controls
     preload="metadata"
     playsinline
-    width="100%"
+    {{- with $posterRes }} width="{{ .Width }}" height="{{ .Height }}"{{ else }} width="100%"{{ end }}
     {{- with $poster }} poster="{{ . }}"{{ end }}>
     <source src="{{ $src.Permalink }}" type="{{ $src.MediaType.Type }}">
+    {{- with $captions }}
+    <track kind="captions" src="{{ . }}" srclang="en" label="English" default>
+    {{- end }}
     <a href="{{ .Page.Permalink }}">
       {{- with $poster }}<img src="{{ . }}" alt="Video: {{ $.Page.Title }}" width="100%" />{{ else }}Watch the video on the blog{{ end -}}
     </a>

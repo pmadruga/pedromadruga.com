@@ -20,6 +20,13 @@
       {{- $candidates = $candidates | append (printf "%s %dw" $resized.RelPermalink .) -}}
     {{- end -}}
   {{- end -}}
+  {{- /* Images between ladder steps (e.g. 560px or 1300px wide) would only
+  get the smaller step and render upscaled on retina — add the native width
+  as the top candidate. Wider than the ladder, 1600w is plenty. */ -}}
+  {{- if and (lt $width 1600) (not (in $widths $width)) -}}
+    {{- $native := $img.Resize (printf "%dx webp q85" $width) -}}
+    {{- $candidates = $candidates | append (printf "%s %dw" $native.RelPermalink $width) -}}
+  {{- end -}}
   <picture>
     {{- with $candidates }}
     <source
@@ -29,15 +36,18 @@
     />
     {{- end }}
 
-    {{- /* Fallback to original format. First image is the LCP candidate:
-    eager + fetchpriority (lazy would defeat the priority hint) */ -}}
+    {{- /* Fallback to original format. The first in-content image is only
+    an LCP candidate on posts without a cover (with one, the cover is the
+    LCP element and gets fetchpriority=high in cover.html); even then it is
+    usually below the fold, so it gets eager loading but no priority hint,
+    which would make it compete with the fonts for the title paint. */ -}}
     <img
       src="{{ $img.RelPermalink }}"
       alt="{{ $alt }}"
       {{- with $title }} title="{{ . }}"{{ end }}
       width="{{ $width }}"
       height="{{ $height }}"
-      {{- if eq .Ordinal 0 }} loading="eager" fetchpriority="high"
+      {{- if and (eq .Ordinal 0) (not .Page.Params.cover.image) }} loading="eager"
       {{- else }} loading="lazy"
       {{- end }}
       decoding="async"

@@ -1,5 +1,5 @@
 body {
-  font-family: 'Atkinson Hyperlegible Next', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Atkinson Hyperlegible Next', 'Atkinson Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
   font-size: 1.1em;
   line-height: 1.6;

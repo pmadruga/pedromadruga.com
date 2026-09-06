@@ -19,6 +19,30 @@
   src: url('/fonts/atkinson-hyperlegible-next-italic-var.woff2') format('woff2');
 }
 
+/* Metric-matched local fallbacks: shown until the webfonts arrive (font-display:
+   swap). size/ascent/descent overrides make Arial/Liberation Sans and
+   Times/Liberation Serif occupy the same space as Atkinson and Noto Serif, so
+   the swap doesn't reflow the page (CLS) — Atkinson is ~10% narrower than
+   Arial, Noto Serif is taller than Times. Referenced in the font stacks in
+   custom_css1.css (body) and extend_head.html (post headings). */
+@font-face {
+  font-family: 'Atkinson Fallback';
+  src: local('Arial'), local('Liberation Sans');
+  size-adjust: 89.9%;
+  ascent-override: 109.5%;
+  descent-override: 35.2%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Noto Serif Fallback';
+  src: local('Times New Roman'), local('Liberation Serif');
+  size-adjust: 97.3%;
+  ascent-override: 109.9%;
+  descent-override: 30.1%;
+  line-gap-override: 0%;
+}
+
 /* Noto Serif variable font (weights 400-700), used for headers on blog posts
    only (see extend_head.html). Upright only — italic headers are synthesized —
    to keep the extra font cost to a single ~36KB file. */
