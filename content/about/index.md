@@ -11,11 +11,11 @@ hidemeta: true # no reading time / meta line on this page
 ---
 
 
-I'm an AI engineer and leader based in Copenhagen. I build AI products that put domain experts at the center - a way of working I call [**Domain Driven AI**](/blog/domain-driven-ai/): embedding experts into the development loop from prototype through validation. I've applied it across legal, financial, and philanthropic sectors.
+I'm an AI engineer and leader based in Copenhagen. I build AI products that put domain experts at the center - a way of working I call [Domain Driven AI](/blog/domain-driven-ai/): embedding experts into the development loop from prototype through validation. I've applied it across legal, financial, and philanthropic sectors.
 
 My work spans the full arc of AI products: from first prototype to production systems serving thousands of daily users, and from working solo to building and leading engineering organizations.
 
-If you'd like to follow along, the best way is my [**newsletter**](/newsletter/).
+If you'd like to follow along, the best way is my [newsletter](/newsletter/).
 
 Currently I'm the Principal AI Engineer, Group at [Karnov Group](https://karnovgroup.com), where I rejoined in 2022 as the sole AI engineer and grew the AI organization to ~20 people. There I've built two products from scratch: **KAILA**, a GenAI legal research assistant used daily by 20,000+ users across four markets - featured in [Berlingske](https://www.berlingske.dk/virksomheder/kunstig-intelligens-er-for-alvor-rykket-ind-paa-advokatkontoret-vi-er) and [Børsen](https://borsen.dk/nyheder/tech/dansk-virksomhed-fra-1867-gar-i-offensiven-med-ai) - and **FLOW**, a multi-agent legal workflow suite launched in 2026.
 
