@@ -1,16 +1,18 @@
-{{- /* JSON-LD structured data for website/homepage */ -}}
+{{- /* JSON-LD structured data for website/homepage. No `jsonify`: inside a
+<script> Hugo's html/template already JSON-encodes each value (adding it
+double-encoded every string, e.g. "name":"\"Pedro Madruga\""). */ -}}
 {{- if .IsHome -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": {{ .Site.Title | jsonify }},
-  "description": {{ .Site.Params.description | jsonify }},
-  "url": {{ .Site.BaseURL | jsonify }},
+  "name": {{ .Site.Title }},
+  "description": {{ .Site.Params.description }},
+  "url": {{ .Site.BaseURL }},
   "author": {
     "@type": "Person",
-    "name": {{ .Site.Title | jsonify }},
-    "url": {{ .Site.BaseURL | jsonify }}
+    "name": {{ .Site.Title }},
+    "url": {{ .Site.BaseURL }}
   }
 }
 </script>

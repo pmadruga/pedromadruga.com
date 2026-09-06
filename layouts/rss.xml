@@ -1,6 +1,11 @@
-{{- /* Override of themes/PaperMod/layouts/rss.xml. Only change:
-site.Language.LanguageCode -> site.Language.Locale (deprecated in Hugo
-0.158.0). Re-diff against the theme copy after npm run theme:update. */ -}}
+{{- /* Override of themes/PaperMod/layouts/rss.xml. Changes:
+- site.Language.LanguageCode -> site.Language.Locale (deprecated in Hugo 0.158.0)
+- the home feed (/index.xml, the one autodiscovered from every page) lists
+  blog posts only, not every regular page (about, contact, the noindexed
+  newsletter redirect targets...)
+- root-relative src/href/srcset in content:encoded are made absolute, since
+  feed readers and RSS-to-email resolve relative URLs inconsistently
+Re-diff against the theme copy after npm run theme:update. */ -}}
 {{- $authorEmail := "" }}
 {{- with site.Params.author }}
   {{- if reflect.IsMap . }}
@@ -24,7 +29,9 @@ site.Language.LanguageCode -> site.Language.Locale (deprecated in Hugo
 {{- $pctx := . }}
 {{- if .IsHome }}{{ $pctx = site }}{{ end }}
 {{- $pages := slice }}
-{{- if or $.IsHome $.IsSection }}
+{{- if $.IsHome }}
+{{- $pages = where $pctx.RegularPages "Type" "in" site.Params.mainSections }}
+{{- else if $.IsSection }}
 {{- $pages = $pctx.RegularPages }}
 {{- else }}
 {{- $pages = $pctx.Pages }}
@@ -66,7 +73,9 @@ site.Language.LanguageCode -> site.Language.Locale (deprecated in Hugo
       <guid>{{ .Permalink }}</guid>
       <description>{{ with .Description | html }}{{ . }}{{ else }}{{ .Summary | html }}{{ end -}}</description>
       {{- if and site.Params.ShowFullTextinRSS .Content }}
-      <content:encoded>{{ (printf "<![CDATA[%s]]>" .Content) | safeHTML }}</content:encoded>
+      {{- $base := strings.TrimSuffix "/" site.BaseURL }}
+      {{- $c := .Content | replaceRE `(src|href|srcset)="/` (printf `$1="%s/` $base) | replaceRE `, /` (printf `, %s/` $base) }}
+      <content:encoded>{{ (printf "<![CDATA[%s]]>" $c) | safeHTML }}</content:encoded>
       {{- end }}
     </item>
     {{- end }}

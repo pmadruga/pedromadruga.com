@@ -1,5 +1,5 @@
 baseURL: https://pedromadruga.com/
-locale: en-us
+locale: en-US # language_TERRITORY: feeds og:locale (en_US) and the RSS <language>
 title: Pedro Madruga
 theme: 'PaperMod'
 
@@ -47,6 +47,16 @@ params:
       AI Frameworks,
     ]
   author: Pedro Madruga
+  # Personal site: the JSON-LD entity is a Person (theme default is
+  # Organization). sameAs lists profile URLs only — socialIcons (the theme's
+  # fallback) also contains the newsletter and RSS links, which aren't profiles.
+  schema:
+    publisherType: Person
+    sameAs:
+      - https://bsky.app/profile/pedromadruga.com
+      - https://sigmoid.social/@pmadruga
+      - https://github.com/pmadruga
+      - https://www.linkedin.com/in/pedromadruga
   images: ['/images/og-default.png'] # default opengraph/twitter card (pages with a cover use that instead)
 
   DateFormat: 'January 2, 2006'
