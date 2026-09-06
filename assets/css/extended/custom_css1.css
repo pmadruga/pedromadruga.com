@@ -378,11 +378,13 @@ h1 {
   font-size: 1em
 }
 
-/* Prose links: amber, no underline. Loads after the theme's common CSS,
-   overriding md-content.css's underline rule. */
+/* Prose links: amber, no underline (deliberate — the underline was tried
+   and rejected). Loads after the theme's common CSS, overriding
+   md-content.css's underline rule. */
 .md-content a:not(.anchor),
 .post-content a:not(.anchor),
-.description-link {
+.description-link,
+.profile .profile_inner span a {
   color: var(--amber);
   text-decoration: none;
 }
