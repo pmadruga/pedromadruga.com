@@ -15,10 +15,25 @@ minify:
 # Image processing configuration for optimization
 imaging:
   resampleFilter: 'Lanczos'
-  quality: 85
   anchor: 'Smart'
   bgColor: '#ffffff'
-  hint: 'photo'
+  # per-format keys: the global quality/hint keys were deprecated in Hugo 0.163
+  jpeg:
+    quality: 85
+  webp:
+    quality: 85
+    hint: 'photo'
+
+# No post uses tags or categories, so the empty /tags/ and /categories/
+# pages (and their feeds) were thin, indexable, and in the sitemap.
+disableKinds: ['taxonomy', 'term']
+
+# Only layouts/notes.html fetches at build time (Bluesky feed); anything
+# else reaching for resources.GetRemote fails the build instead of fetching.
+security:
+  http:
+    urls: ['^https://public\.api\.bsky\.app/']
+    methods: ['(?i)GET']
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -113,7 +128,7 @@ params:
       url: https://bsky.app/profile/pedromadruga.com
     # the theme has no "newsletter" icon; email envelope stands in for it
     - name: email
-      url: https://pedromadruga.com/newsletter/
+      url: /newsletter/
     - name: mastodon
       url: 'https://sigmoid.social/@pmadruga'
     # - name: medium
@@ -125,7 +140,7 @@ params:
     - name: linkedin
       url: 'https://www.linkedin.com/in/pedromadruga'
     - name: rss
-      url: 'https://pedromadruga.com/blog/index.xml'
+      url: /blog/index.xml
 
   # analytics:
   #   google:
