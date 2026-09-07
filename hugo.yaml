@@ -118,7 +118,7 @@ params:
     # a second paragraph would render invalid <p> elements inside the <h1>
     title: "Hey there,  \nI'm Pedro."
     subtitle: 'I lead AI teams and ship AI products. And I [write about it](/newsletter/).'
-    imageUrl: 'images/profile5.jpeg'
+    imageUrl: 'images/profile6.jpeg'
     imageWidth: 250
     imageHeight: 250
     imageTitle: 'Portrait of Pedro Madruga'

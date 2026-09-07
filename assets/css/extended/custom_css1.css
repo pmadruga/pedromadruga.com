@@ -10,6 +10,11 @@ body {
   background: var(--theme);
 }
 
+/* Home profile photo: rounded square instead of the theme's circle */
+.profile img {
+  border-radius: var(--radius);
+}
+
 /* Amber accent: single source of truth for link/icon color. The
    data-theme="auto" rule covers no-JS visitors with a dark system
    preference (the inline theme script normally rewrites auto to
