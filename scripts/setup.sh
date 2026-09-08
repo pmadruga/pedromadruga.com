@@ -15,6 +15,17 @@ info() { printf '  %s %s\n' "$1" "$2"; }
 
 check_cmd() { command -v "$1" &>/dev/null; }
 
+# verify_sha256 <checksums-file> <archive>: run in the directory holding both.
+# macOS has no sha256sum (it ships shasum), Linux usually lacks shasum.
+verify_sha256() {
+  local sums=$1 archive=$2
+  if check_cmd sha256sum; then
+    grep " ${archive}\$" "$sums" | sha256sum -c -
+  else
+    grep " ${archive}\$" "$sums" | shasum -a 256 -c -
+  fi
+}
+
 # fetch_verified <release-base-url> <archive> <checksums-file> <dest-dir> <member>
 # Downloads a .tar.gz and its checksums file, verifies the SHA256 of the
 # archive, then extracts a single member. Aborts the script on any mismatch.
@@ -24,7 +35,7 @@ fetch_verified() {
   tmp=$(mktemp -d)
   curl -fsSL -o "$tmp/$archive" "$base/$archive"
   curl -fsSL -o "$tmp/$sums" "$base/$sums"
-  if ! ( cd "$tmp" && grep " ${archive}\$" "$sums" | sha256sum -c - ) &>/dev/null; then
+  if ! ( cd "$tmp" && verify_sha256 "$sums" "$archive" ) &>/dev/null; then
     rm -rf "$tmp"
     red "Checksum verification failed for $archive"
     exit 1
@@ -57,7 +68,8 @@ detect_os() {
 install_hugo() {
   if check_cmd hugo; then
     local current
-    current=$(hugo version | grep -oP 'v\K[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+    # sed, not grep -P: macOS grep has no PCRE
+    current=$(hugo version | sed -E 's/.*v([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
     if [ "$current" = "$HUGO_VERSION" ]; then
       info "$(green '✓')" "Hugo $HUGO_VERSION already installed"
       return
@@ -126,7 +138,7 @@ install_bun() {
   base="https://github.com/oven-sh/bun/releases/download/bun-v${BUN_VERSION}"
   curl -fsSL -o "$tmp/$archive" "$base/$archive"
   curl -fsSL -o "$tmp/SHASUMS256.txt" "$base/SHASUMS256.txt"
-  if ! ( cd "$tmp" && grep " ${archive}\$" SHASUMS256.txt | sha256sum -c - ) &>/dev/null; then
+  if ! ( cd "$tmp" && verify_sha256 SHASUMS256.txt "$archive" ) &>/dev/null; then
     rm -rf "$tmp"
     red "Checksum verification failed for $archive"
     exit 1
@@ -137,13 +149,37 @@ install_bun() {
   rm -rf "$tmp"
   export PATH="$HOME/.bun/bin:$PATH"
   green "done"
-  dim "  Add ~/.bun/bin to your PATH (restart your shell)"
+}
+
+# The script puts ~/.local/bin and ~/.bun/bin on its own PATH; tell the user
+# how to do the same persistently, in their shell's syntax (fish has no
+# .profile-style export — fish_add_path stores the entry permanently).
+path_hint() {
+  local missing=() d
+  for d in "$INSTALL_DIR" "$HOME/.bun/bin"; do
+    [[ ":$ORIG_PATH:" == *":$d:"* ]] || missing+=("$d")
+  done
+  [ ${#missing[@]} -eq 0 ] && return
+  echo ""
+  echo "Add to your PATH (once, then open a new terminal):"
+  case "$(basename "${SHELL:-bash}")" in
+    fish)
+      dim "  fish_add_path ${missing[*]//$HOME/~}"
+      ;;
+    zsh)
+      dim "  echo 'export PATH=\"$(IFS=:; echo "${missing[*]//$HOME/\$HOME}"):\$PATH\"' >> ~/.zshrc"
+      ;;
+    *)
+      dim "  echo 'export PATH=\"$(IFS=:; echo "${missing[*]//$HOME/\$HOME}"):\$PATH\"' >> ~/.bashrc"
+      ;;
+  esac
 }
 
 main() {
   echo ""
   echo "Setting up pedromadruga.com development environment"
   echo ""
+  ORIG_PATH="$PATH"
 
   # Ensure ~/.local/bin is on PATH
   if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
@@ -176,6 +212,8 @@ main() {
   printf '  Installing npm packages... '
   bun install --frozen-lockfile &>/dev/null
   green "done"
+
+  path_hint
 
   echo ""
   green "Ready! Run 'hugo serve -D' to start the dev server."
