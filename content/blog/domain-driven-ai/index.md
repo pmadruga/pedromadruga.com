@@ -1,8 +1,11 @@
 ---
 title: "Domain Driven AI"
-summary: "Why do most AI-based products fail? Lessons from building two successful GenAI products in the legal industry: domain knowledge must drive AI development, with experts embedded from prototype through validation."
+summary: "Why do most AI-based products fail? Lessons from building two successful GenAI products in the legal industry: domain knowledge must drive Applied AI, with experts embedded from prototype through validation."
 date: 2026-08-20T07:30:03+00:00
 draft: false
+cover:
+  image: "domain-driven-ai-share.png" # 1200x630 render of the card-2 pull quote
+  relative: true
 ---
 
 Early 2023 had me obsessing about why AI-based products fail. There were so many unanswered questions back then: why do they rarely leave the proof-of-concept stage? And the ones who do, why do they fail afterwards?
@@ -37,21 +40,21 @@ It's 2023, I had read the papers so by the time I was creating the first legal a
 
 Domain Driven AI draws inspiration from the term "[Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design)", coined by Eric Evans in his 2003 [book with the same name](https://www.goodreads.com/en/book/show/179133.Domain_Driven_Design). Domain Driven AI follows similar principles.
 
-Domain Driven AI is about gathering every possible piece of information about a given domain, and then translating that into AI development, such that it helps building or improving AI-systems and AI-based products.
+Domain Driven AI is about gathering every possible piece of information about a given domain, and then translating that into Applied AI, such that it helps building or improving AI-systems and AI-based products.
 
-It's important to recognize that you, as an AI practitioner, probably don't have knowledge of the domain you are in. If you studied subject matter *and* AI development, then you're probably a unicorn. But for the rest of us who have been in different organizations and industries, we need to hunt that knowledge.
+It's important to recognize that you, as an AI practitioner, probably don't have knowledge of the domain you are in. If you studied subject matter *and* Applied AI, then you're probably a unicorn. But for the rest of us who have been in different organizations and industries, we need to hunt that knowledge.
 
 This is something I realized when working in the legal industry. I'm not a lawyer, I know nothing about legal systems - especially the Danish legal system. Back in 2023, I had to start from nothing. I was lucky to be part of a well-established organization like [Karnov Group](https://www.karnovgroup.com/en/), one with abundance of domain experts who bore with my simple questions - and to this day they still do. It's a catastrophic misconception that domain knowledge can be acquired within 6 months, especially in a domain like legal.
 
 It's not hard to find this knowledge. In fact, within an organization, this information is everywhere: customers, colleagues from other departments, internal and external literature, and so on.
 
-It depends on factors such as size and age of the company but if you're working in a company in a given domain, chances are that someone else knows something. And that something is very valuable because if done right, from an AI development standpoint, it will influence technical decisions such as architecture, infrastructure, evals, etc.
+It depends on factors such as size and age of the company but if you're working in a company in a given domain, chances are that someone else knows something. And that something is very valuable because if done right, from an Applied AI standpoint, it will influence technical decisions such as architecture, infrastructure, evals, etc.
 
 {{< inline-svg "domain-driven-ai-card-2.svg" >}}
 
-## How does domain knowledge impact AI development?
+## How does domain knowledge impact Applied AI?
 
-Looking back, after being the co-creator (alongside two domain experts I mention further on in this post) and AI lead for two successful GenAI-based products in the legal industry, it's now possible to say with certainty that domain knowledge was a crucial factor to reach this success. AI development is generic without domain knowledge.
+Looking back, after being the co-creator (alongside two domain experts I mention further on in this post) and AI lead for two successful GenAI-based products in the legal industry, it's now possible to say with certainty that domain knowledge was a crucial factor to reach this success. Applied AI is generic without domain knowledge.
 
 In practical terms, when I was building [KAILA](https://www.karnovgroup.dk/produkt/kaila-karnovs-ai-assistent) back in 2023/2024, Karnov's legal research AI assistant, I couldn't assess what a good answer was; all the answers seemed correct to me since I was only looking from a semantic standpoint - not a legal one. The domain experts had a completely different opinion from me.
 
@@ -73,7 +76,7 @@ In practical terms, Domain Driven AI influences not only how the AI should be ar
 
 If done right, the entire organization is set to promote domain knowledge sharing, from building teams that include domain experts as part of the team and processes, to making sure the experts are available to work *with* AI developers.
 
-Futhermore, an organization should not use the traditional software development processes and traditions to do AI development. AI development requires a level of domain knowledge in order to succeed that is unparalleled with traditional software development.
+Futhermore, an organization should not use the traditional software development processes and traditions to do Applied AI. Applied AI requires a level of domain knowledge in order to succeed that is unparalleled with traditional software development.
 
 With the research out there aligned with my personal experience, it's possible to say without a doubt that projects that ignore domain knowledge (and focus too much on classical development and flashy engineering) are doomed to fail - or at least plateau at a mediocre level.
 
