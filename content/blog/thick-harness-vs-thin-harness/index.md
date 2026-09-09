@@ -1,6 +1,6 @@
 ---
 title: "Thick Harness vs Thin Harness"
-description: "This is a summary."
+description: "While the industry is moving from single-action assistants to orchestrated workflows. No AI was used to write."
 showtoc: true
 tocopen: false
 draft: true
@@ -9,8 +9,85 @@ date: "2026-09-10"
 
 
 
+## Harness?
+
+It's a recent buzzword. But I'll hop on the buzz train.
+
+Because harness is a relatively new word introduced in the context of AI, and I've first seen it being used in the context of agentic coding. In that space, an agent is the sum of the model and the harness itself.
+
+In that same space, it was a LangChain [blogpost](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness) that defined it as:
+
+> *Agent = Model + Harness*. *If you're not the model, you're the harness.*
 
 
+> *Without a harness, you have a chatbot. With one, you have an agent.* - [source](https://happycapy.ai/blog/harness-engineering-guide)
+
+![sup](https://happycapy.ai/blog-assets/harness-engineering-guide/engineering-layers.png)
+
+![sup](https://camo.githubusercontent.com/9fd17bdd8fe60c51a31a9224d1c6563cc04935f16213088955afe450a55e6c4f/68747470733a2f2f6d617274696e666f776c65722e636f6d2f61727469636c65732f6861726e6573732d656e67696e656572696e672f6861726e6573732d626f756e6465642d636f6e74657874732e706e67)
+
+
+
+
+The tooling can include a number of different properties and it's the amount of properties that influence how "thick" or "thin" a harness is.
+
+In this post, I'll dive into why a thick harness is drastically different from
+
+### Thick harness
+
+
+### Thin harness
+
+
+### Legal Thin Harness
+
+- Single trajectory of decisions
+- Unidirectional flow
+-
+
+
+### Legal Thick Harness
+
+- Diagram of the all the phases of the lawyers workflow: intake, planning, research and drafting all talking to each others.
+- Diagram should include the data source for proprietary content
+
+
+## Specialized agents and subagents
+
+## A third-dimension in data sources
+
+In industries that rely heavily on proprietary content, there are typically two data sources: the proprietary content itself and the content the user uploads. Both in thic
+
+But in an orchestracted workflow there's a new set of content being created. That's the content being created while the user interacts with this harness, including inputs, outputs and all communication between the different parts of a system.
+
+Here's a comparison between the thin harness and the thick harness (diagram):
+
+
+## Memory
+
+When a system made of interactions between it's different components, it becomes obvious on why memory becomes relevant. As a personal anecdote, I find it interesting that one of the things that makes me stay using Claude and especially Claude Code is memory. It's a personal feature of that harness that simplifies and speeds up my work a lot.
+
+As a human, it's very hard to keep a mental model of everything that has happened within a given session. That means all the changes that happened for every single file change, at any moment in time.
+
+In a thin harness such as an assistant, the memory is usually either the chat history or the combined chat history. But an assistant is a narrow way of determining what the user wants. It goes in depth and less in breadth.
+
+A thick harness goes both in depth and in breadth. And a memory now has a birds eye view.
+
+A good example of this is Github Copilot vs Claude Code. In Github Copilot the user is typically editing a single file. of course, the user can increase the scope of other files in order to edit a single file, but that's not memory. That's just context.
+
+## Evaluation
+
+In a thin harness, because it's a unidirectional and unidimensional flow
+
+
+## Information retrieval
+
+All interactions between the user and all the content produced and edited in a thick harness - what call in this post the "Third dimension of data source" can be used to fetch more information from the two primary sources of information. From a legal accuracy standpoint this creates a system that understands what the user is doing and potentially help where the user needs to go. All this by understanding what the user did while interacting with this thick harness.
+
+
+## Conclusion
+
+All these things combined create a thickness of the harness that not only improves the system by looking at it as whole, but also creates intelectual property that other harnesses cannot have, especially thin ones. Simply because they don't have t
 
 ---
 
