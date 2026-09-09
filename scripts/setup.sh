@@ -26,20 +26,31 @@ verify_sha256() {
   fi
 }
 
+# download_verified <release-base-url> <file> <checksums-file> <dest-dir>
+# Downloads <file> and its checksums file into <dest-dir> and verifies the
+# SHA256 of <file>. Aborts the script on a failed download or a mismatch.
+download_verified() {
+  local base=$1 file=$2 sums=$3 dest=$4
+  if ! curl -fsSL -o "$dest/$file" "$base/$file" \
+     || ! curl -fsSL -o "$dest/$sums" "$base/$sums"; then
+    rm -rf "$dest"
+    red "Download failed: $base/$file"
+    exit 1
+  fi
+  if ! ( cd "$dest" && verify_sha256 "$sums" "$file" ) &>/dev/null; then
+    rm -rf "$dest"
+    red "Checksum verification failed for $file"
+    exit 1
+  fi
+}
+
 # fetch_verified <release-base-url> <archive> <checksums-file> <dest-dir> <member>
-# Downloads a .tar.gz and its checksums file, verifies the SHA256 of the
-# archive, then extracts a single member. Aborts the script on any mismatch.
+# Downloads and verifies a .tar.gz, then extracts a single member into <dest-dir>.
 fetch_verified() {
   local base=$1 archive=$2 sums=$3 dest=$4 member=$5
   local tmp
   tmp=$(mktemp -d)
-  curl -fsSL -o "$tmp/$archive" "$base/$archive"
-  curl -fsSL -o "$tmp/$sums" "$base/$sums"
-  if ! ( cd "$tmp" && verify_sha256 "$sums" "$archive" ) &>/dev/null; then
-    rm -rf "$tmp"
-    red "Checksum verification failed for $archive"
-    exit 1
-  fi
+  download_verified "$base" "$archive" "$sums" "$tmp"
   tar xzf "$tmp/$archive" -C "$dest" "$member"
   rm -rf "$tmp"
 }
@@ -74,20 +85,33 @@ install_hugo() {
       info "$(green '✓')" "Hugo $HUGO_VERSION already installed"
       return
     fi
-    dim "  Upgrading Hugo from $current to $HUGO_VERSION"
+    dim "  Found Hugo $current, pinning $HUGO_VERSION in $INSTALL_DIR"
   fi
 
-  local os arch
+  local os arch base sums
   os=$(detect_os)
   arch=$(detect_arch)
+  base="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}"
+  sums="hugo_${HUGO_VERSION}_checksums.txt"
 
   mkdir -p "$INSTALL_DIR"
   printf '  Installing Hugo %s (%s/%s)... ' "$HUGO_VERSION" "$os" "$arch"
-  fetch_verified \
-    "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}" \
-    "hugo_extended_${HUGO_VERSION}_${os}-${arch}.tar.gz" \
-    "hugo_${HUGO_VERSION}_checksums.txt" \
-    "$INSTALL_DIR" hugo
+  if [ "$os" = "darwin" ]; then
+    # Hugo ships macOS only as a universal .pkg installer, no tar.gz. Pull the
+    # binary out of the package instead of running the installer, so the pin
+    # lives in $INSTALL_DIR like everything else.
+    local pkg tmp
+    pkg="hugo_extended_${HUGO_VERSION}_darwin-universal.pkg"
+    tmp=$(mktemp -d)
+    download_verified "$base" "$pkg" "$sums" "$tmp"
+    pkgutil --expand-full "$tmp/$pkg" "$tmp/expanded"
+    install -m 755 "$tmp/expanded/Payload/hugo" "$INSTALL_DIR/hugo"
+    rm -rf "$tmp"
+  else
+    fetch_verified "$base" \
+      "hugo_extended_${HUGO_VERSION}_${os}-${arch}.tar.gz" \
+      "$sums" "$INSTALL_DIR" hugo
+  fi
   green "done"
 }
 
@@ -100,10 +124,11 @@ install_htmltest() {
   local os arch
   os=$(detect_os)
   arch=$(detect_arch)
+  # htmltest names its assets linux_amd64, macos_arm64, ... ("macos", not "darwin")
+  [ "$os" = "darwin" ] && os="macos"
 
   mkdir -p "$INSTALL_DIR"
   printf '  Installing htmltest %s... ' "$HTMLTEST_VERSION"
-  # htmltest uses different naming: linux_amd64, darwin_arm64, etc.
   fetch_verified \
     "https://github.com/wjdp/htmltest/releases/download/v${HTMLTEST_VERSION}" \
     "htmltest_${HTMLTEST_VERSION}_${os}_${arch}.tar.gz" \
@@ -136,13 +161,7 @@ install_bun() {
   tmp=$(mktemp -d)
   archive="bun-${os}-${bun_arch}.zip"
   base="https://github.com/oven-sh/bun/releases/download/bun-v${BUN_VERSION}"
-  curl -fsSL -o "$tmp/$archive" "$base/$archive"
-  curl -fsSL -o "$tmp/SHASUMS256.txt" "$base/SHASUMS256.txt"
-  if ! ( cd "$tmp" && verify_sha256 SHASUMS256.txt "$archive" ) &>/dev/null; then
-    rm -rf "$tmp"
-    red "Checksum verification failed for $archive"
-    exit 1
-  fi
+  download_verified "$base" "$archive" SHASUMS256.txt "$tmp"
   unzip -qo "$tmp/$archive" -d "$tmp"
   mkdir -p "$HOME/.bun/bin"
   install -m 755 "$tmp/bun-${os}-${bun_arch}/bun" "$HOME/.bun/bin/bun"
