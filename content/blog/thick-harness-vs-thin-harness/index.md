@@ -1,6 +1,6 @@
 ---
 title: "Thick Harness vs Thin Harness"
-description: "While the industry is moving from single-action assistants to orchestrated workflows. No AI was used to write."
+description: "While the industry is moving from single-action assistants to orchestrated workflows. No AI was used to write this article."
 showtoc: true
 tocopen: false
 draft: true
@@ -9,34 +9,37 @@ date: "2026-09-10"
 
 
 
-## Harness?
+## Harness
 
-It's a recent buzzword. But I'll hop on the buzz train.
+It's a buzzword and I'll hop on the buzz train.
 
-Because harness is a relatively new word introduced in the context of AI, and I've first seen it being used in the context of agentic coding. In that space, an agent is the sum of the model and the harness itself.
+Harness is a relatively new word introduced in the context of AI engineering, and I've first seen it being used for agentic coding. Specifically, within the realm of "harness engineering" - which I'll get to that later.
 
-In that same space, it was a LangChain [blogpost](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness) that defined it as:
+In this agentic coding space, I can trace this definition back to a LangChain [blogpost](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness) which defined it as: "*Agent = Model + Harness*. *If you're not the model, you're the harness.*".
 
-> *Agent = Model + Harness*. *If you're not the model, you're the harness.*
-
-
-> *Without a harness, you have a chatbot. With one, you have an agent.* - [source](https://happycapy.ai/blog/harness-engineering-guide)
-
-![sup](https://happycapy.ai/blog-assets/harness-engineering-guide/engineering-layers.png)
+My favourite definition is in a blogpost at [Martin Fowler's website](https://martinfowler.com), by [Birgitta Böckeler](https://birgitta.info/) and called "[Harness engineering for coding agent users](https://martinfowler.com/articles/harness-engineering.html)". The visualization helps distinguish the different layers of an agent.
 
 ![sup](https://camo.githubusercontent.com/9fd17bdd8fe60c51a31a9224d1c6563cc04935f16213088955afe450a55e6c4f/68747470733a2f2f6d617274696e666f776c65722e636f6d2f61727469636c65732f6861726e6573732d656e67696e656572696e672f6861726e6573732d626f756e6465642d636f6e74657874732e706e67)
 
+Despite this visualization being within the coding agents' space, it clarifies two types of harness: the one "built by the builders" and the user harness. This distinction is very important to this blogpost, since ;sljfls'kfjg
 
+The builders' harness contains several different properties. Per the LangChain post, there's:
+
+>- System Prompts
+>- Tools, Skills, MCPs + and their descriptions
+>- Bundled Infrastructure (filesystem, sandbox, browser)
+>- Orchestration Logic (subagent spawning, handoffs, model routing)
+>- Hooks/Middleware for deterministic execution (compaction, continuation, lint checks)
+
+This volume of properties in a harness determines its "thickness". More properties are the foundation of a thicker harness. And despite some of the properties above are for an agentic coding context, some of them can be generalized to other fields. I'm taking the freedom to bridge this into the legal domain field. In the process, I'll talk about some of the properties that characterize a legal harness.
+
+
+Others take this to another level by saying "Without a harness, you have a chatbot. With one, you have an agent." - [source](https://happycapy.ai/blog/harness-engineering-guide).
 
 
 The tooling can include a number of different properties and it's the amount of properties that influence how "thick" or "thin" a harness is.
 
 In this post, I'll dive into why a thick harness is drastically different from
-
-### Thick harness
-
-
-### Thin harness
 
 
 ### Legal Thin Harness
