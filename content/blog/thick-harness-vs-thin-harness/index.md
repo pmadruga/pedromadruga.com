@@ -31,25 +31,31 @@ The builders' harness contains several different properties. Per the LangChain p
 >- Orchestration Logic (subagent spawning, handoffs, model routing)
 >- Hooks/Middleware for deterministic execution (compaction, continuation, lint checks)
 
-This volume of properties in a harness determines its "thickness". More properties are the foundation of a thicker harness. And despite some of the properties above are for an agentic coding context, some of them can be generalized to other fields. I'm taking the freedom to bridge this into the legal domain field. In the process, I'll talk about some of the properties that characterize a legal harness.
+This volume of properties in a harness determines its "thickness". More properties are the foundation of a thicker harness. And despite some of these properties are for an agentic coding context, some of them can be generalized to other fields.
+
+That's why I'm taking the freedom to bridge this into the legal domain field. In this article, I'll talk about the width of legal harnesses and some of the properties that characterize this.
+
+## A bit of domain knowledge
+
+The main phases of the work of a legal practicioner are intake, planning, research and drafting. To simplify a bit, the intake is where the custom documents are added, the planning is a coordination by the user on what will be done, the research is about doing legal research and drafting is typically the final step of legal practioners flow.
 
 
 Others take this to another level by saying "Without a harness, you have a chatbot. With one, you have an agent." - [source](https://happycapy.ai/blog/harness-engineering-guide).
 
 
-The tooling can include a number of different properties and it's the amount of properties that influence how "thick" or "thin" a harness is.
-
 In this post, I'll dive into why a thick harness is drastically different from
 
 
-### Legal Thin Harness
+## Legal Thin Harness
+
+In the legal domain, it's common practice to start with building products that reflect a specific phase of the legal practicioner. With few exceptions, it's common to start with the legal research.
 
 - Single trajectory of decisions
 - Unidirectional flow
 -
 
 
-### Legal Thick Harness
+## Legal Thick Harness
 
 - Diagram of the all the phases of the lawyers workflow: intake, planning, research and drafting all talking to each others.
 - Diagram should include the data source for proprietary content
