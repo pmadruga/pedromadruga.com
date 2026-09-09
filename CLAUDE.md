@@ -70,6 +70,7 @@ Version pins that must move in lockstep: Hugo in `netlify.toml`, `lint.yml`, `li
 ## Key Conventions
 
 - **Never co-author commits.** Do not add `Co-Authored-By`, session links, or any other AI attribution trailers to commit messages.
+- **Always commit draft posts too.** When asked to commit, also commit any modified draft under `content/blog/` in its own separate commit (never mixed with code or layout changes) and push it along with the rest. Drafts are Pedro's writing, so commit them as they are without editing the text.
 - Theme customizations go in `layouts/`, never edit `themes/PaperMod/` directly.
 - Blog posts use front matter type `"blog"` and live in `content/blog/`.
 - Images are automatically optimized (WebP, srcset, lazy loading) through the render-image hook. AVIF was removed deliberately: Hugo's encoder produced files 40–65% *larger* than the WebP equivalents on this site's screenshot-heavy images.
