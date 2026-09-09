@@ -53,7 +53,7 @@ npm run theme:rollback     # Rollback to previous theme version
   - `layouts/_partials/seo/` — schema.org structured data partials
   - `layouts/_shortcodes/responsive-img.html` — manual responsive image shortcode
 - **Assets** (`assets/`): CSS overrides in `assets/css/extended/` (link/icon accent color is the `--amber` custom property defined in `custom_css1.css`). Modular JS files in `assets/js/` (theme toggle, code copy, smooth scroll, scroll-to-top, menu scroll).
-- **Static** (`static/`): Favicons, CV PDF, `images/og-default.png` and the Not-By-AI badges. Blog post images live in each post's page bundle (`content/blog/<slug>/`).
+- **Static** (`static/`): Favicons, CV PDF and `images/og-default.png`. Blog post images live in each post's page bundle (`content/blog/<slug>/`).
 - **Theme** (`themes/PaperMod/`): Git submodule. Do not edit directly — override via `layouts/`.
 - **Config** (`hugo.yaml`): Site configuration, menus, params, image processing settings.
 
@@ -83,7 +83,7 @@ Version pins that must move in lockstep: Hugo in `netlify.toml`, `lint.yml`, `li
   - `layouts/_partials/head.html` — theme copy; diverges in the favicon block, a real `<meta name=author>` (the emptied `author.html` override would blank it), whitespace-collapsed meta description, `noindex` on the 404 page, and no opengraph/schema blocks on `robotsNoIndex` pages. The CSP-hashed inline theme script is untouched theme code.
   - `layouts/_partials/footer.html` — theme copy minus the inline scripts (CSP) and the "Powered by" credit; bundles JS via Hugo Pipes
   - `layouts/baseof.html` — deprecated-API swap plus the skip link, `id="main-content"` on `<main>`, and the `$codeCopy` footer cache key
-  - `layouts/archives.html` — theme copy plus the newsletter subscribe line in the header, and entry titles as `h4` instead of `h3`
+  - `layouts/archives.html` — theme copy plus the newsletter subscribe line in the header; drops the month grouping and post counts, so under each year every entry is one row: full date, title (`h3`, no `post_meta` partial), reading time. Row layout lives in `custom_css1.css`
   - `layouts/_partials/author.html` — deliberately emptied override
   - `layouts/_partials/templates/opengraph.html` — only swaps a Hugo API deprecated in 0.158.0 (`site.Language.LanguageCode` → `site.Language.Locale`). Delete once upstream PaperMod fixes it (still unfixed as of the 2026-08 theme commit).
   - `layouts/rss.xml` — the same API swap, plus: the home feed lists `mainSections` posts only (not about/contact/the noindexed newsletter pages), and root-relative `src`/`href`/`srcset` in `content:encoded` are absolutized for feed readers and RSS-to-email.

@@ -528,40 +528,6 @@ h1 {
   text-align: left; /* the wrapper's centering shouldn't reach the card text */
 }
 
-/* notbyai.fyi "Written by Human" badge (not_by_ai partial): white badge
-   on the light theme, black badge on the dark theme, so it blends in */
-.not-by-ai {
-  margin: 28px 0 8px;
-  text-align: center;
-}
-
-.not-by-ai a {
-  display: inline-block;
-  box-shadow: none; /* theme underlines links via box-shadow */
-}
-
-.not-by-ai .not-by-ai-dark {
-  display: none;
-}
-
-[data-theme='dark'] .not-by-ai .not-by-ai-light {
-  display: none;
-}
-
-[data-theme='dark'] .not-by-ai .not-by-ai-dark {
-  display: inline;
-}
-
-@media (prefers-color-scheme: dark) {
-  [data-theme='auto'] .not-by-ai .not-by-ai-light {
-    display: none;
-  }
-
-  [data-theme='auto'] .not-by-ai .not-by-ai-dark {
-    display: inline;
-  }
-}
-
 /* Code blocks: Catppuccin's comment color is 2.9:1 (dark) / 3.6:1 (light)
    on the block background; overlay2 from the same palette clears AA */
 .chroma .c,
@@ -628,7 +594,6 @@ pre:focus-within .copy-code,
   .toc,
   .post-newsletter,
   .newsletter-top,
-  .not-by-ai,
   .social-icons,
   .footer,
   .copy-code,
@@ -645,5 +610,58 @@ pre:focus-within .copy-code,
   .post-content a[href^='http']:not(.anchor)::after {
     content: ' (' attr(href) ')';
     font-size: 0.85em;
+  }
+}
+
+/* Blog list (archives layout): no month grouping. Each entry is one row —
+   full date | title | reading time — with the date and time in the meta
+   style. The theme reset colors <a> --primary directly, hence the explicit
+   colors on the side cells. */
+.archive-entry {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr) auto;
+  column-gap: 20px;
+  align-items: baseline;
+}
+
+.archive-entry-title {
+  font-size: 1em; /* h3 for semantics only; keep the 16px list size */
+  /* Same face as the post title and headings inside blog posts
+     (extend_head.html); the @font-face is in fonts.css */
+  font-family: 'Noto Serif', 'Noto Serif Fallback', Georgia, 'Times New Roman', serif;
+}
+
+.archive-entry-date,
+.archive-entry-meta {
+  color: var(--secondary);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.archive-entry-meta {
+  white-space: nowrap;
+}
+
+.archive-entry .entry-hint {
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 768px) {
+  /* Date and reading time on one line, title underneath */
+  .archive-entry {
+    grid-template-columns: 1fr auto;
+    row-gap: 4px;
+  }
+
+  .archive-entry-meta {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .archive-entry-title {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 }

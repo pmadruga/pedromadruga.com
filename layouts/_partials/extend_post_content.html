@@ -3,8 +3,7 @@ Scoped to type "blog" so regular pages (about, cv, newsletter) are
 unaffected. */ -}}
 {{- if eq .Type "blog" }}
 <div class="newsletter-top post-newsletter">
-  <p class="post-newsletter-text">Subscribe to my <a class="description-link" href="/newsletter/">newsletter</a> and get these posts in your inbox.</p>
+  <p class="post-newsletter-text">Get my blogposts in your inbox. I write about Applied AI and software engineering.<br>I never use AI to write my blogposts.</p>
   {{- partial "newsletter_form.html" . }}
 </div>
-{{- partial "not_by_ai.html" . }}
 {{- end }}
