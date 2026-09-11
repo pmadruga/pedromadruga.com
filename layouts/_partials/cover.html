@@ -4,7 +4,8 @@
     {{- $loading := cond $.IsSingle "eager" "lazy" }}
     {{- $addLink := (and site.Params.cover.linkFullImages $.IsSingle) }}
     {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
-    {{- $alt := (.Params.cover.alt | default .Params.cover.caption | plainify) }}
+    {{- /* Fall back to the page title so a cover never ships with an empty alt (htmltest fails the build on it) */}}
+    {{- $alt := (.Params.cover.alt | default .Params.cover.caption | default .Title | plainify) }}
     {{- $responsiveImages := (.Params.cover.responsiveImages | default site.Params.cover.responsiveImages) | default true }}
 
     {{- $pageBundleCover := (.Resources.ByType "image").GetMatch (printf "*%s*" (.Params.cover.image)) }}
