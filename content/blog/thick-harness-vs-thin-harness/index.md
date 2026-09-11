@@ -100,6 +100,8 @@ All these things combined create a thickness of the harness that not only improv
 
 ---
 
+<!-- markdownlint-disable MD024 -->
+
 ## Loose Notes
 
 When all you have done is work in a single assistant, youll miss the benefit of memory and even local models.
