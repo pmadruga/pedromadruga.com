@@ -1,6 +1,6 @@
 ---
 title: "Thick Harness vs Thin Harness"
-description: "While the industry is moving from single-action assistants to orchestrated workflows. No AI was used to write this article."
+summary: "While the industry is moving from single-action assistants to orchestrated workflows. No AI was used to write this article."
 showtoc: true
 tocopen: false
 draft: true
