@@ -44,7 +44,7 @@ Domain Driven AI is about gathering every possible piece of information about a 
 
 It's important to recognize that you, as an AI practitioner, probably don't have knowledge of the domain you are in. If you studied subject matter *and* Applied AI, then you're probably a unicorn. But for the rest of us who have been in different organizations and industries, we need to hunt that knowledge.
 
-This is something I realized when working in the legal industry. I'm not a lawyer, I know nothing about legal systems - especially the Danish legal system. Back in 2023, I had to start from nothing. I was lucky to be part of a well-established organization like [Karnov Group](https://www.karnovgroup.com/en/), one with abundance of domain experts who bore with my simple questions - and to this day they still do. It's a catastrophic misconception that domain knowledge can be acquired within 6 months, especially in a domain like legal.
+This is something I realized when working in the legal industry. I'm not a lawyer, I knew nothing about legal systems - especially the Danish legal system. Back in 2023, I had to start from nothing. Since then I've become acquainted with the Danish, Swedish, Spanish and French legal systems. I was lucky to be part of a well-established organization like [Karnov Group](https://www.karnovgroup.com/en/), one with abundance of domain experts who bore with my simple questions - and to this day they still do. It's a catastrophic misconception that domain knowledge can be acquired within 6 months, especially in a domain like legal.
 
 It's not hard to find this knowledge. In fact, within an organization, this information is everywhere: customers, colleagues from other departments, internal and external literature, and so on.
 
