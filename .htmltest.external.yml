@@ -6,6 +6,12 @@ CheckInternalHash: true
 CheckImages: true
 CheckScripts: true
 ExternalTimeout: 30
+# /notes/ is the build-time Bluesky feed: its outbound links are whatever
+# the posts (and their link-card embeds) contain, and they cannot be fixed
+# in this repo. Internal links on that page are still covered by the
+# per-push CI (.htmltest.yml).
+IgnoreDirs:
+  - '^notes/'
 IgnoreURLs:
   # Bot-hostile hosts that rate-limit or block link checkers. Entries are
   # regexes matched anywhere in the URL (so subdomains like uk.linkedin.com
@@ -19,3 +25,6 @@ IgnoreURLs:
   - 'medium\.com'
   # jobindex.dk intermittently 503s bots
   - 'jobindex\.dk'
+  # thecrustyengineer.com is offline (connection reset, no Wayback copy);
+  # referenced from blog/airflow-install
+  - 'thecrustyengineer\.com'
