@@ -25,6 +25,3 @@ IgnoreURLs:
   - 'medium\.com'
   # jobindex.dk intermittently 503s bots
   - 'jobindex\.dk'
-  # thecrustyengineer.com is offline (connection reset, no Wayback copy);
-  # referenced from blog/airflow-install
-  - 'thecrustyengineer\.com'
