@@ -197,4 +197,3 @@ In the next blog post of this Data Engineering series, we'll create our first Di
 
 1. https://airflow.apache.org/docs/apache-airflow/stable/installation.html
 2. https://medium.com/the-kickstarter/apache-airflow-running-on-a-raspberry-pi-2e061f6c3655
-3. http://www.thecrustyengineer.com/home/post/setting_up_airflow_on_a_raspberry_pi_4_part_1
