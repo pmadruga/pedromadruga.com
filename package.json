@@ -18,7 +18,7 @@
     "theme:list-backups": "bash scripts/update-theme.sh --list-backups"
   },
   "devDependencies": {
-    "lefthook": "^2.1.10",
+    "lefthook": "^2.1.12",
     "markdownlint-cli2": "^0.23.2",
     "prettier": "^3.9.6"
   }
