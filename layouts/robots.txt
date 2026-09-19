@@ -1,0 +1,153 @@
+{{- /* Override of themes/PaperMod/layouts/robots.txt (which allows everything).
+
+Policy: search engines are welcome; AI training and scraping crawlers are not.
+Search visibility is unaffected — Googlebot, Bingbot and Applebot are never
+named here, so they fall through to the permissive "*" group. The two
+training-only opt-outs (Google-Extended, Applebot-Extended) are separate
+user-agents from their search crawlers, so blocking them costs no indexing.
+
+Assistant "user" agents (ChatGPT-User, Claude-User, Perplexity-User) fetch a
+page because a reader asked an assistant to read it, rather than to build a
+training set. They are blocked here too, deliberately — drop those three lines
+if you would rather let readers pull posts into an assistant.
+
+robots.txt is advisory: it stops the operators who honour it, and nothing else.
+Enforcement would need a proxy in front of Netlify, which this site deliberately
+does not have (see the Cloudflare DNS-only setup).
+
+Crawlers match the MOST SPECIFIC user-agent group, so each block below fully
+replaces the "*" group for that agent — no need to repeat the sitemap in them.
+
+Note: the non-production branch below never fires on this site — hugo.yaml pins
+params.env to "production", so the condition is always true (that is the theme's
+own behaviour, not something this override introduced). It is kept so the guard
+works if that param is ever unpinned. Deploy previews therefore serve this same
+file.
+
+Re-check against the theme copy after npm run theme:update. */ -}}
+{{- if hugo.IsProduction | or (eq site.Params.env "production") -}}
+# Everything not named below: crawl freely.
+User-agent: *
+Disallow:
+
+# ─── OpenAI ───
+User-agent: GPTBot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+# ─── Anthropic ───
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Claude-User
+Disallow: /
+
+User-agent: Claude-SearchBot
+Disallow: /
+
+# ─── Google / Apple: training opt-outs only; search crawlers unaffected ───
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+# ─── Meta ───
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+# ─── Perplexity ───
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Perplexity-User
+Disallow: /
+
+# ─── Other model builders ───
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: TikTokSpider
+Disallow: /
+
+User-agent: MistralAI-User
+Disallow: /
+
+User-agent: DuckAssistBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: PanguBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+User-agent: AI2Bot
+Disallow: /
+
+User-agent: Ai2Bot-Dolma
+Disallow: /
+
+# ─── Dataset builders and resellers ───
+User-agent: CCBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: Webzio-Extended
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: Kangaroo Bot
+Disallow: /
+
+User-agent: VelenPublicWebCrawler
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+Sitemap: {{ "sitemap.xml" | absURL }}
+{{- else -}}
+# Non-production build: keep previews out of every index.
+User-agent: *
+Disallow: /
+{{- end }}

@@ -87,6 +87,7 @@ Version pins that must move in lockstep: Hugo in `netlify.toml`, `lint.yml`, `li
   - `layouts/archives.html` — theme copy plus the newsletter subscribe line in the header; drops the month grouping and post counts, so under each year every entry is one row: full date, title (`h3`, no `post_meta` partial), reading time. Row layout lives in `custom_css1.css`
   - `layouts/_partials/author.html` — deliberately emptied override
   - `layouts/_partials/templates/opengraph.html` — only swaps a Hugo API deprecated in 0.158.0 (`site.Language.LanguageCode` → `site.Language.Locale`). Delete once upstream PaperMod fixes it (still unfixed as of the 2026-08 theme commit).
+  - `layouts/robots.txt` — replaces the theme's allow-everything file: search crawlers still fall through to a permissive `User-agent: *`, while AI training/scraping agents (and the Google-Extended / Applebot-Extended training opt-outs) each get `Disallow: /`. Add new AI user-agents here as they appear.
   - `layouts/rss.xml` — the same API swap, plus: the home feed lists `mainSections` posts only (not about/contact/the noindexed newsletter pages), and root-relative `src`/`href`/`srcset` in `content:encoded` are absolutized for feed readers and RSS-to-email.
 
 ## Content Ownership
