@@ -1,0 +1,58 @@
+{{- /* Year-grouped list of blog posts — the shared body of both the /blog/
+archive (layouts/archives.html) and the "Archive" section on /newsletter/
+(layouts/newsletter.html), so the two stay in sync while they run side by side.
+
+Params: "yearLevel"/"titleLevel" set the heading tags, since the two pages sit
+at different depths — /blog/ puts the years directly under its h1, while the
+newsletter page nests them under an h2. Both default to the /blog/ shape.
+
+No month grouping: each entry is one row — full date | title | reading time.
+Row layout lives in assets/css/extended/custom_css1.css (all class-based, so
+the heading tag makes no visual difference).
+
+The heading tags go through printf/safeHTML because Go's html/template escapes a
+tag name built from a variable (`<{{ $x }}>` renders as literal &lt;h2&gt;). The
+values are template-local literals, never user input. */ -}}
+
+{{- $yearLevel := .yearLevel | default "h2" }}
+{{- $titleLevel := .titleLevel | default "h3" }}
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+
+{{- range $pages.GroupByPublishDate "2006" }}
+{{- if ne .Key "0001" }}
+<div class="archive-year">
+  {{- $year := replace .Key "0001" "" }}
+  {{- printf `<%s class="archive-year-header" id="%s">` $yearLevel $year | safeHTML }}
+    <a class="archive-header-link" href="#{{ $year }}">
+      {{- $year -}}
+    </a>
+  {{- printf `</%s>` $yearLevel | safeHTML }}
+  <div class="archive-posts">
+    {{- range .Pages }}
+    {{- if eq .Kind "page" }}
+    <div class="archive-entry">
+      <time class="archive-entry-date" datetime="{{ .Date.Format "2006-01-02" }}">
+        {{- .Date | time.Format (default ":date_long" site.Params.DateFormat) -}}
+      </time>
+      {{- printf `<%s class="archive-entry-title">` $titleLevel | safeHTML }}
+        {{- .Title | markdownify }}
+        {{- if .Draft }}
+        <span class="entry-hint" title="Draft">
+          <svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 -960 960 960" fill="currentColor">
+            <path
+              d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+          </svg>
+        </span>
+        {{- end }}
+      {{- printf `</%s>` $titleLevel | safeHTML }}
+      {{- if (.Param "ShowReadingTime") }}
+      <span class="archive-entry-meta">{{ i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime) }}</span>
+      {{- end }}
+      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </div>
+    {{- end }}
+    {{- end }}
+  </div>
+</div>
+{{- end }}
+{{- end }}

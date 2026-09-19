@@ -117,7 +117,7 @@ params:
     # markdown hard break (two trailing spaces), not a paragraph break:
     # a second paragraph would render invalid <p> elements inside the <h1>
     title: "Hey there,  \nI'm Pedro."
-    subtitle: 'I lead AI teams and ship AI products. And I [write about it](/newsletter/).'
+    subtitle: 'I lead AI teams and ship AI products. And I [write about it](/blog/).'
     imageUrl: 'images/profile6.jpeg'
     imageWidth: 250
     imageHeight: 250
@@ -180,10 +180,12 @@ menu:
       name: notes
       url: /notes/
       weight: 25
-    - identifier: newsletter
-      name: newsletter
-      url: /newsletter/
-      weight: 30
+    # newsletter is off-menu: reached from the home subtitle, the email
+    # social icon, and the sign-up line on /blog/
+    # - identifier: newsletter
+    #   name: newsletter
+    #   url: /newsletter/
+    #   weight: 30
     - identifier: contact
       name: contact
       url: /contact/
