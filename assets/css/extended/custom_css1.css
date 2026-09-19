@@ -626,6 +626,9 @@ pre:focus-within .copy-code,
 
 .archive-entry-title {
   font-size: 1em; /* h3 for semantics only; keep the 16px list size */
+  /* The theme's archive.css sets 400 — post titles read as the primary thing
+     in each row, so override it back to bold. */
+  font-weight: 700;
   /* Same face as the post title and headings inside blog posts
      (extend_head.html); the @font-face is in fonts.css */
   font-family: 'Noto Serif', 'Noto Serif Fallback', Georgia, 'Times New Roman', serif;
