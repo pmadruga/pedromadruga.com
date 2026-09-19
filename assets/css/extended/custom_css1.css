@@ -466,8 +466,10 @@ h1 {
   }
 }
 
-/* CV download card (cv-download shortcode on the about page) */
-.cv-download {
+/* Card-style outbound link: the cv-download shortcode (about page) and
+   the book-call shortcode (contact page) share one visual treatment. */
+.cv-download,
+.link-card {
   display: inline-flex;
   align-items: center;
   gap: 14px;
@@ -481,50 +483,172 @@ h1 {
     box-shadow 0.15s ease;
 }
 
-.post-content a.cv-download {
+.post-content a.cv-download,
+.post-content a.link-card {
   color: var(--primary); /* override the amber prose-link color */
   box-shadow: none; /* theme underlines links via box-shadow */
 }
 
 .cv-download:hover,
-.cv-download:focus-visible {
+.cv-download:focus-visible,
+.link-card:hover,
+.link-card:focus-visible {
   border-color: var(--amber);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.cv-download-icon {
+.cv-download-icon,
+.link-card-icon {
   display: flex;
   flex-shrink: 0;
   color: var(--amber);
 }
 
-.cv-download-icon svg {
+.cv-download-icon svg,
+.link-card-icon svg {
   width: 28px;
   height: 28px;
 }
 
-.cv-download-text {
+.cv-download-text,
+.link-card-text {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.cv-download-title {
+.cv-download-title,
+.link-card-title {
   font-weight: 600;
   line-height: 1.3;
 }
 
-.cv-download-meta {
+.cv-download-meta,
+.link-card-meta {
   font-size: 0.85rem;
   color: var(--secondary);
   line-height: 1.3;
 }
 
-.cv-download-wrap {
+/* Buttons and button-like cards render as solid dark cards in LIGHT mode:
+   the site's own ground (#2e2e33 — the theme-color meta, the favicon, the
+   social banner), with text/icon/meta taken from those same assets. They
+   read as actions rather than surfaces, which a white fill could not do —
+   PaperMod sets --theme and --entry to the same pure white in light mode,
+   so an untinted card is white-on-white behind a #eee hairline.
+
+   Covers all three: the contact link-cards, the CV download card, and the
+   newsletter Subscribe button. The Subscribe button sits beside a white
+   email input, which is the point: the input is a field, the button is the
+   action.
+
+   Contrast on the card: text 11.95:1, icon 7.08:1, meta 5.93:1.
+
+   Not applied to .note-link-card — those are Bluesky link previews in the
+   notes feed, syndicated content rather than actions.
+
+   DARK mode reverts everything to the theme tokens, since a #2e2e33 card on
+   a dark page would vanish. Both dark selectors are covered (explicit
+   [data-theme] and the prefers-dark 'auto' case), the same pattern the
+   --amber token uses. */
+.cv-download,
+.link-card,
+.button-newsletter {
+  background: #2e2e33;
+  border-color: #2e2e33;
+  color: #f2f1ed;
+}
+
+.post-content a.cv-download,
+.post-content a.link-card {
+  color: #f2f1ed;
+}
+
+.cv-download .cv-download-icon,
+.link-card .link-card-icon {
+  color: #e6b450; /* the dark-mode amber; light #916600 would muddy here */
+}
+
+.cv-download .cv-download-meta,
+.link-card .link-card-meta {
+  color: #ababb5;
+}
+
+.cv-download:hover,
+.cv-download:focus-visible,
+.link-card:hover,
+.link-card:focus-visible,
+.button-newsletter:hover,
+.button-newsletter:focus-visible {
+  border-color: #e6b450;
+}
+
+[data-theme='dark'] .cv-download,
+[data-theme='dark'] .link-card,
+[data-theme='dark'] .button-newsletter {
+  background: var(--entry);
+  border-color: var(--border);
+  color: var(--primary);
+}
+
+[data-theme='dark'] .post-content a.cv-download,
+[data-theme='dark'] .post-content a.link-card {
+  color: var(--primary);
+}
+
+[data-theme='dark'] .cv-download .cv-download-icon,
+[data-theme='dark'] .link-card .link-card-icon {
+  color: var(--amber);
+}
+
+[data-theme='dark'] .cv-download .cv-download-meta,
+[data-theme='dark'] .link-card .link-card-meta {
+  color: var(--secondary);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='auto'] .cv-download,
+  [data-theme='auto'] .link-card,
+  [data-theme='auto'] .button-newsletter {
+    background: var(--entry);
+    border-color: var(--border);
+    color: var(--primary);
+  }
+
+  [data-theme='auto'] .post-content a.cv-download,
+  [data-theme='auto'] .post-content a.link-card {
+    color: var(--primary);
+  }
+
+  [data-theme='auto'] .cv-download .cv-download-icon,
+  [data-theme='auto'] .link-card .link-card-icon {
+    color: var(--amber);
+  }
+
+  [data-theme='auto'] .cv-download .cv-download-meta,
+  [data-theme='auto'] .link-card .link-card-meta {
+    color: var(--secondary);
+  }
+}
+
+/* A stacked group of link cards reads better at one shared width than
+   three cards each sized to their own label. The CV card keeps sizing to
+   its content (it carries a long meta line). */
+.link-card {
+  min-width: min(320px, 100%);
+}
+
+.link-card-wrap + .link-card-wrap {
+  margin-top: 10px;
+}
+
+.cv-download-wrap,
+.link-card-wrap {
   text-align: center;
 }
 
-.cv-download-wrap .cv-download {
+.cv-download-wrap .cv-download,
+.link-card-wrap .link-card {
   text-align: left; /* the wrapper's centering shouldn't reach the card text */
 }
 

@@ -1,0 +1,51 @@
+{{- /* Card-style outbound link. Shares its styling with the cv-download
+     shortcode (see custom_css1.css).
+
+     Usage: link-card icon="phone" title="Book a phone call"
+                      url="https://example.com" meta="optional second line"
+
+     Deliberately a plain <a>, not a third-party embed widget: no vendor
+     script, no CSP exception, and nothing external loads until a visitor
+     actually clicks.
+
+     Icons are Feather-style (24x24, fill none, stroke-width 2, round caps)
+     to match the rest of the site; "linkedin" is the theme's own path from
+     themes/PaperMod/layouts/_partials/svg.html so it stays identical to the
+     social-icons row further down the page. */ -}}
+{{- $url := .Get "url" -}}
+{{- $title := .Get "title" -}}
+{{- $meta := .Get "meta" -}}
+{{- $icon := .Get "icon" | default "link" -}}
+{{- if not $url }}{{ errorf "link-card: url is required (%s)" .Position }}{{ end -}}
+{{- if not $title }}{{ errorf "link-card: title is required (%s)" .Position }}{{ end -}}
+<div class="link-card-wrap">
+<a class="link-card" href="{{ $url }}" rel="noopener">
+  <span class="link-card-icon" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      {{- if eq $icon "phone" }}
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+      {{- else if eq $icon "video" }}
+      <polygon points="23 7 16 12 23 17 23 7"></polygon>
+      <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+      {{- else if eq $icon "linkedin" }}
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+      <rect x="2" y="9" width="4" height="12"></rect>
+      <circle cx="4" cy="4" r="2"></circle>
+      {{- else if eq $icon "calendar" }}
+      <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+      <path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path>
+      <path d="m9 16 2 2 4-4"></path>
+      {{- else }}
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      {{- end }}
+    </svg>
+  </span>
+  <span class="link-card-text">
+    <span class="link-card-title">{{ $title }}</span>
+    {{- with $meta }}
+    <span class="link-card-meta">{{ . }}</span>
+    {{- end }}
+  </span>
+</a>
+</div>
