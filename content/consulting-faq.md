@@ -6,7 +6,7 @@ showtoc: false
 ShowReadingTime: false
 disableComments: true
 # Unlisted: reachable by URL, but kept out of search engines, the sitemap,
-# and the site's own navigation. Not private — anyone with the link can read
+# and the site's own navigation. Not private: anyone with the link can read
 # it, so the unguessable slug above is the only real boundary.
 searchHidden: true
 robotsNoIndex: true
@@ -40,4 +40,4 @@ Yes, in December I will travel to Portugal for Christmas and New Year's, until J
 
 ## Can I book a call, video or chat?
 
-Yes — [book a phone call](https://booking.pedromadruga.com/pedromadruga/phone-call) or [book a video chat](https://booking.pedromadruga.com/pedromadruga/video-call).
+Yes. [Book a phone call](https://booking.pedromadruga.com/pedromadruga/phone-call) or [book a video chat](https://booking.pedromadruga.com/pedromadruga/video-call).
