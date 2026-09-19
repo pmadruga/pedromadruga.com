@@ -652,6 +652,39 @@ h1 {
   text-align: left; /* the wrapper's centering shouldn't reach the card text */
 }
 
+/* Inline icon (icon shortcode): sits inline with the text it precedes, at
+   roughly cap height, in the amber accent like the site's other icons.
+
+   Inline, NOT a flex item: flex on the <li> would promote the link and the
+   text after it into separate flex items and open a gap between them, which
+   reads as a space before the following comma. */
+.inline-icon {
+  display: inline-flex;
+  vertical-align: -0.2em;
+  margin-right: 6px;
+  color: var(--amber);
+}
+
+.inline-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Booking confirmation: the next-steps list uses the icon as its marker
+   instead of a bullet, so the two do not stack up next to each other. The
+   negative text-indent hangs that icon in the left padding, so a wrapped
+   line lines up under the text rather than under the icon. */
+.booking-confirmed .post-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.booking-confirmed .post-content li {
+  margin: 6px 0;
+  padding-left: 24px;
+  text-indent: -24px;
+}
+
 /* Code blocks: Catppuccin's comment color is 2.9:1 (dark) / 3.6:1 (light)
    on the block background; overlay2 from the same palette clears AA */
 .chroma .c,

@@ -1,0 +1,26 @@
+{{- /* meetergo redirect target. Its own layout purely so the personalisation
+     script loads on this page and nowhere else: the site-wide bundle in
+     footer.html is partialCached, so a per-page condition there would need a
+     matching cache key in baseof.html (see the $codeCopy note). Loading it
+     here sidesteps that.
+
+     The script is served from 'self' via Hugo Pipes, which the strict CSP in
+     netlify.toml requires — an inline script would be blocked. */ -}}
+{{- define "main" }}
+
+<article class="post-single booking-confirmed">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+
+  {{- if .Content }}
+  <div class="post-content md-content">
+    {{ .Content }}
+  </div>
+  {{- end }}
+
+  {{- $js := resources.Get "js/booking-confirmed.js" | minify | fingerprint -}}
+  <script src="{{ $js.RelPermalink }}" defer></script>
+</article>
+
+{{- end }}{{/* end main */}}
