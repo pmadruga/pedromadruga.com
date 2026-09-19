@@ -180,12 +180,10 @@ menu:
       name: notes
       url: /notes/
       weight: 25
-    # newsletter is off-menu: reached from the home subtitle, the email
-    # social icon, and the sign-up line on /blog/
-    # - identifier: newsletter
-    #   name: newsletter
-    #   url: /newsletter/
-    #   weight: 30
+    - identifier: newsletter
+      name: newsletter
+      url: /newsletter/
+      weight: 30
     - identifier: contact
       name: contact
       url: /contact/

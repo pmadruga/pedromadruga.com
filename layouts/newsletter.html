@@ -17,11 +17,6 @@
   </div>
   {{- end }}
 
-  {{- /* Same post list as /blog/, nested a level deeper under its own h2. */}}
-  <section class="newsletter-archive" aria-labelledby="newsletter-archive-heading">
-    <h2 id="newsletter-archive-heading">Archive</h2>
-    {{- partial "post_archive.html" (dict "yearLevel" "h3" "titleLevel" "h4") }}
-  </section>
 </article>
 
 {{- end }}{{/* end main */}}
