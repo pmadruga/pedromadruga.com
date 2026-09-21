@@ -27,4 +27,4 @@ I love spending time with my family, running, and reading books. I have run a co
 
 ![About](about.jpg)
 
-{{< cv-download updated="September 2026" >}}
+{{< cv-download updated="September 21, 2026" >}}
