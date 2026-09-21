@@ -1,13 +1,11 @@
 ---
-title: "Thick Harness vs Thin Harness"
-summary: "While the industry is moving from single-action assistants to orchestrated workflows. No AI was used to write this article."
+title: 'Thick Harness vs Thin Harness'
+summary: 'While the industry is moving from single-action assistants to orchestrated workflows. No AI was used to write this article.'
 showtoc: true
 tocopen: false
 draft: true
-date: "2026-09-10"
+date: '2026-09-10'
 ---
-
-
 
 ## Harness
 
@@ -15,7 +13,7 @@ It's a buzzword and I'll hop on the buzz train.
 
 Harness is a relatively new word introduced in the context of AI engineering, and I've first seen it being used for agentic coding. Specifically, within the realm of "harness engineering" - which I'll get to that later.
 
-In this agentic coding space, I can trace this definition back to a LangChain [blogpost](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness) which defined it as: "*Agent = Model + Harness*. *If you're not the model, you're the harness.*".
+In this agentic coding space, I can trace this definition back to a LangChain [blogpost](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness) which defined it as: "_Agent = Model + Harness_. _If you're not the model, you're the harness._".
 
 My favourite definition is in a blogpost at [Martin Fowler's website](https://martinfowler.com), by [Birgitta Böckeler](https://birgitta.info/) and called "[Harness engineering for coding agent users](https://martinfowler.com/articles/harness-engineering.html)". The visualization helps distinguish the different layers of an agent.
 
@@ -23,43 +21,37 @@ My favourite definition is in a blogpost at [Martin Fowler's website](https://ma
 
 Despite this visualization being within the coding agents' space, it clarifies two types of harness: the one "built by the builders" and the user harness. This distinction is very important to this blogpost, since ;sljfls'kfjg
 
+Others take this to another level by saying "Without a harness, you have a chatbot. With one, you have an agent." - [source](https://happycapy.ai/blog/harness-engineering-guide).
 The builders' harness contains several different properties. Per the LangChain post, there's:
 
->- System Prompts
->- Tools, Skills, MCPs + and their descriptions
->- Bundled Infrastructure (filesystem, sandbox, browser)
->- Orchestration Logic (subagent spawning, handoffs, model routing)
->- Hooks/Middleware for deterministic execution (compaction, continuation, lint checks)
+> - System Prompts
+> - Tools, Skills, MCPs + and their descriptions
+> - Bundled Infrastructure (filesystem, sandbox, browser)
+> - Orchestration Logic (subagent spawning, handoffs, model routing)
+> - Hooks/Middleware for deterministic execution (compaction, continuation, lint checks)
 
-This volume of properties in a harness determines its "thickness". More properties are the foundation of a thicker harness. And despite some of these properties are for an agentic coding context, some of them can be generalized to other fields.
-
-That's why I'm taking the freedom to bridge this into the legal domain field. In this article, I'll talk about the width of legal harnesses and some of the properties that characterize this.
+This volume of properties in a harness determines its "thickness", meaning more properties are the foundation of a thicker harness. And despite some of these properties are for an agentic coding context, some of them can be generalized to other fields. That's why I'm taking the freedom to bridge this into the legal domain field. In this article, I'll talk about the width of legal harnesses and some of the properties that characterize this.
 
 ## A bit of domain knowledge
 
+Let's put some context related to the legal domain.
+
 The main phases of the work of a legal practicioner are intake, planning, research and drafting. To simplify a bit, the intake is where the custom documents are added, the planning is a coordination by the user on what will be done, the research is about doing legal research and drafting is typically the final step of legal practioners flow.
 
-
-Others take this to another level by saying "Without a harness, you have a chatbot. With one, you have an agent." - [source](https://happycapy.ai/blog/harness-engineering-guide).
-
-
-In this post, I'll dive into why a thick harness is drastically different from
-
+In this post, I'll dive into why a thick harness is drastically different from a thin harness.
 
 ## Legal Thin Harness
 
-In the legal domain, it's common practice to start with building products that reflect a specific phase of the legal practicioner. With few exceptions, it's common to start with the legal research.
+In the legal domain, products tend to reflect different phases of the legal practicioner. Just like the legal practioner which starts its cases typically with the legal research, most of the products offered by companies did start with legal assistants, which typically
 
 - Single trajectory of decisions
 - Unidirectional flow
 -
 
-
 ## Legal Thick Harness
 
 - Diagram of the all the phases of the lawyers workflow: intake, planning, research and drafting all talking to each others.
 - Diagram should include the data source for proprietary content
-
 
 ## Specialized agents and subagents
 
@@ -70,7 +62,6 @@ In industries that rely heavily on proprietary content, there are typically two 
 But in an orchestracted workflow there's a new set of content being created. That's the content being created while the user interacts with this harness, including inputs, outputs and all communication between the different parts of a system.
 
 Here's a comparison between the thin harness and the thick harness (diagram):
-
 
 ## Memory
 
@@ -88,11 +79,9 @@ A good example of this is Github Copilot vs Claude Code. In Github Copilot the u
 
 In a thin harness, because it's a unidirectional and unidimensional flow
 
-
 ## Information retrieval
 
 All interactions between the user and all the content produced and edited in a thick harness - what call in this post the "Third dimension of data source" can be used to fetch more information from the two primary sources of information. From a legal accuracy standpoint this creates a system that understands what the user is doing and potentially help where the user needs to go. All this by understanding what the user did while interacting with this thick harness.
-
 
 ## Conclusion
 
@@ -121,7 +110,6 @@ when comparing a thin harness vs a thick harness think of copilot vs claude code
 
 the thick harness is a bi-directional path of decisions whereas the single agent is a unidirectional path of a single decision
 
-
 ---
 
 ## Definitions
@@ -136,9 +124,7 @@ the thick harness is a bi-directional path of decisions whereas the single agent
 - Conversational assistant, mostly for research
 - One LLM for the heaviest task, often using a typical loop-call
 
-
 ### What is a harness
-
 
 ### Orchestrated tool
 
@@ -149,7 +135,6 @@ the thick harness is a bi-directional path of decisions whereas the single agent
 
 - from single-task assistant to workflow tool
 - It's a comparison between
-
 
 ## There is no planning in a legal assistant, so it's not a harness
 
@@ -162,7 +147,6 @@ the thick harness is a bi-directional path of decisions whereas the single agent
 - moat creation
 
 ## Specialized coordinated agents vs one-size-tries-all agent
-
 
 ## Memory
 
