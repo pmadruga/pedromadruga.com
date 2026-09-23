@@ -27,6 +27,11 @@
       {{- else if eq $icon "video" }}
       <polygon points="23 7 16 12 23 17 23 7"></polygon>
       <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+      {{- else if eq $icon "users" }}
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+      <circle cx="9" cy="7" r="4"></circle>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
       {{- else if eq $icon "linkedin" }}
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
       <rect x="2" y="9" width="4" height="12"></rect>

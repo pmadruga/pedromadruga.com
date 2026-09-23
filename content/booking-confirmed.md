@@ -21,6 +21,6 @@ Thanks for booking{{< invitee-name >}}. You should receive a confirmation by ema
 
 In the meantime, you can:
 
-- {{< icon calendar >}} Book another [phone call](https://booking.pedromadruga.com/pedromadruga/phone-call) or [video chat](https://booking.pedromadruga.com/pedromadruga/video-call)
+- {{< icon calendar >}} Book another [phone call](https://booking.pedromadruga.com/pedromadruga/phone-call), [video chat](https://booking.pedromadruga.com/pedromadruga/video-call) or [face-to-face meeting](https://booking.pedromadruga.com/pedromadruga/face-to-face-meeting)
 - {{< icon book >}} [Browse the blog](/blog/), where I write about AI
 - {{< icon mail >}} [Subscribe to the newsletter](/newsletter/) to get my posts in your inbox

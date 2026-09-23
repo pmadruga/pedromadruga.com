@@ -11,6 +11,8 @@ disableComments: true
 
 {{< link-card icon="video" title="Book a video chat" url="https://booking.pedromadruga.com/pedromadruga/video-call" >}}
 
+{{< link-card icon="users" title="Book a face-to-face meeting" url="https://booking.pedromadruga.com/pedromadruga/face-to-face-meeting" >}}
+
 {{< link-card icon="linkedin" title="Send message on LinkedIn" url="https://www.linkedin.com/in/pedromadruga" >}}
 
 {{< social_icons >}}

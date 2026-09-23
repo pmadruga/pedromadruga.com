@@ -40,4 +40,4 @@ Yes, in December I will travel to Portugal for Christmas and New Year's, until J
 
 ## Can I book a call, video or chat?
 
-Yes. [Book a phone call](https://booking.pedromadruga.com/pedromadruga/phone-call) or [book a video chat](https://booking.pedromadruga.com/pedromadruga/video-call).
+Yes. [Book a phone call](https://booking.pedromadruga.com/pedromadruga/phone-call), [book a video chat](https://booking.pedromadruga.com/pedromadruga/video-call) or [book a face-to-face meeting](https://booking.pedromadruga.com/pedromadruga/face-to-face-meeting).
