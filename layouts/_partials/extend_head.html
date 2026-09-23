@@ -27,7 +27,8 @@ assets/css/extended/fonts.css). Preload the primary file. */ -}}
 {{- /* Blog posts only: Noto Serif for the post title and content headings.
 Inline style because PaperMod has no per-type body class to scope bundled CSS
 to. The blog archive (/blog/) also preloads it: its entry titles use the same
-font via .archive-entry-title in custom_css1.css. */ -}}
+font via .archive-entry-title in custom_css1.css. The /newsletter/ archive
+doesn't: its titles stay in the body font. */ -}}
 {{- $isPost := and (eq .Type "blog") (eq .Kind "page") }}
 {{- if or $isPost (eq .Layout "archives") }}
 <link rel="preload" href="/fonts/noto-serif-var.woff2" as="font" type="font/woff2" crossorigin>

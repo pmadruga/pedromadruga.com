@@ -802,6 +802,27 @@ pre:focus-within .copy-code,
   white-space: nowrap;
 }
 
+/* /newsletter/ uses short dd/mm/yyyy dates, so its date column only needs
+   to fit "00/00/0000"; tabular figures keep the dates aligned. Desktop only:
+   the mobile layout below stacks the title under the date anyway. */
+.newsletter-archive .archive-entry-date {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The /newsletter/ list keeps its titles in the body font (Atkinson) at
+   regular weight, rather than the bold Noto Serif used on /blog/, so that
+   page skips the serif preload (extend_head.html). */
+.newsletter-archive .archive-entry-title {
+  font-family: inherit;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 769px) {
+  .newsletter-archive .archive-entry {
+    grid-template-columns: 90px minmax(0, 1fr) auto;
+  }
+}
+
 .archive-entry .entry-hint {
   display: inline-block;
   margin-left: 6px;

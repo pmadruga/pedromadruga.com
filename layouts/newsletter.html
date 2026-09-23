@@ -17,6 +17,11 @@
   </div>
   {{- end }}
 
+  {{- /* Same posts as /blog/, but one flat list under its own h2 (no years). */}}
+  <section class="newsletter-archive" aria-labelledby="newsletter-archive-heading">
+    <h2 id="newsletter-archive-heading">Archive</h2>
+    {{- partial "post_archive.html" (dict "byYear" false "titleLevel" "h3" "dateFormat" "02/01/2006") }}
+  </section>
 </article>
 
 {{- end }}{{/* end main */}}

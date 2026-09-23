@@ -5,6 +5,10 @@ archive (layouts/archives.html) and the "Archive" section on /newsletter/
 Params: "yearLevel"/"titleLevel" set the heading tags, since the two pages sit
 at different depths — /blog/ puts the years directly under its h1, while the
 newsletter page nests them under an h2. Both default to the /blog/ shape.
+"byYear" (default true) groups the posts under year headings; the newsletter
+page passes false for one flat, newest-first list, and yearLevel is unused.
+"dateFormat" overrides the entry date layout (default: the site's DateFormat,
+else :date_long); the newsletter page passes "02/01/2006" for dd/mm/yyyy.
 
 No month grouping: each entry is one row — full date | title | reading time.
 Row layout lives in assets/css/extended/custom_css1.css (all class-based, so
@@ -18,21 +22,30 @@ values are template-local literals, never user input. */ -}}
 {{- $titleLevel := .titleLevel | default "h3" }}
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 
-{{- range $pages.GroupByPublishDate "2006" }}
+{{- $byYear := ne .byYear false }}
+{{- $dateFormat := .dateFormat | default (default ":date_long" site.Params.DateFormat) }}
+{{- $groups := $pages.GroupByPublishDate "2006" }}
+{{- if not $byYear }}
+{{- /* One pseudo-group with an empty key: no year header, same entry markup. */}}
+{{- $groups = slice (dict "Key" "" "Pages" $pages.ByPublishDate.Reverse) }}
+{{- end }}
+
+{{- range $groups }}
 {{- if ne .Key "0001" }}
-<div class="archive-year">
-  {{- $year := replace .Key "0001" "" }}
-  {{- printf `<%s class="archive-year-header" id="%s">` $yearLevel $year | safeHTML }}
-    <a class="archive-header-link" href="#{{ $year }}">
-      {{- $year -}}
+<div class="{{ if $byYear }}archive-year{{ else }}archive-flat{{ end }}">
+  {{- with .Key }}
+  {{- printf `<%s class="archive-year-header" id="%s">` $yearLevel . | safeHTML }}
+    <a class="archive-header-link" href="#{{ . }}">
+      {{- . -}}
     </a>
   {{- printf `</%s>` $yearLevel | safeHTML }}
+  {{- end }}
   <div class="archive-posts">
     {{- range .Pages }}
     {{- if eq .Kind "page" }}
     <div class="archive-entry">
       <time class="archive-entry-date" datetime="{{ .Date.Format "2006-01-02" }}">
-        {{- .Date | time.Format (default ":date_long" site.Params.DateFormat) -}}
+        {{- .Date | time.Format $dateFormat -}}
       </time>
       {{- printf `<%s class="archive-entry-title">` $titleLevel | safeHTML }}
         {{- .Title | markdownify }}
