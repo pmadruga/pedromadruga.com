@@ -131,6 +131,12 @@ publish = "./public/"
     Content-Type = "application/manifest+json"
     Cache-Control = "public, max-age=86400"
 
+# Keep the stable CV URL pointing at the current dated PDF.
+[[redirects]]
+  from = "/cv.pdf"
+  to = "/cv-october-2026.pdf"
+  status = 302
+
 # /search/ was removed — send old links to the post archive.
 [[redirects]]
   from = "/search/"
