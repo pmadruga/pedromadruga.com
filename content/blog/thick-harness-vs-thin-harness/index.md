@@ -53,9 +53,7 @@ In the legal domain, products tend to reflect different phases of the legal prac
 - Diagram of the all the phases of the lawyers workflow: intake, planning, research and drafting all talking to each others.
 - Diagram should include the data source for proprietary content
 
-## Specialized agents and subagents
-
-## A third-dimension in data sources
+## Knowledge-base: a third-dimension in data sources
 
 In industries that rely heavily on proprietary content, there are typically two data sources: the proprietary content itself and the content the user uploads. Both in thic
 
@@ -63,7 +61,16 @@ But in an orchestracted workflow there's a new set of content being created. Tha
 
 Here's a comparison between the thin harness and the thick harness (diagram):
 
-## Memory
+
+## Specialized agents and subagents - the end of the "larger models"
+
+There's no large model but rather having small specialized agents. You don't see this in the image but there are more agents which would split the tasks of the larger agents into smaller ones. This is why you can start thinking about smaller models and move away from the "you need larger models" - which you don't. This mindset of subagents is also responsible for enabling the possibility of smaller models - including local models - being used for these smaller tasks. It's only when there has been exposure to these subagents which are specialized (menaning, low amount of tools) that one can understand that larger models are not needed anymore - it's a thing of the past.
+
+## Communication is key
+
+When having all these agents and sub-agents, it's essential to have proper communication between. I find it interesting that, in the OpenAI hack of Hugging Face, the agents found a way to communicate among themselves via a message board that they found. Albeit a very different purpose, in this case the knowledge-base is that message board. But the communication between agents is still a tough nut to crack. There are several frameworks that can do that but at the same time there are papers saying that we should be careful with this -- explain why and which paper(s) --.
+
+## Memory: a knowledge-base over time
 
 When a system made of interactions between it's different components, it becomes obvious on why memory becomes relevant. As a personal anecdote, I find it interesting that one of the things that makes me stay using Claude and especially Claude Code is memory. It's a personal feature of that harness that simplifies and speeds up my work a lot.
 
