@@ -7,22 +7,40 @@ draft: true
 date: '2026-09-10'
 ---
 
+## Intro
+
+When we first saw ChatGPT's launch in November 2022, we were able to interact with it via a chat interface. Today, we've gotten used to interfaces that, while still being somewhat conversational, they're much richer than before. Richer means that there's many more integrations to systems and also even within the same system it's much more complex. We have agents and subagents, connectors, memory and so on.
+
+In this post, I'm diving deeper into the differences between systems that, while have historically improved in depth, have now moved to systems that have breadth **and** depth.
+
+Let's talk about harnesses. While this post is focused on legal harnesses, it includes an introduction to the term and functionaly of these.
+
+
 ## Harness
 
-It's a buzzword and I'll hop on the buzz train.
+If you work with AI, you've probably seen the "Harness" term before. Even in the context of AI engineering it's a relatively new concept and you're not alone if you're confused on what does it actually mean.
 
-Harness is a relatively new word introduced in the context of AI engineering, and I've first seen it being used for agentic coding. Specifically, within the realm of "harness engineering" - which I'll get to that later.
+Within this context, it's possible to trace this term back to a LangChain [blogpost](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness) which defines it as:
 
-In this agentic coding space, I can trace this definition back to a LangChain [blogpost](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness) which defined it as: "_Agent = Model + Harness_. _If you're not the model, you're the harness._".
+>"Agent = Model + Harness. If you're not the model, you're the harness."
 
-My favourite definition is in a blogpost at [Martin Fowler's website](https://martinfowler.com), by [Birgitta Böckeler](https://birgitta.info/) and called "[Harness engineering for coding agent users](https://martinfowler.com/articles/harness-engineering.html)". The visualization helps distinguish the different layers of an agent.
+In other words, a harness is everything *around* the model. Some authors have extended this definition to: "Without a harness, you have a chatbot. With one, you have an agent." [source](https://happycapy.ai/blog/harness-engineering-guide).
+
+Nonetheless, my favourite definition of harness lives in a blogpost at [Martin Fowler's website](https://martinfowler.com), by [Birgitta Böckeler](https://birgitta.info/) and called "[Harness engineering for coding agent users](https://martinfowler.com/articles/harness-engineering.html)". More than words, the following visualization helps distinguish the different layers of an agent:
 
 ![sup](https://camo.githubusercontent.com/9fd17bdd8fe60c51a31a9224d1c6563cc04935f16213088955afe450a55e6c4f/68747470733a2f2f6d617274696e666f776c65722e636f6d2f61727469636c65732f6861726e6573732d656e67696e656572696e672f6861726e6573732d626f756e6465642d636f6e74657874732e706e67)
 
-Despite this visualization being within the coding agents' space, it clarifies two types of harness: the one "built by the builders" and the user harness. This distinction is very important to this blogpost, since ;sljfls'kfjg
+The main reason why this visualization is particularly on point is the distinction between "user harness" and "builders harness". This distinction is particularly important in this blogpost, since it determines the value of the user harness in the context of the legal domain-oriented harness. I'll get to that later on.
 
-Others take this to another level by saying "Without a harness, you have a chatbot. With one, you have an agent." - [source](https://happycapy.ai/blog/harness-engineering-guide).
-The builders' harness contains several different properties. Per the LangChain post, there's:
+### User harness
+
+This outer harness has the goal of increasing the system quality, by implementing feedback mechanisms which in return "increase the system quality, all with the added benefit of fewer wasted tokens along the way." In other words, the user harness is capable of increasing a system quality as a result of consistent human steering of the system itself.
+
+If this still sounds complex, keep reading. It will make sense later on, I promise.
+
+### Inner harness
+
+Claude Code is a good example of a builders harness. This inner harness may contain several distinct properties. Per the LangChain post, it can have:
 
 > - System Prompts
 > - Tools, Skills, MCPs + and their descriptions
@@ -30,15 +48,28 @@ The builders' harness contains several different properties. Per the LangChain p
 > - Orchestration Logic (subagent spawning, handoffs, model routing)
 > - Hooks/Middleware for deterministic execution (compaction, continuation, lint checks)
 
-This volume of properties in a harness determines its "thickness", meaning more properties are the foundation of a thicker harness. And despite some of these properties are for an agentic coding context, some of them can be generalized to other fields. That's why I'm taking the freedom to bridge this into the legal domain field. In this article, I'll talk about the width of legal harnesses and some of the properties that characterize this.
+This volume of properties in a harness determines its "thickness", meaning more properties are the foundation of a thicker harness. And despite some of these properties are for an agentic coding context, some of them can be generalized to other fields.
 
-## A bit of domain knowledge
+That's why I'm taking the freedom to bridge this into the legal domain field.
 
-Let's put some context related to the legal domain.
+## Legal Harness
 
-The main phases of the work of a legal practicioner are intake, planning, research and drafting. To simplify a bit, the intake is where the custom documents are added, the planning is a coordination by the user on what will be done, the research is about doing legal research and drafting is typically the final step of legal practioners flow.
+### The lawyer's flow
 
-In this post, I'll dive into why a thick harness is drastically different from a thin harness.
+In order for this bridge between agentic coding and legal domain to happen, a brief intro to the the laywer's flow is needed.
+
+Typically, the main phases of the work of a legal practicioner are intake, planning, research and drafting.
+
+For example, let's assume a lawyer is working on a case. The lawyer needs to collect all the information relevant to that case (that's typically information that is provided by the client but not exclusive). That's intake.
+
+In the planning phase, the lawyer is building a plan for subsequent actions like legal research and drafting.
+
+When in the legal research phase, the lawyer looks at the different legal sources (laws, verdicts, directives, etc) that can be applicable to a case. Once ChatGPT came out, there was a clear use-case for legal assistants - and this is were the boom for startups in the legal industry started. A GenAI legal assistant was the obvious route in the beginning.
+
+The drafting phase is where the lawyer produces a document, which can include information from all the other phases. It's the combination of all the accumulated knowledge whithin this case.
+
+This is not a linear flow: the lawyers go back and forth between the different phases.
+
 
 ## Legal Thin Harness
 
