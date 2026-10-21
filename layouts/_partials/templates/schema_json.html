@@ -1,0 +1,153 @@
+{{- /* PaperMod override: classify non-blog pages correctly, omit unknown
+dates, and link the site author's article attribution to the About page.
+Reconcile this copy with upstream when updating the theme. */ -}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{- ( site.Params.schema.publisherType | default "Organization") | title -}}",
+  "name": {{ site.Title }},
+  "url": {{ site.Home.Permalink }},
+  "description": {{ site.Params.description | plainify | truncate 180 | safeHTML }},
+  {{- if (eq site.Params.schema.publisherType "Person") }}
+  "image": {{ site.Params.assets.favicon | default "favicon.ico" | absURL }},
+  {{- else }}
+  "logo": {{ site.Params.assets.favicon | default "favicon.ico" | absURL }},
+  {{- end }}
+  "sameAs": [
+    {{- if site.Params.schema.sameAs }}
+      {{ range $i, $e := site.Params.schema.sameAs }}{{ if $i }}, {{ end }}{{ trim $e " " }}{{ end }}
+    {{- else}}
+      {{ range $i, $e := site.Params.SocialIcons }}{{ if $i }}, {{ end }}{{ trim $e.url " " | safeURL }}{{ end }}
+    {{- end}}
+  ]
+}
+</script>
+{{- else if (or .IsPage .IsSection) }}
+{{/* BreadcrumbList */}}
+{{- $url := replace .Parent.Permalink ( printf "%s" site.Home.Permalink) "" }}
+{{- $lang_url := strings.TrimPrefix ( printf "%s/" .Lang) $url }}
+{{- $bc_list := (split $lang_url "/")}}
+
+{{- $path := "" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+  {{- range $index, $element := $bc_list }}
+
+    {{- $path = printf "%s%s/" $path $element }}
+    {{- $bc_pg := site.GetPage $path -}}
+
+    {{- if (and ($bc_pg) (gt (len . ) 0))}}
+    {{- if (and $index)}}, {{end }}
+    {
+      "@type": "ListItem",
+      "position": {{ add 1 $index  }},
+      "name": {{ $bc_pg.Name }},
+      "item": {{ $bc_pg.Permalink | safeHTML }}
+    }
+    {{- end }}
+
+  {{- end }}
+  {{- /*  self-page addition  */ -}}
+  {{- if (ge (len $bc_list) 2) }}, {{end }}
+    {
+      "@type": "ListItem",
+      "position": {{len $bc_list}},
+      "name": {{ .Name }},
+      "item": {{ .Permalink | safeHTML }}
+    }
+  ]
+}
+</script>
+{{- $isPost := and .IsPage (eq .Type "blog") }}
+{{- $pageType := "WebPage" }}
+{{- if $isPost }}
+  {{- $pageType = "BlogPosting" }}
+{{- else if eq .Path "/about" }}
+  {{- $pageType = "AboutPage" }}
+{{- else if eq .Path "/contact" }}
+  {{- $pageType = "ContactPage" }}
+{{- else if or .IsSection (eq .Layout "notes") }}
+  {{- $pageType = "CollectionPage" }}
+{{- end }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": {{ $pageType }},
+  {{- if $isPost }}
+  "headline": {{ .Title | plainify}},
+  {{- end }}
+  "name": "{{ .Title | plainify }}",
+  "description": {{ with .Description | plainify }}{{ . }}{{ else }}{{ .Summary | plainify  }}{{ end -}},
+  "keywords": [
+    {{- if .Params.keywords }}
+    {{ range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}
+    {{- else }}
+    {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}
+    {{- end }}
+  ],
+  {{- if $isPost }}
+  "articleBody": {{ .Content | safeJS | htmlUnescape | plainify }},
+  "wordCount" : "{{ .WordCount }}",
+  {{- end }}
+  "inLanguage": {{ .Language.Name | default "en-us" }},
+  {{ if .Params.cover.image -}}
+  "image":
+    {{- if (ne .Params.cover.relative true) -}}
+    {{ .Params.cover.image | absURL }},
+    {{- else -}}
+    {{ (path.Join .RelPermalink .Params.cover.image ) | absURL }},
+    {{- end}}
+  {{- else }}
+    {{- $images := partial "templates/_funcs/get-page-images" . -}}
+    {{- with index $images 0 -}}
+  "image": {{ .Permalink }},
+    {{- end }}
+  {{- end -}}
+  {{- if not .PublishDate.IsZero }}
+  "datePublished": {{ .PublishDate }},
+  {{- end }}
+  {{- if not .Lastmod.IsZero }}
+  "dateModified": {{ .Lastmod }},
+  {{- end }}
+  {{- with (.Params.author | default site.Params.author) }}
+  "author":
+    {{- if (or (eq (printf "%T" .) "[]string") (eq (printf "%T" .) "[]interface {}")) -}}
+  [{{- range $i, $v := . -}}
+  {{- if $i }}, {{end -}}
+  {
+    "@type": "Person",
+    "name": {{ $v }}
+    {{- if eq $v site.Params.author }},
+    "url": {{ "about/" | absURL }}
+    {{- end }}
+  }
+  {{- end }}],
+    {{- else -}}
+  {
+    "@type": "Person",
+    "name": {{ . }}
+    {{- if eq . site.Params.author }},
+    "url": {{ "about/" | absURL }}
+    {{- end }}
+  },
+    {{- end -}}
+  {{- end }}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink | safeHTML }}
+  },
+  "publisher": {
+    "@type": "{{- ( site.Params.schema.publisherType | default "Organization") | title -}}",
+    "name": {{ site.Title }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ site.Params.assets.favicon | default "favicon.ico" | absURL }}
+    }
+  }
+}
+</script>
+{{- end -}}

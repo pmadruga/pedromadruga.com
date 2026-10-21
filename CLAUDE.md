@@ -86,6 +86,7 @@ Version pins that must move in lockstep: Hugo in `netlify.toml`, `lint.yml`, `li
   - `layouts/baseof.html` — the skip link, `id="main-content"` on `<main>`, and the `$codeCopy` footer cache key
   - `layouts/archives.html` — theme copy plus the newsletter subscribe line in the header; drops the month grouping and post counts, so under each year every entry is one row: full date, title (`h3`, no `post_meta` partial), reading time. Row layout lives in `custom_css1.css`
   - `layouts/_partials/author.html` — deliberately emptied override
+  - `layouts/_partials/templates/schema_json.html`: limits `BlogPosting` to blog posts, uses appropriate types for other pages, omits unknown dates, and links the site author to `/about/`.
   - `layouts/robots.txt` — replaces the theme's allow-everything file: search crawlers still fall through to a permissive `User-agent: *`, while AI search/on-demand fetchers that cite sources (Claude-SearchBot, Claude-User, OAI-SearchBot, ChatGPT-User, Perplexity*, etc.) get an explicit `Allow: /` group, as does Google-Extended (it gates both Gemini training and Gemini grounding, deliberately allowed); AI training/scraping agents (and the Applebot-Extended training opt-out) each get `Disallow: /`. Add new AI user-agents to the matching group as they appear.
   - `layouts/rss.xml` — the home feed lists `mainSections` posts only (not about/contact/the noindexed newsletter pages), and root-relative `src`/`href`/`srcset` in `content:encoded` are absolutized for feed readers and RSS-to-email.
 

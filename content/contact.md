@@ -1,6 +1,6 @@
 ---
 title: "Contact"
-# description: "How to get in touch with Pedro Madruga."
+summary: 'Get in touch with Pedro Madruga. Book a phone call, video chat, or meeting in Copenhagen, or connect on LinkedIn.'
 showtoc: false
 ShowReadingTime: false
 draft: false

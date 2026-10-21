@@ -38,7 +38,7 @@ security:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Pedro Madruga
-  description: 'Pedro Madruga - personal website and AI-related blog.'
+  description: 'AI engineer and leader based in Copenhagen. I build AI products, lead engineering teams, and write about applied AI and legal technology.'
   keywords:
     [
       Blog,
