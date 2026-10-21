@@ -7,7 +7,7 @@ draft: true
 date: '2026-09-10'
 ---
 
-## Intro
+# Intro
 
 When we first saw ChatGPT's launch in November 2022, we were able to interact with it via a chat interface. Today, we've gotten used to interfaces that, while still being somewhat conversational, they're much richer than before. Richer means that there's many more integrations to systems and also even within the same system it's much more complex. We have agents and subagents, connectors, memory and so on.
 
@@ -15,8 +15,7 @@ In this post, I'm diving deeper into the differences between systems that, while
 
 Let's talk about harnesses. While this post is focused on legal harnesses, it includes an introduction to the term and functionaly of these.
 
-
-## Harness
+# Harness
 
 If you work with AI, you've probably seen the "Harness" term before. Even in the context of AI engineering it's a relatively new concept and you're not alone if you're confused on what does it actually mean.
 
@@ -28,17 +27,16 @@ In other words, a harness is everything *around* the model. Some authors have ex
 
 Nonetheless, my favourite definition of harness lives in a blogpost at [Martin Fowler's website](https://martinfowler.com), by [Birgitta Böckeler](https://birgitta.info/) and called "[Harness engineering for coding agent users](https://martinfowler.com/articles/harness-engineering.html)". More than words, the following visualization helps distinguish the different layers of an agent:
 
-![sup](https://camo.githubusercontent.com/9fd17bdd8fe60c51a31a9224d1c6563cc04935f16213088955afe450a55e6c4f/68747470733a2f2f6d617274696e666f776c65722e636f6d2f61727469636c65732f6861726e6573732d656e67696e656572696e672f6861726e6573732d626f756e6465642d636f6e74657874732e706e67)
+![](harness-boundaries-dark-v2.svg)
+
 
 The main reason why this visualization is particularly on point is the distinction between "user harness" and "builders harness". This distinction is particularly important in this blogpost, since it determines the value of the user harness in the context of the legal domain-oriented harness. I'll get to that later on.
-
-### User harness
+## User harness
 
 This outer harness has the goal of increasing the system quality, by implementing feedback mechanisms which in return "increase the system quality, all with the added benefit of fewer wasted tokens along the way." In other words, the user harness is capable of increasing a system quality as a result of consistent human steering of the system itself.
 
 If this still sounds complex, keep reading. It will make sense later on, I promise.
-
-### Inner harness
+## Inner harness
 
 Claude Code is a good example of a builders harness. This inner harness may contain several distinct properties. Per the LangChain post, it can have:
 
@@ -51,10 +49,9 @@ Claude Code is a good example of a builders harness. This inner harness may cont
 This volume of properties in a harness determines its "thickness", meaning more properties are the foundation of a thicker harness. And despite some of these properties are for an agentic coding context, some of them can be generalized to other fields.
 
 That's why I'm taking the freedom to bridge this into the legal domain field.
+# Legal Harness
 
-## Legal Harness
-
-### The lawyer's flow
+## The lawyer's flow
 
 In order for this bridge between agentic coding and legal domain to happen, a brief intro to the the laywer's flow is needed.
 
@@ -66,25 +63,41 @@ In the planning phase, the lawyer is building a plan for subsequent actions like
 
 When in the legal research phase, the lawyer looks at the different legal sources (laws, verdicts, directives, etc) that can be applicable to a case. Once ChatGPT came out, there was a clear use-case for legal assistants - and this is were the boom for startups in the legal industry started. A GenAI legal assistant was the obvious route in the beginning.
 
-The drafting phase is where the lawyer produces a document, which can include information from all the other phases. It's the combination of all the accumulated knowledge whithin this case.
+The drafting phase is where the lawyer produces a document, which can include information from all the other phases. It's the combination of all the accumulated knowledge whithin this case. Ultimately, the lawyer will take this (or these) documents to court, but not exclusively. 
 
-This is not a linear flow: the lawyers go back and forth between the different phases.
+This is a very high-level explanation of the lawyer's flow and it's also important to know that it's not a linear flow: the lawyers go back and forth between the different phases.
 
+## Legal Harness
+
+When you have an AI product catered for the legal industry, such as legal research assistant or a workflow tool, the harness that composes that system can differ between the assistant and the workflow tool. 
+
+As you've seen above, a harness can contain properties which causes the difference in the thickness of harnesses: a thicker harness is by definition more complex than a thinner one. 
+
+Let's look at how different they are. 
 
 ## Legal Thin Harness
 
-In the legal domain, products tend to reflect different phases of the legal practicioner. Just like the legal practioner which starts its cases typically with the legal research, most of the products offered by companies did start with legal assistants, which typically
 
-- Single trajectory of decisions
-- Unidirectional flow
--
+In the legal industry almost all the companies dipped their foot in the Generative AI world by launching a legal assistant. It was the natural first step: using a conversational assistant to fetch legal sources - and generate answers based on these - was sort of a chatGPT version with a legal tone. 
+
+For the skeptical ones, it was a "glorified chatbot" but those failed to see the potential of it: it was able to leverage companies' content compared to the embedded knowledge of LLMs. 
+
+Nonetheless, it envolved a single trajectory of decisions in a mostly unidirectional flow. In other words, it's a single conversational interaction where the output is the answer. It doesn't require deep orchestration of agent because ultimately it's a single or small number of agents, at most. 
+
+Recalling the diagram from before, the user harness is rather thin since the interaction with the system is mostly via an input and a chat history of this single-layered conversation. 
+
+![](legal-thin-harness-v4.svg)
+
 
 ## Legal Thick Harness
 
-- Diagram of the all the phases of the lawyers workflow: intake, planning, research and drafting all talking to each others.
-- Diagram should include the data source for proprietary content
+The workflow tool that represents the layers' flow is the only that 
 
-## Knowledge-base: a third-dimension in data sources
+
+![](legal-thick-harness-v3.svg)
+
+
+### Knowledge-base: a third-dimension in data sources
 
 In industries that rely heavily on proprietary content, there are typically two data sources: the proprietary content itself and the content the user uploads. Both in thic
 
@@ -93,15 +106,15 @@ But in an orchestracted workflow there's a new set of content being created. Tha
 Here's a comparison between the thin harness and the thick harness (diagram):
 
 
-## Specialized agents and subagents - the end of the "larger models"
+### Specialized agents and subagents - the end of the "larger models"
 
 There's no large model but rather having small specialized agents. You don't see this in the image but there are more agents which would split the tasks of the larger agents into smaller ones. This is why you can start thinking about smaller models and move away from the "you need larger models" - which you don't. This mindset of subagents is also responsible for enabling the possibility of smaller models - including local models - being used for these smaller tasks. It's only when there has been exposure to these subagents which are specialized (menaning, low amount of tools) that one can understand that larger models are not needed anymore - it's a thing of the past.
 
-## Communication is key
+### Communication is key
 
 When having all these agents and sub-agents, it's essential to have proper communication between. I find it interesting that, in the OpenAI hack of Hugging Face, the agents found a way to communicate among themselves via a message board that they found. Albeit a very different purpose, in this case the knowledge-base is that message board. But the communication between agents is still a tough nut to crack. There are several frameworks that can do that but at the same time there are papers saying that we should be careful with this -- explain why and which paper(s) --.
 
-## Memory: a knowledge-base over time
+### Memory: a knowledge-base over time
 
 When a system made of interactions between it's different components, it becomes obvious on why memory becomes relevant. As a personal anecdote, I find it interesting that one of the things that makes me stay using Claude and especially Claude Code is memory. It's a personal feature of that harness that simplifies and speeds up my work a lot.
 
@@ -113,15 +126,17 @@ A thick harness goes both in depth and in breadth. And a memory now has a birds 
 
 A good example of this is Github Copilot vs Claude Code. In Github Copilot the user is typically editing a single file. of course, the user can increase the scope of other files in order to edit a single file, but that's not memory. That's just context.
 
-## Evaluation
+![](legal-thick-harness-perspective-v4.svg)
+
+### Evaluation
 
 In a thin harness, because it's a unidirectional and unidimensional flow
 
-## Information retrieval
+### Information retrieval
 
 All interactions between the user and all the content produced and edited in a thick harness - what call in this post the "Third dimension of data source" can be used to fetch more information from the two primary sources of information. From a legal accuracy standpoint this creates a system that understands what the user is doing and potentially help where the user needs to go. All this by understanding what the user did while interacting with this thick harness.
 
-## Conclusion
+# Conclusion
 
 All these things combined create a thickness of the harness that not only improves the system by looking at it as whole, but also creates intelectual property that other harnesses cannot have, especially thin ones. Simply because they don't have t
 
@@ -129,7 +144,7 @@ All these things combined create a thickness of the harness that not only improv
 
 <!-- markdownlint-disable MD024 -->
 
-## Loose Notes
+# Loose Notes
 
 When all you have done is work in a single assistant, youll miss the benefit of memory and even local models.
 12:20 PM
