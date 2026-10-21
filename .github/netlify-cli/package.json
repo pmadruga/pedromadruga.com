@@ -3,6 +3,6 @@
   "private": true,
   "description": "Frozen dependency tree for the Netlify CLI used by .github/workflows/daily-deploy.yml (bun install --frozen-lockfile --ignore-scripts --cwd .github/netlify-cli)",
   "dependencies": {
-    "netlify-cli": "27.1.2"
+    "netlify-cli": "27.14.1"
   }
 }

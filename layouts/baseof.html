@@ -1,8 +1,8 @@
-{{- /* Override of themes/PaperMod/layouts/baseof.html. Only change:
-.Language.LanguageDirection -> .Language.Direction (deprecated in Hugo
-0.158.0). Re-diff against the theme copy after npm run theme:update. */ -}}
-{{- if lt hugo.Version "0.146.0" }}
-{{- errorf "=> hugo v0.146.0 or greater is required for hugo-PaperMod to build " }}
+{{- /* Override of themes/PaperMod/layouts/baseof.html. Adds the skip link,
+main-content target, and code-copy footer cache key. Re-diff against the
+theme copy after npm run theme:update. */ -}}
+{{- if lt hugo.Version "0.158.0" }}
+{{- errorf "=> hugo v0.158.0 or greater is required for hugo-PaperMod to build " }}
 {{- end -}}
 
 <!DOCTYPE html>

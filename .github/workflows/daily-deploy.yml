@@ -2,7 +2,7 @@ name: Daily build and deploy
 
 # Rebuilds and deploys the site once a day so the /notes/ Bluesky feed
 # (fetched at build time, no client JS) stays fresh between pushes.
-# Mirrors the Netlify production build (Hugo 0.164.0 extended, --gc
+# Mirrors the Netlify production build (Hugo 0.168.0 extended, --gc
 # --minify, git info). Requires two repo secrets:
 #   NETLIFY_AUTH_TOKEN — personal access token (Netlify → User settings →
 #                        Applications → New access token)
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
         with:
-          hugo-version: '0.164.0'
+          hugo-version: '0.168.0'
           extended: true
 
       - name: Build Site
@@ -50,7 +50,7 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         with:
-          bun-version: '1.3.14' # keep in sync with netlify.toml, lint.yml, scripts/setup.sh
+          bun-version: '1.4.3' # keep in sync with netlify.toml, lint.yml, scripts/setup.sh
 
       # The CLI's whole dependency tree is frozen by .github/netlify-cli/bun.lock
       # (Dependabot tracks it) and installed with scripts disabled — with the

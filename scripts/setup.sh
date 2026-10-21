@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-HUGO_VERSION="0.164.0"
+HUGO_VERSION="0.168.0"
 HTMLTEST_VERSION="0.17.0"
-BUN_VERSION="1.3.14"
+BUN_VERSION="1.4.3"
 INSTALL_DIR="${HOME}/.local/bin"
 
 # Colors
