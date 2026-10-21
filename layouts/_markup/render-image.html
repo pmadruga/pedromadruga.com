@@ -3,7 +3,18 @@
 {{- $alt := .Text -}}
 {{- $title := .Title -}}
 
-{{- if $img -}}
+{{- if and $img (in (slice "image/svg+xml" "image/gif") $img.MediaType.Type) -}}
+  {{- /* Render SVGs and GIFs directly to preserve their animation. */ -}}
+  <img
+    src="{{ $img.RelPermalink }}"
+    alt="{{ $alt }}"
+    {{- with $title }} title="{{ . }}"{{ end }}
+    {{- if and (eq .Ordinal 0) (not .Page.Params.cover.image) }} loading="eager"
+    {{- else }} loading="lazy"
+    {{- end }}
+    decoding="async"
+  />
+{{- else if $img -}}
   {{- /* Define responsive widths */ -}}
   {{- $widths := slice 400 800 1200 1600 -}}
 
