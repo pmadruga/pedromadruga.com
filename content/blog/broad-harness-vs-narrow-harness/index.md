@@ -1,5 +1,5 @@
 ---
-title: 'Deep Harness vs Shallow Harness'
+title: 'Broad Harness vs Narrow Harness'
 summary: 'While the industry is moving from single-action assistants to orchestrated workflows. No AI was used to write this article.'
 description: 'hello world'
 showtoc: true
@@ -54,15 +54,14 @@ The list goes on. This layer contains all the tooling necessary for the harness 
 
 ### User harness
 
-On the other hand, a user harness plays a different role: it works as a two-way feedback mechanism between the user's interactions and the entire harness combined. As the author mentions, there are feedforward and feedback mechanisms that
+On the other hand, a user harness plays a different role: it works as a two-way feedback mechanism between the user's interactions and the entire harness combined. As the author mentions, there are feedforward and feedback mechanisms that "ultimately it should reduce the review toil and increase the system quality".
+
+In other words, the user harness is capable of increasing a system quality as a result of consistent human steering of the system itself, plus the mechanisms mentioned above.
 
 
-This outer harness has the goal of increasing the system quality, by implementing feedback mechanisms which in return "increase the system quality, all with the added benefit of fewer wasted tokens along the way." In other words, the user harness is capable of increasing a system quality as a result of consistent human steering of the system itself.
+### Narrow and Broad Harness - agentic coding
 
-
-### Shallow and Deep Harness - agentic coding
-
-This volume and complexity of properties in a harness determines its depth: meaning more properties are the foundation of a deeper inner harness.
+The volume and complexity of properties and mechanisms in a harness determine its depth. A broader layer of the harness
 
 Despite some of these properties are for an agentic coding context, some of them can be generalized to other fields. That's why I'm taking the freedom to bridge this into the legal domain field.
 
@@ -89,11 +88,11 @@ This is a very high-level explanation of the lawyer's flow and it's also importa
 
 When you have an AI product catered for the legal industry, such as legal research assistant or a workflow tool, the harness that composes that system can differ between the assistant and the workflow tool.
 
-As you've seen above, a harness can contain properties which causes the difference in the depth of harnesses: a deeper harness is by definition more complex than a shallower one.
+As you've seen above, a harness can contain properties which causes the difference in the depth of harnesses: a broader harness is by definition more complex than a narrower one.
 
 Let's look at how different they are.
 
-### Legal Shallow Harness
+### Legal Narrow Harness
 
 
 In the legal industry almost all the companies dipped their foot in the Generative AI world by launching a legal assistant. It was the natural first step: using a conversational assistant to fetch legal sources - and generate answers based on these - was sort of a chatGPT version with a legal tone.
@@ -102,18 +101,18 @@ For the skeptical ones, it was a "glorified chatbot" but those failed to see the
 
 Nonetheless, it envolved a single trajectory of decisions in a mostly unidirectional flow. In other words, it's a single conversational interaction where the output is the answer. It doesn't require deep orchestration of agent because ultimately it's a single or small number of agents, at most.
 
-Recalling the diagram from before, the user harness is rather shallow since the interaction with the system is mostly via an input and a chat history of this single-layered conversation.
+Recalling the diagram from before, the user harness is rather narrow since the interaction with the system is mostly via an input and a chat history of this single-layered conversation.
 
-![](legal-shallow-harness-v4.svg)
+![](legal-narrow-harness-v4.svg)
 
 
-### Legal Deep Harness
+### Legal Broad Harness
 
-On the other hand, a Legal Deep Harness contains everything that a lawyers flow includes. And it's more than just a set of different agents. In this harness, the User layer is much more present and impactful to the system itself. At the very center, there's a knowledge-base which is something a Legal Shallow Harness doesn't typically have - and if it does, it's very much encapsulated to one phase of the lawyer's flow so the user harness is shallow and the feedback mechanisms mentioned before in this post don't apply.
+On the other hand, a Legal Broad Harness contains everything that a lawyers flow includes. And it's more than just a set of different agents. In this harness, the User layer is much more present and impactful to the system itself. At the very center, there's a knowledge-base which is something a Legal Narrow Harness doesn't typically have - and if it does, it's very much encapsulated to one phase of the lawyer's flow so the user harness is narrow and the feedback mechanisms mentioned before in this post don't apply.
 
-![](legal-deep-harness-v3.svg)
+![](legal-broad-harness-v3.svg)
 
-The chart above is not enough to explain how the Legal Deep Harness works. We have to deconstruct into smaller parts to understand the differences between these different harnesses.
+The chart above is not enough to explain how the Legal Broad Harness works. We have to deconstruct into smaller parts to understand the differences between these different harnesses.
 
 
 ## Knowledge-base: a third-dimension in data sources
@@ -123,17 +122,17 @@ In industries that rely heavily on proprietary content, there are typically two 
 - 1st data source. This includes proprietary but also non-proprietary content. In the legal industry the non-proprietary content can be laws, directives, verdicts and so on. The proprietary content may vary in this industry but it can include books from certain authors as well as notes from experts.
 - 2nd data source. This includes the documents that users upload and then become part of the system.
 
-Any harness can merge these two into the system, despite not being a trivial task. For example, an agent might want just *some* information from the 1st data source and *some* information from the second data source. That requires a refined selection of the most relevant information as well as a merge of these, by the agent. The output then becomes either the answer in a shallow harness and a document plus an answer in the deep harness.
+Any harness can merge these two into the system, despite not being a trivial task. For example, an agent might want just *some* information from the 1st data source and *some* information from the second data source. That requires a refined selection of the most relevant information as well as a merge of these, by the agent. The output then becomes either the answer in a narrow harness and a document plus an answer in the broad harness.
 
 But in an orchestracted workflow there's a new set of content being created.That's the content being created while the user interacts with this harness, including inputs, outputs and all communication between the different parts of a system. These parts of the system can be chat responses and generated documents.
 
 This is the 3rd data source: the knowledge base.
 
-This third-dimension of the data sources that power a harness is only present in orchestrated multi-agent systems such as legal deep harnesses. It contains **everything* that both the AI and the user have created in the harness. **Everything** means: all the queries by the user, all the answers by the AI system, all the follow-up questions suggested, all the selections of the follow-up questions by the user, all the logic and internal decisions by the agents. Everything.
+This third-dimension of the data sources that power a harness is only present in orchestrated multi-agent systems such as legal broad harnesses. It contains **everything* that both the AI and the user have created in the harness. **Everything** means: all the queries by the user, all the answers by the AI system, all the follow-up questions suggested, all the selections of the follow-up questions by the user, all the logic and internal decisions by the agents. Everything.
 
 In a complete laywer's flow, where they have to plan, do legal research, draft documents, it's impossible to keep track of all the changes to all the documents that has been done.
 
-In a legal deep harness, the AI has that capability. And this opens the road for an even better understanding of the system - superior to what a human has.
+In a legal broad harness, the AI has that capability. And this opens the road for an even better understanding of the system - superior to what a human has.
 
 This creates an entire new world of possibilities that the AI can provide to the user. It can understand the user in a way that helps them finding blindspots in the documents produced in that workflow. It can provide much better suggestions resulting in a powerful human-in-the-loop. The list goes on.
 
@@ -145,13 +144,13 @@ When a system made of interactions between it's different components, it becomes
 
 As a human, it's very hard to keep a mental model of everything that has happened within a given session. That means all the changes that happened for every single file change, at any moment in time.
 
-In a shallow harness such as an assistant, the memory is usually either the chat history or the combined chat history. But an assistant is a narrow way of determining what the user wants. It goes in depth and less in breadth.
+In a narrow harness such as an assistant, the memory is usually either the chat history or the combined chat history. But an assistant is a narrow way of determining what the user wants. It goes in depth and less in breadth.
 
-A deep harness goes both in depth and in breadth. And a memory now has a birds eye view.
+A broad harness goes both in depth and in breadth. And a memory now has a birds eye view.
 
 A good example of this is Github Copilot vs Claude Code. In Github Copilot the user is typically editing a single file. of course, the user can increase the scope of other files in order to edit a single file, but that's not memory. That's just context.
 
-![](legal-deep-harness-perspective-v4.svg)
+![](legal-broad-harness-perspective-v4.svg)
 
 ### Memory as the creation of intellectual property
 
@@ -163,9 +162,9 @@ Retrieval for 1st data source
 
 ## Specialized agents and subagents - the end of the "larger models"
 
-In the deep harness, the AI system becomes a combination of smaller, specialized agents. And because each agent becomes more and more specialized, it reduces the need for larger and generic models. Why have Fable when potentially Sonnet or an open model can do the same task, potentially better, and even reducing costs.
+In the broad harness, the AI system becomes a combination of smaller, specialized agents. And because each agent becomes more and more specialized, it reduces the need for larger and generic models. Why have Fable when potentially Sonnet or an open model can do the same task, potentially better, and even reducing costs.
 
-In a traditional mindset of RAG, typical of a shallow harness, the two data sources of the system are combined in a way that produces an answer to the user. Since the system is not composed of several agents and subagents specialized in smaller tasks - because that would be an overkill for such harness - there's a heavy reliance on larger models to do the task.
+In a traditional mindset of RAG, typical of a narrow harness, the two data sources of the system are combined in a way that produces an answer to the user. Since the system is not composed of several agents and subagents specialized in smaller tasks - because that would be an overkill for such harness - there's a heavy reliance on larger models to do the task.
 
 ## Communication is key
 
@@ -175,20 +174,20 @@ I find it interesting that, in the OpenAI hack of Hugging Face, the agents found
 
 But the communication between agents is still a tough nut to crack. There are several frameworks that can do that but at the same time there are papers saying that we should be careful with this -- explain why and which paper(s) --.
 
-A well-orchestrated set of agents in a deep harness AI system requires the communication to be well done. It's not only how they communicate but also how they operate: do they have a democratic decision process by using a voting mechanism for decisions or should it be a top-down approach where one agent decides and others just communicate status to the main agent?
+A well-orchestrated set of agents in a broad harness AI system requires the communication to be well done. It's not only how they communicate but also how they operate: do they have a democratic decision process by using a voting mechanism for decisions or should it be a top-down approach where one agent decides and others just communicate status to the main agent?
 
-This problem is almost inexistent in a shallow harness too. There's only so few agents in the system already that the operation mode is not a problem. At most, there's a routing agent redirecting tasks to the right agent, but the flow happens in a unidirectional way, as we've mentioned before in this blogpost.
+This problem is almost inexistent in a narrow harness too. There's only so few agents in the system already that the operation mode is not a problem. At most, there's a routing agent redirecting tasks to the right agent, but the flow happens in a unidirectional way, as we've mentioned before in this blogpost.
 
 A side note: the OpenAI hack was very interesting, despite being a case where the agents went completely out-of-control. It gave a peak on how would these agents operate in a scenario like this but it was also a good lesson on how to implement even further guardrails on how to secure AI systems. I recommend this video/podcast episode: a +2hour talk with a researcher on the details of the attack. https://www.youtube.com/watch?v=X50zezLFWWI
 
-So how do you go about understanding deeper harness and how do they differ from a shallow harness? Let's take a look.
+So how do you go about understanding broader harness and how do they differ from a narrow harness? Let's take a look.
 
 
 ## Evaluation
 
-In a shallow harness, evaluation is typically made by scoring the inputs and outputs of the AI system: typically, there's a golden dataset with questions and answers.
+In a narrow harness, evaluation is typically made by scoring the inputs and outputs of the AI system: typically, there's a golden dataset with questions and answers.
 
-In a deep harness AI system, evaluation needs to be compartimentilized in order to be evaluated. And at the same time, the system needs to be evaluated as a whole.
+In a broad harness AI system, evaluation needs to be compartimentilized in order to be evaluated. And at the same time, the system needs to be evaluated as a whole.
 
 But how to go about doing granular and general evaluation of such system?  
 
@@ -201,9 +200,9 @@ Because AI-based applications are domain knowledge-heavy, I expose legal domain 
 
 ## Conclusion
 
-I've now created and worked AI systems in production that are both shallow and deep harness. One obvious learning is that, in the legal domain where the application needs to mimic lawyer's flow, it's a complete shift from going a shallow harness into a deep harness: it's one thing to work in a single step of the lawyer's flow; another completely different is to work on the entire workflow mostly because it's incredibly connected.
+I've now created and worked AI systems in production that are both narrow and broad harness. One obvious learning is that, in the legal domain where the application needs to mimic lawyer's flow, it's a complete shift from going a narrow harness into a broad harness: it's one thing to work in a single step of the lawyer's flow; another completely different is to work on the entire workflow mostly because it's incredibly connected.
 
-Another learning is that the deep harness AI systems are capable of an understanding of the user that is potentially even higher than the user itself. This opens the road for several risks and opportunities. That's why a deep focus on evaluation and inclusion of stakeholders in that process is fundamental for the understanding and control of these systems.
+Another learning is that the broad harness AI systems are capable of an understanding of the user that is potentially even higher than the user itself. This opens the road for several risks and opportunities. That's why a deep focus on evaluation and inclusion of stakeholders in that process is fundamental for the understanding and control of these systems.
 
 All these things combined create a depth of the harness that not only improves the system by looking at it as whole, but also creates intelectual property that other harnesses cannot have.
 
@@ -225,10 +224,10 @@ an assistant is reactive
 a workflow tool is proactive - many tasks can be done offline, where it can analyse the system as whole
 8:27 PM
 
-when comparing a shallow harness vs a deep harness think of copilot vs claude code; think of claude.ai answers VS claude cowork
+when comparing a narrow harness vs a broad harness think of copilot vs claude code; think of claude.ai answers VS claude cowork
 8:34 PM
 
-the deep harness is a bi-directional path of decisions whereas the single agent is a unidirectional path of a single decision
+the broad harness is a bi-directional path of decisions whereas the single agent is a unidirectional path of a single decision
 
 ---
 
