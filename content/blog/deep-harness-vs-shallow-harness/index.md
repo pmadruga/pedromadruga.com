@@ -4,6 +4,7 @@ summary: 'While the industry is moving from single-action assistants to orchestr
 description: 'hello world'
 showtoc: true
 tocopen: false
+numberedHeadings: true
 draft: true
 date: '2026-09-30'
 lastmod: '2026-10-25'
@@ -41,7 +42,7 @@ The harness gets broken down into two layers: "user harness" and harness built b
 
 ### Inner harness
 
-Claude Code is a good example of a builders harness. This inner harness may contain several distinct properties. Per the LangChain post, it can have:
+From an agentic coding standpoint, Claude Code and Codex are good examples of a builders harness - or "inner harness". This layer may contain several distinct properties. Per the same [LangChain post](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness), it can have:
 
 > - System Prompts
 > - Tools, Skills, MCPs + and their descriptions
@@ -49,15 +50,21 @@ Claude Code is a good example of a builders harness. This inner harness may cont
 > - Orchestration Logic (subagent spawning, handoffs, model routing)
 > - Hooks/Middleware for deterministic execution (compaction, continuation, lint checks)
 
-This volume of properties in a harness determines its "depth", meaning more properties are the foundation of a deeper harness. And despite some of these properties are for an agentic coding context, some of them can be generalized to other fields.
-
-That's why I'm taking the freedom to bridge this into the legal domain field.
+The list goes on. This layer contains all the tooling necessary for the harness to function as a whole and it's the layer closest to the model for a reason: it interacts the most with it.
 
 ### User harness
 
+On the other hand, a user harness plays a different role: it works as a two-way feedback mechanism between the user and the entire harness.
+
+
 This outer harness has the goal of increasing the system quality, by implementing feedback mechanisms which in return "increase the system quality, all with the added benefit of fewer wasted tokens along the way." In other words, the user harness is capable of increasing a system quality as a result of consistent human steering of the system itself.
 
-If this still sounds complex, keep reading. It will make sense later on, I promise.
+
+### Shallow and Deep Harness - agentic coding
+
+This volume and complexity of properties in a harness determines its depth: meaning more properties are the foundation of a deeper inner harness.
+
+Despite some of these properties are for an agentic coding context, some of them can be generalized to other fields. That's why I'm taking the freedom to bridge this into the legal domain field.
 
 
 ## Legal Harness
