@@ -40,11 +40,15 @@ publish = "./public/"
 # anywhere (head.html links its <noscript> CSS, inline-svg strips/rejects
 # SVG styles). HSTS carries `preload`, which only makes the domain eligible;
 # listing it is a separate submission at hstspreload.org.
+# COOP same-origin: nothing here opens or is opened as a popup, so it costs
+# nothing and cuts the pages off from any cross-origin opener. No COEP: the
+# /notes/ avatars from cdn.bsky.app have no CORP header and would break.
 [[headers]]
   for = "/*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
+    Cross-Origin-Opener-Policy = "same-origin"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-BpEdBCM/4BJbN8LWEqCQKlp9VGzetdD0UbdMayNyD28='; style-src 'self'; font-src 'self'; img-src 'self' https://cdn.bsky.app; connect-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
@@ -134,6 +138,14 @@ publish = "./public/"
   [headers.values]
     Content-Type = "application/manifest+json"
     Cache-Control = "public, max-age=86400"
+
+# The CV PDF is date-named (rename-on-change by construction) and 2.6 MB,
+# so cache it like the hashed assets. Keep the path in sync with the
+# /cv.pdf redirect below when a new CV lands.
+[[headers]]
+  for = "/cv-october-2026.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 # Keep the stable CV URL pointing at the current dated PDF.
 [[redirects]]

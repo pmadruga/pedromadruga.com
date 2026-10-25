@@ -5,11 +5,18 @@ The CSP has no 'unsafe-inline' for styles, so inline style attributes and
 <style> elements would be silently ignored by the browser. The root <svg>'s
 style attribute is stripped here (custom_css1.css styles figure.inline-svg >
 svg instead); any other inline style fails the build rather than rendering
-wrong. Use presentation attributes (fill=, font-style=, ...) instead. */ -}}
+wrong. Use presentation attributes (fill=, font-style=, ...) instead.
+
+The file is injected with safeHTML, so active content (<script>, on*=
+handlers, <foreignObject>, javascript: URLs) fails the build too — the CSP
+would block it anyway, but a build error is the honest failure mode. */ -}}
 {{- with .Page.Resources.Get (.Get 0) -}}
 {{- $svg := replaceRE `(<svg\b[^>]*?)\s+style="[^"]*"` "$1" .Content 1 -}}
-{{- if findRE `<style\b|\sstyle\s*=` $svg 1 -}}
+{{- if findRE `(?i)<style\b|\sstyle\s*=` $svg 1 -}}
 {{- errorf "inline-svg: %q in %s uses inline styles, which the CSP blocks — use presentation attributes" .Name $.Page.File.Path -}}
+{{- end -}}
+{{- if findRE `(?i)<script\b|\son[a-z]+\s*=|<foreignObject\b|javascript:` $svg 1 -}}
+{{- errorf "inline-svg: %q in %s contains script, event handlers, foreignObject or a javascript: URL" .Name $.Page.File.Path -}}
 {{- end -}}
 <figure class="inline-svg">{{ $svg | safeHTML }}</figure>
 {{- else -}}

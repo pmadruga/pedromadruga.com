@@ -2,6 +2,10 @@
 .netlify
 .aider*
 
+# Local secrets (Netlify tokens etc.) — never commit
+.env
+.env.*
+
 # Node modules
 node_modules/
 package-lock.json
