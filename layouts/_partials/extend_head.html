@@ -6,17 +6,12 @@ the parser reaches the first card */ -}}
 <link rel="preconnect" href="https://cdn.bsky.app">
 {{- end }}
 
-{{- /* Preload the homepage LCP image (profile photo). Mirrors the
-lossless WebP resize our index_profile override does, so the hashed URL is identical
-and the browser starts the fetch before CSS parsing finishes. */ -}}
+{{- /* Preload the homepage LCP image (profile photo). Same resize as the
+index_profile override (both via profile-image.html), so the hashed URLs are
+identical and the browser starts the fetch before CSS parsing finishes. */ -}}
 {{- if .IsHome }}
-  {{- with site.Params.profileMode }}
-    {{- if .enabled }}
-      {{- with resources.Get .imageUrl }}
-        {{- $img := .Resize (printf "%dx%d webp lossless" ($.Site.Params.profileMode.imageWidth | default 150) ($.Site.Params.profileMode.imageHeight | default 150)) }}
-<link rel="preload" href="{{ $img.Permalink }}" as="image" fetchpriority="high">
-      {{- end }}
-    {{- end }}
+  {{- with (partial "profile-image.html" .).src }}
+<link rel="preload" href="{{ .Permalink }}" imagesrcset="{{ .Permalink }} 1x, {{ (partial "profile-image.html" $).src2x.Permalink }} 2x" as="image" fetchpriority="high">
   {{- end }}
 {{- end }}
 

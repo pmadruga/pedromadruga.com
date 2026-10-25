@@ -21,7 +21,10 @@ imaging:
   jpeg:
     quality: 85
   webp:
-    quality: 85
+    # q80 keeps screenshots crisp and is 20-30% smaller than q85 on the
+    # photo covers. The render-image hook, cover.html and the profile image
+    # all omit an explicit q so this is the single place to tune it.
+    quality: 80
     hint: 'photo'
 
 # No post uses tags or categories, so the empty /tags/ and /categories/

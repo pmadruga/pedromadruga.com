@@ -3,20 +3,27 @@
 {{- $alt := .Text -}}
 {{- $title := .Title -}}
 
+{{- /* Everything is lazy by default: the first in-content image is usually
+hundreds of words below the fold, and eager-loading it there competes with
+the fonts and CSS for the title paint. A post whose first image really is
+above the fold opts in with `eagerFirstImage: true` in front matter. */ -}}
+{{- $loading := cond (and (eq .Ordinal 0) (eq .Page.Params.eagerFirstImage true)) "eager" "lazy" -}}
+
 {{- if and $img (in (slice "image/svg+xml" "image/gif") $img.MediaType.Type) -}}
   {{- /* Render SVGs and GIFs directly to preserve their animation. */ -}}
   <img
     src="{{ $img.RelPermalink }}"
     alt="{{ $alt }}"
     {{- with $title }} title="{{ . }}"{{ end }}
-    {{- if and (eq .Ordinal 0) (not .Page.Params.cover.image) }} loading="eager"
-    {{- else }} loading="lazy"
-    {{- end }}
+    loading="{{ $loading }}"
     decoding="async"
   />
 {{- else if $img -}}
-  {{- /* Define responsive widths */ -}}
-  {{- $widths := slice 400 800 1200 1600 -}}
+  {{- /* Responsive widths. The content column is 720px, so 1200w (1.67x)
+  is the top step: a 1600w candidate only ever served 2x+ screens that
+  cannot show the extra detail at this width, at +30-40% bytes. WebP
+  quality comes from imaging.webp.quality in hugo.yaml. */ -}}
+  {{- $widths := slice 400 800 1200 -}}
 
   {{- /* Get image dimensions */ -}}
   {{- $width := $img.Width -}}
@@ -27,15 +34,15 @@
   {{- $candidates := slice -}}
   {{- range $widths -}}
     {{- if le . $width -}}
-      {{- $resized := $img.Resize (printf "%dx webp q85" .) -}}
+      {{- $resized := $img.Resize (printf "%dx webp" .) -}}
       {{- $candidates = $candidates | append (printf "%s %dw" $resized.RelPermalink .) -}}
     {{- end -}}
   {{- end -}}
-  {{- /* Images between ladder steps (e.g. 560px or 1300px wide) would only
+  {{- /* Images between ladder steps (e.g. 560px or 1000px wide) would only
   get the smaller step and render upscaled on retina — add the native width
-  as the top candidate. Wider than the ladder, 1600w is plenty. */ -}}
-  {{- if and (lt $width 1600) (not (in $widths $width)) -}}
-    {{- $native := $img.Resize (printf "%dx webp q85" $width) -}}
+  as the top candidate. Wider than the ladder, 1200w is plenty. */ -}}
+  {{- if and (lt $width 1200) (not (in $widths $width)) -}}
+    {{- $native := $img.Resize (printf "%dx webp" $width) -}}
     {{- $candidates = $candidates | append (printf "%s %dw" $native.RelPermalink $width) -}}
   {{- end -}}
   <picture>
@@ -47,27 +54,25 @@
     />
     {{- end }}
 
-    {{- /* Fallback to original format. The first in-content image is only
-    an LCP candidate on posts without a cover (with one, the cover is the
-    LCP element and gets fetchpriority=high in cover.html); even then it is
-    usually below the fold, so it gets eager loading but no priority hint,
-    which would make it compete with the fonts for the title paint. */ -}}
+    {{- /* Fallback to original format. No fetchpriority hint even when
+    eager: on a post with a cover, the cover is the LCP element and gets it
+    in cover.html. */ -}}
     <img
       src="{{ $img.RelPermalink }}"
       alt="{{ $alt }}"
       {{- with $title }} title="{{ . }}"{{ end }}
       width="{{ $width }}"
       height="{{ $height }}"
-      {{- if and (eq .Ordinal 0) (not .Page.Params.cover.image) }} loading="eager"
-      {{- else }} loading="lazy"
-      {{- end }}
+      loading="{{ $loading }}"
       decoding="async"
     />
   </picture>
 {{- else -}}
-  {{- /* External image or resource not found - use simple img tag */ -}}
+  {{- /* External image or resource not found - use simple img tag. No
+  safeURL: html/template's own URL filtering (http/https/mailto pass,
+  javascript: does not) is what we want here. */ -}}
   <img
-    src="{{ .Destination | safeURL }}"
+    src="{{ .Destination }}"
     alt="{{ $alt }}"
     {{- with $title }} title="{{ . }}"{{ end }}
     loading="lazy"

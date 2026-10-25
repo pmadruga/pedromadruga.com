@@ -34,7 +34,7 @@
             {{- $imgSrcset := slice }}
             {{- range $size := $sizes }}
                 {{- if (ge $cover.Width $size) }}
-                    {{- $webp := $cover.Resize (printf "%dx webp q85" $size) }}
+                    {{- $webp := $cover.Resize (printf "%dx webp" $size) }}
                     {{- $webpSrcset = $webpSrcset | append (printf "%s %dw" $webp.Permalink $size) }}
                     {{- $resized := $cover.Resize (printf "%dx" $size) }}
                     {{- $imgSrcset = $imgSrcset | append (printf "%s %dw" $resized.Permalink $size) }}

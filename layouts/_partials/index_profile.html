@@ -1,31 +1,14 @@
-{{- /* PaperMod override: lossless WebP profile image in all environments.
-Keep the resize specification in extend_head.html in sync. */ -}}
+{{- /* PaperMod override: WebP profile image (1x + 2x srcset) in all
+environments. The resize lives in profile-image.html, shared with the LCP
+preload in extend_head.html. */ -}}
 <div class="profile">
     {{- with site.Params.profileMode }}
     <div class="profile_inner">
         {{- if .imageUrl -}}
-        {{- $img := "" }}
-        {{- if not (urls.Parse .imageUrl).IsAbs }}
-            {{- $img = resources.Get .imageUrl }}
-        {{- end }}
-        {{- if $img }}
-            {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
-            {{- if hugo.IsExtended -}}
-                {{- $processableFormats = $processableFormats | append "webp" -}}
-            {{- end -}}
-            {{- if (in $processableFormats $img.MediaType.SubType)}}
-                {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
-                    {{- $img = $img.Resize (printf "%dx%d webp lossless" .imageWidth .imageHeight) }}
-                {{- else if .imageHeight }}
-                    {{- $img = $img.Resize (printf "x%d webp lossless" .imageHeight) }}
-                {{ else if .imageWidth }}
-                    {{- $img = $img.Resize (printf "%dx webp lossless" .imageWidth) }}
-                {{ else }}
-                    {{- $img = $img.Resize "150x150 webp lossless" }}
-                {{- end }}
-            {{- end }}
-            <img draggable="false" fetchpriority="high" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-                height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+        {{- $img := partial "profile-image.html" $ }}
+        {{- with $img.src }}
+            <img draggable="false" fetchpriority="high" src="{{ .Permalink }}" srcset="{{ .Permalink }} 1x, {{ $img.src2x.Permalink }} 2x" alt="{{ $.Site.Params.profileMode.imageTitle | default "profile image" }}" title="{{ $.Site.Params.profileMode.imageTitle }}"
+                height="{{ $.Site.Params.profileMode.imageHeight | default 150 }}" width="{{ $.Site.Params.profileMode.imageWidth | default 150 }}" />
         {{- else }}
         <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
             height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />

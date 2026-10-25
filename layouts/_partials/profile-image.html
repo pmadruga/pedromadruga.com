@@ -1,0 +1,20 @@
+{{- /* Resolves the homepage portrait (params.profileMode.imageUrl) to its 1x
+and 2x WebP variants, so index_profile.html (the <img>) and extend_head.html
+(the LCP preload) always point at the same hashed files. Lossy q (from
+imaging.webp.quality) instead of the theme's lossless: for a 250px portrait
+that is ~7 KB vs 56 KB. Returns an empty dict when the image is remote or not
+a processable raster, and the caller falls back to the plain URL. */ -}}
+{{- $out := dict }}
+{{- $pm := site.Params.profileMode }}
+{{- if and $pm.enabled $pm.imageUrl (not (urls.Parse $pm.imageUrl).IsAbs) }}
+  {{- with resources.Get $pm.imageUrl }}
+    {{- if in (slice "jpg" "jpeg" "png" "tif" "bmp" "gif" "webp") .MediaType.SubType }}
+      {{- $w := $pm.imageWidth | default 150 }}
+      {{- $h := $pm.imageHeight | default 150 }}
+      {{- $out = dict
+        "src" (.Resize (printf "%dx%d webp" $w $h))
+        "src2x" (.Resize (printf "%dx%d webp" (mul 2 $w) (mul 2 $h))) }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- return $out }}
