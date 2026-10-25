@@ -5,6 +5,7 @@ CheckInternal: true
 CheckInternalHash: true
 CheckImages: true
 CheckScripts: true
+IgnoreAltEmpty: true # decorative images carry alt="" (see .htmltest.yml)
 ExternalTimeout: 30
 # /notes/ is the build-time Bluesky feed: its outbound links are whatever
 # the posts (and their link-card embeds) contain, and they cannot be fixed

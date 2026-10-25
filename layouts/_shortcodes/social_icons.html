@@ -1,8 +1,2 @@
-<div class="social-icons">
-    {{- range .Site.Params.socialIcons }}
-    <a href="{{ trim .url " " }}" target="_blank" rel="noopener noreferrer me" title="{{ .name | title }}">
-        {{ partial "svg.html" . }} 
-        <!-- {{ .name }} -->
-    </a>
-    {{- end }}
-</div>
+{{- /* Same markup as the homepage icons: one copy to keep accessible. */ -}}
+{{- partial "social_icons.html" (dict) -}}

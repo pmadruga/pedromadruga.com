@@ -4,4 +4,7 @@ CheckInternal: true
 CheckInternalHash: true
 CheckImages: true
 CheckScripts: true
+# alt="" is correct for decorative images (the /notes/ avatars); a missing
+# alt attribute still fails.
+IgnoreAltEmpty: true
 IgnoreURLs:

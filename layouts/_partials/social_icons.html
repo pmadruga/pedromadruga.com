@@ -1,0 +1,13 @@
+{{- /* Theme copy plus an accessible name on each link. The icon SVGs carry
+no <title>, and `title=` alone is not a reliable name for assistive tech
+(and never shows on touch): aria-label names the link and the SVG is marked
+decorative. Used by index_profile.html and the social_icons shortcode. */ -}}
+<div class="social-icons" {{ with .align}}align="{{.}}" {{- end }}>
+    {{- range site.Params.socialIcons }}
+    {{- $name := (.title | default .name) | title }}
+    <a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me"
+        title="{{ $name }}" aria-label="{{ $name }}">
+        {{ partial "svg.html" . | replaceRE `^(\s*<svg\b)` `$1 aria-hidden="true" focusable="false"` | safeHTML }}
+    </a>
+    {{- end }}
+</div>
