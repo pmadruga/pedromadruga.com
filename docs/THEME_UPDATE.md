@@ -17,8 +17,10 @@ The theme update script (`scripts/update-theme.sh`) provides:
 ### Update Theme (Recommended)
 
 ```bash
-npm run theme:update
+bun run theme:update
 ```
+
+(`npm run theme:update` works too; the project uses Bun, matching `scripts/setup.sh`.)
 
 This command:
 
@@ -26,31 +28,32 @@ This command:
 2. Updates to the latest PaperMod version
 3. Tests the Hugo build
 4. Rolls back automatically if build fails
+5. Lists the forked theme templates that must be re-diffed by hand (see [Forked Templates](#forked-templates))
 
 ### Update Without Testing
 
 ```bash
-npm run theme:update-safe
+bun run theme:update-safe
 ```
 
 Updates the theme without running build tests (faster, but less safe).
 
 ## Available Commands
 
-### NPM Scripts
+### Package Scripts (Bun)
 
 ```bash
 # Update theme with build test
-npm run theme:update
+bun run theme:update
 
 # Update theme without build test
-npm run theme:update-safe
+bun run theme:update-safe
 
 # Rollback to a previous backup
-npm run theme:rollback
+bun run theme:rollback
 
 # List all available backups
-npm run theme:list-backups
+bun run theme:list-backups
 ```
 
 ### Direct Script Usage
@@ -95,13 +98,16 @@ bash scripts/update-theme.sh --rollback
    - Merges changes with fast-forward
 
 4. **Test Build (if enabled)**
-   - Runs `hugo --minify`
-   - Checks for build errors
+   - Runs `hugo --minify` and uses its exit status
+   - Prints Hugo's output on failure
    - Auto-rollback if build fails
 
 5. **Cleanup**
    - Keeps last 5 backups
    - Removes older backups automatically
+
+6. **Forked-template reminder**
+   - For each forked template in `layouts/`, reports whether the theme's copy changed in this update and prints the `diff -u` command to port it
 
 ### Backup Structure
 
@@ -121,7 +127,7 @@ If you need to restore a previous theme version:
 ### Interactive Rollback
 
 ```bash
-npm run theme:rollback
+bun run theme:rollback
 ```
 
 You'll see a list of available backups:
@@ -136,6 +142,8 @@ Enter backup name to restore (or 'latest' for most recent):
 ```
 
 Type `latest` for the most recent backup, or paste a specific backup name.
+
+Rollback checks out the commit recorded in the backup's `.commit-hash` inside the `themes/PaperMod` submodule (it does not copy files over the directory, which would clobber the submodule's `.git` link). Afterwards `git status` shows the submodule pointer back at the old commit.
 
 ### Command Line Rollback
 
@@ -157,7 +165,7 @@ bash scripts/update-theme.sh --rollback <<< "PaperMod_20251029_091545"
 
 1. The script will automatically stop and show an error
 2. Your original theme is preserved in the backup
-3. Run rollback to restore: `npm run theme:rollback`
+3. Run rollback to restore: `bun run theme:rollback`
 
 ### Build Fails After Update
 
@@ -166,7 +174,7 @@ bash scripts/update-theme.sh --rollback <<< "PaperMod_20251029_091545"
 **Solution:**
 
 1. If you used `--test`, rollback happens automatically
-2. If not, manually rollback: `npm run theme:rollback`
+2. If not, manually rollback: `bun run theme:rollback`
 3. Report the issue to PaperMod: https://github.com/adityatelange/hugo-PaperMod/issues
 
 ### Theme Not Found
@@ -180,10 +188,9 @@ The script will automatically initialize the theme submodule:
 bash scripts/update-theme.sh
 ```
 
-Or manually:
+Or manually (the submodule is already declared in `.gitmodules`, so do not `git submodule add` it again):
 
 ```bash
-git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 git submodule update --init --recursive
 ```
 
@@ -228,8 +235,9 @@ git submodule update --init --recursive
    hugo serve -D
    ```
 
-2. **Check customizations**
-   - Review your custom layouts in `layouts/`
+2. **Re-diff the forked templates**
+   - The script prints which forked templates' theme copies changed; for each one run the printed `diff -u themes/PaperMod/layouts/<file> layouts/<file>` and port the upstream change by hand (see [Forked Templates](#forked-templates))
+   - Review the other custom layouts in `layouts/`
    - Test all pages and features
    - Check mobile responsiveness
 
@@ -265,7 +273,7 @@ cd ../..
 
 ## Manual Update (Alternative)
 
-If you prefer manual updates without the script:
+If you prefer manual updates without the script (note: this skips the backup, the build test and the forked-template reminder, so re-diff the [forked templates](#forked-templates) yourself):
 
 ```bash
 # Update submodule
@@ -293,7 +301,26 @@ If you've customized the theme, updates are still safe because:
 3. **Config** is in `hugo.yaml` (not in theme)
 4. **Content** is in `content/` (not in theme)
 
-Your customizations override theme defaults and won't be affected by updates.
+Your customizations override theme defaults and won't be affected by updates, with one important exception.
+
+### Forked Templates
+
+Some files under `layouts/` are full copies of theme files rather than extensions. They permanently shadow the theme's versions, so they never receive upstream fixes: after every update, diff each against its `themes/PaperMod/layouts/` counterpart and port changes manually. The update script prints this list (and whether each theme copy changed) at the end of a successful run. The authoritative list and the reason for each fork live in `CLAUDE.md` under "Forked theme templates"; keep the `FORKED_TEMPLATES` array in `scripts/update-theme.sh` in sync with it:
+
+- `layouts/_partials/cover.html`
+- `layouts/_partials/head.html`
+- `layouts/_partials/footer.html`
+- `layouts/baseof.html`
+- `layouts/archives.html`
+- `layouts/_partials/author.html`
+- `layouts/_partials/templates/schema_json.html`
+- `layouts/robots.txt`
+- `layouts/rss.xml`
+
+```bash
+# Example: port upstream changes to one forked template
+diff -u themes/PaperMod/layouts/_partials/head.html layouts/_partials/head.html
+```
 
 ## Script Options Reference
 
@@ -337,9 +364,13 @@ jobs:
           submodules: recursive
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          # Pin to the same version as netlify.toml, lint.yml, link-check.yml,
+          # daily-deploy.yml and scripts/setup.sh (0.168.0 at the time of
+          # writing); never 'latest', or the test build would not match production.
+          hugo-version: '0.168.0'
+          extended: true
 
       - name: Update theme
         run: bash scripts/update-theme.sh --update --test

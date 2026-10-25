@@ -12,17 +12,17 @@ bash scripts/setup.sh
 hugo serve -D
 ```
 
-## Update papermod
+## Update PaperMod
 
 ```bash
-git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
-git submodule update --init --recursive # needed when you reclone your repo (submodules may not get cloned automatically)
+bun run theme:update   # backup, fast-forward the submodule, test build, list forked templates to re-diff
+bun run theme:rollback # restore the previous theme commit from a backup
 ```
+
+Use the script rather than a bare `git submodule update --remote --merge`: it keeps a backup, runs a build test, and reminds you to re-diff the forked theme templates in `layouts/`. Details in `docs/THEME_UPDATE.md`.
+
+If the theme directory is empty after a fresh clone:
 
 ```bash
-git submodule update --remote --merge
+git submodule update --init --recursive
 ```
-
-## Troubleshooting
-
-- If Search returns repeated results in Dev mode, just restart the server.

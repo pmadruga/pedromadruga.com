@@ -17,7 +17,7 @@ The optimizations focus on four key areas:
 
 All markdown images are automatically processed through a custom render hook that:
 
-- Generates WebP and AVIF formats (25-50% size reduction)
+- Generates WebP variants (served via `<picture>`, original format as fallback). AVIF output was deliberately removed: Hugo's encoder produced files 40-65% *larger* than the WebP equivalents on this site's screenshot-heavy images
 - Creates responsive srcsets for multiple screen sizes (400px, 800px, 1200px, 1600px)
 - Adds proper lazy loading with `loading="lazy"`
 - Uses async decoding with `decoding="async"`
@@ -26,22 +26,9 @@ All markdown images are automatically processed through a custom render hook tha
 
 **File:** `layouts/_markup/render-image.html`
 
-### Manual Image Shortcode
+### Loading Priority
 
-For more control, use the responsive-img shortcode:
-
-```markdown
-{{< responsive-img src="my-image.jpg" alt="Description" priority="high" >}}
-```
-
-**Parameters:**
-
-- `src` - Image filename (must be in page bundle)
-- `alt` - Alt text for accessibility
-- `priority` - "high" (above-fold), "low", or "auto"
-- `class` - Optional CSS class
-
-**File:** `layouts/_shortcodes/responsive-img.html`
+Every in-content image is lazy-loaded. A post whose first image is above the fold can opt in to eager loading with `eagerFirstImage: true` in its front matter (the cover image, when there is one, is always eager with `fetchpriority="high"`).
 
 ### Image Configuration
 
@@ -61,7 +48,7 @@ imaging:
 1. **Store images in page bundles** - Place images in the same directory as the markdown file
 2. **Use descriptive alt text** - Required for accessibility and SEO
 3. **Optimize source images** - Start with reasonable dimensions (max 2000px width)
-4. **Choose right format** - AVIF for photos, WebP as fallback, original format as final fallback
+4. **Formats are handled for you** - WebP is generated automatically with the original format as fallback. Do not add AVIF output; it was measured and removed (see above)
 
 ## 2. Font Loading Optimization
 
@@ -180,7 +167,7 @@ These optimizations target 2025 Core Web Vitals benchmarks:
 
 ### LCP (Largest Contentful Paint) < 2.5s
 
-- ✅ Image optimization (WebP/AVIF)
+- ✅ Image optimization (WebP)
 - ✅ Responsive images with srcsets
 - ✅ fetchpriority="high" for hero images
 - ✅ Font preconnect and display=swap
@@ -261,15 +248,14 @@ hugo serve -D
 ### SEO Updates
 
 - Update `hugo.yaml` for site-wide defaults
-- Add `description` to page front matter
+- Add `summary` (not `description`, which renders visibly under the title) to page front matter; it feeds the meta/og description and RSS
 - Add `images` array for custom OG images
-- Tags automatically become keywords
 
 ## Browser Support
 
 - **WebP:** All modern browsers (95%+ coverage)
-- **AVIF:** Chrome 85+, Firefox 93+ (80%+ coverage)
 - **Fallback:** Original format ensures 100% compatibility
+- **AVIF:** Not generated (see Image Optimization above)
 - **JavaScript:** ES2015+ (all modern browsers)
 
 ## File Structure
@@ -278,8 +264,6 @@ hugo serve -D
 layouts/
 ├── _markup/
 │   └── render-image.html          # Automatic image processing
-├── _shortcodes/
-│   └── responsive-img.html        # Manual image shortcode
 └── _partials/
     ├── extend_head.html           # Head enhancements
     ├── footer.html                # JS loading
