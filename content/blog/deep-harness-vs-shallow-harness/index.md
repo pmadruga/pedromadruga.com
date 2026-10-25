@@ -1,6 +1,7 @@
 ---
 title: 'Deep Harness vs Shallow Harness'
 summary: 'While the industry is moving from single-action assistants to orchestrated workflows. No AI was used to write this article.'
+description: 'hello world'
 showtoc: true
 tocopen: false
 draft: true
@@ -9,34 +10,35 @@ date: '2026-09-30'
 
 ## Intro
 
-When we first saw ChatGPT's launch in November 2022, we were able to interact with it via a chat interface. Today, we've gotten used to interfaces that, while still being somewhat conversational, they're much richer than before. Richer means that there's many more integrations to systems and also even within the same system it's much more complex. We have agents and subagents, connectors, memory and so on.
+When we first saw ChatGPT's launch in November 2022, we were able to interact with it via a chat interface. But the interfaces where we interact with LLMs seem different, despite at the surface looking similar to what is was back then.
+
+These interfaces seem more complex now. And that's because they have become so under the hood. There are agents, subagents, connectors, memory and so on. The breadth of capabilities around the model have increased exponentially whereas at the same time the models' quality (ie, depth) have also gone up over the years.
 
 In this post, I'm diving deeper into the differences between systems that, while have historically improved in depth, have now moved to systems that have breadth **and** depth.
 
-Let's talk about harnesses. While this post is focused on legal harnesses, it includes an introduction to the term and functionaly of these.
+Let's talk about harnesses.
 
 ## Harness
 
-If you work with AI, you've probably seen the "Harness" term before. Even in the context of AI engineering it's a relatively new concept and you're not alone if you're confused on what does it actually mean.
+### What is it?
 
-Within this context, it's possible to trace this term back to a LangChain [blogpost](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness) which defines it as:
+If you work with AI, you've probably seen the "Harness" term before. In the context of agentic coding, it's a new concept that has been popping up quite often. You're not alone if you're confused on what does it actually mean.
+
+So let's start with defining a harness in the context of agentic coding. Historically, this term can be traced to a LangChain [blogpost](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness) from March 2026, which defines a harness as:
 
 >"Agent = Model + Harness. If you're not the model, you're the harness."
 
-In other words, a harness is everything *around* the model. Some authors have extended this definition to: "Without a harness, you have a chatbot. With one, you have an agent." [source](https://happycapy.ai/blog/harness-engineering-guide).
+In other words, a harness is everything *around* the model. But a harness can have several layers.
 
-Nonetheless, my favourite definition of harness lives in a blogpost at [Martin Fowler's website](https://martinfowler.com), by [Birgitta Böckeler](https://birgitta.info/) and called "[Harness engineering for coding agent users](https://martinfowler.com/articles/harness-engineering.html)". More than words, the following visualization helps distinguish the different layers of an agent:
+My favourite definition of harness lives in a blogpost at [Martin Fowler's website](https://martinfowler.com), by [Birgitta Böckeler](https://birgitta.info/) and called "[Harness engineering for coding agent users](https://martinfowler.com/articles/harness-engineering.html)". The article dives into the complexity of these harness and also refers a new term called "harness engineering" - but that's out of scope here.
+
+In order to explain what is a harness, the author creates a visualization of the different layers around the model:
 
 ![](harness-boundaries-dark-v2.svg)
 
+The harness gets broken down into two layers: "user harness" and "builders harness". This distinction is particularly important in this blogpost, since it determines the value of the user harness in the context of the legal domain-oriented harness. I'll get to that later on, but not yet.
 
-The main reason why this visualization is particularly on point is the distinction between "user harness" and "builders harness". This distinction is particularly important in this blogpost, since it determines the value of the user harness in the context of the legal domain-oriented harness. I'll get to that later on.
-
-### User harness
-
-This outer harness has the goal of increasing the system quality, by implementing feedback mechanisms which in return "increase the system quality, all with the added benefit of fewer wasted tokens along the way." In other words, the user harness is capable of increasing a system quality as a result of consistent human steering of the system itself.
-
-If this still sounds complex, keep reading. It will make sense later on, I promise.
+First, let's talk about the two layers that the authors from the blogpost before define.
 
 ### Inner harness
 
@@ -51,6 +53,13 @@ Claude Code is a good example of a builders harness. This inner harness may cont
 This volume of properties in a harness determines its "depth", meaning more properties are the foundation of a deeper harness. And despite some of these properties are for an agentic coding context, some of them can be generalized to other fields.
 
 That's why I'm taking the freedom to bridge this into the legal domain field.
+
+### User harness
+
+This outer harness has the goal of increasing the system quality, by implementing feedback mechanisms which in return "increase the system quality, all with the added benefit of fewer wasted tokens along the way." In other words, the user harness is capable of increasing a system quality as a result of consistent human steering of the system itself.
+
+If this still sounds complex, keep reading. It will make sense later on, I promise.
+
 
 ## Legal Harness
 
