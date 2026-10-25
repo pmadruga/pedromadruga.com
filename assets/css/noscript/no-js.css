@@ -1,0 +1,6 @@
+/* Loaded only inside <noscript> (head.html): these controls need JS. Moved
+   out of an inline <style> because the CSP has no 'unsafe-inline' for styles. */
+#theme-toggle,
+.top-link {
+  display: none;
+}

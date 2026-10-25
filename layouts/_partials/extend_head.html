@@ -24,27 +24,14 @@ and the browser starts the fetch before CSS parsing finishes. */ -}}
 assets/css/extended/fonts.css). Preload the primary file. */ -}}
 <link rel="preload" href="/fonts/atkinson-hyperlegible-next-var.woff2" as="font" type="font/woff2" crossorigin>
 
-{{- /* Blog posts only: Noto Serif for the post title and content headings.
-Inline style because PaperMod has no per-type body class to scope bundled CSS
-to. The blog archive (/blog/) also preloads it: its entry titles use the same
-font via .archive-entry-title in custom_css1.css. The /newsletter/ archive
+{{- /* Blog posts use Noto Serif for the post title and content headings
+(scoped by the body.blog-post class from baseof.html, rules in
+custom_css1.css). The blog archive (/blog/) also preloads it: its entry
+titles use the same font via .archive-entry-title. The /newsletter/ archive
 doesn't: its titles stay in the body font. */ -}}
 {{- $isPost := and (eq .Type "blog") (eq .Kind "page") }}
 {{- if or $isPost (eq .Layout "archives") }}
 <link rel="preload" href="/fonts/noto-serif-var.woff2" as="font" type="font/woff2" crossorigin>
-{{- end }}
-{{- if $isPost }}
-<style>
-  .post-single .post-title,
-  .post-content h1,
-  .post-content h2,
-  .post-content h3,
-  .post-content h4,
-  .post-content h5,
-  .post-content h6 {
-    font-family: 'Noto Serif', 'Noto Serif Fallback', Georgia, 'Times New Roman', serif;
-  }
-</style>
 {{- end }}
 
 {{- /* SEO: homepage WebSite/SearchAction schema. Article, breadcrumb,

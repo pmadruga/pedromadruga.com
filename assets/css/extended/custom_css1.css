@@ -456,6 +456,14 @@ h1 {
   margin: 2.5rem 0;
 }
 
+/* The shortcode strips the root <svg>'s style attribute (the CSP has no
+   'unsafe-inline' for styles), so the cards' root styling lives here. */
+.post-content figure.inline-svg > svg {
+  display: block;
+  color: inherit;
+  font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+}
+
 /* On narrow screens the cards scale down with the column and the quote
    text gets small — let them bleed into the content padding for a
    slightly larger render. No effect on wider viewports. */
@@ -787,7 +795,20 @@ pre:focus-within .copy-code,
      in each row, so override it back to bold. */
   font-weight: 700;
   /* Same face as the post title and headings inside blog posts
-     (extend_head.html); the @font-face is in fonts.css */
+     (below); the @font-face is in fonts.css */
+  font-family: 'Noto Serif', 'Noto Serif Fallback', Georgia, 'Times New Roman', serif;
+}
+
+/* Blog posts: Noto Serif for the title and content headings. body.blog-post
+   is set in baseof.html; this used to be an inline <style>, which the CSP
+   no longer allows. */
+.blog-post .post-single .post-title,
+.blog-post .post-content h1,
+.blog-post .post-content h2,
+.blog-post .post-content h3,
+.blog-post .post-content h4,
+.blog-post .post-content h5,
+.blog-post .post-content h6 {
   font-family: 'Noto Serif', 'Noto Serif Fallback', Georgia, 'Times New Roman', serif;
 }
 
