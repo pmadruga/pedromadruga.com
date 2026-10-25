@@ -6,6 +6,7 @@ showtoc: true
 tocopen: false
 draft: true
 date: '2026-09-30'
+lastmod: '2026-10-25'
 ---
 
 ## Intro
@@ -36,9 +37,7 @@ In order to explain what is a harness, the author creates a visualization of the
 
 ![](harness-boundaries-dark-v2.svg)
 
-The harness gets broken down into two layers: "user harness" and "builders harness". This distinction is particularly important in this blogpost, since it determines the value of the user harness in the context of the legal domain-oriented harness. I'll get to that later on, but not yet.
-
-First, let's talk about the two layers that the authors from the blogpost before define.
+The harness gets broken down into two layers: "user harness" and harness built by the builders - which I'm naming it here as "inner harness". Let's define what is each of these layers of the harness.  
 
 ### Inner harness
 
