@@ -54,7 +54,7 @@ The list goes on. This layer contains all the tooling necessary for the harness 
 
 ### User harness
 
-On the other hand, a user harness plays a different role: it works as a two-way feedback mechanism between the user and the entire harness.
+On the other hand, a user harness plays a different role: it works as a two-way feedback mechanism between the user's interactions and the entire harness combined. As the author mentions, there are feedforward and feedback mechanisms that
 
 
 This outer harness has the goal of increasing the system quality, by implementing feedback mechanisms which in return "increase the system quality, all with the added benefit of fewer wasted tokens along the way." In other words, the user harness is capable of increasing a system quality as a result of consistent human steering of the system itself.
