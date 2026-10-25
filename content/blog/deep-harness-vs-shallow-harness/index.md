@@ -7,7 +7,7 @@ draft: true
 date: '2026-09-30'
 ---
 
-# Intro
+## Intro
 
 When we first saw ChatGPT's launch in November 2022, we were able to interact with it via a chat interface. Today, we've gotten used to interfaces that, while still being somewhat conversational, they're much richer than before. Richer means that there's many more integrations to systems and also even within the same system it's much more complex. We have agents and subagents, connectors, memory and so on.
 
@@ -15,7 +15,7 @@ In this post, I'm diving deeper into the differences between systems that, while
 
 Let's talk about harnesses. While this post is focused on legal harnesses, it includes an introduction to the term and functionaly of these.
 
-# Harness
+## Harness
 
 If you work with AI, you've probably seen the "Harness" term before. Even in the context of AI engineering it's a relatively new concept and you're not alone if you're confused on what does it actually mean.
 
@@ -32,13 +32,13 @@ Nonetheless, my favourite definition of harness lives in a blogpost at [Martin F
 
 The main reason why this visualization is particularly on point is the distinction between "user harness" and "builders harness". This distinction is particularly important in this blogpost, since it determines the value of the user harness in the context of the legal domain-oriented harness. I'll get to that later on.
 
-## User harness
+### User harness
 
 This outer harness has the goal of increasing the system quality, by implementing feedback mechanisms which in return "increase the system quality, all with the added benefit of fewer wasted tokens along the way." In other words, the user harness is capable of increasing a system quality as a result of consistent human steering of the system itself.
 
 If this still sounds complex, keep reading. It will make sense later on, I promise.
 
-## Inner harness
+### Inner harness
 
 Claude Code is a good example of a builders harness. This inner harness may contain several distinct properties. Per the LangChain post, it can have:
 
@@ -52,9 +52,9 @@ This volume of properties in a harness determines its "depth", meaning more prop
 
 That's why I'm taking the freedom to bridge this into the legal domain field.
 
-# Legal Harness
+## Legal Harness
 
-## The lawyer's flow
+### The lawyer's flow
 
 In order for this bridge between agentic coding and legal domain to happen, a brief intro to the the laywer's flow is needed.
 
@@ -70,7 +70,7 @@ The drafting phase is where the lawyer produces a document, which can include in
 
 This is a very high-level explanation of the lawyer's flow and it's also important to know that it's not a linear flow: the lawyers go back and forth between the different phases.
 
-## Legal Harness
+### Legal Harness
 
 When you have an AI product catered for the legal industry, such as legal research assistant or a workflow tool, the harness that composes that system can differ between the assistant and the workflow tool.
 
@@ -78,7 +78,7 @@ As you've seen above, a harness can contain properties which causes the differen
 
 Let's look at how different they are.
 
-## Legal Shallow Harness
+### Legal Shallow Harness
 
 
 In the legal industry almost all the companies dipped their foot in the Generative AI world by launching a legal assistant. It was the natural first step: using a conversational assistant to fetch legal sources - and generate answers based on these - was sort of a chatGPT version with a legal tone.
@@ -92,7 +92,7 @@ Recalling the diagram from before, the user harness is rather shallow since the 
 ![](legal-shallow-harness-v4.svg)
 
 
-## Legal Deep Harness
+### Legal Deep Harness
 
 On the other hand, a Legal Deep Harness contains everything that a lawyers flow includes. And it's more than just a set of different agents. In this harness, the User layer is much more present and impactful to the system itself. At the very center, there's a knowledge-base which is something a Legal Shallow Harness doesn't typically have - and if it does, it's very much encapsulated to one phase of the lawyer's flow so the user harness is shallow and the feedback mechanisms mentioned before in this post don't apply.
 
@@ -101,7 +101,7 @@ On the other hand, a Legal Deep Harness contains everything that a lawyers flow 
 The chart above is not enough to explain how the Legal Deep Harness works. We have to deconstruct into smaller parts to understand the differences between these different harnesses.
 
 
-# Knowledge-base: a third-dimension in data sources
+## Knowledge-base: a third-dimension in data sources
 
 In industries that rely heavily on proprietary content, there are typically two data sources:
 
@@ -124,7 +124,7 @@ This creates an entire new world of possibilities that the AI can provide to the
 
 The AI system becomes a true companion to the user.
 
-# Memory: a knowledge-base over time
+## Memory: a knowledge-base over time
 
 When a system made of interactions between it's different components, it becomes obvious on why memory becomes relevant. As a personal anecdote, I find it interesting that one of the things that makes me stay using Claude and especially Claude Code is memory. It's a personal feature of that harness that simplifies and speeds up my work a lot.
 
@@ -138,21 +138,21 @@ A good example of this is Github Copilot vs Claude Code. In Github Copilot the u
 
 ![](legal-deep-harness-perspective-v4.svg)
 
-## Memory as the creation of intellectual property
+### Memory as the creation of intellectual property
 
 It's not about storing data because that's not possible, but rather the mechanisms that.... meeehhhhhh
 
-# Retrieval is different between sources
+## Retrieval is different between sources
 
 Retrieval for 1st data source
 
-# Specialized agents and subagents - the end of the "larger models"
+## Specialized agents and subagents - the end of the "larger models"
 
 In the deep harness, the AI system becomes a combination of smaller, specialized agents. And because each agent becomes more and more specialized, it reduces the need for larger and generic models. Why have Fable when potentially Sonnet or an open model can do the same task, potentially better, and even reducing costs.
 
 In a traditional mindset of RAG, typical of a shallow harness, the two data sources of the system are combined in a way that produces an answer to the user. Since the system is not composed of several agents and subagents specialized in smaller tasks - because that would be an overkill for such harness - there's a heavy reliance on larger models to do the task.
 
-# Communication is key
+## Communication is key
 
 When having all these agents and sub-agents, it's essential to have proper communication between them.
 
@@ -169,7 +169,7 @@ A side note: the OpenAI hack was very interesting, despite being a case where th
 So how do you go about understanding deeper harness and how do they differ from a shallow harness? Let's take a look.
 
 
-# Evaluation
+## Evaluation
 
 In a shallow harness, evaluation is typically made by scoring the inputs and outputs of the AI system: typically, there's a golden dataset with questions and answers.
 
@@ -184,7 +184,7 @@ The rule of thumb I have been using is to identify the critical parts of the sys
 Because AI-based applications are domain knowledge-heavy, I expose legal domain experts to be as confortable as possible to tools like LangFuse in order for them to understand the system as well. As I've written before, I'm a firm believer of domain-driven AI.
 
 
-# Conclusion
+## Conclusion
 
 I've now created and worked AI systems in production that are both shallow and deep harness. One obvious learning is that, in the legal domain where the application needs to mimic lawyer's flow, it's a complete shift from going a shallow harness into a deep harness: it's one thing to work in a single step of the lawyer's flow; another completely different is to work on the entire workflow mostly because it's incredibly connected.
 
@@ -196,7 +196,7 @@ All these things combined create a depth of the harness that not only improves t
 
 <!-- markdownlint-disable MD024 -->
 
-## Loose Notes
+### Loose Notes
 
 When all you have done is work in a single assistant, youll miss the benefit of memory and even local models.
 12:20 PM
@@ -217,33 +217,33 @@ the deep harness is a bi-directional path of decisions whereas the single agent 
 
 ---
 
-### Definitions
+#### Definitions
 
 - Define the context
   - legal industry
   - although a few things generalize from the legal industry to the rest
   - A legal workflow tool contains (at least) a research, drafting, a planning and an intake tools
 
-#### Assistant
+##### Assistant
 
 - Conversational assistant, mostly for research
 - One LLM for the heaviest task, often using a typical loop-call
 
-#### What is a harness
+##### What is a harness
 
-#### Orchestrated tool
+##### Orchestrated tool
 
 - Think when claude code spawns a team of agents
 - introduce graph engineering
 
-### Changing the mindset
+#### Changing the mindset
 
 - from single-task assistant to workflow tool
 - It's a comparison between
 
-### There is no planning in a legal assistant, so it's not a harness
+#### There is no planning in a legal assistant, so it's not a harness
 
-### The 3rd data source
+#### The 3rd data source
 
 - Explain what other sources are there first
 - Explain what is the 3rd data source
@@ -251,19 +251,19 @@ the deep harness is a bi-directional path of decisions whereas the single agent 
 - Include a diagram
 - moat creation
 
-### Specialized coordinated agents vs one-size-tries-all agent
+#### Specialized coordinated agents vs one-size-tries-all agent
 
-### Memory
+#### Memory
 
 - Memory compression is, in a single task assistant, most of the times unnecessary. And when it exists, it's not necessary complex. In an orchestrated set of agents
 
-### The single-task mindset
+#### The single-task mindset
 
 - Because one big model is used, it's a misconception that large models cannot be replaced with local models. But in a workflow, agents are way more specialized
 - When you have a single-tasked set of agents it's easy to rely on one big model to basically do the heaviest task. In an orchestrated set of agents, the tasks are much more specialized, so the need for heavier models
 - The ones who don't understand orchestrated agents missunderstand the power of specialized models, which then opens the road for the usage of local small finetuned models. The single-taskers are typically against local models and are usually the reason why local models' proponents
 
-### Conclusion
+#### Conclusion
 
 - Workflow allows for better depth and bredth
 - The complexity increase comes by nature, but when you isolate components it becomes actually easier understand each of the agents, specially if they can be traced properly - something that I'll write about in the future.
