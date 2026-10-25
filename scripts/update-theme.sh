@@ -47,7 +47,8 @@ check_submodule() {
     if [ ! -d "$THEME_PATH" ]; then
         print_error "Theme not found at $THEME_PATH"
         print_info "Initializing theme submodule..."
-        git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+        # The submodule is already declared in .gitmodules, so `git submodule add`
+        # would fail here; init/update checks out the recorded commit instead.
         git submodule update --init --recursive
         print_success "Theme submodule initialized"
         exit 0
@@ -97,14 +98,30 @@ restore_backup() {
         return 1
     fi
 
-    print_warning "Restoring from backup..."
-    rm -rf "$THEME_PATH"
-    cp -r "$backup_path" "$THEME_PATH"
-    print_success "Theme restored from backup"
+    local hash_file="${backup_path}/.commit-hash"
+    if [ ! -f "$hash_file" ]; then
+        print_error "Backup has no .commit-hash file; cannot restore"
+        return 1
+    fi
+
+    local commit
+    commit=$(cat "$hash_file")
+
+    # Check the recorded commit back out inside the submodule. Copying the
+    # backup directory over themes/PaperMod would overwrite the `.git` gitlink
+    # file and leave the superproject pointing at the new commit anyway.
+    print_warning "Restoring theme to commit ${commit:0:8}..."
+    if ! git -C "$THEME_PATH" checkout --quiet "$commit"; then
+        print_error "Failed to check out $commit in $THEME_PATH"
+        return 1
+    fi
+    print_success "Theme restored from backup (commit ${commit:0:8})"
 }
 
-# Function to update theme
+# Function to update theme ($1 = "true" to continue even when already up to date)
 update_theme() {
+    local force="${1:-false}"
+
     print_info "Fetching latest theme updates..."
 
     cd "$THEME_PATH"
@@ -117,9 +134,12 @@ update_theme() {
     local current_commit=$(git rev-parse HEAD)
 
     if [ "$latest_commit" = "$current_commit" ]; then
-        print_success "Theme is already up to date!"
-        cd - > /dev/null
-        return 0
+        if [ "$force" != true ]; then
+            print_success "Theme is already up to date!"
+            cd - > /dev/null
+            return 0
+        fi
+        print_info "Theme is already up to date; continuing because of --force"
     fi
 
     # Show what will be updated
@@ -143,17 +163,67 @@ test_build() {
     print_info "Testing Hugo build..."
 
     if command -v hugo >/dev/null 2>&1; then
-        if hugo --minify --quiet 2>&1 | grep -i "error"; then
-            print_error "Build test failed!"
-            return 1
-        else
+        # Use Hugo's exit status; grepping the output for "error" discarded it.
+        local log
+        log=$(mktemp)
+        if hugo --minify --quiet >"$log" 2>&1; then
+            rm -f "$log"
             print_success "Build test passed!"
             return 0
+        else
+            print_error "Build test failed!"
+            cat "$log"
+            rm -f "$log"
+            return 1
         fi
     else
         print_warning "Hugo not found, skipping build test"
         return 0
     fi
+}
+
+# Forked theme templates: full copies under layouts/ that permanently shadow
+# the theme's versions (see CLAUDE.md "Forked theme templates"). They never
+# receive upstream fixes, so each must be re-diffed by hand after an update.
+FORKED_TEMPLATES=(
+    _partials/cover.html
+    _partials/head.html
+    _partials/footer.html
+    baseof.html
+    archives.html
+    _partials/author.html
+    _partials/social_icons.html
+    _partials/templates/schema_json.html
+    _partials/templates/opengraph.html
+    _partials/templates/twitter_cards.html
+    robots.txt
+    rss.xml
+)
+
+# Function to remind about forked templates ($1 = old theme commit, $2 = new)
+remind_forked_templates() {
+    local old_commit="$1"
+    local new_commit="$2"
+    local tpl ours theirs
+
+    echo ""
+    print_warning "Forked theme templates shadow the theme's copies and must be re-diffed manually:"
+
+    for tpl in "${FORKED_TEMPLATES[@]}"; do
+        ours="layouts/${tpl}"
+        theirs="${THEME_PATH}/layouts/${tpl}"
+
+        if [ ! -f "$ours" ]; then
+            echo "  - ${ours}: not found locally (update the FORKED_TEMPLATES list in $0)"
+        elif [ ! -f "$theirs" ]; then
+            echo "  - ${ours}: no theme counterpart at ${theirs} (upstream moved or removed it)"
+        elif [ -n "$old_commit" ] && [ -n "$new_commit" ] && \
+             git -C "$THEME_PATH" diff --quiet "$old_commit" "$new_commit" -- "layouts/${tpl}"; then
+            echo "  - ${ours}: theme copy unchanged in this update"
+        else
+            echo "  - ${ours}: THEME COPY CHANGED - port with: diff -u ${theirs} ${ours}"
+        fi
+    done
 }
 
 # Function to show available backups
@@ -311,8 +381,10 @@ main() {
     fi
 
     # Show current version
+    local old_commit
+    old_commit=$(get_current_commit)
     print_info "Current theme version: $(get_current_version)"
-    print_info "Current commit: $(get_current_commit | cut -c1-8)"
+    print_info "Current commit: ${old_commit:0:8}"
     echo ""
 
     # Update theme
@@ -323,7 +395,7 @@ main() {
         fi
 
         # Update
-        if update_theme; then
+        if update_theme "$force_update"; then
             print_info "New theme version: $(get_current_version)"
             print_info "New commit: $(get_current_commit | cut -c1-8)"
 
@@ -355,6 +427,9 @@ main() {
                 print_info "Backup saved at: $BACKUP_PATH"
             fi
 
+            remind_forked_templates "$old_commit" "$(get_current_commit)"
+
+            echo ""
             print_info "Run 'hugo serve' to test your site with the updated theme"
         else
             print_error "Theme update failed!"

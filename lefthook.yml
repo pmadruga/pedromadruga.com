@@ -1,12 +1,16 @@
 pre-commit:
   parallel: true
   commands:
+    # node_modules/.bin, not bunx: it always exists when the hooks do (the
+    # `prepare` script installs both) and runs the lockfile's version, with
+    # no dependency on bunx being on PATH (scripts/setup.sh installs only
+    # the bun binary) or on the network.
     lint-markdown:
       glob: '*.md'
-      run: bunx markdownlint-cli2 {staged_files}
+      run: node_modules/.bin/markdownlint-cli2 {staged_files}
     check-formatting:
       glob: '*.{json,yaml,yml}'
-      run: bunx prettier --check {staged_files}
+      run: node_modules/.bin/prettier --check {staged_files}
 
 pre-push:
   commands:

@@ -1,0 +1,50 @@
+name: Setup htmltest
+description: >-
+  Install a pinned htmltest release from GitHub, verifying its sha256 against
+  the upstream checksums file on every run. The verified release archive is
+  cached (not the extracted binary) so a cache restore is re-verified too.
+
+inputs:
+  version:
+    description: htmltest release version (without the leading "v")
+    required: false
+    default: '0.17.0'
+
+runs:
+  using: composite
+  steps:
+    - name: Cache htmltest archive
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: ~/.cache/htmltest
+        key: htmltest-archive-${{ inputs.version }}
+
+    - name: Install htmltest
+      shell: bash
+      env:
+        HTMLTEST_VERSION: ${{ inputs.version }}
+      run: |
+        set -euo pipefail
+        BASE="https://github.com/wjdp/htmltest/releases/download/v${HTMLTEST_VERSION}"
+        ARCHIVE="htmltest_${HTMLTEST_VERSION}_linux_amd64.tar.gz"
+        CACHE_DIR="$HOME/.cache/htmltest"
+        mkdir -p "$CACHE_DIR"
+        cd "$CACHE_DIR"
+
+        if [ ! -f "$ARCHIVE" ]; then
+          curl -sSL -o "$ARCHIVE" "$BASE/$ARCHIVE"
+        fi
+
+        # Verify the archive on every run, whether freshly downloaded or
+        # restored from the cache. A failed check drops the cached copy so
+        # the next run downloads it again instead of failing forever.
+        curl -sSL -o checksums.txt "$BASE/htmltest_${HTMLTEST_VERSION}_checksums.txt"
+        if ! grep " ${ARCHIVE}\$" checksums.txt | sha256sum -c -; then
+          rm -f "$ARCHIVE"
+          echo "::error::htmltest ${HTMLTEST_VERSION}: checksum verification failed for ${ARCHIVE}"
+          exit 1
+        fi
+        rm -f checksums.txt
+
+        tar xzf "$ARCHIVE" -C /usr/local/bin htmltest
+        htmltest --version

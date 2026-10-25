@@ -9,6 +9,9 @@ on:
 permissions:
   contents: read
 
+env:
+  HTMLTEST_VERSION: '0.17.0' # keep in sync with lint.yml and scripts/setup.sh
+
 jobs:
   external-links:
     runs-on: ubuntu-latest
@@ -29,16 +32,10 @@ jobs:
       - name: Build Site
         run: hugo --minify --buildDrafts=false
 
-      - name: Install htmltest
-        run: |
-          HTMLTEST_VERSION=0.17.0
-          BASE="https://github.com/wjdp/htmltest/releases/download/v${HTMLTEST_VERSION}"
-          ARCHIVE="htmltest_${HTMLTEST_VERSION}_linux_amd64.tar.gz"
-          curl -sSL -o "$ARCHIVE" "$BASE/$ARCHIVE"
-          curl -sSL -o checksums.txt "$BASE/htmltest_${HTMLTEST_VERSION}_checksums.txt"
-          grep " ${ARCHIVE}\$" checksums.txt | sha256sum -c -
-          tar xzf "$ARCHIVE" -C /usr/local/bin htmltest
-          rm -f "$ARCHIVE" checksums.txt
+      - name: Setup htmltest
+        uses: ./.github/actions/setup-htmltest
+        with:
+          version: ${{ env.HTMLTEST_VERSION }}
 
       - name: Check External Links
         run: htmltest --conf .htmltest.external.yml

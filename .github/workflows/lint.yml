@@ -21,6 +21,7 @@ on:
       - '.markdownlint-cli2.yaml'
       - '.prettierrc'
       - '.github/workflows/**'
+      - '.github/actions/**'
 
 permissions:
   contents: read
@@ -28,6 +29,9 @@ permissions:
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+env:
+  HTMLTEST_VERSION: '0.17.0' # keep in sync with link-check.yml and scripts/setup.sh
 
 jobs:
   lint:
@@ -86,24 +90,10 @@ jobs:
           HUGO_CACHEDIR: /tmp/hugo_cache
         run: hugo --minify --buildDrafts=false
 
-      - name: Cache htmltest
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      - name: Setup htmltest
+        uses: ./.github/actions/setup-htmltest
         with:
-          path: /usr/local/bin/htmltest
-          key: htmltest-0.17.0
-
-      - name: Install htmltest
-        run: |
-          if [ ! -f /usr/local/bin/htmltest ]; then
-            HTMLTEST_VERSION=0.17.0
-            BASE="https://github.com/wjdp/htmltest/releases/download/v${HTMLTEST_VERSION}"
-            ARCHIVE="htmltest_${HTMLTEST_VERSION}_linux_amd64.tar.gz"
-            curl -sSL -o "$ARCHIVE" "$BASE/$ARCHIVE"
-            curl -sSL -o checksums.txt "$BASE/htmltest_${HTMLTEST_VERSION}_checksums.txt"
-            grep " ${ARCHIVE}\$" checksums.txt | sha256sum -c -
-            tar xzf "$ARCHIVE" -C /usr/local/bin htmltest
-            rm -f "$ARCHIVE" checksums.txt
-          fi
+          version: ${{ env.HTMLTEST_VERSION }}
 
       - name: HTML Validation
         # No path arg: htmltest only honours .htmltest.yml when invoked

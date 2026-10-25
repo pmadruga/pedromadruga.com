@@ -117,8 +117,13 @@ install_hugo() {
 
 install_htmltest() {
   if check_cmd htmltest; then
-    info "$(green '✓')" "htmltest already installed"
-    return
+    local current
+    current=$(htmltest --version 2>/dev/null | sed -E 's/.*v?([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+    if [ "$current" = "$HTMLTEST_VERSION" ]; then
+      info "$(green '✓')" "htmltest $HTMLTEST_VERSION already installed"
+      return
+    fi
+    dim "  Found htmltest $current, pinning $HTMLTEST_VERSION in $INSTALL_DIR"
   fi
 
   local os arch
@@ -137,10 +142,25 @@ install_htmltest() {
   green "done"
 }
 
+# The official installer creates bunx as a symlink to bun (bun checks its
+# argv[0]); installing the bare binary skips that, so make sure it exists.
+ensure_bunx() {
+  if ! check_cmd bunx; then
+    mkdir -p "$HOME/.bun/bin"
+    ln -sf "$(command -v bun)" "$HOME/.bun/bin/bunx"
+  fi
+}
+
 install_bun() {
   if check_cmd bun; then
-    info "$(green '✓')" "Bun $(bun --version) already installed"
-    return
+    local current
+    current=$(bun --version)
+    if [ "$current" = "$BUN_VERSION" ]; then
+      info "$(green '✓')" "Bun $BUN_VERSION already installed"
+      ensure_bunx
+      return
+    fi
+    dim "  Found Bun $current, pinning $BUN_VERSION in $HOME/.bun/bin"
   fi
 
   if ! check_cmd unzip; then
@@ -165,6 +185,7 @@ install_bun() {
   unzip -qo "$tmp/$archive" -d "$tmp"
   mkdir -p "$HOME/.bun/bin"
   install -m 755 "$tmp/bun-${os}-${bun_arch}/bun" "$HOME/.bun/bin/bun"
+  ln -sf bun "$HOME/.bun/bin/bunx"
   rm -rf "$tmp"
   export PATH="$HOME/.bun/bin:$PATH"
   green "done"
