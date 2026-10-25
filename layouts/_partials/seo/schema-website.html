@@ -9,10 +9,12 @@ double-encoded every string, e.g. "name":"\"Pedro Madruga\""). */ -}}
   "name": {{ .Site.Title }},
   "description": {{ .Site.Params.description }},
   "url": {{ .Site.BaseURL }},
+  {{- /* same @id as the Person block in templates/schema_json.html, so the
+  WebSite's author resolves to that fully described entity */}}
   "author": {
-    "@type": "Person",
-    "name": {{ .Site.Title }},
-    "url": {{ .Site.BaseURL }}
+    "@type": "{{ (site.Params.schema.publisherType | default "Organization") | title }}",
+    "@id": {{ printf "%s#%s" site.Home.Permalink (lower (site.Params.schema.publisherType | default "Organization")) }},
+    "name": {{ .Site.Title }}
   }
 }
 </script>

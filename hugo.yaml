@@ -27,6 +27,14 @@ imaging:
     quality: 80
     hint: 'photo'
 
+# Hugo's default lastmod chain starts with :git (the file's last commit), so
+# every housekeeping commit (alt text, lint fixes, renames) marked old posts
+# "modified today" in the sitemap, article:modified_time and the JSON-LD
+# dateModified. Drop :git; a post that is substantively revised gets an
+# explicit `lastmod:` in its front matter, otherwise lastmod = date.
+frontmatter:
+  lastmod: ['lastmod', 'date', 'publishDate']
+
 # No post uses tags or categories, so the empty /tags/ and /categories/
 # pages (and their feeds) were thin, indexable, and in the sitemap.
 disableKinds: ['taxonomy', 'term']
@@ -86,7 +94,7 @@ params:
 
   ShowReadingTime: true
   ShowShareButtons: false
-  ShowPostNavLinks: false
+  ShowPostNavLinks: true # prev/next under each post: the only post-to-post links besides the archives
   ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
   disableSpecial1stPost: false

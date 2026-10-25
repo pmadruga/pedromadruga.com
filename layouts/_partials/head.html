@@ -19,9 +19,11 @@
     {{- range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- end -}}">
 {{- end }}
 {{- /* .Summary is plainified but keeps the newlines/indentation of any
-shortcode markup it came from — collapse whitespace so the tag is clean */}}
+shortcode markup it came from — collapse whitespace so the tag is clean.
+A section with no summary (/blog/) falls back to the site description, as
+the theme's og:description already does, not to a "Title - Site" placeholder */}}
 <meta name="description" content="{{- with .Description }}{{ . }}{{- else }}{{- if or .IsPage .IsSection}}
-    {{- .Summary | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace | default (printf "%s - %s" .Title  site.Title) }}{{- else }}
+    {{- .Summary | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace | default site.Params.description }}{{- else }}
     {{- with site.Params.description }}{{ . }}{{- end }}{{- end }}{{- end -}}">
 {{- /* not partial "author.html": that override is emptied to hide the post byline */}}
 <meta name="author" content="{{ site.Params.author }}">

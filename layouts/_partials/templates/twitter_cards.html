@@ -1,0 +1,35 @@
+{{- /* Theme copy; diverges only in the image block, which takes the first
+image from _funcs/share-images.html (same source as opengraph.html) and
+adds twitter:image:alt when known. Reconcile with
+themes/PaperMod/layouts/_partials/templates/twitter_cards.html when
+updating the theme. */ -}}
+{{- with index (partial "templates/_funcs/share-images" .) 0 }}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ .url }}">
+  {{- with .alt }}
+<meta name="twitter:image:alt" content="{{ . }}">
+  {{- end }}
+{{- else }}
+<meta name="twitter:card" content="summary">
+{{- end }}
+
+{{- with or .Title site.Title site.Params.title | plainify }}
+  <meta name="twitter:title" content="{{ . }}">
+{{- end }}
+
+{{- with or .Description .Summary site.Params.description | plainify | htmlUnescape }}
+  <meta name="twitter:description" content="{{ trim . "\n\r\t " }}">
+{{- end }}
+
+{{- $twitterSite := "" }}
+{{- with site.Params.social }}
+  {{- if reflect.IsMap . }}
+    {{- with .twitter }}
+      {{- $content := . }}
+      {{- if not (strings.HasPrefix . "@") }}
+        {{- $content = printf "@%v" . }}
+      {{- end }}
+      <meta name="twitter:site" content="{{ $content }}">
+    {{- end }}
+  {{- end }}
+{{- end }}

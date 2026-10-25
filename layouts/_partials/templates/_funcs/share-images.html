@@ -1,0 +1,37 @@
+{{- /* The images a page is shared with (opengraph.html, twitter_cards.html).
+Returns a slice of dicts: url, and width/height/alt when known.
+
+Order: a front-matter `images:` list wins, so a post can supply a 1200x630
+card without changing its in-post cover; then `cover.image` (the theme's
+behaviour); then the site default from params.images via the theme's
+get-page-images. Page-bundle resources and files under static/ get their
+real dimensions; alt comes from cover.alt/cover.caption. */ -}}
+{{- $out := slice }}
+{{- $alt := (.Params.cover.alt | default .Params.cover.caption | default "") | plainify }}
+{{- if and .Params.cover.image (not .Params.images) }}
+  {{- $url := .Params.cover.image | absURL }}
+  {{- if eq .Params.cover.relative true }}
+    {{- $url = (path.Join .RelPermalink .Params.cover.image) | absURL }}
+  {{- end }}
+  {{- $item := dict "url" $url "alt" $alt }}
+  {{- with .Resources.GetMatch .Params.cover.image }}
+    {{- $item = merge $item (dict "width" .Width "height" .Height) }}
+  {{- end }}
+  {{- $out = $out | append $item }}
+{{- else }}
+  {{- range partial "templates/_funcs/get-page-images" . | first 6 }}
+    {{- $item := dict "url" .Permalink "alt" $alt }}
+    {{- with .Image }}
+      {{- $item = merge $item (dict "width" .Width "height" .Height) }}
+    {{- else }}
+      {{- $static := printf "static%s" .RelPermalink }}
+      {{- if fileExists $static }}
+        {{- with imageConfig $static }}
+          {{- $item = merge $item (dict "width" .Width "height" .Height) }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+    {{- $out = $out | append $item }}
+  {{- end }}
+{{- end }}
+{{- return $out }}
