@@ -366,8 +366,8 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          # Pin to the same version as netlify.toml, lint.yml, link-check.yml,
-          # daily-deploy.yml and scripts/setup.sh (0.168.0 at the time of
+          # Pin to the same version as netlify.toml, lint.yml, link-check.yml
+          # and scripts/setup.sh (0.168.0 at the time of
           # writing); never 'latest', or the test build would not match production.
           hugo-version: '0.168.0'
           extended: true

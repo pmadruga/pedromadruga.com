@@ -1,6 +1,8 @@
 [build]
   publish = "public"
-  command = "hugo --gc --minify"
+  # hugo --gc --minify, plus a non-empty-feed requirement when the build was
+  # started by the daily build hook (see the script).
+  command = "bash scripts/netlify-build.sh"
 
 # NODE_VERSION: the build image defaults to an ancient Node (12.x), which
 # breaks Netlify extensions (e.g. prerender pulls in puppeteer, Node >= 18)

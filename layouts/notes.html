@@ -13,7 +13,7 @@
 
   {{- /* Bluesky posts, fetched at build time from the public AT Proto API
   (no auth). Fully static — no client JS; freshness comes from the daily
-  build-and-deploy GitHub Action (.github/workflows/daily-deploy.yml).
+  Netlify build hook fired by .github/workflows/daily-deploy.yml.
   Replies are skipped; reposts show the original author with a "Reposted"
   marker. Media embeds (images/video) are NOT rendered — a hint links to
   the post on Bluesky. External-link embeds render as text cards, and
