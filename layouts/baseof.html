@@ -22,8 +22,9 @@ theme copy after npm run theme:update. */ -}}
 {{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) }}
 <body class="list" id="top">
 {{- else if and (eq .Type "blog") (eq .Kind "page") }}
-{{- /* scopes the blog-post heading font in custom_css1.css */}}
-<body class="blog-post" id="top">
+{{- /* scopes the blog-post heading font in custom_css1.css; numbered-headings
+(front matter numberedHeadings: true) turns on the CSS chapter counters */}}
+<body class="blog-post{{ if .Params.numberedHeadings }} numbered-headings{{ end }}" id="top">
 {{- else }}
 <body id="top">
 {{- end }}

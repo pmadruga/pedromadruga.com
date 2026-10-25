@@ -867,3 +867,50 @@ pre:focus-within .copy-code,
     grid-row: 2;
   }
 }
+
+/* Numbered chapters, opt-in per post (front matter numberedHeadings: true
+   → body.numbered-headings from baseof.html). CSS counters only, so the
+   heading text, anchors, RSS and schema stay unnumbered. h2 is the chapter,
+   h3 is chapter.section; the TOC's first two list levels get the same
+   numbers. Deeper levels stay unnumbered. */
+.numbered-headings .post-content {
+  counter-reset: chapter;
+}
+
+.numbered-headings .post-content h2 {
+  counter-increment: chapter;
+  counter-reset: section;
+}
+
+.numbered-headings .post-content h2::before {
+  content: counter(chapter) '. ';
+}
+
+.numbered-headings .post-content h3 {
+  counter-increment: section;
+}
+
+.numbered-headings .post-content h3::before {
+  content: counter(chapter) '.' counter(section) ' ';
+}
+
+.numbered-headings .toc .inner > ul {
+  counter-reset: toc-chapter;
+}
+
+.numbered-headings .toc .inner > ul > li {
+  counter-increment: toc-chapter;
+  counter-reset: toc-section;
+}
+
+.numbered-headings .toc .inner > ul > li > a::before {
+  content: counter(toc-chapter) '. ';
+}
+
+.numbered-headings .toc .inner > ul > li > ul > li {
+  counter-increment: toc-section;
+}
+
+.numbered-headings .toc .inner > ul > li > ul > li > a::before {
+  content: counter(toc-chapter) '.' counter(toc-section) ' ';
+}
