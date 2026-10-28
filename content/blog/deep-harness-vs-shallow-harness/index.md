@@ -12,7 +12,7 @@ lastmod: '2026-10-25'
 
 ## Intro
 
-When we first saw ChatGPT's launch in November 2022, we were able to interact with it via a chat interface. But the interfaces where we interact with LLMs seem different, despite at the surface looking similar to what is was back then.
+When we first saw ChatGPT's launch in November 2022, we were able to interact with it via a chat interface. But the interfaces where we interact with LLMs seem different, despite at the surface looking similar to what it was back then.
 
 These interfaces seem more complex now. And that's because they have become so under the hood. There are agents, subagents, connectors, memory and so on. The breadth of capabilities around the model have increased exponentially whereas at the same time the models' quality (ie, depth) have also gone up over the years.
 
@@ -61,9 +61,9 @@ In other words, the harness outer layer is capable of increasing a system qualit
 
 ### Shallow and Deep Harness in agentic coding
 
-We've dived into the different layers of an harness and it's now obvious that different layers have different depth: some are shallow, some are deep.
+We've dived into the different layers of a harness and it's now obvious that different layers have different depth: some are shallow, some are deep.
 
-The volume and complexity of properties and mechanisms in a harness determine it's depth. If the two layers mentioned above are thick, then the difference becomes noticeable.
+The volume and complexity of properties and mechanisms in a harness determine its depth. If the two layers mentioned above are thick, then the difference becomes noticeable.
 
 And going back to the very beginning of this article where I mentioned that, despite the UI from ChatGPT remaining somewhat the same since 2022, we all understand that there's much more functionality under the hood. The layers and depth is what makes applications like ChatGPT, Codex, Claude Code and others rich in terms of functionality, despite that at the end of the day it's "just" a conversational interface.
 
@@ -75,13 +75,13 @@ But a legal harness has a context. Let's get to what that means.
 
 ### The lawyer's flow
 
-In order for this bridge between agentic coding and legal domain to happen, a brief intro to the laywer's flow is needed. It's imperative to understand how a lawyer works because it sets the foundation of how the legal harness is setup, how it's depth varies - specially when comparing a single tool that a laywer uses compared to an entire set of workflow tools.
+In order for this bridge between agentic coding and legal domain to happen, a brief intro to the lawyer's flow is needed. It's imperative to understand how a lawyer works because it sets the foundation of how the legal harness is set up, how its depth varies - specially when comparing a single tool that a lawyer uses compared to an entire set of workflow tools.
 
-So how does a laywer work? What's their flow?
+So how does a lawyer work? What's their flow?
 
 For the sake of simplicity, and because not everyone reading this has legal domain expertise, I'm keeping the explanation at a high level. It's still enough to bridge between this and the legal harness.
 
-Typically, the main phases of the work of a legal practicioner are defined as: intake, planning, research and drafting.
+Typically, the main phases of the work of a legal practitioner are defined as: intake, planning, research and drafting.
 
 For example, let's assume a lawyer is working on a case. The lawyer needs to collect all the information relevant to that case (that's typically information that is provided by the client but not exclusive). That's intake.
 
@@ -90,7 +90,7 @@ In the planning phase, the lawyer is building a plan for subsequent actions like
 When in the legal research phase, the lawyer looks at the different legal sources (laws, verdicts, directives, etc) that can be applicable to a case.
 
 
-The drafting phase is where the lawyer produces a document, which can include information from all the other phases. It's the combination of all the accumulated knowledge whithin this case. Ultimately, the lawyer will take this (or these) documents to court. Again, I'm simplifying here.
+The drafting phase is where the lawyer produces a document, which can include information from all the other phases. It's the combination of all the accumulated knowledge within this case. Ultimately, the lawyer will take this (or these) documents to court. Again, I'm simplifying here.
 
 This is a very high-level explanation of the lawyer's flow and it's also important to know that it's not a linear flow: the lawyers go back and forth between the different phases.
 
@@ -100,7 +100,7 @@ It's now time to transpose this knowledge and create a legal harness.
 
 ### Legal Harness
 
-Because the layer's flow has different phases - and because we're using a Domain Driven AI approach -, it's necessary to understand how to build harnesses that reflect that flow.
+Because the lawyer's flow has different phases - and because we're using a Domain Driven AI approach -, it's necessary to understand how to build harnesses that reflect that flow.
 
 The two layers that compose the agentic coding harness - the inner layer (the builder's layer) and the outer layer (the user's layer) differs substantially when creating a legal harness. This is because these layers need to reflect which phase(s) of the lawyer's flow is in.
 
@@ -108,82 +108,121 @@ By now, it's becoming clear that an AI system whose harness is built for a legal
 
 Let's look at how different they are.
 
-### Legal Shallow Harness
+### Shallow Legal Harness
 
 In the legal industry almost all the companies dipped their foot in the Generative AI world by launching a legal assistant. It was the natural first step: using a conversational assistant to fetch legal sources - and generate answers based on these - was sort of a ChatGPT version with a legal tone.
 
-For the skeptical ones, it was a "glorified chatbot" but those failed to see the potential of it: it was able to leverage companies' content compared to the embedded knowledge of LLMs.
+For the skeptical ones, it was a "glorified chatbot" but those failed to see the potential of it: it was able to leverage companies' content compared to the embedded knowledge of LLMs. Also because LLMs tend to hallucinate quite a lot and, in an industry where factuality is critical, this becomes a liability.
 
-Nonetheless, it envolved a single trajectory of decisions in a mostly unidirectional flow. In other words, it's a single conversational interaction where the output is the answer. It doesn't require deep orchestration of agent because ultimately it's a single or small number of agents, at most.
+So, content to the rescue and RAG was all the rage to get it.  
 
-Recalling the diagram from before, the harness outer layer is rather shallow since the interaction with the system is mostly via an input and a chat history of this single-layered conversation.
+But a conversational legal research assistant works in a mostly unidirectional flow: user asks a question and gets an answer, based on sources. And that works well for that specific use-case: a user needs clarification.
+
+If the goal is to extend it to create entire documents then the flow starts having flaws because the answer section is not really a document to be created.
+Some legal assistants *can* create documents from the answers.
+
+Either the goal is to generate answers or generate documents - not both. When both are attempted it becomes confusing for the user what can be done. Anecdotally, I've tried using ChatGPT back in the day for a purpose like this: from a conversation up trying to generate full documents.
+
+What happened is that I ended up trying to improve the document from the conversation input box. This, in turn, resulted in changing parts of the document I didn't want to change. I was missing the ability to edit a document in a localized manner.
+
+Later on, it was possible to do inline edits in generated drafts. But the purpose was still confusing: was I getting answers or was I editing a file?
+
+Nowadays, UIs have improved and there's editing tools inline as well as several other strategies that *try* to improve the process.
+
+Nonetheless, from a legal domain tooling standpoint, a conversational legal research assistant is simply one small piece of the lawyer's workflow. In reality, as discussed before in this blogpost, this workflow is composed of many tools.
 
 ![](legal-shallow-harness-v4.svg)
 
+A single tool in this workflow is disconnected from the entire workflow. The legal research tool is fundamentally important and central to the rest of the workflow but lawyer's workflow is very much interconnected between the different phases. We'll get to that in a bit.
 
-### Legal Deep Harness
+Recalling the diagram from before with the different layers of a harness, the legal harness's outer layer of a single workflow tool like the legal research assistant is rather shallow since the interaction with the system is mostly via an input and a chat history of this single-layered conversation: it's lacking the richness of the user harness that other tools provide (when properly connected).
 
-On the other hand, a Legal Deep Harness contains everything that a lawyers flow includes. And it's more than just a set of different agents. In this harness, the User layer is much more present and impactful to the system itself. At the very center, there's a knowledge-base which is something a Legal Shallow Harness doesn't typically have - and if it does, it's very much encapsulated to one phase of the lawyer's flow so the harness outer layer is shallow and the feedback mechanisms mentioned before in this post don't apply.
+Next, let's see how it looks like when (almost) all the tools are present. But most importantly, let's see an AI system's architecture that has been contemplated from the ground up in order to reflect the lawyer's workflow as closely as possible.
+
+
+### Deep Legal Harness
+
+On the other hand, a complete Deep Legal Harness contains everything that a lawyer's flow includes. And it's more than just a set of different agents. In this harness, the user layer is much more present and impactful to the system itself.
+
+This is because the user can now interact with many different tools (typically represented by agents and sub-agents). Most importantly, the changes in one side of the system need to be propagated to the rest of the system, and then the system returns back: the feedforward and feedback mechanisms we've talked before.
+
+How to make this system communicate between these tools - and to the user?
+
+This is where the knowledge-base comes in, and it's probably the major defining factor between a deep and a shallow harness - within a legal context, of course.
+This is how a deep legal harness looks, from a high-level perspective.
 
 ![](legal-deep-harness-v3.svg)
 
-The chart above is not enough to explain how the Legal Deep Harness works. We have to deconstruct into smaller parts to understand the differences between these different harnesses.
+For the sake of simplicity, there are parts (agents) being omitted in this chart, because it's much more complex than this. There are many more variables at hand that makes the harness deep.
+
+But even at a high-level, this chart is not enough to explain how the Deep Legal Harness works. We have to deconstruct into smaller parts to understand what makes a deep legal harness to actually be considered deep.
 
 
 ## Knowledge-base: a third-dimension in data sources
 
 In industries that rely heavily on proprietary content, there are typically two data sources:
 
-- 1st data source. This includes proprietary but also non-proprietary content. In the legal industry the non-proprietary content can be laws, directives, verdicts and so on. The proprietary content may vary in this industry but it can include books from certain authors as well as notes from experts.
-- 2nd data source. This includes the documents that users upload and then become part of the system.
+- 1st data source: This includes proprietary but also non-proprietary content. In the legal industry the non-proprietary content can be laws, directives, verdicts and so on. The proprietary content may vary in this industry but it can include books from certain authors as well as notes from experts.
+- 2nd data source: This includes the documents that users upload and then become part of the system.
 
-Any harness can merge these two into the system, despite not being a trivial task. For example, an agent might want just *some* information from the 1st data source and *some* information from the second data source. That requires a refined selection of the most relevant information as well as a merge of these, by the agent. The output then becomes either the answer in a shallow harness and a document plus an answer in the deep harness.
+Any harness can merge these two into the system, despite not being a trivial task when done right.
 
-But in an orchestracted workflow there's a new set of content being created.That's the content being created while the user interacts with this harness, including inputs, outputs and all communication between the different parts of a system. These parts of the system can be chat responses and generated documents.
+For example, an agent might want just *some* information from the 1st data source and *some* information from the second data source. That requires a refined selection of the most relevant information as well as a merge of these, by the agent. The output then becomes either the answer in a shallow harness and a document plus an answer in the deep harness.
 
-This is the 3rd data source: the knowledge base.
+But in an orchestrated workflow there's a new set of content being created. That's the content being created while the user interacts with this harness, including inputs, outputs and all communication between the different parts of a system. These parts of the system can be chat responses and generated documents.
 
-This third-dimension of the data sources that power a harness is only present in orchestrated multi-agent systems such as legal deep harnesses. It contains **everything* that both the AI and the user have created in the harness. **Everything** means: all the queries by the user, all the answers by the AI system, all the follow-up questions suggested, all the selections of the follow-up questions by the user, all the logic and internal decisions by the agents. Everything.
+This is the 3rd data source: the knowledge-base.
 
-In a complete laywer's flow, where they have to plan, do legal research, draft documents, it's impossible to keep track of all the changes to all the documents that has been done.
+It contains **everything** that both the AI and the user have created in the harness. **Everything** means: all the queries by the user, all the answers by the AI system, all the follow-up questions suggested, all the selections of the follow-up questions by the user, all the logic and internal decisions by the agents.
 
-In a legal deep harness, the AI has that capability. And this opens the road for an even better understanding of the system - superior to what a human has.
+It's a complete picture of the system at a given point in time.
 
-This creates an entire new world of possibilities that the AI can provide to the user. It can understand the user in a way that helps them finding blindspots in the documents produced in that workflow. It can provide much better suggestions resulting in a powerful human-in-the-loop. The list goes on.
+In the lawyer's flow, where they have to plan, do legal research, draft documents, it's impossible to keep track of all the changes to all the documents that have been done.
 
-The AI system becomes a true companion to the user.
+But in a deep legal harness, the AI has that capability, thus opening the road for an even better understanding of the system - superior to what a human has.
+
+Moreover, this creates an entire new world of possibilities that the AI can provide to the user. Here are some examples of what it can do:
+
+1. Understand the user in a way that helps them find blind spots (for example) in the documents produced in that workflow;
+2. Transparency to the user on the decisions by the system. For example, the reasoning in the answers to the user becomes much more concrete.  
+2. Provide much better suggestions resulting in a drastically more powerful and all-knowing human-in-the-loop;
+3. Create "adversarial lawyering" scenarios where (for example) a defence lawyer can generate the documents a prosecution lawyer would create - and then compare and improve its own documents.
+
+The list goes on.
+
+The main take is that the knowledge-base handles a cognitive model bigger than the human. In this scenario, the AI system becomes a true companion to the user.
+
 
 ## Memory: a knowledge-base over time
 
-When a system made of interactions between it's different components, it becomes obvious on why memory becomes relevant. As a personal anecdote, I find it interesting that one of the things that makes me stay using Claude and especially Claude Code is memory. It's a personal feature of that harness that simplifies and speeds up my work a lot.
+I keep using Claude, and especially Claude Code, because of how it handles memory. It's a personal feature of that harness that simplifies and speeds up my work a lot. It has an ability to "understand" the most important parts of my interaction with the harness - and use it to improve my experience. Again, the feedforward and feedback mechanism visibly at play here.
 
-As a human, it's very hard to keep a mental model of everything that has happened within a given session. That means all the changes that happened for every single file change, at any moment in time.
-
-In a shallow harness such as an assistant, the memory is usually either the chat history or the combined chat history. But an assistant is a narrow way of determining what the user wants. It goes in depth and less in breadth.
-
-A deep harness goes both in depth and in breadth. And a memory now has a birds eye view.
-
-A good example of this is Github Copilot vs Claude Code. In Github Copilot the user is typically editing a single file. of course, the user can increase the scope of other files in order to edit a single file, but that's not memory. That's just context.
+If we think of the knowledge base as a picture of the system at a given time, then memory is the combination of all the pictures. It's a movie of everything that has happened over time.
 
 ![](legal-deep-harness-perspective-v4.svg)
 
-### Memory as the creation of intellectual property
 
-It's not about storing data because that's not possible, but rather the mechanisms that.... meeehhhhhh
+In a shallow harness such as an assistant, the memory is usually the chat history of a session. A single-task assistant is a narrow way of determining what the user wants: it may go in depth (in a single task of a single tool), but rarely in breadth (in several tasks over multiple tools).
+
+A deep legal harness goes both in depth and in breadth: it's a complete understanding of the system.
+
+An analogy to this depth and breadth is GitHub Copilot and Claude Code. In GitHub Copilot the user is typically editing a single file. Of course, the user can increase the scope of other files in order to edit a single file, but that's not memory. That's just context.
+
+This is why Claude Code is so appealing: it's not just context but rather a combination of all the properties of a harness, working well together.
 
 ## Retrieval is different between sources
 
-Retrieval for 1st data source
+We saw before the three types of sources in a deep legal harness.
 
-## Specialized agents and subagents - the end of the "larger models"
+## Specialized agents
 
-In the deep harness, the AI system becomes a combination of smaller, specialized agents. And because each agent becomes more and more specialized, it reduces the need for larger and generic models. Why have Fable when potentially Sonnet or an open model can do the same task, potentially better, and even reducing costs.
+In the deep harness, the AI system becomes a combination of smaller, specialized agents. As each agent becomes more and more specialized, it narrows the need for larger and generic models. Why have Fable when potentially Sonnet or an open model can do the same task, potentially better, and even reducing costs?
 
 In a traditional mindset of RAG, typical of a shallow harness, the two data sources of the system are combined in a way that produces an answer to the user. Since the system is not composed of several agents and subagents specialized in smaller tasks - because that would be an overkill for such harness - there's a heavy reliance on larger models to do the task.
 
 ## Communication is key
 
-When having all these agents and sub-agents, it's essential to have proper communication between them.
+When having all these agents, it's essential to have proper communication between them.
 
 I find it interesting that, in the OpenAI hack of Hugging Face, the agents found a way to communicate among themselves via a message board that they found. Albeit a very different purpose, the agents used this message board as their knowledge base. And it worked quite well.
 
@@ -193,106 +232,41 @@ A well-orchestrated set of agents in a deep harness AI system requires the commu
 
 This problem is almost inexistent in a shallow harness too. There's only so few agents in the system already that the operation mode is not a problem. At most, there's a routing agent redirecting tasks to the right agent, but the flow happens in a unidirectional way, as we've mentioned before in this blogpost.
 
-A side note: the OpenAI hack was very interesting, despite being a case where the agents went completely out-of-control. It gave a peak on how would these agents operate in a scenario like this but it was also a good lesson on how to implement even further guardrails on how to secure AI systems. I recommend this video/podcast episode: a +2hour talk with a researcher on the details of the attack. https://www.youtube.com/watch?v=X50zezLFWWI
-
-So how do you go about understanding deeper harness and how do they differ from a shallow harness? Let's take a look.
+A side note: the OpenAI hack was very interesting, despite being a case where the agents went completely out-of-control. It gave a peek on how would these agents operate in a scenario like this but it was also a good lesson on how to implement even further guardrails on how to secure AI systems. I recommend this video/podcast episode: a +2hour talk with a researcher on the details of the attack. https://www.youtube.com/watch?v=X50zezLFWWI
 
 
 ## Evaluation
 
-In a shallow harness, evaluation is typically made by scoring the inputs and outputs of the AI system: typically, there's a golden dataset with questions and answers.
+For most legacy systems, evaluation is typically made by scoring the inputs and outputs of the AI system, based on a golden dataset with questions and answers.
 
-In a deep harness AI system, evaluation needs to be compartimentilized in order to be evaluated. And at the same time, the system needs to be evaluated as a whole.
+In a deep harness AI system, evaluation needs to be compartmentalized in order to be evaluated. And at the same time, the system needs to be evaluated as a whole.
 
 But how to go about doing granular and general evaluation of such system?  
 
-The agents should be evaluated at an individual level: their inputs, their outputs, and every step in-between. Even every decision process needs to be evaluated. Luckily, some of these processes can be automated and scored in a deterministic way. Others, rely on LLMs for these evals. And lastly, some rely human manual supervision.
+The agents should be evaluated at an individual level: their inputs, their outputs, and every step in-between. Even every decision process needs to be evaluated. Luckily, some of these processes can be automated and scored in a deterministic way. Others, rely on LLMs for these evals. And lastly, some rely on human manual supervision.
 
 The rule of thumb I have been using is to identify the critical parts of the system (ie, agents that have more complexity and responsibility) and set a higher number of safeguards around those: deterministic, non-deterministic and manual.
 
-Because AI-based applications are domain knowledge-heavy, I expose legal domain experts to be as confortable as possible to tools like LangFuse in order for them to understand the system as well. As I've written before, I'm a firm believer of domain-driven AI.
+Because AI-based applications are domain knowledge-heavy, I expose legal domain experts to be as comfortable as possible to tools like LangFuse in order for them to understand the system as well. As I've written before, I'm a firm believer of domain-driven AI.
 
 
 ## Conclusion
 
-I've now created and worked AI systems in production that are both shallow and deep harness. One obvious learning is that, in the legal domain where the application needs to mimic lawyer's flow, it's a complete shift from going a shallow harness into a deep harness: it's one thing to work in a single step of the lawyer's flow; another completely different is to work on the entire workflow mostly because it's incredibly connected.
+I've now created and worked with harnesses in production that are both shallow and deep harness. One obvious learning is that, in the legal domain where the application needs to mimic lawyer's flow, it's a complete shift from going a shallow harness into a deep harness: it's one thing to work in a single step of the lawyer's flow; another completely different is to work on the entire workflow mostly because it's the result of the interaction of the tools (and the tools with the user).
 
 Another learning is that the deep harness AI systems are capable of an understanding of the user that is potentially even higher than the user itself. This opens the road for several risks and opportunities. That's why a deep focus on evaluation and inclusion of stakeholders in that process is fundamental for the understanding and control of these systems.
 
-All these things combined create a depth of the harness that not only improves the system by looking at it as whole, but also creates intelectual property that other harnesses cannot have.
 
 ---
 
-<!-- markdownlint-disable MD024 -->
-
-### Loose Notes
-
-When all you have done is work in a single assistant, youll miss the benefit of memory and even local models.
-12:20 PM
-
-it only works from the ground up, not when an assistant is expanded into a workflow tools. that would be the same as building an isolated component and try to force every other tool into this component
-
-evaluation is unidimensional in the assistant
-
-an assistant is reactive
-
-a workflow tool is proactive - many tasks can be done offline, where it can analyse the system as whole
-8:27 PM
-
-when comparing a shallow harness vs a deep harness think of copilot vs claude code; think of claude.ai answers VS claude cowork
-8:34 PM
-
-the deep harness is a bi-directional path of decisions whereas the single agent is a unidirectional path of a single decision
-
----
-
-#### Definitions
-
-- Define the context
-  - legal industry
-  - although a few things generalize from the legal industry to the rest
-  - A legal workflow tool contains (at least) a research, drafting, a planning and an intake tools
-
-##### Assistant
-
-- Conversational assistant, mostly for research
-- One LLM for the heaviest task, often using a typical loop-call
-
-##### What is a harness
-
-##### Orchestrated tool
-
-- Think when claude code spawns a team of agents
-- introduce graph engineering
-
-#### Changing the mindset
-
-- from single-task assistant to workflow tool
-- It's a comparison between
-
-#### There is no planning in a legal assistant, so it's not a harness
-
-#### The 3rd data source
-
-- Explain what other sources are there first
-- Explain what is the 3rd data source
-- They create, change and interact with generated artifacts
-- Include a diagram
-- moat creation
-
-#### Specialized coordinated agents vs one-size-tries-all agent
-
-#### Memory
-
-- Memory compression is, in a single task assistant, most of the times unnecessary. And when it exists, it's not necessary complex. In an orchestrated set of agents
 
 #### The single-task mindset
 
 - Because one big model is used, it's a misconception that large models cannot be replaced with local models. But in a workflow, agents are way more specialized
 - When you have a single-tasked set of agents it's easy to rely on one big model to basically do the heaviest task. In an orchestrated set of agents, the tasks are much more specialized, so the need for heavier models
-- The ones who don't understand orchestrated agents missunderstand the power of specialized models, which then opens the road for the usage of local small finetuned models. The single-taskers are typically against local models and are usually the reason why local models' proponents
+- The ones who don't understand orchestrated agents misunderstand the power of specialized models, which then opens the road for the usage of local small finetuned models. The single-taskers are typically against local models and are usually the reason why local models' proponents
 
 #### Conclusion
 
-- Workflow allows for better depth and bredth
+- Workflow allows for better depth and breadth
 - The complexity increase comes by nature, but when you isolate components it becomes actually easier understand each of the agents, specially if they can be traced properly - something that I'll write about in the future.
