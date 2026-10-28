@@ -202,27 +202,21 @@ This is why Claude Code is so appealing: it's not just context but rather a comb
 
 ## Retrieval is different between sources
 
-We saw before the three types of sources in a deep legal harness.
+We saw before the three types of sources in a deep legal harness. Because sources are so different from one another, it's necessary to have different informational retrieval logic for each source.
+
+This is because each type of source is parsed, index, enriched in different ways. And that makes sense because they serve different purposes: an uploaded document serves a different purpose than the knowledge base, and so on.
+
+In the diagram of the deep harness from before, there are retrieval steps (typically performed by agents) that have been omitted, in order to keep the simplicity of the document.
+
+The reality is that those retrieval steps exist and they're essential. But most importantly, in a deep harness they have to be well-connected among them, since they need to retrieve content in the context of the harness, and not isolated from one another.
 
 ## Specialized agents
 
-In the deep harness, the AI system becomes a combination of smaller, specialized agents. As each agent becomes more and more specialized, it narrows the need for larger and generic models. Why have Fable when potentially Sonnet or an open model can do the same task, potentially better, and even reducing costs?
+In the deep harness, the AI system becomes a combination of smaller, specialized agents. As each agent becomes more and more specialized, it narrows the need for larger and generic models. For example: why have Claude Fable when potentially Sonnet or an open model can do the same task, potentially better, and even reducing costs?
 
-In a traditional mindset of RAG, typical of a shallow harness, the two data sources of the system are combined in a way that produces an answer to the user. Since the system is not composed of several agents and subagents specialized in smaller tasks - because that would be an overkill for such harness - there's a heavy reliance on larger models to do the task.
+In a traditional mindset of RAG, typical of a shallow harness, the two data sources of the system are combined in a way that produces an answer to the user.
 
-## Communication is key
-
-When having all these agents, it's essential to have proper communication between them.
-
-I find it interesting that, in the OpenAI hack of Hugging Face, the agents found a way to communicate among themselves via a message board that they found. Albeit a very different purpose, the agents used this message board as their knowledge base. And it worked quite well.
-
-But the communication between agents is still a tough nut to crack. There are several frameworks that can do that but at the same time there are papers saying that we should be careful with this -- explain why and which paper(s) --.
-
-A well-orchestrated set of agents in a deep harness AI system requires the communication to be well done. It's not only how they communicate but also how they operate: do they have a democratic decision process by using a voting mechanism for decisions or should it be a top-down approach where one agent decides and others just communicate status to the main agent?
-
-This problem is almost inexistent in a shallow harness too. There's only so few agents in the system already that the operation mode is not a problem. At most, there's a routing agent redirecting tasks to the right agent, but the flow happens in a unidirectional way, as we've mentioned before in this blogpost.
-
-A side note: the OpenAI hack was very interesting, despite being a case where the agents went completely out-of-control. It gave a peek on how would these agents operate in a scenario like this but it was also a good lesson on how to implement even further guardrails on how to secure AI systems. I recommend this video/podcast episode: a +2hour talk with a researcher on the details of the attack. https://www.youtube.com/watch?v=X50zezLFWWI
+Since the system is not composed of several agents and subagents specialized in smaller tasks - because that would be an overkill for such harness - there's a heavy reliance on larger models to do the task.
 
 
 ## Evaluation
@@ -231,7 +225,7 @@ For most legacy systems, evaluation is typically made by scoring the inputs and 
 
 In a deep harness AI system, evaluation needs to be compartmentalized in order to be evaluated. And at the same time, the system needs to be evaluated as a whole.
 
-But how to go about doing granular and general evaluation of such system?  
+But how to go about doing granular and general evaluation of such system? You have the break the system into a 1000 pieces - and only then evaluate.  
 
 The agents should be evaluated at an individual level: their inputs, their outputs, and every step in-between. Even every decision process needs to be evaluated. Luckily, some of these processes can be automated and scored in a deterministic way. Others, rely on LLMs for these evals. And lastly, some rely on human manual supervision.
 
@@ -260,3 +254,18 @@ Another learning is that the deep harness AI systems are capable of an understan
 
 - Workflow allows for better depth and breadth
 - The complexity increase comes by nature, but when you isolate components it becomes actually easier understand each of the agents, specially if they can be traced properly - something that I'll write about in the future.
+
+## Communication is key
+
+When having all these agents, it's essential to have proper communication between them.
+
+I find it interesting that, in the OpenAI hack of Hugging Face, the agents found a way to communicate among themselves via a message board that they found. Albeit a very different purpose, the agents used this message board as their knowledge base. And it worked quite well.
+
+But the communication between agents is still a tough nut to crack. There are several frameworks that can do that but at the same time there are papers saying that we should be careful with this -- explain why and which paper(s) --.
+
+A well-orchestrated set of agents in a deep harness AI system requires the communication to be well done. It's not only how they communicate but also how they operate: do they have a democratic decision process by using a voting mechanism for decisions or should it be a top-down approach where one agent decides and others just communicate status to the main agent?
+
+This problem is almost inexistent in a shallow harness too. There's only so few agents in the system already that the operation mode is not a problem. At most, there's a routing agent redirecting tasks to the right agent, but the flow happens in a unidirectional way, as we've mentioned before in this blogpost.
+
+A side note: the OpenAI hack was very interesting, despite being a case where the agents went completely out-of-control. It gave a peek on how would these agents operate in a scenario like this but it was also a good lesson on how to implement even further guardrails on how to secure AI systems. I recommend this video/podcast episode: a +2hour talk with a researcher on the details of the attack. https://www.youtube.com/watch?v=X50zezLFWWI
+
