@@ -1,13 +1,13 @@
 ---
-title: 'Deep Harness vs Shallow Harness'
-summary: 'While the industry is moving from single-action assistants to orchestrated workflows. No AI was used to write this article.'
+title: 'From Shallow to Deep: Building a Legal AI Harness'
+summary: 'The legal industry is moving from single-action assistants to orchestrated workflows. No AI was used to write this article.'
 description: 'hello world'
 showtoc: true
 tocopen: false
 numberedHeadings: true
 draft: true
 date: '2026-09-30'
-lastmod: '2026-10-25'
+lastmod: '2026-10-28'
 ---
 
 ## Intro
@@ -89,7 +89,6 @@ In the planning phase, the lawyer is building a plan for subsequent actions like
 
 When in the legal research phase, the lawyer looks at the different legal sources (laws, verdicts, directives, etc) that can be applicable to a case.
 
-
 The drafting phase is where the lawyer produces a document, which can include information from all the other phases. It's the combination of all the accumulated knowledge within this case. Ultimately, the lawyer will take this (or these) documents to court. Again, I'm simplifying here.
 
 This is a very high-level explanation of the lawyer's flow and it's also important to know that it's not a linear flow: the lawyers go back and forth between the different phases.
@@ -110,24 +109,15 @@ Let's look at how different they are.
 
 ### Shallow Legal Harness
 
-In the legal industry almost all the companies dipped their foot in the Generative AI world by launching a legal assistant. It was the natural first step: using a conversational assistant to fetch legal sources - and generate answers based on these - was sort of a ChatGPT version with a legal tone.
+In the legal industry almost all the companies dipped their foot in the Generative AI world by launching a legal assistant. It was the natural first step: using a conversational assistant to fetch legal sources, and generate answers based on these same sources.
 
-For the skeptical ones, it was a "glorified chatbot" but those failed to see the potential of it: it was able to leverage companies' content compared to the embedded knowledge of LLMs. Also because LLMs tend to hallucinate quite a lot and, in an industry where factuality is critical, this becomes a liability.
+A legal assistant was able to leverage companies' content compared to the embedded knowledge of LLMs and, because LLMs tend to hallucinate quite a lot and, in an industry where factuality is critical, it only made sense to have a legal research assistant. Something trustworthy.
 
-So, content to the rescue and RAG was all the rage to get it.  
+A conversational legal research assistant works in a mostly unidirectional flow: user asks a question and gets an answer, based on sources. And that works well for that specific use-case: a user needs clarification.
 
-But a conversational legal research assistant works in a mostly unidirectional flow: user asks a question and gets an answer, based on sources. And that works well for that specific use-case: a user needs clarification.
+If the goal is to extend it to create entire documents then the flow starts having flaws because the answer's intent is not to generate a document to be created. It may create a document with several pages - potentially even at double digits - but it doesn't scale to large documents. This is because a conversational assistant's goal is to generate answers - more than that is out of the initial intent.
 
-If the goal is to extend it to create entire documents then the flow starts having flaws because the answer section is not really a document to be created.
-Some legal assistants *can* create documents from the answers.
-
-Either the goal is to generate answers or generate documents - not both. When both are attempted it becomes confusing for the user what can be done. Anecdotally, I've tried using ChatGPT back in the day for a purpose like this: from a conversation up trying to generate full documents.
-
-What happened is that I ended up trying to improve the document from the conversation input box. This, in turn, resulted in changing parts of the document I didn't want to change. I was missing the ability to edit a document in a localized manner.
-
-Later on, it was possible to do inline edits in generated drafts. But the purpose was still confusing: was I getting answers or was I editing a file?
-
-Nowadays, UIs have improved and there's editing tools inline as well as several other strategies that *try* to improve the process.
+Nowadays, UIs have improved and there's editing tools inline as well as several other strategies that *try* to improve the process. But even generating documents
 
 Nonetheless, from a legal domain tooling standpoint, a conversational legal research assistant is simply one small piece of the lawyer's workflow. In reality, as discussed before in this blogpost, this workflow is composed of many tools.
 
@@ -185,8 +175,8 @@ Moreover, this creates an entire new world of possibilities that the AI can prov
 
 1. Understand the user in a way that helps them find blind spots (for example) in the documents produced in that workflow;
 2. Transparency to the user on the decisions by the system. For example, the reasoning in the answers to the user becomes much more concrete.  
-2. Provide much better suggestions resulting in a drastically more powerful and all-knowing human-in-the-loop;
-3. Create "adversarial lawyering" scenarios where (for example) a defence lawyer can generate the documents a prosecution lawyer would create - and then compare and improve its own documents.
+3. Provide much better suggestions resulting in a drastically more powerful and all-knowing human-in-the-loop;
+4. Create "adversarial lawyering" scenarios where (for example) a defence lawyer can generate the documents a prosecution lawyer would create - and then compare and improve its own documents.
 
 The list goes on.
 
@@ -260,13 +250,13 @@ Another learning is that the deep harness AI systems are capable of an understan
 ---
 
 
-#### The single-task mindset
+### The single-task mindset
 
 - Because one big model is used, it's a misconception that large models cannot be replaced with local models. But in a workflow, agents are way more specialized
 - When you have a single-tasked set of agents it's easy to rely on one big model to basically do the heaviest task. In an orchestrated set of agents, the tasks are much more specialized, so the need for heavier models
 - The ones who don't understand orchestrated agents misunderstand the power of specialized models, which then opens the road for the usage of local small finetuned models. The single-taskers are typically against local models and are usually the reason why local models' proponents
 
-#### Conclusion
+### Conclusion
 
 - Workflow allows for better depth and breadth
 - The complexity increase comes by nature, but when you isolate components it becomes actually easier understand each of the agents, specially if they can be traced properly - something that I'll write about in the future.
