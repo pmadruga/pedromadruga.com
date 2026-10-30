@@ -133,10 +133,10 @@ The legal research tool is fundamentally important and central to the rest of th
 
 In reality, this workflow is composed of many tools that reflect how lawyers work.
 
-Let's now look at an AI system's architecture that has been contemplated from the ground up in order to reflect the lawyer's workflow as closely as possible.
+Let's now look at the different parts that an AI system's architecture contemplated from the ground up in order to reflect the lawyer's workflow as closely as possible.
 
 
-### Deep Legal Harness
+## Deep Legal Harness
 
 A Deep Legal Harness contains everything that a lawyer's flow includes. And it's more than just a set of different agents. In this harness, the user layer is much present and impactful to the system itself.
 
@@ -157,7 +157,7 @@ For the sake of simplicity, there are parts being omitted in this visualization,
 In order to understand what makes a Deep Legal Harness to be considered deep, we have to deconstruct its architecture into several small parts. These parts are the major focus of the rest of this article.
 
 
-## Knowledge base: a third-dimension in data sources
+### Knowledge base: a third-dimension in data sources
 
 In industries that rely heavily on proprietary content, there are typically two data sources:
 
@@ -194,7 +194,7 @@ The list goes on.
 The main take is that the knowledge base handles a cognitive model bigger than the human. In this scenario, the AI system becomes a true companion to the user.
 
 
-## Memory: a knowledge base over time
+### Memory: a knowledge base over time
 
 I keep using Claude, and especially Claude Code, because of how it handles memory. It's a personal feature of that harness that simplifies and speeds up my work a lot. It has an ability to "understand" the most important parts of my interaction with the harness - and use it to improve my experience. Again, the feedforward and feedback mechanism visibly at play here.
 
@@ -213,7 +213,7 @@ An analogy to this depth and breadth is GitHub Copilot and Claude Code. In GitHu
 
 This is why Claude Code is so appealing: it's not just context but rather a combination of all the properties of a harness, working well together.
 
-## Retrieval is different between sources
+### Retrieval is different between sources
 
 We saw before the three types of sources in a Deep Legal Harness. Because sources are so different from one another, it's necessary to have different informational retrieval logic for each source.
 
@@ -223,7 +223,7 @@ In the diagram of the Deep Legal Harness from before, there are retrieval steps 
 
 The reality is that those retrieval steps exist and they're essential. But most importantly, in a Deep Legal Harness they have to be well-connected among them, since they need to retrieve content in the context of the harness, and not isolated from one another.
 
-## Specialized agents
+### Specialized agents
 
 In the Deep Legal Harness, the AI system becomes a combination of smaller, specialized agents. As each agent becomes more and more specialized, it narrows the need for larger and generic models.
 
@@ -238,7 +238,7 @@ For Shallow Legal Harness, it's quite normal that there's a "large model" that d
 In a Shallow Legal Harness, where the system is not composed of several agents specialized in smaller tasks, there's a heavy reliance on a large model to do the task. It would be an over-engineering task to try to fit smaller models to handle a relatively simple output.
 
 
-## Communication is key
+### Communication is key
 
 In a Deep Legal Harness where there are several agents at play, it’s essential to have proper communication between them.
 
@@ -251,7 +251,7 @@ This problem is almost inexistent in a Shallow Legal Harness too. There are so f
 A side note: the OpenAI hack was very interesting, despite being a case where the agents went completely out-of-control. It gave a peek on how these agents would operate in a scenario like this but it was also a good lesson on how to implement even further guardrails on how to secure AI systems. I recommend this video/podcast episode: a +2hour talk with a researcher on the details of the attack. https://www.youtube.com/watch?v=X50zezLFWWI
 
 
-## Evaluation
+### Evaluation
 
 For a large majority of systems, evaluation is typically made by scoring the inputs and outputs of the AI system, based on a golden dataset with questions and answers.
 
