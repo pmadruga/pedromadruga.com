@@ -27,3 +27,6 @@ lefthook-local.yml
 # Browser test artifacts
 /test-results/
 /playwright-report/
+
+# Local draft assets (large diagram/GIF/video iterations), kept out of git
+/_drafts/
