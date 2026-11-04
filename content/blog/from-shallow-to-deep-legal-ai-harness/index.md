@@ -192,7 +192,9 @@ This creates an entirely new world of possibilities that the AI can provide to t
 4. Create "adversarial lawyering" scenarios where (for example) a defence lawyer can generate the documents a prosecution lawyer would create - and then compare and improve its own documents.
 5. Create 1{{< sup "st" >}} and 2{{< sup "nd" >}} data source retrieval that is far superior to the Shallow Legal Harness, where the knowledge base is either weak or nonexistent.
 
-The list goes on and the companies who succeed at implementing these and others, will be able to surpass any generic harness.
+The list goes on.
+
+The companies who succeed at implementing these and others, will be able to surpass any generic harness.
 
 Only a Deep Legal Harness with a well-thought knowledge base has a complete picture of the system at a given point in time. And a well-thought knowledge base needs to be conceptualized from the ground up when building such harness.
 
