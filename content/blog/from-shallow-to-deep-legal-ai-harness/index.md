@@ -7,6 +7,8 @@ numberedHeadings: true
 draft: true
 date: '2026-09-30'
 lastmod: '2026-10-28'
+images:
+  - from-shallow-to-deep-share-v2.png # 1200x630 render of the memory pull quote
 ---
 
 ## Intro
@@ -151,7 +153,7 @@ To add to the complexity, the changes in one side of the system need to be propa
 
 How to make this system communicate between these tools - and to the user?
 
-This is where the knowledge base comes in, and it's probably the major defining factor between a Deep Legal Harness and a Shallow Legal Harness.
+This is where the knowledge base comes in, and it's probably the key differentiating factor between a Deep Legal Harness and a Shallow Legal Harness.
 
 Side note: this could typically be called "memory", but knowledge base in this context refers to a snapshot of the entire system at a single point in time. Memory comes later in this article. End of side note.
 
@@ -213,7 +215,7 @@ I keep using Claude, and especially Claude Code, because of how it handles memor
 
 In some ways, it has an ability to "understand" the most important parts of my interaction with the harness - and use it to improve my experience. Again, the feedforward and feedback mechanism visibly at play here.
 
-If we think of the knowledge base as a snapshot of the system at a given time, then memory is the combination of all the snapshots: it's a movie of everything that has happened over time within the AI system - and the user.
+If we think of the knowledge base as a snapshot of the system at a given time, then memory is the combination of all the snapshots: it's a movie of everything that has happened over time within the AI system - and with the user.
 
 ![Animation of memory in a Deep Legal Harness: six snapshots of the knowledge base are stacked along a time axis. The view moves to the side to reveal the history as agents create documents and later revise them, then returns to the front, where only the latest snapshot is visible.](deep-legal-harness-perspective-v5.svg)
 
@@ -249,7 +251,7 @@ Note: in the diagram of the Deep Legal Harness from before, there are retrieval 
 
 ### Specialized agents
 
-In the Deep Legal Harness, the AI system becomes a combination of smaller, specialized agents. As each agent becomes more and more specialized, it narrows the need for larger and generic models.
+In the Deep Legal Harness, the AI system becomes a combination of smaller, specialized agents. As each agent becomes more and more specialized, it reduces the need for larger, generic models.
 
 For example: why have Claude Fable when potentially Sonnet or an open model can do the same task, potentially better, and even reducing costs?
 
