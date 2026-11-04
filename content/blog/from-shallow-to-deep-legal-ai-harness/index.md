@@ -213,7 +213,7 @@ I keep using Claude, and especially Claude Code, because of how it handles memor
 
 In some ways, it has an ability to "understand" the most important parts of my interaction with the harness - and use it to improve my experience. Again, the feedforward and feedback mechanism visibly at play here.
 
-If we think of the knowledge base as a snapshot of the system at a given time, then memory is the combination of all the snapshots: it's a movie of everything that has happened over time within the AI system.
+If we think of the knowledge base as a snapshot of the system at a given time, then memory is the combination of all the snapshots: it's a movie of everything that has happened over time within the AI system - and the user.
 
 ![Animation of memory in a Deep Legal Harness: six snapshots of the knowledge base are stacked along a time axis. The view moves to the side to reveal the history as agents create documents and later revise them, then returns to the front, where only the latest snapshot is visible.](deep-legal-harness-perspective-v5.svg)
 
