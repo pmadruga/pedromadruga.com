@@ -117,6 +117,8 @@ A good legal assistant was able to leverage companies' content compared to the e
 
 A conversational legal research assistant works in a mostly unidirectional flow: user asks a question and gets an answer, based on sources. And that works well for that specific use-case: a user needs clarification and the assistant provides an answer based on legal citations.
 
+It's assistive: user prompts, assistant answers.
+
 Its primary goal is not to generate documents, despite being able to potentially create a document of several different pages. Even if an answer is able to generate such, it doesn't scale to large documents: 4 pages could work, 20 pages would not.
 
 At least without creating too much synthetic content, but in the legal domain that could mean creating either noise or - even worse - hallucinations. Keeping it short is what makes the legal assistant shine.
@@ -201,22 +203,29 @@ Nonetheless, the main take is that the knowledge base handles a cognitive model 
 
 ### Memory: a knowledge base over time
 
-I keep using Claude, and especially Claude Code, because of how it handles memory. It's a personal feature of that harness that simplifies and speeds up my work a lot. Moreover, it has an ability to "understand" the most important parts of my interaction with the harness - and use it to improve my experience. Again, the feedforward and feedback mechanism visibly at play here.
+I keep using Claude, and especially Claude Code, because of how it handles memory. It's a personalized feature of that harness that simplifies and speeds up my work a lot.
 
-If we think of the knowledge base as a picture of the system at a given time, then memory is the combination of all the pictures. It's a movie of everything that has happened over time.
+In some ways, it has an ability to "understand" the most important parts of my interaction with the harness - and use it to improve my experience. Again, the feedforward and feedback mechanism visibly at play here.
+
+If we think of the knowledge base as a snapshot of the system at a given time, then memory is the combination of all the snapshots: it's a movie of everything that has happened over time within the AI system.
 
 ![](deep-legal-harness-perspective-v5.svg)
 
 
-In a Shallow Legal Harness such as an assistant, the memory is usually the chat history of a session. Chat history can be considered a 3{{< sup "rd" >}} data source but it's a very thin data source. And it's limited to single-task Shallow Legal Harnesses.
+In a Shallow Legal Harness such as an assistant, the memory is usually the chat history of a session. Chat history can be considered a 3{{< sup "rd" >}} data source but it's a very thin one.
 
-An assistant in a Shallow Legal Harness has a narrow way of determining what the user wants by being limited to the chat history. The Shallow Legal Harness may work in depth (ie, in a single task of a single tool), but rarely in breadth (ie, in several tasks over multiple tools).
+A Shallow Legal Harness has a narrow way of determining what the user wants, mostly based on the conversation's history and not much more. In other words, it has a ceiling on what can be done.
 
-A Deep Legal Harness goes both in depth and in breadth: it's a complete understanding of the system.
+Nonetheless, a Shallow Legal Harness may work in depth (ie, in a single task of a single tool of the lawyer's flow), but rarely in breadth (ie, in several tasks over multiple tools).
 
-An analogy to this depth and breadth is GitHub Copilot and Claude Code. In GitHub Copilot the user is typically editing a single file. Of course, the user can increase the scope of other files in order to edit a single file, but that's not memory. That's just context.
+On the other hand, a Deep Legal Harness goes both in depth and in breadth: it's a complete understanding of the system.
 
-This is why Claude Code is so appealing: it's not just context but rather a combination of all the properties of a harness, working well together.
+An analogy to this depth and breadth is GitHub Copilot and Claude Code. In GitHub Copilot the user is typically editing a single file. Of course, the user can increase the scope to other files in order to edit a single file, but that's not memory - that's just context.
+
+This is why Claude Code is so appealing: it's not just context but rather a combination of all the properties of a harness, working well together. That's memory at play: a combination of properties working symbiotically to provide the user the best possible experience through an AI system aware of its preferences.
+
+If we take into count the different types of memory - [short-term, episodic, semantic and procedural](https://arxiv.org/pdf/2309.02427) -, it's in a Deep Harness where these different types can be more properly populated due to the volume of data created in this type of AI systems.
+
 
 ### Retrieval is different between sources
 
@@ -224,9 +233,12 @@ We saw before the three types of sources in a Deep Legal Harness. Because source
 
 This is because each type of source is parsed, indexed, and enriched in different ways. And that makes sense because they serve different purposes: an uploaded document serves a different purpose than the knowledge base, and so on.
 
-In the diagram of the Deep Legal Harness from before, there are retrieval steps (typically performed by agents) that have been omitted, in order to keep the simplicity of the document.
 
 The reality is that those retrieval steps exist and they're essential. But most importantly, in a Deep Legal Harness they have to be well-connected among them, since they need to retrieve content in the context of the harness, and not isolated from one another.
+
+And once they've been retrieved, these sources need to be merged in a way that makes sense to both the system and especially the user. This topic alone deserves a topic on its own.
+
+Note: in the diagram of the Deep Legal Harness from before, there are retrieval steps (typically performed by agents) that have been omitted, in order to keep the simplicity of the document.
 
 ### Specialized agents
 
@@ -234,13 +246,27 @@ In the Deep Legal Harness, the AI system becomes a combination of smaller, speci
 
 For example: why have Claude Fable when potentially Sonnet or an open model can do the same task, potentially better, and even reducing costs?
 
-For Shallow Legal Harness, it's quite normal that there's a "large model" that does the heavy lifting of its tasks. But this does not scale in a workflow for two reasons:
-
-1. You cannot put the content of three data sources into the context of an LLM and assume it scales.
-
-2. In a legal workflow, the agents are very specialized. This means that there's no need for very big models to perform simple tasks. This is also why some companies (Harvey, Thomson Reuters, Noxtua, etc) are fine-tuning their own models. It's possible to get better answers for a fraction of the price (which includes hosting and inference).
+In a Shallow Legal Harness, it's quite normal to have a "large generic model" that does the heavy lifting of its context-heavy tasks. However, dropping the content of three data sources into the context of an LLM has its ceiling - even using different information retrieval approaches -, in a phenomenon called "[context rot](https://www.trychroma.com/research/context-rot)" happening as input text grows.
 
 In a Shallow Legal Harness, where the system is not composed of several agents specialized in smaller tasks, there's a heavy reliance on a large model to do the task. It would be an over-engineering task to try to fit smaller models to handle a relatively simple output.
+
+In a Deep Legal Harness the agents are specialized. This means that there's no need for generic LLMs to perform focused tasks. This is also why some companies in the legal industry (like Harvey, Thomson Reuters and Noxtua) are post-training their own models.
+
+These specialized models can also be simpler to evaluate. Let's look at that.
+
+### Evaluation
+
+For a large majority of systems, evaluation is conventionally made by scoring the inputs and outputs of the AI system, based on a golden dataset with questions and answers.
+
+In a Deep Legal Harness AI system, evaluation needs to be compartmentalized in order to be evaluated. And at the same time, the system needs to be evaluated as a whole.
+
+So how can a system be evaluated in a compartmentalized way? You have to break the system into a 1000 pieces - and only then evaluate each part and the system as a whole.  
+
+The agents should be evaluated at an individual level: their inputs, their outputs, and every step in-between. Even every decision process needs to be evaluated. Luckily, some of these processes can be automated and scored in a deterministic way. Others rely on LLMs for these evals. And lastly, some rely on human manual supervision.
+
+The rule of thumb I have been using is to identify the critical parts of the system (ie, agents that have more complexity and responsibility) and set a higher number and deeper level of safeguards around those: whether deterministic, non-deterministic and/or manual.
+
+Because AI-based legal applications are domain knowledge-heavy, I expose legal domain experts to be as comfortable as possible to tools like [LangFuse](https://langfuse.com/) in order for them to understand the system - both as a whole as well as each individual part of it.
 
 
 ### Communication is key
@@ -249,33 +275,32 @@ In a Deep Legal Harness where there are several agents at play, it’s essential
 
 I find it interesting that, in the OpenAI hack of Hugging Face, the agents communicated among themselves via a message board that they found. Albeit a very different purpose, the agents used this message board as their knowledge base. And it worked quite well (for the agents).
 
-A well-orchestrated set of agents in a Deep Legal Harness AI system requires the communication to function properly - but not only: it's also how they operate. In other words, should they have a democratic decision process by using a voting mechanism for decisions or should it be a top-down approach where one agent decides and others just communicate status to the main agent? And these are to name a few options.
+A well-orchestrated set of agents in a Deep Legal Harness AI system requires the communication to function properly, and also how they decide (ie, which tools to use, which context to include, etc).
 
-This problem is almost inexistent in a Shallow Legal Harness too. There are so few agents in the system already that the operation mode is not a problem. At most, there’s a routing agent redirecting tasks to the right agent, but the flow happens in a unidirectional way, as we’ve mentioned before in this blogpost.
+When there are several agents at play, and communicating amongst themselves, the outcome of these should be the result of a decision process. To name a few options, they can be [democratic](https://arxiv.org/abs/2502.19130), [top-down](https://arxiv.org/abs/2502.19130), etc.
+
+There are several decisions to be made when setting up the communication between agents and their outcome: Should they have a democratic decision process by using a voting mechanism for decisions or should it be a top-down approach where one agent decides and others just communicate status to the main agent? And these are to name a few options.
+
+This problem is almost non-existent in a Shallow Legal Harness too. There are so few agents in the system already that the decision process is not a problem. At most, there’s a routing agent redirecting tasks to the right agent, but the flow happens in a unidirectional way, as we've mentioned before in this blog post.
 
 A side note: the OpenAI hack was very interesting, despite being a case where the agents went completely out-of-control. It gave a peek on how these agents would operate in a scenario like this but it was also a good lesson on how to implement even further guardrails on how to secure AI systems. I recommend this video/podcast episode: a 2+ hour talk with a researcher on the details of the attack. https://www.youtube.com/watch?v=X50zezLFWWI
 
 
-### Evaluation
-
-For a large majority of systems, evaluation is typically made by scoring the inputs and outputs of the AI system, based on a golden dataset with questions and answers.
-
-In a Deep Legal Harness AI system, evaluation needs to be compartmentalized in order to be evaluated. And at the same time, the system needs to be evaluated as a whole.
-
-So how can a system be evaluated in a compartmentalized way? You have to break the system into a 1000 pieces - and only then evaluate each part and the system as a whole.  
-
-The agents should be evaluated at an individual level: their inputs, their outputs, and every step in-between. Even every decision process needs to be evaluated. Luckily, some of these processes can be automated and scored in a deterministic way. Others rely on LLMs for these evals. And lastly, some rely on human manual supervision.
-
-The rule of thumb I have been using is to identify the critical parts of the system (ie, agents that have more complexity and responsibility) and set a higher number of safeguards around those: deterministic, non-deterministic and manual.
-
-Because AI-based legal applications are domain knowledge-heavy, I expose legal domain experts to be as comfortable as possible to tools like LangFuse in order for them to understand the system - both as a whole as well as each individual part of it.
-
-
 ## Conclusion
 
-I've now created and worked with both Shallow Legal Harnesses and Deep Legal Harnesses in production. One obvious learning is that, in the legal domain where the application needs to mimic lawyer's flow, we're looking at a complete shift from going from a Shallow Legal Harness into a Deep Legal Harness. One thing is to work in a single step of the lawyer's flow; another completely different is to work on the entire workflow mostly because it's the result of the interaction of the tools (and the tools with the user).
+There's a lot of value in building a custom harness. It provides an understanding of the system that a generic harness cannot give - regardless of being shallow or deep.
 
-Another learning is that the Deep Legal Harness AI systems are capable of an understanding of the user that is potentially even higher than the user itself. This opens the road for several risks and opportunities. That's why a deep focus on evaluation and inclusion of stakeholders in that process is fundamental for the understanding and control of these systems.
+But with value comes complexity along.
 
-Lastly, there's a lot of value in building a custom harness. It provides an understanding of the system that a generic harness cannot give - regardless of being shallow or deep.
+A Deep Legal Harness tries to mimic the lawyer's flow to what's possible. In the same way that that flow is complex, so is a Deep Legal Harness.
+
+In the legal domain where a workflow application needs to mimic lawyer's work, we're looking at a complete shift from going from a Shallow Legal Harness into a Deep Legal Harness. One thing is to work in a single step of the lawyer's flow; another completely different is to work on the entire workflow mostly because it's the result of the interaction of the tools (and the tools with the user).
+
+This article expands on these differences.
+
+The end result is a rich AI system, that provides mechanisms for the user to be in control while helping the same user at performing its tasks. The Deep Legal Harness AI systems are capable of an understanding of the user that is potentially even higher than the user itself.
+
+This opens the road for several risks and opportunities. That's why a deep focus on evaluation and inclusion of stakeholders in that process is fundamental for the understanding and control of these systems.
+
+Further articles on Deep Legal Harness could expand on each of the topics addressed here such as memory, evaluation, specialization and communication since this article only addresses them on a high-level.
 
