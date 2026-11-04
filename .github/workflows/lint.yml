@@ -20,6 +20,9 @@ on:
       - '.htmltest.yml'
       - '.markdownlint-cli2.yaml'
       - '.prettierrc'
+      - 'playwright.config.js'
+      - 'tests/browser/**'
+      - 'scripts/serve-browser-tests.py'
       - '.github/workflows/**'
       - '.github/actions/**'
 
@@ -99,3 +102,26 @@ jobs:
         # No path arg: htmltest only honours .htmltest.yml when invoked
         # without one (DirectoryPath/CheckExternal/IgnoreURLs come from there).
         run: htmltest
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: '1.4.3' # keep in sync with netlify.toml and scripts/setup.sh
+
+      - name: Install Browser Test Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install Firefox
+        run: node_modules/.bin/playwright install --with-deps firefox
+
+      - name: Test Theme Toggle in Firefox
+        id: browser-tests
+        run: bun run test:browser
+
+      - name: Upload Browser Failure Details
+        if: failure() && steps.browser-tests.outcome == 'failure'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: firefox-test-results
+          path: test-results/
+          retention-days: 7

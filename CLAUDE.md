@@ -43,6 +43,15 @@ npm run theme:update       # Update PaperMod theme (with build test)
 npm run theme:rollback     # Rollback to previous theme version
 ```
 
+### Browser Tests
+
+```bash
+node_modules/.bin/playwright install firefox # One-time browser download
+bun run test:browser                         # Firefox theme-toggle regression tests
+```
+
+Requires Python 3.11+ and Hugo. The test server builds production pages in a temporary directory and serves the security headers from `netlify.toml` on port 4173. Tests cover the homepage, a blog post, and `/notes/` with light and dark system preferences, mouse and keyboard activation, visible color changes, and persistence across reloads and navigation. CI's build job installs Firefox and its system dependencies and runs these tests after HTML validation. Browser extensions are outside this test's scope.
+
 ## Architecture
 
 - **Content** (`content/`): Markdown files with Hugo front matter. Blog posts in `content/blog/`. Static pages: about, cv (draft, menu-disabled), newsletter (in the nav menu; carries the same post archive as /blog/ via the shared `post_archive.html` partial), newsletter-thanks/-confirmed (Buttondown redirect targets, noindexed), booking-confirmed (meetergo redirect target at `/booking/confirmed/`, noindexed — meetergo disables its own success page once a redirect URL is set), contact, notes (build-time Bluesky feed via `layouts/notes.html`, no client JS; refreshed daily by `.github/workflows/daily-deploy.yml`, which fires a Netlify build hook — `scripts/netlify-build.sh` then sets `HUGO_NOTES_REQUIRE_FEED=true` so an empty feed fails that build and the previous deploy stays live).

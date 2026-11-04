@@ -23,3 +23,7 @@ package-lock.json
 
 # Lefthook local overrides
 lefthook-local.yml
+
+# Browser test artifacts
+/test-results/
+/playwright-report/
