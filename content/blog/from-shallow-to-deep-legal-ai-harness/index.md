@@ -160,6 +160,7 @@ For the sake of simplicity, there are parts being omitted in this visualization,
 
 In order to understand what makes a Deep Legal Harness to be considered deep, we have to deconstruct its architecture into several small parts. These parts are the major focus of the rest of this article.
 
+{{< inline-svg "from-shallow-to-deep-card-2.svg" >}}
 
 ### Knowledge base: a third-dimension in data sources
 
@@ -228,6 +229,7 @@ This is why Claude Code is so appealing: it's not just context but rather a comb
 
 If we take into account the different types of memory - [short-term, episodic, semantic and procedural](https://arxiv.org/pdf/2309.02427) -, it's in a Deep Harness where these different types can be more properly populated due to the volume of data created in this type of AI systems.
 
+{{< inline-svg "from-shallow-to-deep-card-1.svg" >}}
 
 ### Retrieval is different between sources
 
