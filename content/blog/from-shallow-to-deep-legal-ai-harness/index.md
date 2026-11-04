@@ -1,6 +1,6 @@
 ---
 title: 'From Shallow to Deep: Building a Legal AI Harness'
-description: 'Agentic coding brought us harnesses and harness engineering. Can that translate to the legal industry? An analysis on the Deep Legal Harness and Shallow Legal Harness and which properties compose these. As usual no AI was used to write this article.'
+description: 'Agentic coding brought us harnesses and harness engineering. Can that translate to the legal industry? An analysis on the Deep Legal Harness and Shallow Legal Harness and which properties compose these. Learnings from the AI industry. As usual no AI was used to write this article.'
 showtoc: true
 tocopen: false
 numberedHeadings: true
@@ -37,7 +37,7 @@ My favourite definition of harness lives in a blogpost at [Martin Fowler's websi
 
 In order to explain what a harness is, the author creates a visualization of the different layers around the model:
 
-![](harness-boundaries-dark-v2.svg)
+![Three nested boundaries: the model at the centre, the harness inner layer built by the coding agent builders around it, and the harness outer layer around both. Adapted from Birgitta Böckeler's diagram on martinfowler.com.](harness-boundaries-dark-v2.svg)
 
 The harness gets broken down into two layers: "harness outer layer" and harness built by the builders - which I'm naming here as "harness inner layer". Let's define what each of these layers of the harness is.  
 
@@ -129,7 +129,7 @@ Recalling the diagram from before, with the different layers of a harness, the l
 
 That's why it is a Shallow Legal Harness.
 
-![](legal-shallow-harness-v11.svg)
+![Shallow Legal Harness: a database of legal and proprietary sources and the user's uploaded documents feed a single legal research agent, which exchanges questions and answers with the user through a chat. No documents are produced.](legal-shallow-harness-v11.svg)
 
 The legal research tool is fundamentally important and central to the rest of the workflow but the lawyer's workflow is very much interconnected between the different phases. Nonetheless, a conversational legal research assistant is simply one small piece of the lawyer's workflow.
 
@@ -154,7 +154,7 @@ Side note: this could typically be called "memory", but knowledge base in this c
 
 This is what a Deep Legal Harness looks like, from a high-level perspective.
 
-![](legal-deep-harness-v4.svg)
+![Deep Legal Harness: the database and uploaded documents feed four agents (legal research, legal scope, planning and document drafting). Each agent creates documents and talks to the user through a chat. All agents read from and write to a central knowledge base, the third data source.](legal-deep-harness-v4.svg)
 
 For the sake of simplicity, there are parts being omitted in this visualization, because this harness is more complex than what's being represented. There are many more variables at play that make the harness deep.
 
@@ -187,7 +187,7 @@ But in a Deep Legal Harness, the AI has that capability, thus opening the road f
 This creates an entirely new world of possibilities that the AI can provide to the user. Here are some examples of what it can do:
 
 1. Understand the user in a way that helps them find blind spots (for example) in the documents produced in that workflow;
-2. Provide transparency to the user on the decisions by the system. For example, the reasoning in the answers to the user becomes much more concrete (and [verifiable](https://www.anthropic.com/research/reasoning-models-dont-say-think)).  
+2. Provide transparency to the user on the decisions by the system. For example, the reasoning in the outputs can be enhanced by the knowledge base to become more concrete and context-relevant, especially knowing that [the default reasoning of models doesn't always reflect what these models really think](https://www.anthropic.com/research/reasoning-models-dont-say-think).  
 3. Provide much better suggestions resulting in a drastically more powerful and all-knowing human-in-the-loop;
 4. Create "adversarial lawyering" scenarios where (for example) a defence lawyer can generate the documents a prosecution lawyer would create - and then compare and improve its own documents.
 5. Create 1{{< sup "st" >}} and 2{{< sup "nd" >}} data source retrieval that is far superior to the Shallow Legal Harness, where the knowledge base is either weak or nonexistent.
@@ -209,7 +209,7 @@ In some ways, it has an ability to "understand" the most important parts of my i
 
 If we think of the knowledge base as a snapshot of the system at a given time, then memory is the combination of all the snapshots: it's a movie of everything that has happened over time within the AI system.
 
-![](deep-legal-harness-perspective-v5.svg)
+![Animation of memory in a Deep Legal Harness: six snapshots of the knowledge base are stacked along a time axis. The view moves to the side to reveal the history as agents create documents and later revise them, then returns to the front, where only the latest snapshot is visible.](deep-legal-harness-perspective-v5.svg)
 
 
 In a Shallow Legal Harness such as an assistant, the memory is usually the chat history of a session. Chat history can be considered a 3{{< sup "rd" >}} data source but it's a very thin one.
@@ -277,7 +277,7 @@ I find it interesting that, in the OpenAI hack of Hugging Face, the agents commu
 
 A well-orchestrated set of agents in a Deep Legal Harness AI system requires the communication to function properly, and also how they decide (ie, which tools to use, which context to include, etc).
 
-When there are several agents at play, and communicating amongst themselves, the outcome of these should be the result of a decision process. To name a few options, they can be [democratic](https://arxiv.org/abs/2502.19130), [top-down](https://arxiv.org/abs/2502.19130), etc.
+When there are several agents at play, and communicating amongst themselves, the outcome of these should be the result of a decision process. To name a few options, they can be [democratic](https://arxiv.org/abs/2512.08296), [top-down](https://arxiv.org/abs/2502.19130), etc.
 
 There are several decisions to be made when setting up the communication between agents and their outcome: Should they have a democratic decision process by using a voting mechanism for decisions or should it be a top-down approach where one agent decides and others just communicate status to the main agent? And these are to name a few options.
 
@@ -288,15 +288,15 @@ A side note: the OpenAI hack was very interesting, despite being a case where th
 
 ## Conclusion
 
-There's a lot of value in building a custom harness. It provides an understanding of the system that a generic harness cannot give - regardless of being shallow or deep.
+It's possible to create a legal harness, using agentic coding harness as its foundation.
+
+A lot can be learned when building a custom harness. It provides an understanding of the system that a generic harness cannot give - regardless of being shallow or deep.
 
 But with value comes complexity along.
 
 A Deep Legal Harness tries to mimic the lawyer's flow to what's possible. In the same way that that flow is complex, so is a Deep Legal Harness.
 
 In the legal domain where a workflow application needs to mimic lawyer's work, we're looking at a complete shift from going from a Shallow Legal Harness into a Deep Legal Harness. One thing is to work in a single step of the lawyer's flow; another completely different is to work on the entire workflow mostly because it's the result of the interaction of the tools (and the tools with the user).
-
-This article expands on these differences.
 
 The end result is a rich AI system, that provides mechanisms for the user to be in control while helping the same user at performing its tasks. The Deep Legal Harness AI systems are capable of an understanding of the user that is potentially even higher than the user itself.
 
