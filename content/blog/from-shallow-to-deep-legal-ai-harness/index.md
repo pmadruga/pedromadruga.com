@@ -72,6 +72,8 @@ Up until now, I've been mentioning harnesses in the context of agentic coding (a
 
 We need a bridge between agentic coding and legal harnesses.
 
+{{< inline-svg "from-shallow-to-deep-card-6.svg" >}}
+
 ## Legal Harness
 
 ### The lawyer's flow
@@ -137,6 +139,7 @@ In reality, this workflow is composed of many tools that reflect how lawyers wor
 
 Let's now look at the different parts that an AI system's architecture contemplated from the ground up in order to reflect the lawyer's workflow as closely as possible.
 
+{{< inline-svg "from-shallow-to-deep-card-3.svg" >}}
 
 ## Deep Legal Harness
 
@@ -258,6 +261,8 @@ In a Deep Legal Harness the agents are specialized. This means that there's no n
 
 These specialized models can also be simpler to evaluate. Let's look at that.
 
+{{< inline-svg "from-shallow-to-deep-card-5.svg" >}}
+
 ### Evaluation
 
 For a large majority of systems, evaluation is conventionally made by scoring the inputs and outputs of the AI system, based on a golden dataset with questions and answers.
@@ -272,6 +277,7 @@ The rule of thumb I have been using is to identify the critical parts of the sys
 
 Because AI-based legal applications are domain knowledge-heavy, I expose legal domain experts to be as comfortable as possible to tools like [Langfuse](https://langfuse.com/) in order for them to understand the system - both as a whole as well as each individual part of it.
 
+{{< inline-svg "from-shallow-to-deep-card-4.svg" >}}
 
 ### Communication is key
 
